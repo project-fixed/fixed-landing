@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import Toolbar from '../../components/Toolbar.astro';
+import PlanCard from '../../components/PlanCard.astro';
+import GradientShapes from '../../components/GradientShapes.astro';
+import { plans } from '../../data/plans';
+import { useTranslations } from '../../data/translations';
+
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<Layout title="Planes y Precios - Fixed" lang={lang}>
+  <!-- Background Gradient Elements -->
+  <GradientShapes />
+
+  <!-- Navbar Section -->
+  <Toolbar slot="navbar" lang={lang} />
+
+  <!-- Plans Content -->
+  <section class="flex w-full flex-col items-center justify-center py-16">
+    <div class="mx-auto mb-16 w-full max-w-[700px] text-center">
+      <h2 class="mb-6 text-5xl leading-tight font-extrabold text-white">
+        {t.landing.plans.title}
+      </h2>
+      <p
+        class="mx-auto max-w-[600px] text-base leading-relaxed text-zinc-300 max-sm:px-4"
+      >
+        {t.landing.plans.description}
+      </p>
+    </div>
+
+    <!-- Cards container -->
+    <div class="flex w-full flex-wrap items-stretch justify-center gap-8 px-4">
+      {plans.map((plan) => <PlanCard plan={plan} lang={lang} />)}
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <Footer slot="footer" lang={lang} />
+
+  </Layout>

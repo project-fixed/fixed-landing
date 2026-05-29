@@ -1,0 +1,67 @@
+---
+const images = [
+  { delay: -5, src: "/images/bet_won_widget.png", alt: "Bet Won Widget" },
+  { delay: -4, src: "/images/growth_chart_widget.png", alt: "Growth Chart Widget" },
+  { delay: -3, src: "/images/ai_prediction_widget.png", alt: "AI Prediction Widget" },
+  { delay: -2, src: "/images/bet_won_widget.png", alt: "Bet Won Widget" },
+  { delay: -1, src: "/images/growth_chart_widget.png", alt: "Growth Chart Widget" },
+  { delay: 0, src: "/images/ai_prediction_widget.png", alt: "AI Prediction Widget" },
+];
+---
+
+<div class="relative flex h-[450px] w-[450px] items-center justify-center max-md:h-[350px] max-md:w-[350px]">
+  <!-- Rotative Images -->
+  {
+    images.map((image) => (
+      <div 
+        class="point-card-animated pointer-events-none absolute z-10 w-[300px] opacity-0 max-[425px]:w-[240px] max-[375px]:w-[200px] lg:w-[280px]"
+        style={`--delay: ${image.delay};`}
+      >
+        <img src={image.src} alt={image.alt} class="w-full object-contain drop-shadow-2xl rounded-2xl border border-white/5 bg-zinc-950/40 backdrop-blur-md" />
+      </div>
+    ))
+  }
+
+  <!-- Glowing Background Circle -->
+  <div class="pointer-events-none absolute h-[400px] w-[400px] rounded-full bg-[#3E5D6C]/5 blur-[120px] max-md:h-[250px] max-md:w-[250px] z-0"></div>
+</div>
+
+<style>
+  @keyframes point-float {
+    0% {
+      opacity: 0;
+      transform: translate(-10%, -160%) scale(0.7);
+    }
+
+    20% {
+      opacity: 0.5;
+      transform: translate(-5%, -80%) scale(0.85);
+    }
+
+    40% {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(0, 0) scale(1);
+    }
+
+    60% {
+      opacity: 0.5;
+      transform: translate(40%, 80%) scale(0.85);
+    }
+
+    80% {
+      opacity: 0;
+      transform: translate(80%, 160%) scale(0.7);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(80%, 160%) scale(0.7);
+    }
+  }
+
+  .point-card-animated {
+    animation: point-float 18s linear infinite;
+    animation-delay: calc(3s * var(--delay));
+  }
+</style>

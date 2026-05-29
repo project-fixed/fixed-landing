@@ -1,0 +1,134 @@
+---
+import OddsCard from './OddsCard.astro';
+
+const oddsData1 = [
+  { time: "21:00", percent: "58.45%", odds: "1.85", type: "1X2: 1", match: "Real Madrid - Barcelona" },
+  { time: "19:30", percent: "62.10%", odds: "2.10", type: "Over 2.5", match: "Arsenal - Chelsea" },
+  { time: "20:45", percent: "55.20%", odds: "1.75", type: "BTTS: Yes", match: "Juventus - AC Milan" },
+  { time: "18:00", percent: "70.00%", odds: "1.45", type: "1X2: 1", match: "Bayern Munich - Dortmund" },
+  { time: "22:00", percent: "45.80%", odds: "2.50", type: "1X2: X", match: "PSG - Marseille" },
+  { time: "17:15", percent: "60.30%", odds: "2.05", type: "Under 2.5", match: "Napoli - Atalanta" },
+];
+
+const oddsData2 = [
+  { time: "16:30", percent: "80.15%", odds: "1.25", type: "Over 1.5", match: "Man City - Fulham" },
+  { time: "17:00", percent: "50.50%", odds: "1.95", type: "1X2: 2", match: "Sevilla - Atl. Madrid" },
+  { time: "20:00", percent: "65.30%", odds: "1.65", type: "Under 3.5", match: "Ajax - PSV" },
+  { time: "19:00", percent: "59.90%", odds: "1.80", type: "1X2: 1", match: "Liverpool - Everton" },
+  { time: "21:30", percent: "48.20%", odds: "2.20", type: "BTTS: No", match: "Inter - Napoli" },
+  { time: "18:45", percent: "71.00%", odds: "1.50", type: "1X2: 1", match: "Benfica - Porto" },
+];
+
+const oddsData3 = [
+  { time: "15:00", percent: "72.40%", odds: "1.55", type: "1X2: 1", match: "Bayer Leverkusen - Koln" },
+  { time: "18:30", percent: "53.60%", odds: "1.90", type: "Over 2.5", match: "Tottenham - Aston Villa" },
+  { time: "20:15", percent: "61.80%", odds: "1.70", type: "1X2: 2", match: "Roma - Lazio" },
+  { time: "22:30", percent: "42.50%", odds: "2.80", type: "1X2: X", match: "Porto - Benfica" },
+  { time: "17:45", percent: "68.90%", odds: "1.60", type: "Under 2.5", match: "Sporting - Braga" },
+  { time: "19:15", percent: "64.20%", odds: "1.85", type: "1X2: 1", match: "Galatasaray - Fenerbahce" },
+];
+---
+
+<div class="w-full overflow-hidden mask-edges py-10 flex flex-col gap-4 border-y border-white/5 bg-black/20">
+  <!-- Row 1: Scroll Left -->
+  <div class="scroller" data-direction="left" data-speed="slow">
+    <div class="scroller-inner flex gap-4">
+      {
+        [...oddsData1, ...oddsData1].map((item) => (
+          <OddsCard 
+            time={item.time} 
+            percent={item.percent} 
+            odds={item.odds} 
+            type={item.type} 
+            match={item.match} 
+            class="min-w-[280px]" 
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Row 2: Scroll Right -->
+  <div class="scroller" data-direction="right" data-speed="slow">
+    <div class="scroller-inner flex gap-4">
+      {
+        [...oddsData2, ...oddsData2].map((item) => (
+          <OddsCard 
+            time={item.time} 
+            percent={item.percent} 
+            odds={item.odds} 
+            type={item.type} 
+            match={item.match} 
+            class="min-w-[280px]" 
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Row 3: Scroll Left -->
+  <div class="scroller" data-direction="left" data-speed="slow">
+    <div class="scroller-inner flex gap-4">
+      {
+        [...oddsData3, ...oddsData3].map((item) => (
+          <OddsCard 
+            time={item.time} 
+            percent={item.percent} 
+            odds={item.odds} 
+            type={item.type} 
+            match={item.match} 
+            class="min-w-[280px]" 
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .mask-edges {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .scroller {
+    width: 100%;
+  }
+
+  .scroller[data-direction="left"] .scroller-inner {
+    animation: scroll-left 40s linear infinite;
+  }
+
+  .scroller[data-direction="right"] .scroller-inner {
+    animation: scroll-right 40s linear infinite;
+  }
+
+  .scroller-inner {
+    width: max-content;
+    flex-wrap: nowrap;
+  }
+
+  .scroller-inner:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-left {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
+  @keyframes scroll-right {
+    from {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+</style>

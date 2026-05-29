@@ -1,0 +1,288 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import Toolbar from '../../components/Toolbar.astro';
+import AvatarGroup from '../../components/AvatarGroup.astro';
+import FloatingKeyPoints from '../../components/FloatingKeyPoints.astro';
+import KeyPointsGrid from '../../components/KeyPointsGrid.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import BrandsCarousel from '../../components/BrandsCarousel.astro';
+import GradientShapes from '../../components/GradientShapes.astro';
+import OddsMarquee from '../../components/OddsMarquee.astro';
+import AITimeline from '../../components/AITimeline.astro';
+import AILayers from '../../components/AILayers.astro';
+import imgDashboard from '../../assets/images/dashboard.png';
+import imgAbout from '../../assets/images/about.png';
+import imgStep1 from '../../assets/images/steps/step1.jpg';
+import imgStep2 from '../../assets/images/steps/step2.jpg';
+import imgStep3 from '../../assets/images/steps/step3.jpg';
+import imgStep4 from '../../assets/images/steps/step4.jpg';
+import imgStep5 from '../../assets/images/steps/step5.jpg';
+import OddsMarquee from '../../components/OddsMarquee.astro';
+import { useTranslations } from '../../data/translations';
+
+const lang = 'es';
+const t = useTranslations(lang);
+const appAuthUrl = 'https://app.fixed.com/auth';
+---
+
+<Layout
+  title="Fixed - Deja de adivinar y empieza a ganar más con IA"
+  lang={lang}
+>
+  <!-- Background Gradient Elements -->
+  <GradientShapes />
+
+  <!-- Navbar Section -->
+  <Toolbar slot="navbar" lang={lang} />
+
+  <!-- Hero Section -->
+  <section id="hero" class="page-section relative pt-8 text-center overflow-hidden">
+    <div class="flex min-h-[75vh] flex-col items-center justify-center relative">
+      
+      <!-- Floating Background Cards -->
+      <FloatingKeyPoints lang={lang} />
+
+      <div class="animate-fade-in flex w-full max-w-[800px] flex-col items-center py-8 xl:py-16 z-10">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white drop-shadow-2xl">
+          <span class="text-primary">{t.landing.home.hero.title.start}</span>
+          {t.landing.home.hero.title.center}
+          <span class="text-primary">{t.landing.home.hero.title.end}</span>
+        </h1>
+
+        <p class="mt-8 max-w-[600px] text-lg leading-relaxed text-zinc-300 drop-shadow-lg relative z-20">
+          {t.landing.home.hero.description}
+        </p>
+
+        <!-- Beta Subscription Form -->
+        <form class="mt-10 flex w-full max-w-md items-center gap-2 rounded-full bg-zinc-950/80 p-2 border border-white/10 backdrop-blur-md shadow-2xl focus-within:border-primary/50 focus-within:shadow-primary/20 transition-all z-20 relative">
+          <input 
+            type="email" 
+            placeholder={t.landing.home.hero.betaPlaceholder} 
+            class="flex-1 bg-transparent px-4 py-2 text-white outline-none placeholder:text-zinc-500"
+            required
+          />
+          <button 
+            type="submit" 
+            class="rounded-full bg-primary px-6 py-2.5 font-bold text-white transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/30"
+          >
+            {t.landing.home.hero.betaButton}
+          </button>
+        </form>
+
+        <div class="mt-8 flex items-center gap-4 bg-zinc-950/50 backdrop-blur-sm px-6 py-3 rounded-full border border-white/10 relative z-20">
+          <AvatarGroup />
+          <span class="relative flex h-3 w-3">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
+          </span>
+          <p class="text-sm font-medium text-zinc-300">
+            {t.landing.home.hero.online}
+          </p>
+        </div>
+
+        <!-- Bounce arrow icon on mobile -->
+        <div class="flex justify-center pt-16 lg:hidden">
+          <a
+            href="#features"
+            class="hover:text-primary text-white transition-colors"
+            aria-label="Desplazarse a características"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="size-8 animate-bounce"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Odds Marquee Section -->
+  <OddsMarquee />
+
+  <!-- Static Key Points Grid -->
+  <KeyPointsGrid lang={lang} />
+
+  <!-- Features Section -->
+  <section
+    id="features"
+    class="page-section flex items-center justify-center py-20"
+  >
+    <div class="w-full max-w-[1000px] text-center">
+      <div class="mb-12">
+        <h2
+          class="mx-auto my-6 max-w-[700px] text-5xl leading-tight font-extrabold text-white"
+        >
+          {t.landing.home.features.title}
+        </h2>
+        <p
+          class="mx-auto max-w-[800px] text-base leading-relaxed text-zinc-300"
+        >
+          {t.landing.home.features.description}
+        </p>
+      </div>
+
+      <!-- Interactive dashboard screenshot -->
+      <div
+        class="group relative overflow-hidden rounded-[20px] border border-white/10 bg-zinc-950 p-2 shadow-2xl transition-transform duration-500 hover:scale-[1.01]"
+      >
+        <img
+          src={imgDashboard.src}
+          alt="Fixed Dashboard Screenshot"
+          class="h-auto w-full rounded-[15px]"
+          loading="lazy"
+        />
+        <div
+          class="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+          <span
+            class="bg-primary/80 flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white backdrop-blur-md"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.43 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+            </svg>
+            Vista Previa
+          </span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Sections -->
+  <div class="py-12 bg-gradient-to-b from-transparent via-zinc-900/20 to-transparent">
+    <AITimeline lang={lang} />
+    <div class="py-12"></div>
+    <AILayers lang={lang} />
+  </div>
+
+  <!-- Steps Section -->
+  <section
+    id="steps"
+    class="page-section flex flex-col items-center justify-center py-20 text-center lg:items-start lg:text-left"
+  >
+    <div class="mb-12 text-center lg:text-left">
+      <h2 class="text-5xl leading-tight font-extrabold text-white">
+        {t.landing.home.steps.title}
+      </h2>
+      <p class="mt-4 max-w-[500px] text-base leading-relaxed text-zinc-300">
+        {t.landing.home.steps.description}
+      </p>
+    </div>
+
+    <div class="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6">
+      <div class="md:col-span-1 lg:col-span-2">
+        <FeatureCard
+          step="01"
+          image={imgStep1.src}
+          title={t.landing.home.steps.step1.title}
+          description={t.landing.home.steps.step1.description}
+        />
+      </div>
+      <div class="md:col-span-1 lg:col-span-2">
+        <FeatureCard
+          step="02"
+          image={imgStep2.src}
+          title={t.landing.home.steps.step2.title}
+          description={t.landing.home.steps.step2.description}
+        />
+      </div>
+      <div class="md:col-span-1 lg:col-span-2">
+        <FeatureCard
+          step="03"
+          image={imgStep3.src}
+          title={t.landing.home.steps.step3.title}
+          description={t.landing.home.steps.step3.description}
+        />
+      </div>
+      <div class="md:col-span-1 lg:col-span-3">
+        <FeatureCard
+          step="04"
+          image={imgStep4.src}
+          title={t.landing.home.steps.step4.title}
+          description={t.landing.home.steps.step4.description}
+        />
+      </div>
+      <div class="md:col-span-2 lg:col-span-3">
+        <FeatureCard
+          step="05"
+          image={imgStep5.src}
+          title={t.landing.home.steps.step5.title}
+          description={t.landing.home.steps.step5.description}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands Carousel Section -->
+  <section
+    id="brands"
+    class="flex w-full justify-center border-y border-white/5 bg-black/30 py-10"
+  >
+    <BrandsCarousel />
+  </section>
+
+  <!-- About Section -->
+  <section
+    id="about"
+    class="page-section flex flex-wrap items-center justify-center gap-12 py-20"
+  >
+    <!-- Rounded asymmetric image layout -->
+    <div
+      class="max-w-[450px] overflow-hidden rounded-[40%_20%] border border-white/10 shadow-2xl"
+    >
+      <img
+        src={imgAbout.src}
+        alt="Image - About"
+        class="h-auto w-full object-cover"
+      />
+    </div>
+
+    <div class="w-[min(100%,500px)] text-left">
+      <h2 class="text-5xl leading-tight font-extrabold text-white">
+        {t.landing.home.about.title}
+      </h2>
+      <span class="text-primary mt-2 block text-2xl font-bold"
+        >{t.landing.home.about.subtitle}</span
+      >
+      <p class="my-6 text-base leading-relaxed text-zinc-300">
+        {t.landing.home.about.description}
+      </p>
+
+      <a
+        href={`${appAuthUrl}?lang=${lang}`}
+        class="btn btn-secondary inline-block rounded-full px-8 py-3 text-center text-base font-bold tracking-wider"
+      >
+        {t.button.getStarted}
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <Footer slot="footer" lang={lang} />
+</Layout>

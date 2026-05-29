@@ -1,0 +1,56 @@
+---
+
+---
+
+<div
+  class="bg-landing-effect-1 blob-animated fixed -top-[150px] -left-[100px] z-[-1] h-[600px] w-[400px] -rotate-5 rounded-full opacity-20 blur-[120px]"
+>
+</div>
+<div
+  class="bg-landing-effect-2 blob-animated fixed -top-[250px] left-[300px] z-[-1] h-[550px] w-[600px] rotate-[125deg] rounded-full opacity-15 blur-[120px]"
+>
+</div>
+<div
+  class="bg-landing-effect-3 blob-animated fixed top-[250px] left-[550px] z-[-1] h-[250px] w-[350px] rotate-[110deg] rounded-full opacity-15 blur-[120px]"
+>
+</div>
+<div
+  class="bg-landing-effect-6 blob-animated fixed -top-[275px] left-[1050px] z-[-1] h-[600px] w-[800px] rotate-[-75deg] rounded-full opacity-15 blur-[120px]"
+>
+</div>
+<div
+  class="bg-landing-effect-6 blob-animated fixed -top-[325px] left-[1400px] z-[-1] h-[500px] w-[700px] rotate-0 rounded-full opacity-15 blur-[120px]"
+>
+</div>
+
+<style>
+  @keyframes slider-shape {
+    0%,
+    100% {
+      opacity: 0.25;
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+    }
+
+    35% {
+      opacity: 0.2;
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+    }
+
+    50% {
+      opacity: 0.1;
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+    }
+
+    65% {
+      opacity: 0.2;
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+      transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+    }
+  }
+
+  .blob-animated {
+    animation: slider-shape 5s linear infinite;
+  }
+</style>

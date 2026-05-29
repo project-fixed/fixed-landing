@@ -1,0 +1,78 @@
+---
+import imgSpain from '../assets/images/spain.png';
+import imgUS from '../assets/images/united-states.png';
+
+interface Props {
+  lang: 'en' | 'es';
+  class?: string;
+}
+
+const { lang, class: className = '' } = Astro.props;
+
+// Determine current path
+const pathname = Astro.url.pathname;
+
+// Calculate target path for language toggle
+const getTargetPath = () => {
+  if (lang === 'en') {
+    return pathname === '/' ? '/es' : `/es${pathname}`;
+  }
+  // lang === 'es'
+  let p = pathname.startsWith('/es/')
+    ? pathname.replace('/es/', '/')
+    : pathname === '/es'
+      ? '/'
+      : pathname.replace('/es', '');
+  if (!p.startsWith('/')) {
+    p = '/' + p;
+  }
+  return p;
+};
+
+const targetPath = getTargetPath();
+---
+
+<a
+  href={targetPath}
+  id="lang-toggle-btn"
+  data-lang={lang === 'en' ? 'es' : 'en'}
+  class={`p-2 rounded bg-main-glass border border-white/5 shadow-md flex items-center justify-center transition-all duration-300 hover:border-primary/40 hover:scale-105 active:scale-95 ${className}`}
+  title={lang === 'en' ? 'Cambiar a Español' : 'Switch to English'}
+>
+  {
+    lang === 'en' ? (
+      <img
+        src={imgSpain.src}
+        width="35"
+        height="35"
+        alt="Flag Spain"
+        class="rounded"
+      />
+    ) : (
+      <img
+        src={imgUS.src}
+        width="35"
+        height="35"
+        alt="Flag United States"
+        class="rounded"
+      />
+    )
+  }
+</a>
+
+<script>
+  // Save language preference in cookie scoped to root domain (.fixed.com) when toggled
+  const btn = document.getElementById('lang-toggle-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const nextLang = btn.getAttribute('data-lang');
+      if (nextLang) {
+        // Set root cookie for subdomain sharing (valid for 1 year)
+        const domain = window.location.hostname.endsWith('fixed.com')
+          ? ';domain=.fixed.com'
+          : '';
+        document.cookie = `language=${nextLang};path=/${domain};max-age=${365 * 24 * 60 * 60}`;
+      }
+    });
+  }
+</script>
