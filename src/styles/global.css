@@ -1,0 +1,398 @@
+@import 'tailwindcss';
+
+:root {
+  /* Fonts are defined directly in @theme block below, using Next.js variables */
+}
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-space-grotesk);
+  --font-display: var(--font-prosto-one);
+  --font-mono: var(--font-space-mono);
+
+  /* Primary Accent: Steel Blue Ramp */
+  --color-primary-light: #9ec1d4;
+  --color-primary: #3e5d6c;
+  --color-primary-dark: #2c4350;
+  --color-primary-darker: #1e2f38;
+  --color-primary-darkest: #152027;
+
+  /* Sparkle Colors */
+  --color-sparkle-1: #e2f6ff;
+  --color-sparkle-2: #bfe8ff;
+  --color-sparkle-3: #9bd9ff;
+  --color-sparkle-4: #78caff;
+  --color-sparkle-5: #00e6f6;
+
+  /* Footer Gradient Colors */
+  --color-footer-blob-1: #00e6f6;
+  --color-footer-blob-2: #3e5d6c; /* primary */
+  --color-footer-blob-3: #6366f1;
+  --color-footer-blob-4: #3b82f6;
+
+  /* shadcn mappings for Tailwind v4 */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Landing Background Gradients (Steel Blue theme) */
+  --image-landing-effect-1: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-primary) 35%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary) 15%, transparent) 50%,
+    transparent 100%
+  );
+  --image-landing-effect-2: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-primary) 30%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary) 10%, transparent) 60%,
+    transparent 100%
+  );
+  --image-landing-effect-3: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-primary) 25%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary) 5%, transparent) 50%,
+    transparent 100%
+  );
+  --image-landing-effect-6: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-primary) 20%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary) 5%, transparent) 60%,
+    transparent 100%
+  );
+
+  /* Custom Snappy Animations */
+  --animate-slide-to-down: slideToDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-to-left: slideToLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-to-right: slideToRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-to-up: slideToUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-to-left: toLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-to-bottom: toBottom 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-to-top: toTop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  /* Custom Marquee, Point Card, and Blob Animations */
+  --animate-marquee: marqueeScroll 40s linear infinite;
+  --animate-scroll-left: scrollLeft 40s linear infinite;
+  --animate-scroll-right: scrollRight 40s linear infinite;
+  --animate-point-card: pointFloat 18s linear infinite;
+  --animate-blob: sliderShape 5s linear infinite;
+
+  @keyframes slideToDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideToLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideToRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideToUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes toLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes toBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes toTop {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes marqueeScroll {
+    to {
+      transform: translate(calc(-50% - 1rem));
+    }
+  }
+  @keyframes scrollLeft {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+  @keyframes scrollRight {
+    from {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+  @keyframes pointFloat {
+    0% {
+      opacity: 0;
+      transform: translate(-10%, -160%) scale(0.7);
+    }
+    20% {
+      opacity: 0.5;
+      transform: translate(-5%, -80%) scale(0.85);
+    }
+    40% {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(0, 0) scale(1);
+    }
+    60% {
+      opacity: 0.5;
+      transform: translate(40%, 80%) scale(0.85);
+    }
+    80% {
+      opacity: 0;
+      transform: translate(80%, 160%) scale(0.7);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(80%, 160%) scale(0.7);
+    }
+  }
+  @keyframes sliderShape {
+    0%,
+    100% {
+      opacity: 0.25;
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+    }
+    35% {
+      opacity: 0.2;
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+    }
+    50% {
+      opacity: 0.1;
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+    }
+    65% {
+      opacity: 0.2;
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+      transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+  }
+}
+
+/* Default Dark Theme Settings for Shadcn and Tailwind v4 */
+:root {
+  --background: oklch(0.09 0 0); /* Pure dark background */
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #3e5d6c; /* Steel Blue */
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.15 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.15 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: rgba(62, 93, 108, 0.2);
+  --radius: 0.75rem;
+}
+
+/* Base Styles */
+*, ::before, ::after {
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at 50% -20%, var(--color-primary-darkest) 0%, var(--background) 80%);
+  color: #e4e4e7;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+/* Ensure code components and monospace tags resolve to the mono font variable */
+pre,
+code,
+kbd,
+samp,
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* Custom Glassmorphism Utilities */
+@utility bg-main-glass {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+}
+
+@utility bg-white-glass {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+}
+
+@utility bg-white-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(16px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Clean Glass & Rust Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn.btn-secondary {
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn.btn-primary {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px -2px rgba(62, 93, 108, 0.4);
+
+  &:hover {
+    background: #2f4855 !important;
+    box-shadow: 0 4px 25px -1px rgba(62, 93, 108, 0.6);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Custom Utilities for Marquees and Point Cascade Cards */
+.animate-point-card {
+  animation-delay: calc(3s * var(--delay)) !important;
+}
+
+@utility mask-marquee {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
