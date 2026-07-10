@@ -47,17 +47,17 @@ Fixed utiliza una estética **Luxury Tech** oscura con acentos steel blue, evoca
 
 La paleta se centra en steel blue como color principal de acento sobre fondos oscuros profundos.
 
-| Token | Hex | Uso |
-|---|---|---|
-| `primary` | `#3e5d6c` | Acentos, botones, bordes activos |
-| `primary-light` | `#7d9faf` | Hover states |
-| `primary-lightest` | `#b8d4e3` | Texto destacado |
-| `primary-dark` | `#1f3440` | Fondos secundarios |
-| `primary-darkest` | `#0e1a21` | Fondos terciarios |
-| `background` | `#171717` | Fondo base |
-| `surface` | `#1a1a1a` | Cards, superficies elevadas |
-| `text-main` | `#ededed` | Texto principal |
-| `text-dim` | `#a1a1aa` | Texto secundario, metadata |
+| Token              | Hex       | Uso                              |
+| ------------------ | --------- | -------------------------------- |
+| `primary`          | `#3e5d6c` | Acentos, botones, bordes activos |
+| `primary-light`    | `#7d9faf` | Hover states                     |
+| `primary-lightest` | `#b8d4e3` | Texto destacado                  |
+| `primary-dark`     | `#1f3440` | Fondos secundarios               |
+| `primary-darkest`  | `#0e1a21` | Fondos terciarios                |
+| `background`       | `#171717` | Fondo base                       |
+| `surface`          | `#1a1a1a` | Cards, superficies elevadas      |
+| `text-main`        | `#ededed` | Texto principal                  |
+| `text-dim`         | `#a1a1aa` | Texto secundario, metadata       |
 
 **WCAG AA:** Contraste `text-main` (#ededed) sobre `background` (#171717) = 14.5:1 (excede 4.5:1).
 
@@ -89,13 +89,13 @@ La paleta se centra en steel blue como color principal de acento sobre fondos os
 
 ## Animations
 
-| Animación | Propósito | Duración |
-|---|---|---|
-| `marquee` | Scrolling de odds y marcas | 40s linear infinite |
-| `point-card-float` | Cards de métricas en cascada | 10s ease-in-out infinite |
-| `blob` | Formas de gradiente animadas | 7s ease infinite |
-| `sparkle` | Partículas en hover de botón | 0.4s ease-out |
-| Scroll expand | Expansión de card a viewport completo (motion) | Basado en scroll |
+| Animación          | Propósito                                      | Duración                 |
+| ------------------ | ---------------------------------------------- | ------------------------ |
+| `marquee`          | Scrolling de odds y marcas                     | 40s linear infinite      |
+| `point-card-float` | Cards de métricas en cascada                   | 10s ease-in-out infinite |
+| `blob`             | Formas de gradiente animadas                   | 7s ease infinite         |
+| `sparkle`          | Partículas en hover de botón                   | 0.4s ease-out            |
+| Scroll expand      | Expansión de card a viewport completo (motion) | Basado en scroll         |
 
 ## Components
 
@@ -109,12 +109,14 @@ La paleta se centra en steel blue como color principal de acento sobre fondos os
 ## Do's and Don'ts
 
 ### Do:
+
 - Usar glassmorphism para cards y superficies sobre fondos con gradiente
 - Mantener la jerarquía tipográfica clara (Display → Sans → Mono)
 - Animar elementos con propósito (scroll reveal, marquee para datos en vivo)
 - Usar la paleta steel blue como único acento de color
 
 ### Don't:
+
 - No usar colores brillantes o saturados fuera de la paleta definida
 - No mezclar tipografías fuera de las 3 definidas
 - No agregar sombras excesivas o múltiples colores de borde

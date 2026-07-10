@@ -1,9 +1,9 @@
 ---
 name: Bug Report
 about: Reportar un error
-title: "[BUG] "
+title: '[BUG] '
 labels: bug
-assignees: ""
+assignees: ''
 ---
 
 ## Descripción

@@ -37,7 +37,7 @@ export const KeyPointsGrid: React.FC<Props> = ({ lang }) => {
   ];
 
   return (
-    <section className="page-section flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+    <section className="page-section flex flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
       <div className="flex w-full max-w-[1200px] flex-col gap-6">
         {/* Top Stats Banner */}
         <div className="bg-primary/90 from-primary to-primary/80 rounded-[24px] border border-white/10 bg-gradient-to-br p-8 shadow-2xl md:p-12">

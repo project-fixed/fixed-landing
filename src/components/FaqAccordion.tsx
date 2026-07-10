@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import {
@@ -18,7 +18,7 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const faqData = t.landing.faq.questions;
 
-  const [activeValue, setActiveValue] = useState<string>('item-1');
+  const [activeValue, setActiveValue] = useState<string[]>(['item-1']);
 
   // Map translations to iterable array
   const questions = [
@@ -35,11 +35,11 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
       <div className="mb-6 flex justify-end gap-2 pr-2">
         {[1, 2, 3, 4, 5].map((num) => {
           const val = `item-${num}`;
-          const isActive = activeValue === val;
+          const isActive = activeValue[0] === val;
           return (
             <button
               key={num}
-              onClick={() => setActiveValue(val)}
+              onClick={() => setActiveValue([val])}
               className={`flex size-8 cursor-pointer items-center justify-center rounded-full text-xs font-extrabold transition-all duration-200 ${
                 isActive
                   ? 'bg-primary scale-105 text-white shadow-lg'
@@ -53,10 +53,8 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
       </div>
 
       <Accordion
-        type="single"
-        collapsible
-        value={activeValue as any}
-        onValueChange={(val: any) => setActiveValue(val || '')}
+        value={activeValue}
+        onValueChange={(val: string[]) => setActiveValue(val)}
         className="flex flex-col gap-4"
       >
         {questions.map((q) => (

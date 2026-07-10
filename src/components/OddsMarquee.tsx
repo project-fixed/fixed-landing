@@ -1,6 +1,6 @@
 import React from 'react';
 import { OddsCard } from './OddsCard';
-import { useTranslations, type Lang } from '../data/translations';
+import { type Lang } from '../data/translations';
 
 const oddsData1 = [
   {
@@ -194,22 +194,38 @@ const oddsData3 = [
 const getLocalizedType = (type: string, lang: string) => {
   if (lang === 'es') return type;
   switch (type) {
-    case 'Gana Real Madrid': return 'Real Madrid to Win';
-    case 'Más de 2.5 Goles': return 'Over 2.5 Goals';
-    case 'Ambos Anotan: Sí': return 'Both Teams to Score: Yes';
-    case 'Gana Bayern Munich': return 'Bayern Munich to Win';
-    case 'Empate (X)': return 'Draw (X)';
-    case 'Menos de 2.5 Goles': return 'Under 2.5 Goals';
-    case 'Más de 1.5 Goles': return 'Over 1.5 Goals';
-    case 'Gana Atl. Madrid': return 'Atl. Madrid to Win';
-    case 'Menos de 3.5 Goles': return 'Under 3.5 Goals';
-    case 'Gana Liverpool': return 'Liverpool to Win';
-    case 'Ambos Anotan: No': return 'Both Teams to Score: No';
-    case 'Gana Benfica': return 'Benfica to Win';
-    case 'Gana Leverkusen': return 'Leverkusen to Win';
-    case 'Gana Roma': return 'Roma to Win';
-    case 'Gana Galatasaray': return 'Galatasaray to Win';
-    default: return type;
+    case 'Gana Real Madrid':
+      return 'Real Madrid to Win';
+    case 'Más de 2.5 Goles':
+      return 'Over 2.5 Goals';
+    case 'Ambos Anotan: Sí':
+      return 'Both Teams to Score: Yes';
+    case 'Gana Bayern Munich':
+      return 'Bayern Munich to Win';
+    case 'Empate (X)':
+      return 'Draw (X)';
+    case 'Menos de 2.5 Goles':
+      return 'Under 2.5 Goals';
+    case 'Más de 1.5 Goles':
+      return 'Over 1.5 Goals';
+    case 'Gana Atl. Madrid':
+      return 'Atl. Madrid to Win';
+    case 'Menos de 3.5 Goles':
+      return 'Under 3.5 Goals';
+    case 'Gana Liverpool':
+      return 'Liverpool to Win';
+    case 'Ambos Anotan: No':
+      return 'Both Teams to Score: No';
+    case 'Gana Benfica':
+      return 'Benfica to Win';
+    case 'Gana Leverkusen':
+      return 'Leverkusen to Win';
+    case 'Gana Roma':
+      return 'Roma to Win';
+    case 'Gana Galatasaray':
+      return 'Galatasaray to Win';
+    default:
+      return type;
   }
 };
 
@@ -218,11 +234,8 @@ interface Props {
 }
 
 export const OddsMarquee: React.FC<Props> = ({ lang }) => {
-  const t = useTranslations(lang);
-
   return (
     <div className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black/20 py-10">
-
       {/* Row 1: Scroll Left */}
       <div className="scroller w-full">
         <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">

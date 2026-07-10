@@ -28,7 +28,9 @@ export const Footer: React.FC<Props> = ({ lang }) => {
       {/* Beta CTA Section */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 text-center">
         <h2 className="mb-6 max-w-2xl text-4xl leading-tight font-extrabold text-white md:text-5xl">
-          <span className="text-primary">{t.landing.home.hero.title.start}</span>{' '}
+          <span className="text-primary">
+            {t.landing.home.hero.title.start}
+          </span>{' '}
           {t.landing.home.hero.title.center}{' '}
           <span className="text-primary">{t.landing.home.hero.title.end}</span>
         </h2>
