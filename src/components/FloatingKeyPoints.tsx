@@ -243,12 +243,12 @@ export const FloatingKeyPoints: React.FC = () => {
       {backgroundElements.map((el, idx) => (
         <div
           key={idx}
-          className={`floating-el absolute flex items-center justify-center rounded-2xl text-primary-light transition-all duration-300 ease-out ${
+          className={`floating-el text-primary-light absolute flex items-center justify-center rounded-2xl transition-all duration-300 ease-out ${
             el.classes
           } ${
             el.variant === 'hollow'
               ? 'border border-white/20 bg-transparent'
-              : 'border border-white/10 bg-primary-darker/30 shadow-2xl backdrop-blur-md'
+              : 'bg-primary-darker/30 border border-white/10 shadow-2xl backdrop-blur-md'
           }`}
         >
           {el.icon && <div dangerouslySetInnerHTML={{ __html: el.icon }} />}

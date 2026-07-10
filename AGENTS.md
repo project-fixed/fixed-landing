@@ -34,11 +34,12 @@
 
 ## 4. Git y Workflow
 
-- **Flujo de Git**: TBD (Trunk-Based Development) — solo branch `master`
+- **Flujo de Git**: GitHub Flow — branches desde `master` con PR + review, squash merge
 - **Ramas desde**: `master`
-- **Convención de nombres**: `feat/{desc}` o `fix/{desc}` (kebab-case)
-- **Merge a**: `master`
+- **Convención de nombres**: `<type>/<short-desc>` (kebab-case, types: `feat`, `fix`, `docs`, `chore`, `refactor`)
+- **Merge a**: `master` via PR con squash merge
 - **Para crear una rama nueva**, ejecuta la skill `dev-flow`
+- **Para push seguro + PR**, ejecuta la skill `dev-flow`
 - **Test Runner**: No configurado (sin tests en este proyecto)
 - **Commits**: Conventional Commits (validado por commitlint + husky)
 - **Linter**: ESLint 10 con `@eslint/js` y `typescript-eslint`
@@ -49,6 +50,7 @@
 ## 5. Documentación Técnica
 
 La documentación del proyecto vive en `docs/`:
+
 - `docs/ARCHITECTURE.md` — Arquitectura técnica
 - `docs/CONTRACTS.md` — Contratos de interfaz
 - `docs/ROADMAP.md` — Roadmap de producto

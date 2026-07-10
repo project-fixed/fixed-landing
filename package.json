@@ -2,6 +2,7 @@
   "name": "fixed-landing",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.11.1",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -9,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --dir src",
+    "lint": "eslint src",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"
