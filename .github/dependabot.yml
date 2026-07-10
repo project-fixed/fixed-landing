@@ -8,3 +8,10 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
+    groups:
+      production-deps:
+        dependency-type: "production"
+        patterns: ["*"]
+      development-deps:
+        dependency-type: "development"
+        patterns: ["*"]
