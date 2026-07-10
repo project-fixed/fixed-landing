@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "daily-init": {
+      "source": "jackaranaram/agile-harness",
+      "sourceType": "github",
+      "skillPath": "daily-init/SKILL.md",
+      "computedHash": "5f221272047c6b67743e6a773b6735026dee689824b9487d6ebe743b92a2ad99"
+    },
+    "dev-flow": {
+      "source": "jackaranaram/agile-harness",
+      "sourceType": "github",
+      "skillPath": "dev-flow/SKILL.md",
+      "computedHash": "949566d5e6f94a9be8e59ad3db476158ae58e68896610c6fd8043fcb20898a1d"
+    },
+    "project-audit": {
+      "source": "jackaranaram/agile-harness",
+      "sourceType": "github",
+      "skillPath": "project-audit/SKILL.md",
+      "computedHash": "7dea4df87a55b739e06dc5ada583a881b9f413180ed0ef6dbc41af02f428baef"
+    },
+    "technical-writer": {
+      "source": "jackaranaram/agile-harness",
+      "sourceType": "github",
+      "skillPath": "technical-writer/SKILL.md",
+      "computedHash": "772097989639211cbaa9248a87ce9973f477b152d1176a61f0ae855b5aea43f0"
+    }
+  }
+}
