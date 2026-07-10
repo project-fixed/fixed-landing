@@ -35,6 +35,7 @@ graph TD
 ## Flujo de Datos
 
 **Flujo Síncrono (Renderizado):**
+
 1. Next.js genera estáticamente (`generateStaticParams`) las rutas `[lang]/en` y `[lang]/es`
 2. El layout base inyecta fuentes Google Fonts, CSS global y configura el tema dark
 3. Cada página recibe `lang` como parámetro y lo pasa al hook `useTranslations()`
@@ -42,36 +43,37 @@ graph TD
 5. Assets estáticos (imágenes, logos) se sirven desde `src/assets/` o `public/`
 
 **Flujo de Traducción:**
+
 - `lang` (params) → `useTranslations(lang)` → objeto `t` → componentes renderizan `t.landing.home.hero.title`
 - Sin dependencias externas de i18n (implementación casera en `translations.ts`)
 
 ## Componentes Principales
 
-| Componente | Tipo | Responsabilidad |
-|---|---|---|
-| `Toolbar` | Navegación | Header sticky, nav links, CTA, drawer mobile |
-| `PitchGeometryBackground` | Decorativo | Fondo SVG de cancha 3D |
-| `FloatingKeyPoints` | Decorativo | Partículas flotantes con parallax |
-| `OddsMarquee` | Datos | 3 filas de cards de predicciones scrolleables |
-| `KeyPointsGrid` | Datos | Métricas estáticas (75K, 92.5%, 30+) |
-| `KeyPointsCarousel` | Datos | Carrusel de métricas en Hero |
-| `HeroImagesCascade` | Datos | Screenshots rotativos de widgets |
-| `ScrollExpandVideo` | Interactivo | Expansión scroll-driven del dashboard |
-| `AITimeline` | Contenido | Timeline 4 pasos del proceso IA |
-| `DataStreamMarquee` | Decorativo | Terminal scrolling de logs |
-| `AILayers` | Contenido | Grid de 4 capas de análisis |
-| `BrandsCarousel` | Datos | Logos partners (marquee infinito) |
-| `FaqAccordion` | Contenido | Acordeón FAQ con selector numérico |
-| `PlanCard` | Contenido | Card de plan (Free/Standard) |
-| `Footer` | Navegación | Formulario beta, links legales, copyright |
-| `TranslateButton` | Utilidad | Toggle EN/ES con cookie |
+| Componente                | Tipo        | Responsabilidad                               |
+| ------------------------- | ----------- | --------------------------------------------- |
+| `Toolbar`                 | Navegación  | Header sticky, nav links, CTA, drawer mobile  |
+| `PitchGeometryBackground` | Decorativo  | Fondo SVG de cancha 3D                        |
+| `FloatingKeyPoints`       | Decorativo  | Partículas flotantes con parallax             |
+| `OddsMarquee`             | Datos       | 3 filas de cards de predicciones scrolleables |
+| `KeyPointsGrid`           | Datos       | Métricas estáticas (75K, 92.5%, 30+)          |
+| `KeyPointsCarousel`       | Datos       | Carrusel de métricas en Hero                  |
+| `HeroImagesCascade`       | Datos       | Screenshots rotativos de widgets              |
+| `ScrollExpandVideo`       | Interactivo | Expansión scroll-driven del dashboard         |
+| `AITimeline`              | Contenido   | Timeline 4 pasos del proceso IA               |
+| `DataStreamMarquee`       | Decorativo  | Terminal scrolling de logs                    |
+| `AILayers`                | Contenido   | Grid de 4 capas de análisis                   |
+| `BrandsCarousel`          | Datos       | Logos partners (marquee infinito)             |
+| `FaqAccordion`            | Contenido   | Acordeón FAQ con selector numérico            |
+| `PlanCard`                | Contenido   | Card de plan (Free/Standard)                  |
+| `Footer`                  | Navegación  | Formulario beta, links legales, copyright     |
+| `TranslateButton`         | Utilidad    | Toggle EN/ES con cookie                       |
 
 ## Ambientes y Despliegue
 
-| Ambiente | URL | Infraestructura | CI/CD |
-|---|---|---|---|
-| Development | `localhost:3000` | Local | - |
-| Production | `https://fixed.com` | Vercel | GitHub Actions + semantic-release |
+| Ambiente    | URL                 | Infraestructura | CI/CD                             |
+| ----------- | ------------------- | --------------- | --------------------------------- |
+| Development | `localhost:3000`    | Local           | -                                 |
+| Production  | `https://fixed.com` | Vercel          | GitHub Actions + semantic-release |
 
 ## Decisiones Arquitectónicas
 

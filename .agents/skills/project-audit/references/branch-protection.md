@@ -57,6 +57,7 @@ gh api repos/$owner/$repo/branches/$default/protection | ConvertFrom-Json
 ```
 
 Look for `enabled: true` on:
+
 - `required_pull_request_reviews`
 - `enforce_admins`
 - `required_linear_history`

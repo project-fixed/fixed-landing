@@ -31,17 +31,17 @@ Landing page bilingüe (EN/ES) para **Fixed**, una plataforma de inteligencia pr
 
 ## 📦 Dependencias
 
-| Dependencia | Versión | Propósito |
-|---|---|---|
-| `next` | ^16.2.7 | Framework React con App Router |
-| `react` | ^19.2.6 | UI library |
-| `tailwindcss` | ^4.3.0 | Utility-first CSS |
-| `@base-ui/react` | ^1.5.0 | Primitivas de UI headless |
-| `motion` | ^12.40.0 | Animaciones scroll-driven |
-| `class-variance-authority` | ^0.7.1 | Variantes de componentes |
-| `clsx` | ^2.1.1 | Condicionales de clases |
-| `tailwind-merge` | ^3.6.0 | Merge de clases Tailwind |
-| `lucide-react` | ^1.17.0 | Iconos SVG |
+| Dependencia                | Versión  | Propósito                      |
+| -------------------------- | -------- | ------------------------------ |
+| `next`                     | ^16.2.7  | Framework React con App Router |
+| `react`                    | ^19.2.6  | UI library                     |
+| `tailwindcss`              | ^4.3.0   | Utility-first CSS              |
+| `@base-ui/react`           | ^1.5.0   | Primitivas de UI headless      |
+| `motion`                   | ^12.40.0 | Animaciones scroll-driven      |
+| `class-variance-authority` | ^0.7.1   | Variantes de componentes       |
+| `clsx`                     | ^2.1.1   | Condicionales de clases        |
+| `tailwind-merge`           | ^3.6.0   | Merge de clases Tailwind       |
+| `lucide-react`             | ^1.17.0  | Iconos SVG                     |
 
 ## 📁 Estructura del Proyecto
 

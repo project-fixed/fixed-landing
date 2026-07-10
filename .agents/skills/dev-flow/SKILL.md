@@ -105,8 +105,8 @@ Workflow por defecto: GitHub Flow (Enter para confirmar)
 
 After completion, provide a brief summary:
 
-| Mode | Example summary |
-|---|---|
-| Crear HU + branch | "HU-42 creada: Agregar login con JWT. Branch 42-add-jwt-auth creada desde master." |
-| Branch desde HU | "Branch 42-add-jwt-auth creada desde master para HU-42." |
-| Push seguro | "Merge local contra master sin conflictos. Validaciones OK. Pusheé 42-add-jwt-auth." |
+| Mode              | Example summary                                                                      |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| Crear HU + branch | "HU-42 creada: Agregar login con JWT. Branch 42-add-jwt-auth creada desde master."   |
+| Branch desde HU   | "Branch 42-add-jwt-auth creada desde master para HU-42."                             |
+| Push seguro       | "Merge local contra master sin conflictos. Validaciones OK. Pusheé 42-add-jwt-auth." |

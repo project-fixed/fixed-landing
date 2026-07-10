@@ -42,6 +42,7 @@ Usa esta plantilla cuando el usuario solicite crear o actualizar `AGENTS.md` en 
 ## 5. Documentación Técnica
 
 La documentación del proyecto vive en `docs/`:
+
 - `docs/ARCHITECTURE.md` — Arquitectura técnica
 - `docs/CONTRACTS.md` — Contratos de interfaz
 - `docs/DATABASE.md` — Modelo de base de datos

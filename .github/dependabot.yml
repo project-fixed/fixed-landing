@@ -1,17 +1,17 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: 'weekly'
+      day: 'monday'
     open-pull-requests-limit: 5
     labels:
-      - "dependencies"
+      - 'dependencies'
     groups:
       production-deps:
-        dependency-type: "production"
-        patterns: ["*"]
+        dependency-type: 'production'
+        patterns: ['*']
       development-deps:
-        dependency-type: "development"
-        patterns: ["*"]
+        dependency-type: 'development'
+        patterns: ['*']

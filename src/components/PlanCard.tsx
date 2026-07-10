@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+
 import type { Plan } from '../data/plans';
 import { useTranslations, type Lang } from '../data/translations';
 import { ButtonArrow } from './ui/ButtonArrow';

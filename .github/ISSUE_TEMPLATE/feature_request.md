@@ -1,9 +1,9 @@
 ---
 name: Feature Request
 about: Sugerir una idea para el proyecto
-title: "[FEATURE] "
+title: '[FEATURE] '
 labels: enhancement
-assignees: ""
+assignees: ''
 ---
 
 ## Problema

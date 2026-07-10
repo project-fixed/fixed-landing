@@ -54,7 +54,9 @@ export default async function RootLayout({ children, params }: Props) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${spaceGrotesk.variable} ${spaceMono.variable} ${prostoOne.variable} antialiased`}>
+      <body
+        className={`${spaceGrotesk.variable} ${spaceMono.variable} ${prostoOne.variable} antialiased`}
+      >
         {/* Gradient Shapes background element */}
         <div
           id="gradient-shapes-container"
@@ -66,7 +68,7 @@ export default async function RootLayout({ children, params }: Props) {
         <div className="relative z-10 flex min-h-screen w-full flex-col">
           <Toolbar lang={currentLang} />
 
-          <main className="flex-grow w-full">{children}</main>
+          <main className="w-full flex-grow">{children}</main>
 
           <Footer lang={currentLang} />
         </div>

@@ -17,10 +17,10 @@ export const KeyPointCard: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`flex flex-col gap-5 rounded-2xl border border-white/10 bg-gradient-to-br from-primary-dark/90 via-primary-darker/90 to-primary-darkest/90 p-8 shadow-2xl backdrop-blur-md transition-all hover:border-primary/50 hover:shadow-primary/20 ${className}`}
+      className={`from-primary-dark/90 via-primary-darker/90 to-primary-darkest/90 hover:border-primary/50 hover:shadow-primary/20 flex flex-col gap-5 rounded-2xl border border-white/10 bg-gradient-to-br p-8 shadow-2xl backdrop-blur-md transition-all ${className}`}
       style={style}
     >
-      <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-primary-light">
+      <div className="text-primary-light flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5">
         {icon}
       </div>
 
