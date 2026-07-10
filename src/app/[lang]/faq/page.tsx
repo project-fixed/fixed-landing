@@ -16,7 +16,7 @@ export default async function FaqPage({ params }: PageProps) {
   const t = useTranslations(currentLang);
 
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 flex w-full flex-col items-center justify-center">
+    <section className="container mx-auto flex w-full flex-col items-center justify-center px-4 pt-28 pb-16 sm:px-6 lg:px-8">
       <div className="mx-auto mb-12 w-full max-w-[700px] text-center">
         <h2 className="mb-6 text-5xl leading-tight font-extrabold text-white">
           {t.landing.faq.title}

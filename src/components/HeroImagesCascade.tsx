@@ -44,7 +44,7 @@ export const HeroImagesCascade: React.FC = () => {
       ))}
 
       {/* Glowing Background Circle */}
-      <div className="pointer-events-none absolute z-0 h-[400px] w-[400px] rounded-full bg-primary/5 blur-[120px] max-md:h-[250px] max-md:w-[250px]"></div>
+      <div className="bg-primary/5 pointer-events-none absolute z-0 h-[400px] w-[400px] rounded-full blur-[120px] max-md:h-[250px] max-md:w-[250px]"></div>
     </div>
   );
 };

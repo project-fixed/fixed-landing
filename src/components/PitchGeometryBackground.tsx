@@ -3,7 +3,7 @@ import React from 'react';
 const PitchGeometryBackground = () => {
   return (
     <div
-      className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-0"
+      className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden"
       style={{ perspective: '1200px' }}
     >
       {/* Fake Volumetric Ambient Light (transparent edges so it doesn't cover the original background) */}
@@ -14,8 +14,10 @@ const PitchGeometryBackground = () => {
         className="relative h-[140vh] w-[140vw] origin-center"
         style={{
           transform: 'rotateX(75deg) translateY(20%) scale(1.4)',
-          maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%)',
-          WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%)',
+          maskImage:
+            'linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%)',
+          WebkitMaskImage:
+            'linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%)',
         }}
       >
         <svg
@@ -35,7 +37,13 @@ const PitchGeometryBackground = () => {
               </feMerge>
             </filter>
 
-            <linearGradient id="fade-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient
+              id="fade-gradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
               <stop offset="0%" stopColor="#4a7285" stopOpacity="0" />
               <stop offset="50%" stopColor="#4a7285" stopOpacity="1" />
               <stop offset="100%" stopColor="#4a7285" stopOpacity="0" />

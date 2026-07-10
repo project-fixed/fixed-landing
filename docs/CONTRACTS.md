@@ -10,26 +10,26 @@ Definido en `src/data/plans.ts`.
 
 ```typescript
 interface Plan {
-  id: string
-  providerId: string
-  name: string
-  description: string
-  price: number
-  currency: string
-  features: string[]
-  icon: string
-  backgroundColor: string
+  id: string;
+  providerId: string;
+  name: string;
+  description: string;
+  price: number;
+  currency: string;
+  features: string[];
+  icon: string;
+  backgroundColor: string;
 }
 ```
 
 **Valores actuales:**
 
-| Campo | Plan Free | Plan Standard |
-|---|---|---|
-| `id` | `"1"` | `"2"` |
-| `price` | `0` | `9.99` |
-| `currency` | `USD` | `USD` |
-| `features.length` | 4 | 6 |
+| Campo             | Plan Free | Plan Standard |
+| ----------------- | --------- | ------------- |
+| `id`              | `"1"`     | `"2"`         |
+| `price`           | `0`       | `9.99`        |
+| `currency`        | `USD`     | `USD`         |
+| `features.length` | 4         | 6             |
 
 ### Traducciones
 
@@ -62,24 +62,24 @@ function useTranslations(lang: Lang): Translations
 
 ### Autenticación (Alcance Futuro / Post-MVP)
 
-| Integración | URL | Propósito | MVP |
-|---|---|---|---|
-| App Platform | `https://app.fixed.com/auth` | Login/Registro | No (Post-MVP) |
-| PrimeFaces CDN | `https://primefaces.org/cdn/...` | Avatars de usuarios | Sí |
+| Integración    | URL                              | Propósito           | MVP           |
+| -------------- | -------------------------------- | ------------------- | ------------- |
+| App Platform   | `https://app.fixed.com/auth`     | Login/Registro      | No (Post-MVP) |
+| PrimeFaces CDN | `https://primefaces.org/cdn/...` | Avatars de usuarios | Sí            |
 
 ### Parámetros de Redirección
 
 ```typescript
 // Hacia app.fixed.com/auth
-`https://app.fixed.com/auth?lang=${lang}`        // Desde Hero CTA
-`https://app.fixed.com/auth?lang=${lang}&plan=${planId}`  // Desde PlanCard
+`https://app.fixed.com/auth?lang=${lang}` // Desde Hero CTA
+`https://app.fixed.com/auth?lang=${lang}&plan=${planId}`; // Desde PlanCard
 ```
 
 ## Cookies
 
-| Cookie | Dominio | Propósito | Duración |
-|---|---|---|---|
-| `language` | `.fixed.com` | Persistencia de idioma | Sesión |
+| Cookie     | Dominio      | Propósito              | Duración |
+| ---------- | ------------ | ---------------------- | -------- |
+| `language` | `.fixed.com` | Persistencia de idioma | Sesión   |
 
 ## Políticas de Seguridad
 

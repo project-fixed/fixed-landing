@@ -118,21 +118,22 @@ For each requested item:
 
 Fixable items (deterministic):
 
-| Check ID | Fix Action | Reference |
-|---|---|---|
-| `BRANCH-PROTECTION` | Configure branch protection via `gh api` | `references/branch-protection.md` |
-| `CI-CD` | Scaffold `.github/workflows/ci.yml` from template | `references/ci-templates/{stack}.yml` |
-| `LINT` | Create config file + npm/pip script | `references/lint-formatter.md` |
-| `FORMATTER` | Create config file + npm/pip script | `references/lint-formatter.md` |
-| `PRE-COMMIT` | Install husky + configure hooks | `references/pre-commit.md` |
-| `COMMITLINT` | Install commitlint + husky hook | `references/pre-commit.md` |
-| `ENV-EXAMPLE` | Extract keys from source, create `.env.example` | inline in SKILL.md |
-| `EDITORCONFIG` | Create `.editorconfig` with universal values | inline in SKILL.md |
-| `LICENSE` | Download and create LICENSE file (ask type) | inline in SKILL.md |
-| `GITIGNORE` | Generate `.gitignore` for detected stack | inline in SKILL.md |
-| `TS-STRICT` | Enable strict mode in `tsconfig.json` | inline in SKILL.md |
+| Check ID            | Fix Action                                        | Reference                             |
+| ------------------- | ------------------------------------------------- | ------------------------------------- |
+| `BRANCH-PROTECTION` | Configure branch protection via `gh api`          | `references/branch-protection.md`     |
+| `CI-CD`             | Scaffold `.github/workflows/ci.yml` from template | `references/ci-templates/{stack}.yml` |
+| `LINT`              | Create config file + npm/pip script               | `references/lint-formatter.md`        |
+| `FORMATTER`         | Create config file + npm/pip script               | `references/lint-formatter.md`        |
+| `PRE-COMMIT`        | Install husky + configure hooks                   | `references/pre-commit.md`            |
+| `COMMITLINT`        | Install commitlint + husky hook                   | `references/pre-commit.md`            |
+| `ENV-EXAMPLE`       | Extract keys from source, create `.env.example`   | inline in SKILL.md                    |
+| `EDITORCONFIG`      | Create `.editorconfig` with universal values      | inline in SKILL.md                    |
+| `LICENSE`           | Download and create LICENSE file (ask type)       | inline in SKILL.md                    |
+| `GITIGNORE`         | Generate `.gitignore` for detected stack          | inline in SKILL.md                    |
+| `TS-STRICT`         | Enable strict mode in `tsconfig.json`             | inline in SKILL.md                    |
 
 Items NOT fixable by this skill (require human judgment):
+
 - Test framework selection (user decides Jest vs Vitest vs Playwright)
 - CI/CD pipeline logic (templates exist but workflow content is project-specific)
 - Code architecture decisions
@@ -195,6 +196,7 @@ Generate `.gitignore` based on detected stack. Use `npx gitignore {stack}` if av
 ### TS-STRICT
 
 If `tsconfig.json` exists:
+
 - Enable `strict: true`
 - Enable `noUncheckedIndexedAccess: true`
 - Enable `noImplicitReturns: true`

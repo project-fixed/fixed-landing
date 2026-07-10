@@ -17,6 +17,7 @@ npx husky init
 ### Step 3: Configure pre-commit hook
 
 Edit `.husky/pre-commit`:
+
 ```bash
 npx lint-staged
 ```
@@ -49,8 +50,9 @@ npm install --save-dev @commitlint/cli @commitlint/config-conventional
 ### Step 2: Create config
 
 Create `commitlint.config.js`:
+
 ```js
-export default { extends: ["@commitlint/config-conventional"] };
+export default { extends: ['@commitlint/config-conventional'] };
 ```
 
 ### Step 3: Add commit-msg hook
@@ -79,6 +81,7 @@ pip install pre-commit
 ### Step 2: Create config
 
 Create `.pre-commit-config.yaml`:
+
 ```yaml
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

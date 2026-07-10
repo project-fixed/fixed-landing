@@ -13,7 +13,7 @@ export function ScrollExpandVideo({
   cursorText = 'Play intro',
 }: ScrollExpandVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll progress within this container
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -31,7 +31,11 @@ export function ScrollExpandVideo({
 
   // Transform values based on scroll progress
   // Starts smaller to create a dramatic expansion effect
-  const width = useTransform(smoothProgress, [0, 1], ['min(50vw, 600px)', '100vw']);
+  const width = useTransform(
+    smoothProgress,
+    [0, 1],
+    ['min(50vw, 600px)', '100vw'],
+  );
   const height = useTransform(smoothProgress, [0, 1], ['40vh', '100vh']);
   const borderRadius = useTransform(smoothProgress, [0, 1], ['24px', '0px']);
   const padding = useTransform(smoothProgress, [0, 1], ['8px', '0px']); // Animate padding of outer wrapper
@@ -60,10 +64,7 @@ export function ScrollExpandVideo({
   }, [isHovered, cursorX, cursorY]);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-[250vh] w-full"
-    >
+    <section ref={containerRef} className="relative h-[250vh] w-full">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <motion.div
           style={{ width, height, borderRadius, padding }}
@@ -71,13 +72,13 @@ export function ScrollExpandVideo({
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <motion.div 
+          <motion.div
             style={{ borderRadius: innerRadius }}
             className="relative h-full w-full overflow-hidden bg-black"
           >
             {children}
           </motion.div>
-          
+
           {/* Subtle gradient overlay to enhance visual depth */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         </motion.div>
@@ -85,7 +86,7 @@ export function ScrollExpandVideo({
 
       {/* Custom Cursor Pill */}
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-50 flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-black shadow-xl"
+        className="pointer-events-none fixed top-0 left-0 z-50 flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-black shadow-xl"
         style={{
           x: cursorX,
           y: cursorY,
