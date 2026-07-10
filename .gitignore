@@ -1,5 +1,7 @@
 # build output
 dist/
+.next/
+*.stackdump
 # generated types
 .astro/
 

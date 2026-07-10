@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
 import React, { useState } from 'react';
 import {
   Accordion,
@@ -29,7 +32,7 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
   return (
     <div className="mx-auto w-full max-w-[800px]">
       {/* Tab Selectors matching Angular functionality */}
-      <div class="mb-6 flex justify-end gap-2 pr-2">
+      <div className="mb-6 flex justify-end gap-2 pr-2">
         {[1, 2, 3, 4, 5].map((num) => {
           const val = `item-${num}`;
           const isActive = activeValue === val;
@@ -52,8 +55,8 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
       <Accordion
         type="single"
         collapsible
-        value={activeValue}
-        onValueChange={(val) => setActiveValue(val || '')}
+        value={activeValue as any}
+        onValueChange={(val: any) => setActiveValue(val || '')}
         className="flex flex-col gap-4"
       >
         {questions.map((q) => (

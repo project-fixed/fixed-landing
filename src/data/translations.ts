@@ -3,30 +3,31 @@ export const translations = {
     navbar: {
       home: 'Home',
       features: 'Features',
-      steps: 'Steps',
+      steps: 'Process',
       about: 'About',
       plans: 'Plans',
       faq: 'FAQ',
     },
     button: {
-      join: 'JOIN FIXED',
-      getStarted: 'GET STARTED',
-      selectPlan: 'SELECT PLAN',
-      currentPlan: 'CURRENT PLAN',
+      join: 'Join Fixed',
+      getStarted: 'Get Started',
+      selectPlan: 'Select Plan',
+      currentPlan: 'Current Plan',
     },
     landing: {
       home: {
         hero: {
           title: {
-            start: 'Stop',
-            center: 'guessing and start winning more',
-            end: 'with AI',
+            start: 'We transform',
+            center: 'football complexity into',
+            end: 'clear decisions',
           },
           description:
-            'Leave doubts behind. Our AI analyzes every detail to offer you the fixed outcome of the match. Simplify your bets and increase your chances of winning.',
+            'Predictive intelligence for sports betting. Decisions backed by data, not instinct.',
           betaPlaceholder: 'Enter your email for early access...',
           betaButton: 'Join Beta',
           online: '10k people online',
+          oddsTitle: 'Latest Opportunities Detected by the Model',
           key: {
             point1: {
               title: '75K',
@@ -60,15 +61,26 @@ export const translations = {
             },
           },
         },
+        datastream: [
+          'Analyzing match correlations...',
+          'Calculating expected goals (xG)...',
+          'Running Monte Carlo simulations (10,000 iterations)...',
+          'Evaluating shot conversion probabilities...',
+          'Detecting market value anomalies...',
+          'Ingesting real-time metrics for 30+ leagues...',
+          'Model conviction threshold over 92.5%...',
+          'Isolating historical pattern matches...',
+        ],
         features: {
-          title: 'Welcome to the New Era of Sports Betting!',
+          title: 'The End of Intuition. Applied Predictive Intelligence.',
           description:
-            'Our platform uses artificial intelligence to offer only the best football fixed outcomes, with a 92.5% or higher probability of success. Stop guessing and rely on precise analysis that simplifies your decisions and maximizes your results.',
+            'We replace speculation with mathematical conviction. Our engine processes complex metrics across multiple analytical layers to isolate market inefficiencies and deliver high-value predictions with a 92.5% confidence threshold.',
         },
         ai: {
           layers: {
             title: 'Depth of Analysis',
-            description: 'Our AI processes matches through multiple layers of intelligence.',
+            description:
+              'Our AI processes matches through multiple layers of intelligence.',
             layer1: {
               title: 'Basic Stats',
               description: 'Goals, cards, possession, and historical data.',
@@ -88,24 +100,29 @@ export const translations = {
           },
           process: {
             title: 'The Architecture of our AI',
-            description: 'A transparent look into how we generate fixed outcomes with over 92.5% accuracy.',
+            description:
+              'A transparent look into how we generate fixed outcomes with over 92.5% accuracy.',
             step1: {
               title: 'Data Ingestion',
-              description: 'We scrape and normalize millions of data points from over 30 global football leagues in real-time.',
+              description:
+                'We scrape and normalize millions of data points from over 30 global football leagues in real-time.',
             },
             step2: {
               title: 'Pattern Recognition',
-              description: 'Our neural networks evaluate 10 years of historical match data to identify winning trends.',
+              description:
+                'Our neural networks evaluate 10 years of historical match data to identify winning trends.',
             },
             step3: {
               title: 'Market Analysis',
-              description: 'We monitor betting odds globally to detect anomalies and value opportunities.',
+              description:
+                'We monitor betting odds globally to detect anomalies and value opportunities.',
             },
             step4: {
               title: 'The Fixed Outcome',
-              description: 'An alert is only triggered if our confidence model exceeds the 92.5% threshold.',
+              description:
+                'An alert is only triggered if our confidence model exceeds the 92.5% threshold.',
             },
-          }
+          },
         },
         steps: {
           title: 'Quick Guide: How to Use Our Platform',
@@ -138,10 +155,10 @@ export const translations = {
           },
         },
         about: {
-          title: 'ABOUT',
-          subtitle: 'FIXED',
+          title: 'About Us',
+          subtitle: 'The Edge',
           description:
-            'We are a football sports betting platform powered by artificial intelligence and machine learning, designed to provide you with only the most reliable recommendations. Our system analyzes thousands of data points and shows exclusively those bets with a high probability of success, guaranteeing a minimum of 92.5%. This way, you no longer have to worry about analyzing options. Just follow our fixed outcomes and enjoy a safer and more profitable betting experience. Trust our innovative approach and let technology work for you: Your path to success is here.',
+            'We are a quantitative data intelligence firm focused on the sports market. Built by software engineers and data analysts, Fixed leverages machine learning to strip away market noise and expose structural value. Our model only alerts you when strict statistical criteria are met, giving you a clear mathematical edge over default market estimates.',
         },
       },
       plans: {
@@ -151,7 +168,7 @@ export const translations = {
         plan: {
           free: {
             title: 'Basic Plan',
-            price: 'FREE/10Days',
+            price: 'Free/10Days',
             description: '10 days of free access to fixed outcomes.',
             features: {
               feature1: 'Access to fixed outcomes during the period.',
@@ -208,7 +225,7 @@ export const translations = {
       footer: {
         title: 'Fixed',
         description:
-          'Improve your betting with our reliable and accurate predictions.',
+          'Institutional-grade predictive analytics for the football market.',
         link: {
           dimensions: {
             product: 'Product',
@@ -227,30 +244,31 @@ export const translations = {
     navbar: {
       home: 'Inicio',
       features: 'Detalles',
-      steps: 'Pasos',
+      steps: 'Proceso',
       about: 'Acerca',
       plans: 'Planes',
       faq: 'Manual',
     },
     button: {
-      join: 'INGRESAR',
-      getStarted: 'COMENZAR',
-      selectPlan: 'SELECCIONAR PLAN',
-      currentPlan: 'PLAN ACTUAL',
+      join: 'Ingresar',
+      getStarted: 'Comenzar',
+      selectPlan: 'Seleccionar Plan',
+      currentPlan: 'Plan Actual',
     },
     landing: {
       home: {
         hero: {
           title: {
-            start: 'Deja',
-            center: 'de adivinar y empieza a ganar más',
-            end: 'con IA',
+            start: 'Transformamos',
+            center: 'la complejidad del fútbol en',
+            end: 'decisiones claras',
           },
           description:
-            'Deja las dudas atrás. Nuestra IA analiza cada detalle para ofrecerte la fija del partido. Simplifica tus apuestas y aumenta tus chances de ganar.',
+            'Inteligencia predictiva para apuestas deportivas. Decisiones respaldadas por datos, no por instinto.',
           betaPlaceholder: 'Ingresa tu email para acceso anticipado...',
           betaButton: 'Unirse a la Beta',
           online: '10k personas en línea',
+          oddsTitle: 'Últimas Oportunidades Detectadas por el Modelo',
           key: {
             point1: {
               title: '75K',
@@ -284,15 +302,26 @@ export const translations = {
             },
           },
         },
+        datastream: [
+          'Analizando correlaciones de partidos...',
+          'Calculando goles esperados (xG)...',
+          'Ejecutando simulaciones Monte Carlo (10,000 iteraciones)...',
+          'Evaluando probabilidades de conversión de remates...',
+          'Detectando anomalías de valor en el mercado...',
+          'Ingiriendo métricas en tiempo real para 30+ ligas...',
+          'Umbral de convicción del modelo superior al 92.5%...',
+          'Aislando coincidencias en patrones históricos...',
+        ],
         features: {
-          title: '¡Bienvenido a la Nueva Era de las Apuestas Deportivas!',
+          title: 'El Fin de la Intuición. Inteligencia Predictiva Aplicada.',
           description:
-            'Nuestra plataforma utiliza inteligencia artificial para ofrecerte solo las mejores fijas de fútbol, con un 92.5% o más de probabilidad de éxito. Deja de adivinar y confía en análisis precisos que simplifican tus decisiones y maximizan tus resultados.',
+            'Reemplazamos la especulación con convicción matemática. Nuestro motor procesa métricas complejas a través de múltiples capas analíticas para aislar ineficiencias de mercado y entregar predicciones de alto valor con un umbral de confianza del 92.5%.',
         },
         ai: {
           layers: {
             title: 'Profundidad de Análisis',
-            description: 'Nuestra IA procesa los partidos a través de múltiples capas de inteligencia.',
+            description:
+              'Nuestra IA procesa los partidos a través de múltiples capas de inteligencia.',
             layer1: {
               title: 'Estadísticas Básicas',
               description: 'Goles, tarjetas, posesión y datos históricos.',
@@ -303,7 +332,8 @@ export const translations = {
             },
             layer3: {
               title: 'Modelos Predictivos',
-              description: 'Distribución de Poisson y simulaciones Monte Carlo.',
+              description:
+                'Distribución de Poisson y simulaciones Monte Carlo.',
             },
             layer4: {
               title: 'Deep Learning',
@@ -312,24 +342,29 @@ export const translations = {
           },
           process: {
             title: 'La Arquitectura de nuestra IA',
-            description: 'Una mirada transparente a cómo generamos fijas con más del 92.5% de precisión.',
+            description:
+              'Una mirada transparente a cómo generamos fijas con más del 92.5% de precisión.',
             step1: {
               title: 'Ingestión de Datos',
-              description: 'Recolectamos y normalizamos millones de datos de más de 30 ligas en tiempo real.',
+              description:
+                'Recolectamos y normalizamos millones de datos de más de 30 ligas en tiempo real.',
             },
             step2: {
               title: 'Reconocimiento de Patrones',
-              description: 'Nuestras redes neuronales evalúan 10 años de historial para identificar tendencias.',
+              description:
+                'Nuestras redes neuronales evalúan 10 años de historial para identificar tendencias.',
             },
             step3: {
               title: 'Análisis de Mercado',
-              description: 'Monitoreamos las cuotas globales para detectar anomalías y oportunidades.',
+              description:
+                'Monitoreamos las cuotas globales para detectar anomalías y oportunidades.',
             },
             step4: {
               title: 'El Pronóstico Fijo',
-              description: 'Solo se emite una alerta si nuestro modelo de confianza supera el umbral del 92.5%.',
+              description:
+                'Solo se emite una alerta si nuestro modelo de confianza supera el umbral del 92.5%.',
             },
-          }
+          },
         },
         steps: {
           title: 'Guía Rápida: Cómo Usar Nuestra Plataforma',
@@ -362,10 +397,10 @@ export const translations = {
           },
         },
         about: {
-          title: 'ACERCA DE',
-          subtitle: 'FIXED',
+          title: 'Sobre Nosotros',
+          subtitle: 'La Ventaja',
           description:
-            'Somos una plataforma de apuestas deportivas de fútbol impulsada por inteligencia artificial y machine learning, diseñada para brindarte solo las recomendaciones más confiables. Nuestro sistema analiza miles de datos y muestra exclusivamente aquellas apuestas con un alto porcentaje de probabilidad de éxito, garantizando un mínimo del 92.5%. Así, ya no tendrás que preocuparte por analizar opciones, solo sigue nuestras fijas y disfruta de una experiencia de apuestas más segura y rentable. Confía en nuestro enfoque innovador y deja que la tecnología trabaje para ti: Tu camino al éxito está aquí.',
+            'Somos una firma de inteligencia de datos cuantitativos enfocada en el mercado deportivo. Construida por ingenieros de software y analistas de datos, Fixed aprovecha el aprendizaje automático para eliminar el ruido del mercado y exponer el valor estructural. Nuestro modelo solo emite alertas cuando se cumplen criterios estadísticos estrictos, brindándote una clara ventaja matemática sobre las estimaciones estándar del mercado.',
         },
       },
       plans: {
@@ -375,7 +410,7 @@ export const translations = {
         plan: {
           free: {
             title: 'Plan Básico',
-            price: 'GRATIS/10Días',
+            price: 'Gratis/10Días',
             description: '10 días de acceso gratuito a fijo.',
             features: {
               feature1: 'Acceso a tarifas fijas durante el período.',
@@ -435,7 +470,7 @@ export const translations = {
       footer: {
         title: 'Fixed',
         description:
-          'Mejora tus apuestas con nuestras predicciones fiables y precisas.',
+          'Análisis predictivo de grado institucional para el fútbol.',
         link: {
           dimensions: {
             product: 'Producto',
