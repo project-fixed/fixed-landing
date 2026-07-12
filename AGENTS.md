@@ -38,10 +38,11 @@
 - **Ramas desde**: `master`
 - **Convención de nombres**: `<type>/<short-desc>` (kebab-case, types: `feat`, `fix`, `docs`, `chore`, `refactor`)
 - **Merge a**: `master` via PR con squash merge
+- **Eliminación de ramas**: Las ramas remotas se eliminan automáticamente tras el merge del PR (configurado en GitHub Settings). Se recomienda realizar `git fetch --prune` localmente.
 - **Para crear una rama nueva**, ejecuta la skill `dev-flow`
 - **Para push seguro + PR**, ejecuta la skill `dev-flow`
 - **Test Runner**: No configurado (sin tests en este proyecto)
-- **Commits**: Conventional Commits (validado por commitlint + husky). Los cambios en documentación (en `docs/`, `AGENTS.md`, `DESIGN.md`, `README.md`) siempre deben confirmarse de forma independiente con el tipo `docs` (ej: `docs(scope): mensaje`) y nunca mezclarse con cambios de código en el mismo commit.
+- **Commits**: Conventional Commits (validado por commitlint + husky). Los cambios en documentación (en `docs/`, `AGENTS.md`, `DESIGN.md`, `README.md`) siempre deben confirmarse de forma independiente con el tipo `docs` (ej: `docs(scope): mensaje`) y nunca mezclarse con cambios de código en el mismo commit. Evita crear commits consecutivos para cambios muy pequeños o correcciones menores (ej: typos o adiciones incrementales) sobre archivos ya modificados en el commit anterior; si los commits aún son locales, utiliza `git commit --amend` o `git reset --soft HEAD~1` para agruparlos antes del push.
 - **Linter**: ESLint 10 con `@eslint/js` y `typescript-eslint`
 - **Formatter**: Prettier 3 con `prettier-plugin-tailwindcss`
 - **CI/CD**: GitHub Actions (lint + build en PRs), semantic-release para releases
@@ -61,3 +62,14 @@ Si necesitas detalles sobre arquitectura, componentes o estructuras de datos, co
 ## 6. Mantenimiento de Documentación
 
 Si durante tu interacción detectas cambios significativos en el proyecto (nuevas dependencias, cambios arquitectónicos, nuevos componentes o páginas): **informa al usuario y sugiere ejecutar el skill `technical-writer`** para sincronizar la documentación con el estado actual del proyecto.
+
+## 7. Exclusiones de Auditoría
+
+Las siguientes reglas del skill `project-audit` están excluidas justificadamente para este proyecto:
+
+- **TESTS**: El test runner no está configurado en este proyecto (acorde con Sección 4).
+- **TEST-FILES**: El test runner no está configurado en este proyecto (acorde con Sección 4).
+- **DOCKERFILE**: Despliegue estático/Vercel (no requiere contenedor).
+- **CODEOWNERS**: Proyecto personal/contribuidor único de momento.
+- **LICENSE**: Proyecto de intención privada (se mantiene temporalmente público para despliegues de Vercel).
+- **SECURITY**: Landing page de propósito inicial (no expone APIs críticas ni tiene usuarios directos aún).
