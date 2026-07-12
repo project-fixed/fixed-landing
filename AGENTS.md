@@ -41,7 +41,7 @@
 - **Para crear una rama nueva**, ejecuta la skill `dev-flow`
 - **Para push seguro + PR**, ejecuta la skill `dev-flow`
 - **Test Runner**: No configurado (sin tests en este proyecto)
-- **Commits**: Conventional Commits (validado por commitlint + husky)
+- **Commits**: Conventional Commits (validado por commitlint + husky). Los cambios en documentación (en `docs/`, `AGENTS.md`, `DESIGN.md`, `README.md`) siempre deben confirmarse de forma independiente con el tipo `docs` (ej: `docs(scope): mensaje`) y nunca mezclarse con cambios de código en el mismo commit.
 - **Linter**: ESLint 10 con `@eslint/js` y `typescript-eslint`
 - **Formatter**: Prettier 3 con `prettier-plugin-tailwindcss`
 - **CI/CD**: GitHub Actions (lint + build en PRs), semantic-release para releases
