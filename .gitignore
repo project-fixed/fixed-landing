@@ -28,3 +28,5 @@ pnpm-debug.log*
 # local agile plan files
 .agile_plan.json
 
+# project audit report
+.audit-report.md
