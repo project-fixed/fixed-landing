@@ -1,6 +1,6 @@
 ---
 name: daily-init
-description: Single entry point for daily work sessions. Checks environment health (blocking if MCPs or dependencies are missing), recaps session state (branch, HU, last commit), detects pending items and breaches via heuristics, and presents an action menu that delegates to other skills. Use this skill at the START OF EVERY SESSION or whenever the user greets you ("hola", "buenos días", "empecemos", "qué hay pendiente", "qué hago hoy", "cómo vamos", "estado del proyecto"). It orchestrates dev-flow for branches and push, technical-writer for docs, and the agile-harness MCP for HU management. Do NOT wait for the user to ask — if they say hello or any greeting, run this skill proactively.
+description: Single entry point for daily work sessions. Checks environment health (blocking if MCPs or dependencies are missing), recaps session state (branch, HU, last commit), detects pending items and breaches via heuristics, and presents an action menu that delegates to other skills. Use this skill at the START OF EVERY SESSION or whenever the user greets you ("hola", "buenos días", "empecemos", "qué hay pendiente", "qué hago hoy", "cómo vamos", "estado del proyecto").  It orchestrates dev-flow for branches and push, technical-writer for docs, and the agile-mcp-server MCP for HU management. Do NOT wait for the user to ask — if they say hello or any greeting, run this skill proactively.
 ---
 
 # daily-init
@@ -21,16 +21,16 @@ Check each dependency. If any is missing, show installation instructions and STO
 - If not a git repo: "No hay repositorio Git en este directorio. Crear uno con `git init` o abre el proyecto correcto."
 - If yes: detect default branch (`main`/`master`), remote (`git remote -v`)
 
-#### 1b. MCP agile-harness
+#### 1b. MCP agile-mcp-server
 
 - Check if tools like `create_epic`, `fetch_existing_epics`, `fetch_project_onboarding` are available in the environment
-- If missing: "MCP agile-harness no detectado. Asegúrate de tenerlo configurado en tu cliente. Para instalarlo: npx @jackaranaram/mcp-agile-harness"
+- If missing: "MCP agile-mcp-server no detectado. Asegúrate de tenerlo configurado en tu cliente. Para instalarlo: npx @jackaranaram/agile-mcp-server"
 - If present: test connectivity by calling a simple endpoint (e.g., `fetch_project_onboarding` or `fetch_existing_epics` with no params)
 
 #### 1c. NPX Skills Package
 
-- Run `npx jackararam/skills --version 2>&1` (or `npx jackararam/skills --help`)
-- If not found or errors: "Skills pack no instalado. Instalar con: npx jackararam/skills"
+- Run `npx skills --version 2>&1` (or `npx skills --help`)
+- If not found or errors: "Skills pack no instalado. Instalar con: npx skills"
 - If found: note the version
 
 #### 1d. Required Skills
