@@ -9,7 +9,8 @@
 - **Estilos**: Tailwind CSS v4 (config inline en `global.css` via `@theme`), shadcn/ui con `@base-ui/react`
 - **Animaciones**: `motion` (framer-motion) para scroll-driven, CSS keyframes para marquees y blobs
 - **Traducciones**: Sistema casero sin `next-intl` — `src/data/translations.ts`
-- **Despliegue**: Vercel, generación estática (SSG)
+- **Base de Datos**: Supabase (PostgreSQL) con SDK oficial `@supabase/supabase-js`
+- **Despliegue**: Vercel, generación estática (SSG) para las páginas principales y API dinámica en `/api/beta` para recolectar leads.
 
 ## 2. Estándares de Código
 
@@ -55,6 +56,7 @@ La documentación del proyecto vive en `docs/`:
 
 - `docs/ARCHITECTURE.md` — Arquitectura técnica
 - `docs/CONTRACTS.md` — Contratos de interfaz
+- `docs/DATABASE.md` — Modelo de base de datos
 - `docs/ROADMAP.md` — Roadmap de producto
 - `docs/SCOPE.md` — Alcance MVP
 
