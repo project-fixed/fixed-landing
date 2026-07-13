@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, type Lang } from '../data/translations';
 import { FooterGradientShapes } from './FooterGradientShapes';
-import { ButtonSparkle } from '@/components/ui/ButtonSparkle';
+import { BetaForm } from '@/components/BetaForm';
 import imgLogo from '../assets/images/logo.png';
 
 interface Props {
@@ -38,17 +38,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
           {t.landing.home.hero.description}
         </p>
 
-        <form className="focus-within:border-primary/50 focus-within:shadow-primary/20 relative flex w-full max-w-md items-center gap-2 rounded-full border border-white/10 bg-zinc-950/80 p-2 shadow-2xl backdrop-blur-md transition-all duration-300 focus-within:scale-[1.02] hover:scale-[1.02] hover:border-white/20 active:scale-[0.99]">
-          <input
-            type="email"
-            placeholder={t.landing.home.hero.betaPlaceholder}
-            className="flex-1 bg-transparent px-4 py-2 text-white outline-none placeholder:text-zinc-500"
-            required
-          />
-          <ButtonSparkle type="submit" className="px-6 py-2.5 text-sm">
-            {t.landing.home.hero.betaButton}
-          </ButtonSparkle>
-        </form>
+        <BetaForm lang={lang} />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-4 pt-20 sm:px-6 lg:px-8">

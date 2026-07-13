@@ -10,7 +10,7 @@ import { DataStreamMarquee } from '@/components/DataStreamMarquee';
 import { AITimeline } from '@/components/AITimeline';
 import { AILayers } from '@/components/AILayers';
 import { ButtonArrow } from '@/components/ui/ButtonArrow';
-import { ButtonSparkle } from '@/components/ui/ButtonSparkle';
+import { BetaForm } from '@/components/BetaForm';
 import PitchGeometryBackground from '@/components/PitchGeometryBackground';
 import { ScrollExpandVideo } from '@/components/ScrollExpandVideo';
 
@@ -61,17 +61,7 @@ export default async function Page({ params }: PageProps) {
             </p>
 
             {/* Beta Subscription Form */}
-            <form className="focus-within:border-primary/50 focus-within:shadow-primary/20 relative z-20 mt-10 flex w-full max-w-md items-center gap-2 rounded-full border border-white/10 bg-zinc-950/80 p-2 shadow-2xl backdrop-blur-md transition-all duration-300 focus-within:scale-[1.02] hover:scale-[1.02] hover:border-white/20 active:scale-[0.99]">
-              <input
-                type="email"
-                placeholder={t.landing.home.hero.betaPlaceholder}
-                className="flex-1 bg-transparent px-4 py-2 text-white outline-none placeholder:text-zinc-500"
-                required
-              />
-              <ButtonSparkle type="submit" className="px-6 py-2.5 text-sm">
-                {t.landing.home.hero.betaButton}
-              </ButtonSparkle>
-            </form>
+            <BetaForm lang={currentLang} />
 
             <div className="relative z-20 mt-8 flex hidden items-center gap-5 px-6 py-3">
               <AvatarGroup />
