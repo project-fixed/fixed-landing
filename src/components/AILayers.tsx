@@ -48,7 +48,7 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
           <h2 className="mb-4 text-4xl leading-tight font-extrabold text-white md:text-5xl">
             {data.title}
           </h2>
-          <p className="mx-auto max-w-[600px] text-base leading-relaxed text-zinc-400">
+          <p className="text-text-muted mx-auto max-w-[600px] text-base leading-relaxed">
             {data.description}
           </p>
         </div>
@@ -58,7 +58,7 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
           {layers.map((layer) => (
             <div
               key={layer.level}
-              className={`group relative flex flex-col justify-end overflow-hidden rounded-[20px] border border-white/5 bg-zinc-900/40 p-6 transition-all duration-500 hover:border-white/10 hover:bg-zinc-900/80 md:p-8 ${layer.heightClass}`}
+              className={`group bg-surface-card/40 hover:bg-surface-card/80 relative flex flex-col justify-end overflow-hidden rounded-[20px] border border-white/5 p-6 transition-all duration-500 hover:border-white/10 md:p-8 ${layer.heightClass}`}
             >
               {/* Abstract hashed background pattern */}
               <div
@@ -78,7 +78,7 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
               </div>
 
               <div className="absolute top-6 right-6">
-                <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">
+                <span className="text-text-faint font-mono text-[10px] tracking-widest uppercase">
                   Lvl {layer.level}
                 </span>
               </div>
@@ -88,7 +88,7 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
                 <h3 className="group-hover:text-primary mb-3 font-mono text-xl font-bold tracking-tight text-white transition-colors md:text-2xl">
                   {layer.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-zinc-400">
+                <p className="text-text-muted text-sm leading-relaxed">
                   {layer.description}
                 </p>
               </div>

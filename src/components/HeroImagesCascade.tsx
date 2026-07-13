@@ -38,7 +38,7 @@ export const HeroImagesCascade: React.FC = () => {
           <img
             src={image.src}
             alt={image.alt}
-            className="w-full rounded-2xl border border-white/5 bg-zinc-950/40 object-contain drop-shadow-2xl backdrop-blur-md"
+            className="bg-surface-deep/40 w-full rounded-2xl border border-white/5 object-contain drop-shadow-2xl backdrop-blur-md"
           />
         </div>
       ))}

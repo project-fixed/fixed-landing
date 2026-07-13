@@ -236,7 +236,7 @@ export const FloatingKeyPoints: React.FC = () => {
         className="absolute inset-0 z-0 opacity-50 mix-blend-screen"
         style={{
           background:
-            'radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.1), transparent 40%)',
+            'radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 40%)',
         }}
       ></div>
 

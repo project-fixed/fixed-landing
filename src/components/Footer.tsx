@@ -21,7 +21,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
   const cookiesPath = lang === 'en' ? '/cookies' : '/es/cookies';
 
   return (
-    <footer className="footer relative z-20 flex min-h-screen flex-col overflow-hidden border-t border-white/10 pt-16 pb-8 text-zinc-100">
+    <footer className="footer text-text-primary relative z-20 flex min-h-screen flex-col overflow-hidden border-t border-white/10 pt-16 pb-8">
       {/* Gradient Background shapes */}
       <FooterGradientShapes />
 
@@ -34,7 +34,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
           {t.landing.home.hero.title.center}{' '}
           <span className="text-primary">{t.landing.home.hero.title.end}</span>
         </h2>
-        <p className="mb-10 max-w-xl text-lg text-zinc-300">
+        <p className="text-text-body mb-10 max-w-xl text-lg">
           {t.landing.home.hero.description}
         </p>
 
@@ -49,7 +49,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
             <span className="mb-2 text-2xl font-bold text-white">
               {t.landing.footer.title}
             </span>
-            <p className="text-sm leading-relaxed text-zinc-300">
+            <p className="text-text-body text-sm leading-relaxed">
               {t.landing.footer.description}
             </p>
           </div>
@@ -63,19 +63,19 @@ export const Footer: React.FC<Props> = ({ lang }) => {
               </span>
               <Link
                 href={`${homePath}#features`}
-                className="hover:text-primary text-sm text-zinc-300 transition-all duration-300"
+                className="hover:text-primary text-text-body text-sm transition-all duration-300"
               >
                 {t.navbar.features}
               </Link>
               <Link
                 href={`${homePath}#process`}
-                className="hover:text-primary text-sm text-zinc-300 transition-all duration-300"
+                className="hover:text-primary text-text-body text-sm transition-all duration-300"
               >
                 {t.navbar.steps}
               </Link>
               <Link
                 href={`${homePath}#about`}
-                className="hover:text-primary text-sm text-zinc-300 transition-all duration-300"
+                className="hover:text-primary text-text-body text-sm transition-all duration-300"
               >
                 {t.navbar.about}
               </Link>
@@ -88,13 +88,13 @@ export const Footer: React.FC<Props> = ({ lang }) => {
               </span>
               <Link
                 href={plansPath}
-                className="hover:text-primary text-sm text-zinc-300 transition-all duration-300"
+                className="hover:text-primary text-text-body text-sm transition-all duration-300"
               >
                 {t.navbar.plans}
               </Link>
               <Link
                 href={faqPath}
-                className="hover:text-primary text-sm text-zinc-300 transition-all duration-300"
+                className="hover:text-primary text-text-body text-sm transition-all duration-300"
               >
                 {t.navbar.faq}
               </Link>
@@ -105,7 +105,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
         <hr className="my-8 border-white/10" />
 
         {/* Legal */}
-        <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-zinc-400">
+        <div className="text-text-muted flex flex-wrap items-center justify-between gap-4 text-sm">
           <p>
             &copy; {new Date().getFullYear()} Fixed Inc. All rights reserved.
           </p>

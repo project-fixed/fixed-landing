@@ -1,6 +1,6 @@
 # 🤝 Contratos de Interfaz
 
-Este proyecto es una **landing page 100% frontend** sin API propia. No expone endpoints HTTP. Los contratos definidos aquí corresponden a las estructuras de datos internas y las integraciones externas.
+Este proyecto es principalmente una landing page frontend que expone un **endpoint de API interno** para la recolección de usuarios de la beta. Los contratos definidos aquí corresponden a la API interna, las estructuras de datos y las integraciones externas.
 
 ## Estructuras de Datos (MVP)
 
@@ -58,6 +58,47 @@ interface Translations {
 function useTranslations(lang: Lang): Translations
 ```
 
+## API Interna
+
+### `POST /api/beta`
+
+Registra un correo en la lista de espera de la beta privada.
+
+- **URL**: `/api/beta`
+- **Método**: `POST`
+- **Headers**:
+  - `Content-Type: application/json`
+- **Request Body**:
+
+```typescript
+interface BetaRequest {
+  email: string;
+  lang: 'es' | 'en';
+}
+```
+
+- **Respuestas**:
+  - `200 OK`: Suscripción completada exitosamente.
+    ```json
+    { "message": "Successfully subscribed to the beta!" }
+    ```
+  - `400 Bad Request`: Email no válido o ausente.
+    ```json
+    { "message": "Invalid email address." }
+    ```
+  - `409 Conflict`: El correo electrónico ya se encuentra registrado.
+    ```json
+    { "message": "This email is already registered." }
+    ```
+  - `429 Too Many Requests`: Se superó el límite de peticiones (rate limiting).
+    ```json
+    { "message": "Too many requests. Please try again in a minute." }
+    ```
+  - `500 Internal Server Error`: Fallo interno del servidor al procesar la solicitud.
+    ```json
+    { "message": "An unexpected server error occurred." }
+    ```
+
 ## Integraciones Externas
 
 ### Autenticación (Alcance Futuro / Post-MVP)
@@ -83,13 +124,15 @@ function useTranslations(lang: Lang): Translations
 
 ## Políticas de Seguridad
 
-- **MVP:** Sin autenticación. Solo contenido público estático.
-- **Formulario de email en Footer:** Captura de correo para lista de espera beta (sin backend implementado en este repo).
-- **Post-MVP:** Integración con `app.fixed.com` para auth, dashboard y pagos.
+- **MVP**: Sin autenticación de sesión en el frontend. Las páginas son públicas.
+- **Validación del Servidor**: El endpoint `/api/beta` valida y sanitiza de forma estricta el correo electrónico antes de interactuar con el backend/base de datos.
+- **Protección contra Abuso**: Se implementa un limitador de tasa (rate limiting) basado en la IP del cliente (máx. 5 req/min) en `/api/beta`.
+- **Post-MVP**: Integración con `app.fixed.com` para auth completa, dashboards interactivos y pasarelas de pago.
 
 ## 🔗 Referencias
 
 - [🏗️ Arquitectura Técnica](ARCHITECTURE.md)
+- [🗄️ Modelo de Base de Datos](DATABASE.md)
 - [🗺️ Roadmap de Producto](ROADMAP.md)
 - [🎯 Alcance MVP](SCOPE.md)
 - [🎨 Sistema de Diseño](../DESIGN.md)

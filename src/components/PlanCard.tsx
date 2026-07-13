@@ -17,7 +17,7 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
     <div className="bg-main-glass hover:border-primary/30 flex min-h-[460px] w-full max-w-[350px] flex-col items-start gap-4 rounded-3xl border border-white/5 p-8 shadow-2xl transition-all duration-300 hover:scale-[1.02]">
       <div className="flex w-full items-center justify-between">
         {/* Star/Crown icon */}
-        <div className="text-primary rounded-2xl border border-white/5 bg-zinc-800/50 p-3">
+        <div className="text-primary bg-surface-card/50 rounded-2xl border border-white/5 p-3">
           {plan.icon.includes('star') ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
 
         <div className="text-right text-xl font-extrabold text-white">
           {plan.price === 0 ? 'FREE' : `$${plan.price}`}
-          <span className="text-xs font-semibold text-zinc-400">
+          <span className="text-text-muted text-xs font-semibold">
             /{plan.price === 0 ? '10 days' : 'month'}
           </span>
         </div>
@@ -59,7 +59,7 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
       <h2 className="pt-6 text-start text-2xl font-extrabold text-white">
         {plan.name}
       </h2>
-      <p className="min-h-[40px] pr-12 text-start text-sm text-zinc-400 max-[320px]:pr-0">
+      <p className="text-text-muted min-h-[40px] pr-12 text-start text-sm max-[320px]:pr-0">
         {plan.description}
       </p>
 
@@ -67,7 +67,7 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
         {plan.features.map((feature, idx) => (
           <li
             key={idx}
-            className="mb-4 flex items-start gap-2.5 text-sm text-zinc-300"
+            className="text-text-body mb-4 flex items-start gap-2.5 text-sm"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="mt-0.5 size-5 flex-shrink-0 text-green-500"
+              className="text-status-success mt-0.5 size-5 flex-shrink-0"
             >
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
               <polyline points="22 4 12 14.01 9 11.01" />

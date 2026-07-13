@@ -44,7 +44,7 @@ export const ButtonArrow: React.FC<ButtonArrowProps> = ({
           </span>
         </span>
         {/* Text */}
-        <span className="font-display pl-3 text-zinc-300 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">
+        <span className="font-display text-text-body pl-3 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">
           {children}
         </span>
       </span>

@@ -28,18 +28,18 @@ gantt
 
 ### Fase 1: MVP — Landing Page (Actual)
 
-| Feature                                             | Estado | Prioridad |
-| --------------------------------------------------- | ------ | --------- |
-| Hero Section con captura de email                   | MVP    | Alta      |
-| OddsMarquee (predicciones en vivo)                  | MVP    | Alta      |
-| KeyPointsGrid (métricas)                            | MVP    | Alta      |
-| ScrollExpandVideo (dashboard reveal)                | MVP    | Alta      |
-| AITimeline + AILayers (proceso IA)                  | MVP    | Alta      |
-| DataStreamMarquee (terminal)                        | MVP    | Media     |
-| BrandsCarousel (partners)                           | MVP    | Media     |
-| Sistema de traducción EN/ES                         | MVP    | Alta      |
-| Páginas: Planes, FAQ, Términos, Privacidad, Cookies | MVP    | Alta      |
-| Toolbar + Footer                                    | MVP    | Alta      |
+| Feature                                             | Estado     | Prioridad |
+| --------------------------------------------------- | ---------- | --------- |
+| Hero Section con captura de email (Supabase)        | Completado | Alta      |
+| OddsMarquee (predicciones en vivo)                  | MVP        | Alta      |
+| KeyPointsGrid (métricas)                            | MVP        | Alta      |
+| ScrollExpandVideo (dashboard reveal)                | MVP        | Alta      |
+| AITimeline + AILayers (proceso IA)                  | MVP        | Alta      |
+| DataStreamMarquee (terminal)                        | MVP        | Media     |
+| BrandsCarousel (partners)                           | MVP        | Media     |
+| Sistema de traducción EN/ES                         | MVP        | Alta      |
+| Páginas: Planes, FAQ, Términos, Privacidad, Cookies | MVP        | Alta      |
+| Toolbar + Footer (con BetaForm interactivo)         | Completado | Alta      |
 
 ### Fase 2: Beta Privada (Distribución y UX)
 
@@ -68,5 +68,6 @@ gantt
 
 - [🏗️ Arquitectura Técnica](ARCHITECTURE.md)
 - [🤝 Contratos de Interfaz](CONTRACTS.md)
+- [🗄️ Modelo de Base de Datos](DATABASE.md)
 - [🎯 Alcance MVP](SCOPE.md)
 - [🎨 Sistema de Diseño](../DESIGN.md)

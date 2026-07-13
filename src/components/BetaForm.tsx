@@ -82,7 +82,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="border-primary/30 flex w-full flex-col items-center justify-center rounded-2xl border bg-zinc-950/80 p-6 text-center shadow-[0_0_50px_rgba(62,93,108,0.15)] backdrop-blur-md"
+            className="border-primary/30 bg-surface-deep/80 flex w-full flex-col items-center justify-center rounded-2xl border p-6 text-center shadow-[0_0_50px_rgba(62,93,108,0.15)] backdrop-blur-md"
           >
             <div className="bg-primary/10 text-primary relative mb-4 flex h-14 w-14 items-center justify-center rounded-full">
               <motion.div
@@ -99,7 +99,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
                 ? '¡Registro Completado!'
                 : 'Registration Complete!'}
             </h3>
-            <p className="text-sm leading-relaxed text-zinc-300">
+            <p className="text-text-body text-sm leading-relaxed">
               {t.landing.home.hero.betaSuccess}
             </p>
           </motion.div>
@@ -113,7 +113,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
           >
             <form
               onSubmit={handleSubmit}
-              className="focus-within:border-primary/50 focus-within:shadow-primary/20 relative flex w-full items-center gap-2 rounded-full border border-white/10 bg-zinc-950/80 p-2 shadow-2xl backdrop-blur-md transition-all duration-300 focus-within:scale-[1.02] hover:scale-[1.02] hover:border-white/20 active:scale-[0.99]"
+              className="focus-within:border-primary/50 focus-within:shadow-primary/20 bg-surface-deep/80 relative flex w-full items-center gap-2 rounded-full border border-white/10 p-2 shadow-2xl backdrop-blur-md transition-all duration-300 focus-within:scale-[1.02] hover:scale-[1.02] hover:border-white/20 active:scale-[0.99]"
             >
               <input
                 type="email"
@@ -124,7 +124,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
                 }}
                 disabled={status === 'loading'}
                 placeholder={t.landing.home.hero.betaPlaceholder}
-                className="flex-1 bg-transparent px-4 py-2 text-white outline-none placeholder:text-zinc-500 disabled:opacity-50"
+                className="placeholder:text-text-faint flex-1 bg-transparent px-4 py-2 text-white outline-none disabled:opacity-50"
                 required
               />
               <ButtonSparkle
@@ -149,7 +149,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
                   initial={{ opacity: 0, y: -8, height: 0 }}
                   animate={{ opacity: 1, y: 0, height: 'auto' }}
                   exit={{ opacity: 0, y: -8, height: 0 }}
-                  className="flex items-start gap-2 px-4 text-left text-xs text-rose-400"
+                  className="text-destructive flex items-start gap-2 px-4 text-left text-xs"
                 >
                   <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
                   <span>{message}</span>

@@ -30,9 +30,19 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       }
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => {
@@ -84,31 +94,31 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         <nav className="hidden items-center gap-6 lg:flex">
           <Link
             href={homePath}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
+            className="text-text-body text-sm font-medium tracking-wide transition-colors hover:text-white"
           >
             {t.navbar.home}
           </Link>
           <Link
             href={`${homePath}#features`}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
+            className="text-text-body text-sm font-medium tracking-wide transition-colors hover:text-white"
           >
             {t.navbar.features}
           </Link>
           <Link
             href={`${homePath}#about`}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
+            className="text-text-body text-sm font-medium tracking-wide transition-colors hover:text-white"
           >
             {t.navbar.about}
           </Link>
           <Link
             href={plansPath}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
+            className="text-text-body text-sm font-medium tracking-wide transition-colors hover:text-white"
           >
             {t.navbar.plans}
           </Link>
           <Link
             href={faqPath}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
+            className="text-text-body text-sm font-medium tracking-wide transition-colors hover:text-white"
           >
             {t.navbar.faq}
           </Link>
@@ -160,7 +170,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       {/* Mobile Drawer Menu */}
       <div
         id="mobile-menu-drawer"
-        className={`fixed inset-y-0 right-0 z-[100] flex w-72 max-w-[80vw] transform flex-col gap-8 border-l border-white/5 bg-zinc-950 p-8 shadow-2xl transition-transform duration-300 ease-in-out ${
+        className={`bg-surface-deep fixed inset-y-0 right-0 z-[100] flex w-72 max-w-[80vw] transform flex-col gap-8 border-l border-white/5 p-8 shadow-2xl transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -193,35 +203,35 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
           <Link
             href={homePath}
             onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
+            className="hover:text-primary mobile-link text-text-primary py-2 transition-colors"
           >
             {t.navbar.home}
           </Link>
           <Link
             href={`${homePath}#features`}
             onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
+            className="hover:text-primary mobile-link text-text-primary py-2 transition-colors"
           >
             {t.navbar.features}
           </Link>
           <Link
             href={`${homePath}#about`}
             onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
+            className="hover:text-primary mobile-link text-text-primary py-2 transition-colors"
           >
             {t.navbar.about}
           </Link>
           <Link
             href={plansPath}
             onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
+            className="hover:text-primary mobile-link text-text-primary py-2 transition-colors"
           >
             {t.navbar.plans}
           </Link>
           <Link
             href={faqPath}
             onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
+            className="hover:text-primary mobile-link text-text-primary py-2 transition-colors"
           >
             {t.navbar.faq}
           </Link>

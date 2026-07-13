@@ -42,7 +42,7 @@ export const AITimeline: React.FC<Props> = ({ lang }) => {
               <h2 className="mb-6 text-5xl leading-[1.1] font-extrabold tracking-tight text-white md:text-6xl">
                 {data.title}
               </h2>
-              <p className="max-w-[400px] text-lg leading-relaxed text-zinc-400">
+              <p className="text-text-muted max-w-[400px] text-lg leading-relaxed">
                 {data.description}
               </p>
             </div>
@@ -61,8 +61,8 @@ export const AITimeline: React.FC<Props> = ({ lang }) => {
                 )}
 
                 {/* Step Circle */}
-                <div className="group-hover:border-primary/50 relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-zinc-950 shadow-xl transition-colors duration-500">
-                  <span className="group-hover:text-primary font-mono text-xs text-zinc-500 transition-colors">
+                <div className="group-hover:border-primary/50 bg-surface-deep relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 shadow-xl transition-colors duration-500">
+                  <span className="group-hover:text-primary text-text-faint font-mono text-xs transition-colors">
                     {step.num}
                   </span>
                 </div>
@@ -72,7 +72,7 @@ export const AITimeline: React.FC<Props> = ({ lang }) => {
                   <h3 className="font-mono text-2xl font-bold tracking-tight text-white md:text-3xl">
                     {step.title}
                   </h3>
-                  <p className="max-w-[500px] text-base leading-relaxed text-zinc-400 md:text-lg">
+                  <p className="text-text-muted max-w-[500px] text-base leading-relaxed md:text-lg">
                     {step.description}
                   </p>
                 </div>

@@ -56,7 +56,7 @@ export default async function Page({ params }: PageProps) {
               </span>
             </h1>
 
-            <p className="relative z-20 mt-8 max-w-[650px] leading-relaxed text-zinc-300 drop-shadow-lg">
+            <p className="text-text-body relative z-20 mt-8 max-w-[650px] leading-relaxed drop-shadow-lg">
               {t.landing.home.hero.description}
             </p>
 
@@ -66,10 +66,10 @@ export default async function Page({ params }: PageProps) {
             <div className="relative z-20 mt-8 flex hidden items-center gap-5 px-6 py-3">
               <AvatarGroup />
               <span className="relative flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
+                <span className="bg-status-success-ping absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                <span className="bg-status-success relative inline-flex h-3 w-3 rounded-full"></span>
               </span>
-              <p className="text-sm font-medium text-zinc-300">
+              <p className="text-text-body text-sm font-medium">
                 {t.landing.home.hero.online}
               </p>
             </div>
@@ -101,10 +101,10 @@ export default async function Page({ params }: PageProps) {
         </div>
         {/* Live Odds/Value Marquee Section */}
         <div className="mx-auto flex justify-center px-4">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/5 bg-zinc-900/60 px-4 py-1.5 text-xs font-medium text-zinc-400 backdrop-blur-md">
+          <span className="bg-surface-card/60 text-text-muted inline-flex items-center gap-2 rounded-full border border-white/5 px-4 py-1.5 text-xs font-medium backdrop-blur-md">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+              <span className="bg-status-success-ping absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+              <span className="bg-status-success relative inline-flex h-2 w-2 rounded-full"></span>
             </span>
             {t.landing.home.hero.oddsTitle}
           </span>
@@ -122,7 +122,7 @@ export default async function Page({ params }: PageProps) {
           <h2 className="mx-auto my-6 max-w-[700px] text-5xl leading-tight font-extrabold text-white">
             {t.landing.home.features.title}
           </h2>
-          <p className="mx-auto max-w-[800px] text-base leading-relaxed text-zinc-300">
+          <p className="text-text-body mx-auto max-w-[800px] text-base leading-relaxed">
             {t.landing.home.features.description}
           </p>
         </div>
@@ -140,7 +140,7 @@ export default async function Page({ params }: PageProps) {
       {/* AI Sections */}
       <div
         id="process"
-        className="bg-linear-to-b from-transparent via-zinc-900/20 to-transparent py-12"
+        className="via-surface-card/20 bg-linear-to-b from-transparent to-transparent py-12"
       >
         <AITimeline lang={currentLang} />
         <DataStreamMarquee lang={currentLang} />
@@ -177,7 +177,7 @@ export default async function Page({ params }: PageProps) {
             <span className="text-primary mt-2 block text-2xl font-bold">
               {t.landing.home.about.subtitle}
             </span>
-            <p className="my-6 text-base leading-relaxed text-zinc-300">
+            <p className="text-text-body my-6 text-base leading-relaxed">
               {t.landing.home.about.description}
             </p>
 

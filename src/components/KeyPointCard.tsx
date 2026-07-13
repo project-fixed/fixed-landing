@@ -28,7 +28,7 @@ export const KeyPointCard: React.FC<Props> = ({
         <span className="font-mono text-5xl font-black tracking-tighter text-white">
           {title}
         </span>
-        <p className="text-sm leading-relaxed font-medium text-zinc-300">
+        <p className="text-text-body text-sm leading-relaxed font-medium">
           {description}
         </p>
       </div>
