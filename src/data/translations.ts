@@ -26,6 +26,12 @@ export const translations = {
             'Predictive intelligence for sports betting. Decisions backed by data, not instinct.',
           betaPlaceholder: 'Enter your email for early access...',
           betaButton: 'Join Beta',
+          betaLoadingButton: 'Joining...',
+          betaSuccess: 'Thank you! You have successfully joined the waitlist.',
+          betaErrorInvalid: 'Please enter a valid email address.',
+          betaErrorDuplicate:
+            'This email is already registered on the waitlist.',
+          betaErrorGeneric: 'An error occurred. Please try again later.',
           online: '10k people online',
           oddsTitle: 'Latest Opportunities Detected by the Model',
           key: {
@@ -267,6 +273,14 @@ export const translations = {
             'Inteligencia predictiva para apuestas deportivas. Decisiones respaldadas por datos, no por instinto.',
           betaPlaceholder: 'Ingresa tu email para acceso anticipado...',
           betaButton: 'Unirse a la Beta',
+          betaLoadingButton: 'Uniéndose...',
+          betaSuccess: '¡Gracias! Te has unido a la lista de espera con éxito.',
+          betaErrorInvalid:
+            'Por favor, introduce un correo electrónico válido.',
+          betaErrorDuplicate:
+            'Este correo ya está registrado en la lista de espera.',
+          betaErrorGeneric:
+            'Hubo un error. Por favor, inténtalo de nuevo más tarde.',
           online: '10k personas en línea',
           oddsTitle: 'Últimas Oportunidades Detectadas por el Modelo',
           key: {
