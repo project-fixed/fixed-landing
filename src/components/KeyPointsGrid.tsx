@@ -63,11 +63,11 @@ export const KeyPointsGrid: React.FC<Props> = ({ lang }) => {
           {bottomFeatures.map((feature, idx) => (
             <div
               key={idx}
-              className="group relative flex flex-col items-start overflow-hidden rounded-[24px] border border-white/5 bg-zinc-900/60 p-8 shadow-2xl transition-colors duration-300 hover:border-white/10 md:p-12"
+              className="group bg-surface-card/60 relative flex flex-col items-start overflow-hidden rounded-[24px] border border-white/5 p-8 shadow-2xl transition-colors duration-300 hover:border-white/10 md:p-12"
             >
               {/* Small Icon Box */}
               <div
-                className="z-10 mb-8 rounded-xl border border-white/5 bg-zinc-800/80 p-3 text-zinc-300 shadow-inner"
+                className="bg-surface-card/80 text-text-body z-10 mb-8 rounded-xl border border-white/5 p-3 shadow-inner"
                 dangerouslySetInnerHTML={{ __html: feature.icon }}
               />
 
@@ -75,7 +75,7 @@ export const KeyPointsGrid: React.FC<Props> = ({ lang }) => {
               <h4 className="z-10 mb-6 font-mono text-3xl font-bold tracking-tight text-white md:text-4xl">
                 {feature.title}
               </h4>
-              <p className="z-10 max-w-[90%] text-lg leading-relaxed text-zinc-400">
+              <p className="text-text-muted z-10 max-w-[90%] text-lg leading-relaxed">
                 {feature.description}
               </p>
 

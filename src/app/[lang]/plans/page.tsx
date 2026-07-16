@@ -22,7 +22,7 @@ export default async function PlansPage({ params }: PageProps) {
         <h2 className="mb-6 text-5xl leading-tight font-extrabold text-white">
           {t.landing.plans.title}
         </h2>
-        <p className="mx-auto max-w-[600px] text-base leading-relaxed text-zinc-300 max-sm:px-4">
+        <p className="text-text-body mx-auto max-w-[600px] text-base leading-relaxed max-sm:px-4">
           {t.landing.plans.description}
         </p>
       </div>

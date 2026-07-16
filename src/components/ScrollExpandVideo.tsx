@@ -68,7 +68,7 @@ export function ScrollExpandVideo({
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <motion.div
           style={{ width, height, borderRadius, padding }}
-          className="relative flex items-center justify-center overflow-hidden border border-white/10 bg-zinc-950 shadow-2xl"
+          className="bg-surface-deep relative flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

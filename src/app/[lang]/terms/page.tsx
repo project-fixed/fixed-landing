@@ -18,14 +18,14 @@ export default async function TermsPage({ params }: PageProps) {
         <h1 className="mb-6 text-5xl leading-tight font-extrabold text-white">
           {isEs ? 'Términos de Servicio' : 'Terms of Service'}
         </h1>
-        <p className="mx-auto max-w-[600px] text-base leading-relaxed text-zinc-400">
+        <p className="text-text-muted mx-auto max-w-[600px] text-base leading-relaxed">
           {isEs
             ? 'Última actualización: 12 de Junio de 2026'
             : 'Last updated: June 12, 2026'}
         </p>
       </div>
 
-      <div className="w-full max-w-3xl space-y-6 rounded-2xl border border-white/5 bg-zinc-900/30 p-8 text-zinc-300 backdrop-blur-xl md:p-10">
+      <div className="bg-surface-card/30 text-text-body w-full max-w-3xl space-y-6 rounded-2xl border border-white/5 p-8 backdrop-blur-xl md:p-10">
         {isEs ? (
           <>
             <h2 className="mt-4 text-xl font-bold text-white">

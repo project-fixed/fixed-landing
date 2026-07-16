@@ -1,242 +1,343 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useTranslations, type Lang } from '../data/translations';
 import imgLogo from '../assets/images/logo.png';
-import { ButtonArrow } from './ui/ButtonArrow';
+import imgSpain from '@/assets/images/spain.png';
+import imgUS from '@/assets/images/united-states.png';
 
 interface Props {
   lang: Lang;
+}
+
+interface NavLink {
+  label: string;
+  href: string;
 }
 
 export const Toolbar: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
 
   const homePath = lang === 'en' ? '/' : '/es';
   const plansPath = lang === 'en' ? '/plans' : '/es/plans';
   const faqPath = lang === 'en' ? '/faq' : '/es/faq';
   const appAuthUrl = 'https://app.fixed.com/auth';
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  const pathname = usePathname();
 
+  const getTargetPath = () => {
+    const nextLang = lang === 'en' ? 'es' : 'en';
+    if (pathname.startsWith(`/${lang}/`)) {
+      return pathname.replace(`/${lang}/`, `/${nextLang}/`);
+    }
+    if (pathname === `/${lang}`) {
+      return `/${nextLang}`;
+    }
+    return `/${nextLang}${pathname === '/' ? '' : pathname}`;
+  };
+
+  const targetPath = getTargetPath();
+
+  const handleLangToggle = () => {
+    const nextLang = lang === 'en' ? 'es' : 'en';
+    const domain = window.location.hostname.endsWith('fixed.com')
+      ? ';domain=.fixed.com'
+      : '';
+    document.cookie = `language=${nextLang};path=/${domain};max-age=${365 * 24 * 60 * 60};SameSite=Lax`;
+    closeMenu();
+  };
+
+  const navLinks: NavLink[] = [
+    { label: t.navbar.home, href: homePath },
+    { label: t.navbar.features, href: `${homePath}#features` },
+    { label: t.navbar.about, href: `${homePath}#about` },
+    { label: t.navbar.plans, href: plansPath },
+    { label: t.navbar.faq, href: faqPath },
+  ];
+
+  /** Detect scroll for glassmorphism header */
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => {
-      const nextState = !prev;
-      if (nextState) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-      return nextState;
-    });
-  };
+  /** Close on Escape key */
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) closeMenu();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    document.body.style.overflow = '';
+  /** Close on click outside the panel */
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        menuBtnRef.current &&
+        !menuBtnRef.current.contains(e.target as Node)
+      ) {
+        closeMenu();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
+  /** Lock body scroll when menu is open */
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  /** Mini beta email submit from the toolbar panel */
+  const handlePanelEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Scroll to hero beta form and prefill — simple UX bridge
+    const heroForm = document.querySelector<HTMLInputElement>(
+      '#hero input[type="email"]',
+    );
+    if (heroForm) {
+      heroForm.value = email;
+      heroForm.focus();
+      heroForm.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    closeMenu();
   };
 
   return (
     <header
       id="main-toolbar"
-      className={`fixed top-0 right-0 left-0 z-50 w-full px-4 transition-all duration-500 ease-in-out ${
-        isScrolled ? 'pt-4' : 'pt-6'
+      className={`fixed top-0 right-0 left-0 z-50 w-full px-6 transition-all duration-500 ease-in-out md:px-12 lg:px-20 ${
+        isScrolled ? 'pt-2' : 'pt-4'
       }`}
     >
+      {/* ─── Main Bar ──────────────────────────────────────────── */}
       <div
         id="toolbar-container"
-        className={`mx-auto flex w-full max-w-[1200px] items-center justify-between rounded-full border px-6 py-4 transition-all duration-500 ease-in-out ${
-          isScrolled
-            ? 'bg-background/85 border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl'
-            : 'border-transparent bg-transparent'
-        }`}
+        className="mx-auto flex w-full items-center justify-between rounded-full border border-transparent bg-transparent py-2"
       >
         {/* Logo */}
         <Link
           href={homePath}
           className="logo flex cursor-pointer items-center select-none"
+          onClick={closeMenu}
         >
-          <Image src={imgLogo} alt="Logo" className="mr-2 size-9" />
+          <Image src={imgLogo} alt="Logo" className="size-9" />
           <span
             id="brand"
-            className="text-2xl font-bold text-white max-[425px]:hidden"
+            className={`text-2xl font-bold text-white transition-opacity duration-300 max-[425px]:hidden ${
+              isScrolled ? 'w-0 overflow-hidden opacity-0' : 'opacity-100'
+            }`}
           >
             Fixed
           </span>
         </Link>
 
-        {/* Menu Center (Desktop) */}
-        <nav className="hidden items-center gap-6 lg:flex">
-          <Link
-            href={homePath}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
-          >
-            {t.navbar.home}
-          </Link>
-          <Link
-            href={`${homePath}#features`}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
-          >
-            {t.navbar.features}
-          </Link>
-          <Link
-            href={`${homePath}#about`}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
-          >
-            {t.navbar.about}
-          </Link>
-          <Link
-            href={plansPath}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
-          >
-            {t.navbar.plans}
-          </Link>
-          <Link
-            href={faqPath}
-            className="text-sm font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
-          >
-            {t.navbar.faq}
-          </Link>
-        </nav>
-
-        {/* Right Side: Button & Mobile Menu */}
-        <div className="flex items-center gap-4">
-          <ButtonArrow
+        {/* Right side: CTA + MENU toggle */}
+        <div className="flex items-center gap-3">
+          {/* Primary CTA — JOIN FIXED • */}
+          <a
             href={`${appAuthUrl}?lang=${lang}`}
-            className="hidden lg:inline-flex"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-white px-5 py-2.5 text-sm font-bold tracking-wider text-black backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-white/80 active:scale-95"
           >
-            {t.button.join}
-          </ButtonArrow>
+            <span>{t.button.join}</span>
+          </a>
 
-          {/* Mobile Bars Button */}
+          {/* MENU / CLOSE toggle — icon only */}
           <button
+            ref={menuBtnRef}
+            id="btn-menu-toggle"
             onClick={toggleMenu}
-            id="btn-mobile-menu-open"
-            className="rounded border border-white/10 bg-white/5 p-2 text-white transition-colors duration-200 hover:bg-white/10 active:scale-95 lg:hidden"
-            aria-label="Open menu"
+            className={`relative flex size-10 items-center justify-center rounded-full border transition-all duration-300 ${
+              isMenuOpen
+                ? 'border-white/20 bg-white/10 text-white backdrop-blur-md'
+                : 'border-white/10 bg-white/5 text-white hover:border-white/20 hover:bg-white/10'
+            } active:scale-95`}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
-              />
-            </svg>
+            {isMenuOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="size-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="size-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
+                />
+              </svg>
+            )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Overlay */}
+      {/* ─── Dropdown Nav Panel ────────────────────────────────── */}
+      <div
+        ref={panelRef}
+        id="nav-dropdown-panel"
+        className={`bg-surface-deep/95 absolute top-full right-20 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out sm:right-6 ${
+          isMenuOpen
+            ? 'pointer-events-auto translate-y-0 scale-100 opacity-100'
+            : 'pointer-events-none -translate-y-3 scale-95 opacity-0'
+        }`}
+        aria-hidden={!isMenuOpen}
+      >
+        {/* Nav Links */}
+        <nav className="py-2">
+          {navLinks.map((link, index) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={closeMenu}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 text-sm font-bold tracking-[0.12em] uppercase transition-colors duration-150"
+            >
+              {/* Hover background */}
+              <span
+                className={`absolute inset-0 rounded-none bg-white/[0.04] transition-opacity duration-150 ${
+                  hoveredIndex === index ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+
+              <span
+                className={`relative z-10 transition-colors duration-150 ${
+                  hoveredIndex === index ? 'text-white' : 'text-text-muted'
+                }`}
+              >
+                {link.label}
+              </span>
+
+              {/* Arrow — slides in from left on hover */}
+              <span
+                className={`relative z-10 translate-x-2 text-white transition-all duration-200 ${
+                  hoveredIndex === index
+                    ? 'translate-x-0 opacity-100'
+                    : 'opacity-0'
+                }`}
+              >
+                →
+              </span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Divider */}
+        <div className="mx-5 border-t border-white/[0.06]" />
+
+        {/* Language Toggle */}
+        <Link
+          href={targetPath}
+          onClick={handleLangToggle}
+          className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 text-sm font-bold tracking-[0.12em] uppercase transition-colors duration-150"
+        >
+          <span className="absolute inset-0 rounded-none bg-white/[0.04] opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
+          <span className="text-text-muted relative z-10 flex items-center gap-3 transition-colors duration-150 group-hover:text-white">
+            {lang === 'en' ? (
+              <Image
+                src={imgSpain}
+                width={22}
+                height={22}
+                alt="ES"
+                className="rounded"
+              />
+            ) : (
+              <Image
+                src={imgUS}
+                width={22}
+                height={22}
+                alt="EN"
+                className="rounded"
+              />
+            )}
+            {lang === 'en' ? 'Español' : 'English'}
+          </span>
+          <span className="relative z-10 translate-x-2 text-white opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+            →
+          </span>
+        </Link>
+
+        {/* Divider */}
+        <div className="mx-5 border-t border-white/[0.06]" />
+
+        {/* Mini Beta Email Widget */}
+        <div className="px-5 py-4">
+          <p className="text-text-muted mb-3 text-xs font-medium tracking-wider uppercase">
+            {lang === 'es' ? 'Acceso anticipado' : 'Early access'}
+          </p>
+          <form
+            onSubmit={handlePanelEmailSubmit}
+            className="flex items-center gap-0 overflow-hidden rounded-lg border border-white/10 bg-white/5 transition-colors duration-200 focus-within:border-white/20"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={lang === 'es' ? 'tu@email.com' : 'your@email.com'}
+              className="placeholder:text-text-ghost flex-1 bg-transparent px-3 py-2.5 text-sm text-white outline-none"
+            />
+            <button
+              type="submit"
+              className="text-text-muted flex h-full items-center justify-center px-3 py-2.5 transition-colors duration-200 hover:text-white"
+              aria-label="Submit email"
+            >
+              →
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* ─── Backdrop blur overlay ──────────────────────────────── */}
       <div
         onClick={closeMenu}
-        id="mobile-menu-overlay"
-        className={`fixed inset-0 z-[99] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-          isMenuOpen ? 'block opacity-100' : 'hidden opacity-0'
+        className={`fixed inset-0 -z-10 transition-opacity duration-300 ${
+          isMenuOpen
+            ? 'pointer-events-auto opacity-100'
+            : 'pointer-events-none opacity-0'
         }`}
-      ></div>
-
-      {/* Mobile Drawer Menu */}
-      <div
-        id="mobile-menu-drawer"
-        className={`fixed inset-y-0 right-0 z-[100] flex w-72 max-w-[80vw] transform flex-col gap-8 border-l border-white/5 bg-zinc-950 p-8 shadow-2xl transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-white">Menu</span>
-          <button
-            onClick={closeMenu}
-            id="btn-mobile-menu-close"
-            className="rounded bg-white/5 p-2 text-white hover:bg-white/10"
-            aria-label="Close menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18 18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <nav className="flex flex-col gap-6 text-left text-lg font-bold">
-          <Link
-            href={homePath}
-            onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
-          >
-            {t.navbar.home}
-          </Link>
-          <Link
-            href={`${homePath}#features`}
-            onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
-          >
-            {t.navbar.features}
-          </Link>
-          <Link
-            href={`${homePath}#about`}
-            onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
-          >
-            {t.navbar.about}
-          </Link>
-          <Link
-            href={plansPath}
-            onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
-          >
-            {t.navbar.plans}
-          </Link>
-          <Link
-            href={faqPath}
-            onClick={closeMenu}
-            className="hover:text-primary mobile-link text-zinc-100 transition-colors"
-          >
-            {t.navbar.faq}
-          </Link>
-        </nav>
-
-        <div className="mt-auto flex flex-col gap-4">
-          <ButtonArrow
-            href={`${appAuthUrl}?lang=${lang}`}
-            className="w-full"
-            onClick={closeMenu}
-          >
-            {t.button.join}
-          </ButtonArrow>
-        </div>
-      </div>
+        aria-hidden="true"
+      />
     </header>
   );
 };

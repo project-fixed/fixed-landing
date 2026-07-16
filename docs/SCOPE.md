@@ -4,7 +4,7 @@
 
 | Feature                        | ¿MVP? | Fase | Componente(s)                                                                                           | Notas                                     |
 | ------------------------------ | ----- | ---- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| Hero Section                   | Sí    | MVP  | `PitchGeometryBackground`, `FloatingKeyPoints`, `KeyPointsCarousel`, `HeroImagesCascade`, `AvatarGroup` | Formulario de captura de email beta       |
+| Hero Section                   | Sí    | MVP  | `PitchGeometryBackground`, `FloatingKeyPoints`, `KeyPointsCarousel`, `HeroImagesCascade`, `AvatarGroup` | Formulario beta interactivo con Supabase  |
 | Predicciones en Vivo (Marquee) | Sí    | MVP  | `OddsMarquee`, `OddsCard`, `OddsCarousel`                                                               | 18 predicciones hardcodeadas de ejemplo   |
 | Métricas y Prueba Social       | Sí    | MVP  | `KeyPointsGrid`, `KeyPointCard`                                                                         | 75K+ usuarios, 92.5% precisión, 30+ ligas |
 | Dashboard Reveal (Scroll)      | Sí    | MVP  | `ScrollExpandVideo`                                                                                     | Animación scroll-driven con screenshot    |
@@ -13,7 +13,7 @@
 | Planes y Precios               | Sí    | MVP  | `PlanCard`, `[lang]/plans/page.tsx`                                                                     | Free + Standard ($9.99)                   |
 | FAQ                            | Sí    | MVP  | `FaqAccordion`, `[lang]/faq/page.tsx`                                                                   | 5 preguntas frecuentes                    |
 | Páginas Legales                | Sí    | MVP  | `[lang]/terms/`, `privacy/`, `cookies/`                                                                 | Términos, Privacidad, Cookies             |
-| Toolbar + Footer               | Sí    | MVP  | `Toolbar`, `Footer`, `TranslateButton`                                                                  | Navegación, CTA, selector de idioma       |
+| Toolbar + Footer               | Sí    | MVP  | `Toolbar`, `Footer`, `TranslateButton`, `BetaForm`                                                      | Nav, selector idioma, BetaForm en Footer  |
 | Traducción EN/ES               | Sí    | MVP  | `src/data/translations.ts`                                                                              | Sistema casero sin dependencias           |
 | Tema Dark                      | Sí    | MVP  | `global.css`                                                                                            | Solo dark mode                            |
 
@@ -48,5 +48,6 @@ Para dar una feature por completa:
 
 - [🏗️ Arquitectura Técnica](ARCHITECTURE.md)
 - [🤝 Contratos de Interfaz](CONTRACTS.md)
+- [🗄️ Modelo de Base de Datos](DATABASE.md)
 - [🗺️ Roadmap de Producto](ROADMAP.md)
 - [🎨 Sistema de Diseño](../DESIGN.md)

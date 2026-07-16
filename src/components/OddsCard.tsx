@@ -33,19 +33,21 @@ export const OddsCard: React.FC<Props> = ({
 
   return (
     <div
-      className={`flex cursor-pointer flex-col gap-2.5 rounded-2xl border border-white/10 bg-zinc-950/80 p-4 backdrop-blur-sm transition-colors hover:bg-zinc-900/80 ${className}`}
+      className={`bg-surface-deep/80 hover:bg-surface-card/80 flex cursor-pointer flex-col gap-2.5 rounded-2xl border border-white/10 p-4 backdrop-blur-sm transition-colors ${className}`}
       style={style}
     >
       {/* Row 1: EV, Time, Probability, Odds */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5 text-[11px] sm:text-xs">
           {/* EV Badge */}
-          <span className="font-semibold text-emerald-500">{formattedEv}</span>
+          <span className="text-status-success font-semibold">
+            {formattedEv}
+          </span>
 
           {/* Time (Clock Icon + Text) */}
-          <div className="flex items-center gap-1 text-zinc-400">
+          <div className="text-text-muted flex items-center gap-1">
             <svg
-              className="h-3.5 w-3.5 text-zinc-500"
+              className="text-text-faint h-3.5 w-3.5"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -58,13 +60,13 @@ export const OddsCard: React.FC<Props> = ({
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span className="font-medium text-zinc-300">{time}</span>
+            <span className="text-text-body font-medium">{time}</span>
           </div>
 
           {/* Probability (Target Icon + Text) */}
-          <div className="flex items-center gap-1 text-zinc-400">
+          <div className="text-text-muted flex items-center gap-1">
             <svg
-              className="h-3.5 w-3.5 text-zinc-500"
+              className="text-text-faint h-3.5 w-3.5"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -75,7 +77,7 @@ export const OddsCard: React.FC<Props> = ({
               <circle cx="12" cy="12" r="6" />
               <circle cx="12" cy="12" r="2" fill="currentColor" />
             </svg>
-            <span className="font-medium text-zinc-300">
+            <span className="text-text-body font-medium">
               {formattedPercent}
             </span>
           </div>
@@ -90,17 +92,17 @@ export const OddsCard: React.FC<Props> = ({
 
       {/* Row 3: Match description and status dot */}
       <div className="flex items-center justify-between gap-2">
-        <span className="line-clamp-1 flex-1 text-[11px] text-zinc-400">
+        <span className="text-text-muted line-clamp-1 flex-1 text-[11px]">
           {match}
         </span>
         {status && (
           <div
             className={`h-2 w-2 shrink-0 rounded-full ${
               status === 'won'
-                ? 'bg-emerald-500'
+                ? 'bg-status-success'
                 : status === 'lost'
-                  ? 'bg-rose-500'
-                  : 'bg-zinc-500'
+                  ? 'bg-destructive'
+                  : 'bg-text-faint'
             }`}
           />
         )}

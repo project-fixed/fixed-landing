@@ -1,26 +1,11 @@
 import '@/styles/global.css';
 import React from 'react';
-import { Prosto_One, Space_Grotesk, Space_Mono } from 'next/font/google';
-import { TranslateButton } from '@/components/TranslateButton';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/700.css';
 import { Toolbar } from '@/components/Toolbar';
 import { Footer } from '@/components/Footer';
-
-const prostoOne = Prosto_One({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-prosto-one',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
-});
-
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-space-mono',
-});
 
 interface Props {
   children: React.ReactNode;
@@ -54,9 +39,7 @@ export default async function RootLayout({ children, params }: Props) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body
-        className={`${spaceGrotesk.variable} ${spaceMono.variable} ${prostoOne.variable} antialiased`}
-      >
+      <body className="antialiased">
         {/* Gradient Shapes background element */}
         <div
           id="gradient-shapes-container"
@@ -72,12 +55,6 @@ export default async function RootLayout({ children, params }: Props) {
 
           <Footer lang={currentLang} />
         </div>
-
-        {/* Translate Button (Fixed bottom-right corner) */}
-        <TranslateButton
-          lang={currentLang}
-          className="fixed right-0 bottom-0 z-[100] rounded-none rounded-tl-xl border-r-0 border-b-0"
-        />
       </body>
     </html>
   );

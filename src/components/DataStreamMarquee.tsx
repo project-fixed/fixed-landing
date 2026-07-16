@@ -21,12 +21,12 @@ export const DataStreamMarquee: React.FC<Props> = ({ lang }) => {
           {[...row1, ...row1, ...row1].map((item, idx) => (
             <div
               key={`ds1-${idx}`}
-              className="flex items-center gap-3 rounded-lg border border-emerald-500/10 bg-zinc-950/40 px-4 py-2.5 font-mono text-xs text-zinc-400 shadow-inner backdrop-blur-sm"
+              className="bg-status-success/10 bg-surface-deep/40 text-text-muted flex items-center gap-3 rounded-lg border px-4 py-2.5 font-mono text-xs shadow-inner backdrop-blur-sm"
             >
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-              <span className="font-bold text-zinc-600">SYSTEM_LOG //</span>
-              <span className="text-emerald-500/90">{item}</span>
-              <span className="text-zinc-600">[OK]</span>
+              <span className="bg-status-success h-1.5 w-1.5 animate-pulse rounded-full" />
+              <span className="text-text-faint font-bold">SYSTEM_LOG //</span>
+              <span className="text-status-success/90">{item}</span>
+              <span className="text-text-faint">[OK]</span>
             </div>
           ))}
         </div>
@@ -38,12 +38,14 @@ export const DataStreamMarquee: React.FC<Props> = ({ lang }) => {
           {[...row2, ...row2, ...row2].map((item, idx) => (
             <div
               key={`ds2-${idx}`}
-              className="flex items-center gap-3 rounded-lg border border-white/5 bg-zinc-950/20 px-4 py-2.5 font-mono text-xs text-zinc-400 backdrop-blur-sm"
+              className="bg-surface-deep/20 text-text-muted flex items-center gap-3 rounded-lg border border-white/5 px-4 py-2.5 font-mono text-xs backdrop-blur-sm"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-zinc-600" />
-              <span className="font-bold text-zinc-700">ANALYSIS_CORE //</span>
-              <span className="text-zinc-300">{item}</span>
-              <span className="text-zinc-500">[PENDING...]</span>
+              <span className="bg-text-ghost h-1.5 w-1.5 rounded-full" />
+              <span className="text-text-ghost font-bold">
+                ANALYSIS_CORE //
+              </span>
+              <span className="text-text-body">{item}</span>
+              <span className="text-text-faint">[PENDING...]</span>
             </div>
           ))}
         </div>

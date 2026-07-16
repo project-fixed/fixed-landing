@@ -9,7 +9,8 @@
 - **Estilos**: Tailwind CSS v4 (config inline en `global.css` via `@theme`), shadcn/ui con `@base-ui/react`
 - **Animaciones**: `motion` (framer-motion) para scroll-driven, CSS keyframes para marquees y blobs
 - **Traducciones**: Sistema casero sin `next-intl` — `src/data/translations.ts`
-- **Despliegue**: Vercel, generación estática (SSG)
+- **Base de Datos**: Supabase (PostgreSQL) con SDK oficial `@supabase/supabase-js`
+- **Despliegue**: Vercel, generación estática (SSG) para las páginas principales y API dinámica en `/api/beta` para recolectar leads.
 
 ## 2. Estándares de Código
 
@@ -41,6 +42,7 @@
 - **Eliminación de ramas**: Las ramas remotas se eliminan automáticamente tras el merge del PR (configurado en GitHub Settings). Se recomienda realizar `git fetch --prune` localmente.
 - **Para crear una rama nueva**, ejecuta la skill `dev-flow`
 - **Para push seguro + PR**, ejecuta la skill `dev-flow`
+- **Plantillas (PRs/Issues)**: Al crear un Pull Request, SIEMPRE lee y completa estrictamente la plantilla en `.github/PULL_REQUEST_TEMPLATE.md`. Al crear un Issue o HU, evalúa y usa la plantilla adecuada de `.github/ISSUE_TEMPLATE/` (ej. `bug_report.md` o `feature_request.md`).
 - **Test Runner**: No configurado (sin tests en este proyecto)
 - **Commits**: Conventional Commits (validado por commitlint + husky). Los cambios en documentación (en `docs/`, `AGENTS.md`, `DESIGN.md`, `README.md`) siempre deben confirmarse de forma independiente con el tipo `docs` (ej: `docs(scope): mensaje`) y nunca mezclarse con cambios de código en el mismo commit. Evita crear commits consecutivos para cambios muy pequeños o correcciones menores (ej: typos o adiciones incrementales) sobre archivos ya modificados en el commit anterior; si los commits aún son locales, utiliza `git commit --amend` o `git reset --soft HEAD~1` para agruparlos antes del push.
 - **Linter**: ESLint 10 con `@eslint/js` y `typescript-eslint`
@@ -54,6 +56,7 @@ La documentación del proyecto vive en `docs/`:
 
 - `docs/ARCHITECTURE.md` — Arquitectura técnica
 - `docs/CONTRACTS.md` — Contratos de interfaz
+- `docs/DATABASE.md` — Modelo de base de datos
 - `docs/ROADMAP.md` — Roadmap de producto
 - `docs/SCOPE.md` — Alcance MVP
 

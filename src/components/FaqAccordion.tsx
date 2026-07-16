@@ -42,7 +42,7 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
               className={`flex size-8 cursor-pointer items-center justify-center rounded-full text-xs font-extrabold transition-all duration-200 ${
                 isActive
                   ? 'bg-primary scale-105 text-white shadow-lg'
-                  : 'border border-white/10 bg-white/5 text-zinc-300 hover:bg-white/15'
+                  : 'text-text-body border border-white/10 bg-white/5 hover:bg-white/15'
               }`}
             >
               {num}
@@ -65,7 +65,7 @@ export const FaqAccordion: React.FC<Props> = ({ lang }) => {
             <AccordionTrigger className="hover:text-primary py-4 text-left text-base font-bold text-white transition-colors hover:no-underline">
               {q.title}
             </AccordionTrigger>
-            <AccordionContent className="pt-1 pb-4 text-sm leading-relaxed text-zinc-300">
+            <AccordionContent className="text-text-body pt-1 pb-4 text-sm leading-relaxed">
               {q.answer}
             </AccordionContent>
           </AccordionItem>

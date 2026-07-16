@@ -7,7 +7,7 @@ const PitchGeometryBackground = () => {
       style={{ perspective: '1200px' }}
     >
       {/* Fake Volumetric Ambient Light (transparent edges so it doesn't cover the original background) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(62,93,108,0.20)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-primary)_0%,transparent_70%)] opacity-20" />
 
       {/* 3D Pitch Container */}
       <div
@@ -44,14 +44,26 @@ const PitchGeometryBackground = () => {
               x2="100%"
               y2="0%"
             >
-              <stop offset="0%" stopColor="#4a7285" stopOpacity="0" />
-              <stop offset="50%" stopColor="#4a7285" stopOpacity="1" />
-              <stop offset="100%" stopColor="#4a7285" stopOpacity="0" />
+              <stop
+                offset="0%"
+                stopColor="var(--color-primary)"
+                stopOpacity="0"
+              />
+              <stop
+                offset="50%"
+                stopColor="var(--color-primary)"
+                stopOpacity="1"
+              />
+              <stop
+                offset="100%"
+                stopColor="var(--color-primary)"
+                stopOpacity="0"
+              />
             </linearGradient>
           </defs>
 
           {/* Subdued Tech Grid underneath the pitch */}
-          <g stroke="#4a7285" strokeWidth="1" strokeOpacity="0.15">
+          <g stroke="var(--color-primary)" strokeWidth="1" strokeOpacity="0.15">
             {Array.from({ length: 40 }).map((_, i) => (
               <line key={`h-${i}`} x1="0" y1={i * 20} x2="1200" y2={i * 20} />
             ))}
@@ -73,7 +85,7 @@ const PitchGeometryBackground = () => {
             {/* Halfway Line & Center Circle */}
             <line x1="600" y1="100" x2="600" y2="700" />
             <circle cx="600" cy="400" r="100" />
-            <circle cx="600" cy="400" r="4" fill="#4a7285" />
+            <circle cx="600" cy="400" r="4" fill="var(--color-primary)" />
 
             {/* Left Penalty Box */}
             <rect x="100" y="220" width="200" height="360" />
