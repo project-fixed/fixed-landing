@@ -34,7 +34,13 @@ export const AITimeline: React.FC<Props> = ({ lang }) => {
 
   return (
     <section className="page-section relative overflow-hidden pt-24 pb-8">
-      <div className="mx-auto w-full max-w-[1200px] px-6">
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-20">
+        {/* Section label */}
+        <div className="mb-4">
+          <span className="text-text-ghost font-mono text-xs tracking-widest uppercase">
+            // process
+          </span>
+        </div>
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
           {/* Left Side: Sticky Header */}
           <div className="w-full lg:w-5/12">

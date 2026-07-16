@@ -41,14 +41,17 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
   ];
 
   return (
-    <section className="page-section flex flex-col items-center justify-center overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
-      <div className="w-full max-w-[1200px]">
+    <section className="page-section flex flex-col overflow-hidden px-4 py-24 sm:px-8 lg:px-12 xl:px-20">
+      <div className="w-full">
         {/* Header */}
-        <div className="mb-16 text-center">
+        <div className="mb-16">
+          <span className="text-text-ghost mb-4 block font-mono text-xs tracking-widest uppercase">
+            // layers
+          </span>
           <h2 className="mb-4 text-4xl leading-tight font-extrabold text-white md:text-5xl">
             {data.title}
           </h2>
-          <p className="text-text-muted mx-auto max-w-[600px] text-base leading-relaxed">
+          <p className="text-text-muted max-w-[600px] text-base leading-relaxed">
             {data.description}
           </p>
         </div>

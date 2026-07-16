@@ -17,12 +17,10 @@ colors:
   warning: '#facc15'
   error: '#ef4444'
 typography:
-  display:
-    fontFamily: 'Prosto One, sans-serif'
   sans:
-    fontFamily: 'Space Grotesk, sans-serif'
+    fontFamily: 'Inter, ui-sans-serif, sans-serif'
   mono:
-    fontFamily: 'Space Mono, monospace'
+    fontFamily: 'JetBrains Mono, ui-monospace, monospace'
 rounded:
   sm: 4px
   md: 8px
@@ -63,9 +61,8 @@ La paleta se centra en steel blue como color principal de acento sobre fondos os
 
 ## Typography
 
-- **Display (Prosto One)**: Títulos principales, hero, secciones de alto impacto
-- **Sans (Space Grotesk)**: Texto body, navegación, cards, párrafos
-- **Mono (Space Mono)**: Datos numéricos, odds, porcentajes, terminal/datastream
+- **Sans (Inter)**: Texto body, headings, navegación, cards, párrafos, botones
+- **Mono (JetBrains Mono)**: Datos numéricos, odds, porcentajes, terminal/datastream
 
 ## Layout
 
@@ -118,6 +115,6 @@ La paleta se centra en steel blue como color principal de acento sobre fondos os
 ### Don't:
 
 - No usar colores brillantes o saturados fuera de la paleta definida
-- No mezclar tipografías fuera de las 3 definidas
+- No mezclar tipografías fuera de las 2 definidas
 - No agregar sombras excesivas o múltiples colores de borde
 - No usar jerga de tipster ("fijas 100% seguras")

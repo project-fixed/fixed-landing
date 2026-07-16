@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { useTranslations } from '@/data/translations';
-import { ButtonSparkle } from '@/components/ui/ButtonSparkle';
 import { Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -127,20 +126,30 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
                 className="placeholder:text-text-faint flex-1 bg-transparent px-4 py-2 text-white outline-none disabled:opacity-50"
                 required
               />
-              <ButtonSparkle
+              <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="px-6 py-2.5 text-sm"
+                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:bg-white/20 active:scale-95 disabled:opacity-40"
+                aria-label="Submit"
               >
                 {status === 'loading' ? (
-                  <span className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin text-white" />
-                    {t.landing.home.hero.betaLoadingButton}
-                  </span>
+                  <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  t.landing.home.hero.betaButton
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
                 )}
-              </ButtonSparkle>
+              </button>
             </form>
 
             <AnimatePresence>

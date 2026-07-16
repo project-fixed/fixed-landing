@@ -1,14 +1,13 @@
 @import 'tailwindcss';
 
 :root {
-  /* Fonts are defined directly in @theme block below, using Next.js variables */
+  /* Fonts are defined directly in @theme block below */
 }
 
 @theme {
   /* Fonts */
-  --font-sans: var(--font-space-grotesk);
-  --font-display: var(--font-prosto-one);
-  --font-mono: var(--font-space-mono);
+  --font-sans: 'Inter', ui-sans-serif, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Primary Accent: Steel Blue Ramp */
   --color-primary-light: #9ec1d4;
@@ -33,7 +32,7 @@
   --color-text-body: oklch(0.7 0 0);
   --color-text-muted: oklch(0.55 0 0);
   --color-text-faint: oklch(0.4 0 0);
-  --color-text-ghost: oklch(0.32 0 0);
+  --color-text-ghost: oklch(0.4 0 0);
 
   /* Status Tokens */
   --color-status-success: #22c55e;
@@ -255,6 +254,24 @@
       transform: translateY(-20px) rotate(2deg);
     }
   }
+
+  @keyframes cursor-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@utility hero-accent-line {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--color-primary);
+  margin-top: 0.5rem;
 }
 
 /* Default Dark Theme Settings for Shadcn and Tailwind v4 */
@@ -312,7 +329,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
 }
 
 /* Ensure code components and monospace tags resolve to the mono font variable */
