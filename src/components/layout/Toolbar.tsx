@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useTranslations, type Lang } from '../data/translations';
-import imgLogo from '../assets/images/logo.png';
+import { useTranslations, type Lang } from '@/data/translations';
+import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
 import imgUS from '@/assets/images/united-states.png';
 
@@ -138,7 +138,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         {/* Logo */}
         <Link
           href={homePath}
-          className="logo flex cursor-pointer items-center select-none"
+          className="logo flex cursor-pointer items-center gap-2 select-none"
           onClick={closeMenu}
         >
           <Image src={imgLogo} alt="Logo" className="size-9" />
@@ -216,7 +216,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       <div
         ref={panelRef}
         id="nav-dropdown-panel"
-        className={`bg-surface-deep/95 absolute top-full right-20 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out sm:right-6 ${
+        className={`bg-surface-deep/95 absolute top-full right-0 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out sm:right-6 lg:right-20 ${
           isMenuOpen
             ? 'pointer-events-auto translate-y-0 scale-100 opacity-100'
             : 'pointer-events-none -translate-y-3 scale-95 opacity-0'

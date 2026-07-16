@@ -1,11 +1,11 @@
 import React from 'react';
-import { useTranslations, type Lang } from '../data/translations';
+import { useTranslations, type Lang } from '@/data/translations';
 
 export interface Props {
   lang: Lang;
 }
 
-export const AILayers: React.FC<Props> = ({ lang }) => {
+export const AiLayersSection: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const data = t.landing.home.ai.layers;
 
@@ -43,7 +43,6 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
   return (
     <section className="page-section flex flex-col overflow-hidden px-4 py-24 sm:px-8 lg:px-12 xl:px-20">
       <div className="w-full">
-        {/* Header */}
         <div className="mb-16">
           <span className="text-text-ghost mb-4 block font-mono text-xs tracking-widest uppercase">
             // layers
@@ -56,14 +55,12 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
           </p>
         </div>
 
-        {/* Staircase Grid */}
         <div className="grid grid-cols-1 items-end gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {layers.map((layer) => (
             <div
               key={layer.level}
               className={`group bg-surface-card/40 hover:bg-surface-card/80 relative flex flex-col justify-end overflow-hidden rounded-[20px] border border-white/5 p-6 transition-all duration-500 hover:border-white/10 md:p-8 ${layer.heightClass}`}
             >
-              {/* Abstract hashed background pattern */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-[0.02] mix-blend-overlay"
                 style={{
@@ -72,7 +69,6 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
                 }}
               ></div>
 
-              {/* Top Element (Icon & Level) */}
               <div className="absolute top-6 left-6 flex flex-col gap-3">
                 <div
                   className="text-primary opacity-80 transition-opacity group-hover:opacity-100"
@@ -86,7 +82,6 @@ export const AILayers: React.FC<Props> = ({ lang }) => {
                 </span>
               </div>
 
-              {/* Bottom Content */}
               <div className="relative z-10 mt-auto">
                 <h3 className="group-hover:text-primary mb-3 font-mono text-xl font-bold tracking-tight text-white transition-colors md:text-2xl">
                   {layer.title}

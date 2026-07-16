@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations, type Lang } from '../data/translations';
-import { BetaForm } from '@/components/BetaForm';
-import imgLogo from '../assets/images/logo.png';
+import { useTranslations, type Lang } from '@/data/translations';
+import { BetaForm } from '@/components/shared/BetaForm';
+import imgLogo from '@/assets/images/logo.png';
 
 interface Props {
   lang: Lang;

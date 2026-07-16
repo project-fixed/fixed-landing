@@ -36,7 +36,7 @@ export function ScrollExpandVideo({
     [0, 1],
     ['min(50vw, 600px)', '100vw'],
   );
-  const height = useTransform(smoothProgress, [0, 1], ['40vh', '100vh']);
+  const height = useTransform(smoothProgress, [0, 1], ['60vh', '100vh']);
   const borderRadius = useTransform(smoothProgress, [0, 1], ['24px', '0px']);
   const padding = useTransform(smoothProgress, [0, 1], ['8px', '0px']); // Animate padding of outer wrapper
   const innerRadius = useTransform(smoothProgress, [0, 1], ['16px', '0px']); // Animate inner border radius

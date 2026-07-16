@@ -1,5 +1,5 @@
 import React from 'react';
-import { OddsCard } from './OddsCard';
+import { OddsCard } from '@/components/cards/OddsCard';
 
 const oddsData = [
   {

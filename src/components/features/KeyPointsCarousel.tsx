@@ -1,6 +1,6 @@
 import React from 'react';
-import { KeyPointCard } from './KeyPointCard';
-import { useTranslations, type Lang } from '../data/translations';
+import { KeyPointCard } from '@/components/cards/KeyPointCard';
+import { useTranslations, type Lang } from '@/data/translations';
 
 export interface Props {
   lang: Lang;

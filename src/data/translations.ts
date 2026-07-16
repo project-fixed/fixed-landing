@@ -9,7 +9,7 @@ export const translations = {
       faq: 'FAQ',
     },
     button: {
-      join: 'Join Fixed',
+      join: 'Join Beta',
       getStarted: 'Get Started',
       selectPlan: 'Select Plan',
       currentPlan: 'Current Plan',
@@ -256,7 +256,7 @@ export const translations = {
       faq: 'Manual',
     },
     button: {
-      join: 'Ingresar',
+      join: 'Únete a la Beta',
       getStarted: 'Comenzar',
       selectPlan: 'Seleccionar Plan',
       currentPlan: 'Plan Actual',
@@ -502,6 +502,7 @@ export const translations = {
 };
 
 export type Lang = 'en' | 'es';
+export type Translations = (typeof translations)['en'];
 
 export function useTranslations(lang: Lang) {
   return translations[lang] || translations.en;

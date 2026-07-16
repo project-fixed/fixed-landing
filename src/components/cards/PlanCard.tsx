@@ -1,8 +1,8 @@
 import React from 'react';
 
-import type { Plan } from '../data/plans';
-import { useTranslations, type Lang } from '../data/translations';
-import { ButtonArrow } from './ui/ButtonArrow';
+import type { Plan } from '@/data/plans';
+import { useTranslations, type Lang } from '@/data/translations';
+import { ButtonArrow } from '@/components/ui/ButtonArrow';
 
 interface Props {
   plan: Plan;

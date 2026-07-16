@@ -1,6 +1,6 @@
 import React from 'react';
-import { OddsCard } from './OddsCard';
-import { type Lang } from '../data/translations';
+import { OddsCard } from '@/components/cards/OddsCard';
+import { type Lang } from '@/data/translations';
 
 const oddsData1 = [
   {

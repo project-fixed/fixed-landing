@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslations, type Lang } from '../data/translations';
+import { useTranslations, type Lang } from '@/data/translations';
 
 export interface Props {
   lang: Lang;

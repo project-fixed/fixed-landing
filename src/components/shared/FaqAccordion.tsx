@@ -6,8 +6,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from './ui/accordion';
-import { useTranslations, type Lang } from '../data/translations';
+} from '@/components/ui/accordion';
+import { useTranslations, type Lang } from '@/data/translations';
 
 interface Props {
   lang: Lang;

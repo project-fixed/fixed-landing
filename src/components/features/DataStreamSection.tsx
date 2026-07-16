@@ -1,21 +1,19 @@
 import React from 'react';
-import { useTranslations, type Lang } from '../data/translations';
+import { useTranslations, type Lang } from '@/data/translations';
 
 interface Props {
   lang: Lang;
 }
 
-export const DataStreamMarquee: React.FC<Props> = ({ lang }) => {
+export const DataStreamSection: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const data = t.landing.home.datastream;
 
-  // Dividimos los datos en dos filas para alternar
   const row1 = data.slice(0, 4);
   const row2 = data.slice(4, 8);
 
   return (
     <div className="mask-marquee flex w-full flex-col gap-3.5 overflow-hidden border-y border-white/5 bg-black/10 py-8">
-      {/* Fila 1: Desplazamiento a la izquierda */}
       <div className="scroller w-full">
         <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
           {[...row1, ...row1, ...row1].map((item, idx) => (
@@ -32,7 +30,6 @@ export const DataStreamMarquee: React.FC<Props> = ({ lang }) => {
         </div>
       </div>
 
-      {/* Fila 2: Desplazamiento a la derecha */}
       <div className="scroller w-full">
         <div className="scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4">
           {[...row2, ...row2, ...row2].map((item, idx) => (
