@@ -58,10 +58,10 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "prettier": "^3.9.5",
-    "prettier-plugin-tailwindcss": "^0.8.0",
-    "semantic-release": "^25.0.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "semantic-release": "^25.0.7",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": ">=6.0.3 <7.0.0",
-    "typescript-eslint": "^8.63.0"
+    "typescript": ">=6.0.3 <8.0.0",
+    "typescript-eslint": "^8.64.0"
   }
 }
