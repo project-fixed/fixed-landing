@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTranslations } from '@/data/translations';
-import { OddsMarquee } from '@/components/features/OddsMarquee';
-import { HeroSection } from './components/HeroSection';
-import { FeaturesSection } from './components/FeaturesSection';
-import { AiTimelineSection } from './components/AiTimelineSection';
-import { DataStreamSection } from '@/components/features/DataStreamSection';
-import { AiLayersSection } from './components/AiLayersSection';
-import { BrandsSection } from './components/BrandsSection';
-import { AboutSection } from './components/AboutSection';
+import { OddsMarquee } from '@/app/[lang]/(home)/components/widgets/OddsMarquee';
+import { HeroSection } from './components/sections/HeroSection';
+import { FeaturesSection } from './components/sections/FeaturesSection';
+import { AiTimelineSection } from './components/sections/AiTimelineSection';
+import { DataStreamSection } from '@/app/[lang]/(home)/components/widgets/DataStreamSection';
+import { AiLayersSection } from './components/sections/AiLayersSection';
+import { BrandsSection } from './components/sections/BrandsSection';
+import { AboutSection } from './components/sections/AboutSection';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }];
@@ -25,8 +25,6 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[60vh] bg-[radial-gradient(ellipse_at_50%_-10%,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_65%)]" />
-
       <HeroSection currentLang={currentLang} t={t} />
 
       <OddsMarquee lang={currentLang} />

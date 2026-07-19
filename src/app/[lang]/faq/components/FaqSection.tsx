@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Lang } from '@/data/translations';
 import { useTranslations } from '@/data/translations';
-import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { FaqAccordion } from '@/app/[lang]/faq/components/FaqAccordion';
 
 interface Props {
   lang: Lang;

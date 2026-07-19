@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   // output: 'export',
   // Disable server-side react errors in console for production
   reactStrictMode: true,
+  transpilePackages: ['@cognilot/ui'],
 };
 
 export default nextConfig;

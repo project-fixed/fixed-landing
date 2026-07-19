@@ -23,7 +23,7 @@ type LegalDoc = {
 const cookiesContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Cookies Policy',
-    lastUpdated: 'Last updated: June 12, 2026',
+    lastUpdated: 'Last Updated June 12, 2026',
     sections: [
       {
         title: '1. What are Cookies?',
@@ -110,7 +110,7 @@ const cookiesContent: Record<Lang, LegalDoc> = {
 const privacyContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Privacy Policy',
-    lastUpdated: 'Last updated: June 12, 2026',
+    lastUpdated: 'Last Updated June 12, 2026',
     sections: [
       {
         title: '1. Information Collection',
@@ -173,7 +173,7 @@ const privacyContent: Record<Lang, LegalDoc> = {
 const termsContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Terms of Service',
-    lastUpdated: 'Last updated: June 12, 2026',
+    lastUpdated: 'Last Updated June 12, 2026',
     sections: [
       {
         title: '1. Acceptance of Terms',
