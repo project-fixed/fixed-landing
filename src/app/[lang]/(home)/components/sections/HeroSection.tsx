@@ -1,10 +1,13 @@
-import React from 'react';
-import { ChevronDown } from 'lucide-react';
+'use client';
+
+import React, { useRef } from 'react';
+import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import type { Translations } from '@/data/translations';
 import type { Lang } from '@/data/translations';
 import { HeroBadge } from '@/app/[lang]/(home)/components/ui/HeroBadge';
 import { HeroDecorativeGrid } from '@/app/[lang]/(home)/components/ui/HeroDecorativeGrid';
 import { BetaForm } from '@/shared/components/widgets/BetaForm';
+import { AnimatedStat } from '@/shared/components/ui/AnimatedStat';
 
 interface HeroSectionProps {
   currentLang: Lang;
@@ -12,6 +15,30 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
+  const containerRef = useRef<HTMLElement>(null);
+
+  // Mouse Tracking Parallax
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 30, stiffness: 100 };
+  const mouseXSpring = useSpring(mouseX, springConfig);
+  const mouseYSpring = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (typeof window === 'undefined') return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 2;
+    const y = (clientY / innerHeight - 0.5) * 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const gridX = useTransform(mouseXSpring, [-1, 1], [25, -25]);
+  const gridY = useTransform(mouseYSpring, [-1, 1], [25, -25]);
+  const formX = useTransform(mouseXSpring, [-1, 1], [-8, 8]);
+  const formY = useTransform(mouseYSpring, [-1, 1], [-8, 8]);
   const heroStats = [
     {
       value: t.landing.home.hero.key.point1.title,
@@ -34,20 +61,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
   return (
     <section
       id="hero"
-      className="page-section overflow-hidden pt-24 md:pt-38 lg:pb-16"
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="page-section relative overflow-hidden pt-16"
     >
       <div
         className="pointer-events-none absolute inset-y-0 left-6 z-0 w-px bg-white/0 select-none md:left-12 lg:left-20"
         aria-hidden="true"
       />
 
-      <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay" />
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{ x: gridX, y: gridY }}
+      >
+        <HeroDecorativeGrid />
+      </motion.div>
 
-      <HeroDecorativeGrid />
-
-      <div className="relative z-10 flex w-full flex-col justify-between md:px-12 lg:px-20">
-        <div className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex flex-col items-start gap-4">
+      <div className="relative z-10 flex w-full flex-col justify-between gap-6 2xl:px-20">
+        {/* Columna Izquierda (Texto y Título amplio) */}
+        <div className="flex flex-col items-start gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="flex flex-col items-start gap-6"
+          >
             <HeroBadge
               label={
                 currentLang === 'es'
@@ -56,7 +94,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
               }
             />
 
-            <h1 className="font-mono text-[clamp(2.8rem,7vw,5rem)] leading-[1.2] font-extrabold tracking-tight text-white">
+            <h1 className="title-hero">
               <span className="text-primary">
                 {t.landing.home.hero.title.start}
               </span>
@@ -69,48 +107,49 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
               </span>
             </h1>
 
-            <span className="bg-primary block hidden h-[10px] w-14 md:block" />
+            <span className="bg-primary hidden h-[10px] w-14 lg:block" />
 
-            <p className="text-text-muted mt-2 max-w-[400px] leading-relaxed">
+            <p className="text-text-muted max-w-[440px] leading-relaxed">
               {t.landing.home.hero.description}
             </p>
-
-            <div className="w-full lg:hidden">
-              <BetaForm lang={currentLang} />
-            </div>
-
-            <div className="mt-10 flex lg:hidden">
-              <a
-                href="#features"
-                className="text-text-muted hover:text-primary transition-colors"
-                aria-label="Scroll to features"
-              >
-                <ChevronDown className="size-6 animate-bounce" />
-              </a>
-            </div>
-          </div>
-
-          <div className="hidden h-full w-[380px] shrink-0 flex-col pb-18 lg:flex">
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
-              <p className="text-text mb-1 font-mono text-xs tracking-widest capitalize">
-                {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
-              </p>
-              <p className="text-text-muted mb-5 text-sm font-medium">
-                {currentLang === 'es'
-                  ? 'Únete a la lista de espera y sé el primero en probar Fixed.'
-                  : 'Join the waitlist and be the first to try Fixed.'}
-              </p>
-              <BetaForm lang={currentLang} />
-            </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="-translate-y-12">
-          <div className="flex flex-wrap items-center justify-start gap-y-4 lg:justify-end">
+        {/* Bloque Flotante Derecha (Tarjeta Early Access + Stats en Parallax) */}
+        <motion.div
+          className="relative flex flex-col gap-6 lg:absolute lg:right-0 lg:bottom-4 lg:z-20"
+          style={{ x: formX, y: formY }}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+        >
+          {/* Tarjeta de Early Access */}
+          <div className="ml-auto hidden w-[320px] rounded-2xl border border-white/15 bg-white/10 p-6 text-right backdrop-blur-md lg:block xl:w-[400px]">
+            <p className="text-text mb-1 font-mono text-xs tracking-widest capitalize">
+              {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
+            </p>
+            <p className="text-text-muted mb-5 text-xs font-medium">
+              {currentLang === 'es'
+                ? 'Únete a la lista de espera y sé el primero en probar Fixed.'
+                : 'Join the waitlist and be the first to try Fixed.'}
+            </p>
+            <BetaForm lang={currentLang} />
+          </div>
+          <div className="ml-auto lg:hidden">
+            <BetaForm lang={currentLang} />
+          </div>
+
+          {/* Estadísticas */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+            className="flex flex-wrap items-center justify-end gap-y-4"
+          >
             {heroStats.map((stat, i) => (
               <div key={i} className="flex items-baseline">
                 <span className="mr-2 font-mono text-base font-bold text-white">
-                  {stat.value}
+                  <AnimatedStat value={stat.value} />
                 </span>
                 <span className="text-text-muted text-xs">{stat.label}</span>
                 {i < heroStats.length - 1 && (
@@ -118,8 +157,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
                 )}
               </div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { OddsCard } from '@/app/[lang]/(home)/components/widgets/OddsCard';
 import { type Lang } from '@/data/translations';
-
+import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 const oddsData1 = [
   {
     time: '21:00',
@@ -236,62 +236,66 @@ interface Props {
 export const OddsMarquee: React.FC<Props> = ({ lang }) => {
   return (
     <div className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black/20 py-6 md:py-10">
-      {/* Row 1: Scroll Left */}
-      <div className="scroller w-full">
-        <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
-          {[...oddsData1, ...oddsData1].map((item, idx) => (
-            <OddsCard
-              key={`r1-${idx}`}
-              time={item.time}
-              percent={item.percent}
-              odds={item.odds}
-              type={getLocalizedType(item.type, lang)}
-              match={item.match}
-              ev={item.ev}
-              status={item.status as 'won' | 'lost' | 'pending'}
-              className="min-w-[280px]"
-            />
-          ))}
+      <ScrollReveal
+        direction="up"
+        delay={0.2}
+        className="flex w-full flex-col gap-4"
+      >
+        {/* Row 1: Scroll Left */}
+        <div className="scroller w-full">
+          <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
+            {[...oddsData1, ...oddsData1].map((item, idx) => (
+              <OddsCard
+                key={`r1-${idx}`}
+                time={item.time}
+                percent={item.percent}
+                odds={item.odds}
+                type={getLocalizedType(item.type, lang)}
+                match={item.match}
+                ev={item.ev}
+                status={item.status as 'won' | 'lost' | 'pending'}
+                className="min-w-[280px]"
+              />
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Row 2: Scroll Right */}
-      <div className="scroller w-full">
-        <div className="scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4">
-          {[...oddsData2, ...oddsData2].map((item, idx) => (
-            <OddsCard
-              key={`r2-${idx}`}
-              time={item.time}
-              percent={item.percent}
-              odds={item.odds}
-              type={getLocalizedType(item.type, lang)}
-              match={item.match}
-              ev={item.ev}
-              status={item.status as 'won' | 'lost' | 'pending'}
-              className="min-w-[280px]"
-            />
-          ))}
+        {/* Row 2: Scroll Right */}
+        <div className="scroller w-full">
+          <div className="scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4">
+            {[...oddsData2, ...oddsData2].map((item, idx) => (
+              <OddsCard
+                key={`r2-${idx}`}
+                time={item.time}
+                percent={item.percent}
+                odds={item.odds}
+                type={getLocalizedType(item.type, lang)}
+                match={item.match}
+                ev={item.ev}
+                status={item.status as 'won' | 'lost' | 'pending'}
+                className="min-w-[280px]"
+              />
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Row 3: Scroll Left */}
-      <div className="scroller w-full">
-        <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
-          {[...oddsData3, ...oddsData3].map((item, idx) => (
-            <OddsCard
-              key={`r3-${idx}`}
-              time={item.time}
-              percent={item.percent}
-              odds={item.odds}
-              type={getLocalizedType(item.type, lang)}
-              match={item.match}
-              ev={item.ev}
-              status={item.status as 'won' | 'lost' | 'pending'}
-              className="min-w-[280px]"
-            />
-          ))}
+        {/* Row 3: Scroll Left */}
+        <div className="scroller w-full">
+          <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
+            {[...oddsData3, ...oddsData3].map((item, idx) => (
+              <OddsCard
+                key={`r3-${idx}`}
+                time={item.time}
+                percent={item.percent}
+                odds={item.odds}
+                type={getLocalizedType(item.type, lang)}
+                match={item.match}
+                ev={item.ev}
+                status={item.status as 'won' | 'lost' | 'pending'}
+                className="min-w-[280px]"
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
     </div>
   );
 };

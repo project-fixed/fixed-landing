@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslations, type Lang } from '@/data/translations';
 import { BetaForm } from '@/shared/components/widgets/BetaForm';
-
 import { SectionBadge } from '@/shared/components/ui/SectionBadge';
+import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 
 interface Props {
   lang: Lang;
@@ -40,13 +40,15 @@ export const Footer: React.FC<Props> = ({ lang }) => {
       <div className="relative flex flex-col px-4 py-24 sm:px-8 lg:px-12 xl:px-20">
         {/* CTA content: 2-column on desktop */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
-          <div className="lg:max-w-[560px]">
-            <h2 className="font-mono text-[clamp(2rem,5vw,3.5rem)] leading-[1.0] font-bold tracking-tight text-white uppercase">
-              {ctaHeadline}
-            </h2>
-          </div>
+          <ScrollReveal direction="up" delay={0.1} className="lg:max-w-[560px]">
+            <h2 className="title-section">{ctaHeadline}</h2>
+          </ScrollReveal>
 
-          <div className="flex w-full flex-col justify-end gap-4 lg:max-w-[380px]">
+          <ScrollReveal
+            direction="up"
+            delay={0.25}
+            className="ml-auto flex flex-col justify-end gap-4 lg:max-w-[400px]"
+          >
             {/* Top horizontal separator accent */}
             <div className="flex items-center gap-4">
               <div className="h-px flex-1 bg-linear-to-l from-white/10 to-transparent" />
@@ -54,12 +56,16 @@ export const Footer: React.FC<Props> = ({ lang }) => {
             </div>
             <p className="text-text-muted text-end text-sm">{ctaSubtext}</p>
             <BetaForm lang={lang} />
-          </div>
+          </ScrollReveal>
         </div>
       </div>
 
       {/* ─── Footer Links + Legal ────────────────────────────── */}
-      <div className="border-t border-white/[0.06] px-4 pt-12 pb-8 sm:px-8 lg:px-12 xl:px-20">
+      <ScrollReveal
+        direction="up"
+        delay={0.2}
+        className="relative z-10 flex flex-col gap-12 border-t border-white/[0.06] bg-black/40 px-4 py-12 backdrop-blur-xl sm:px-8 lg:px-12 xl:px-20"
+      >
         {/* Links row */}
         <div className="mb-12 flex flex-wrap items-start justify-between gap-12">
           {/* Brand */}
@@ -148,7 +154,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
             </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </footer>
   );
 };

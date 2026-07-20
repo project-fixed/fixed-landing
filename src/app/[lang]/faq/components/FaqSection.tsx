@@ -13,9 +13,7 @@ export const FaqSection: React.FC<Props> = ({ lang }) => {
   return (
     <>
       <div className="mx-auto mb-12 w-full max-w-[700px] text-center">
-        <h2 className="mb-6 text-5xl leading-tight font-extrabold text-white">
-          {t.landing.faq.title}
-        </h2>
+        <h2 className="title-section mb-6">{t.landing.faq.title}</h2>
         <p className="text-text-body mx-auto max-w-[600px] text-base leading-relaxed max-sm:px-4">
           {t.landing.faq.description}
         </p>

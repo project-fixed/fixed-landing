@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, type ReactNode } from 'react';
 import { List } from 'lucide-react';
+import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 
 export interface LegalSection {
   id: string;
@@ -60,7 +61,11 @@ export function ReadmeLayout({
 
   return (
     <section className="container mx-auto flex w-full flex-col items-center justify-center px-4 pt-28 pb-16 sm:px-6 lg:px-8">
-      <div className="bg-bg-primary/90 max-w-[900px] rounded-xl border border-white/10 shadow-2xl backdrop-blur-2xl">
+      <ScrollReveal
+        direction="up"
+        delay={0.1}
+        className="bg-bg-primary/90 max-w-[900px] rounded-xl border border-white/10 shadow-2xl backdrop-blur-2xl"
+      >
         {/* ── Title Bar ── */}
         <div className="flex items-center gap-3 border-b border-white/5 bg-white/5 px-5 py-3.5 select-none">
           <span className="font-mono text-[10px] font-bold tracking-widest text-white/30 uppercase">
@@ -118,7 +123,7 @@ export function ReadmeLayout({
             </nav>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -90,15 +90,23 @@
   position: relative;
   width: 100%;
   padding-inline: 1rem;
-  @media (width >= 40rem) {
+  @media (width > 640px) {
     padding-inline: 2rem;
   }
-  @media (width >= 64rem) {
+  @media (width > 1024px) {
     padding-inline: 3rem;
   }
-  @media (width >= 80rem) {
+  @media (width > 1280px) {
     padding-inline: 5rem;
   }
+}
+
+@utility title-hero {
+  @apply font-mono text-[clamp(2.8rem,7vw,5rem)] leading-[1.2] font-extrabold tracking-tight text-white;
+}
+
+@utility title-section {
+  @apply font-mono text-[clamp(2rem,5vw,3.5rem)] leading-tight font-extrabold tracking-tight text-white uppercase;
 }
 
 /* Default Dark Theme Settings for Shadcn and Tailwind v4 */
@@ -156,7 +164,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 pre,

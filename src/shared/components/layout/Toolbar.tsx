@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -134,7 +135,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
 
   /** Detect scroll for glassmorphism header */
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 600);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -169,28 +170,40 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header
+    <motion.header
       id="main-toolbar"
-      className={`fixed top-0 right-0 left-0 z-50 w-full px-6 pt-0 transition-all duration-500 ease-in-out md:pt-2 ${
-        isScrolled ? 'border-none border-white/5' : 'border-b border-white/5'
-      }`}
+      initial={{ y: -70, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="fixed top-0 right-0 left-0 z-50 w-full px-6 pt-0 transition-all duration-500 ease-in-out md:pt-2"
     >
+      {/* ─── Top-down Gradient & Blur Overlay Layer ──────────────────────────── */}
+      <div
+        className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-[300px] bg-linear-to-b from-black/0 via-transparent to-transparent [mask-image:linear-gradient(to_bottom,black_20%,transparent_100%)] transition-opacity duration-500 ${
+          isScrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+
       {/* ─── Main Bar ──────────────────────────────────────────── */}
       <div
         id="toolbar-container"
-        className="mx-auto flex w-full items-center justify-between rounded-full border border-transparent bg-transparent py-4"
+        className={`mx-auto flex w-full items-center justify-between border-b py-4 transition-colors duration-500 ease-in-out ${
+          isScrolled ? 'border-transparent' : 'border-white/5'
+        }`}
       >
         {/* Logo */}
         <Link
           href={homePath}
-          className="logo flex cursor-pointer items-center gap-2 select-none"
+          className="logo flex cursor-pointer items-center select-none"
           onClick={closeMenu}
         >
-          <Image src={imgLogo} alt="Logo" className="size-9" />
+          <Image src={imgLogo} alt="Logo" className="relative z-10 size-9" />
           <span
             id="brand"
-            className={`text-md font-mono font-bold text-white uppercase transition-opacity duration-300 max-[425px]:hidden ${
-              isScrolled ? 'w-0 overflow-hidden opacity-0' : 'opacity-100'
+            className={`text-md overflow-hidden font-mono font-bold whitespace-nowrap text-white uppercase transition-all duration-500 ease-out max-[425px]:hidden ${
+              isScrolled
+                ? 'ml-0 max-w-0 -translate-x-5 opacity-0'
+                : 'ml-2 max-w-[100px] translate-x-0 opacity-100'
             }`}
           >
             Fixed
@@ -353,6 +366,6 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         }`}
         aria-hidden="true"
       />
-    </header>
+    </motion.header>
   );
 };

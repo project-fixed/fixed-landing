@@ -14,9 +14,7 @@ export const PlansSection: React.FC<Props> = ({ lang }) => {
   return (
     <>
       <div className="mx-auto mb-16 w-full max-w-[700px] text-center">
-        <h2 className="mb-6 font-mono text-[clamp(2rem,6vw,3.5rem)] leading-tight font-extrabold tracking-tight text-white uppercase">
-          {t.landing.plans.title}
-        </h2>
+        <h2 className="title-section mb-6">{t.landing.plans.title}</h2>
         <p className="text-text-muted mx-auto max-w-[600px] text-base leading-relaxed max-sm:px-4">
           {t.landing.plans.description}
         </p>

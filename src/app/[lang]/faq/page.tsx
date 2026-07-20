@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/shared/components/ui/accordion';
+import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }];
@@ -54,16 +55,18 @@ export default async function FaqPage({ params }: PageProps) {
       <div className="bg-pattern-grid absolute inset-0 opacity-[0.05]" />
       <div className="absolute inset-0 h-full w-full bg-linear-to-b from-transparent via-transparent to-black"></div>
 
-      <div className="w-full lg:w-1/3 lg:self-start">
-        <h1 className="font-mono text-[clamp(2.8rem,7vw,5rem)] leading-[1.2] font-extrabold tracking-tight text-white uppercase">
-          {t.landing.faq.title}
-        </h1>
+      <ScrollReveal
+        direction="up"
+        delay={0.1}
+        className="w-full lg:w-1/3 lg:self-start"
+      >
+        <h1 className="title-hero">{t.landing.faq.title}</h1>
         <span className="bg-primary/50 mt-4 block h-[10px] w-14" />
         <p className="text-text-muted mt-6 max-w-[400px] leading-relaxed">
           {t.landing.faq.description}
         </p>
-      </div>
-      <div className="w-full lg:w-2/3">
+      </ScrollReveal>
+      <ScrollReveal direction="up" delay={0.25} className="w-full lg:w-2/3">
         <Accordion type="single" defaultValue="item-1">
           {faqItems.map((item) => (
             <AccordionItem key={item.id} value={item.id}>
@@ -72,7 +75,7 @@ export default async function FaqPage({ params }: PageProps) {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
