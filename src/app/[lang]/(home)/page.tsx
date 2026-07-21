@@ -41,7 +41,7 @@ export default async function HomePage({ params }: PageProps) {
       >
         <OddsMarquee lang={currentLang} />
 
-        <FeaturesSection t={t} />
+        <FeaturesSection t={t} lang={currentLang} />
         <AiTimelineSection lang={currentLang} id="process" />
         <DataStreamSection lang={currentLang} />
         <AiLayersSection lang={currentLang} />

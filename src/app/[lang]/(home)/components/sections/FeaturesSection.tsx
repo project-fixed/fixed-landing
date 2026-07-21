@@ -1,12 +1,15 @@
 import React from 'react';
-import type { Translations } from '@/data/translations';
+import type { Translations, Lang } from '@/data/translations';
 import { ScrollExpandVideo } from '@/app/[lang]/(home)/components/widgets/ScrollExpandVideo';
+import { InteractiveFeatures } from '@/app/[lang]/(home)/components/widgets/InteractiveFeatures';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+
 interface Props {
   t: Translations;
+  lang: Lang;
 }
 
-export const FeaturesSection: React.FC<Props> = ({ t }) => {
+export const FeaturesSection: React.FC<Props> = ({ t, lang }) => {
   return (
     <section id="features" className="relative">
       <div className="bg-pattern-grid absolute inset-0 opacity-[0.04]" />
@@ -25,7 +28,11 @@ export const FeaturesSection: React.FC<Props> = ({ t }) => {
         </div>
       </div>
 
-      <ScrollExpandVideo cursorText="Play intro" />
+      <ScrollExpandVideo
+        cursorText={lang === 'es' ? 'Explorar Dashboard' : 'Explore Dashboard'}
+      >
+        <InteractiveFeatures lang={lang} />
+      </ScrollExpandVideo>
     </section>
   );
 };

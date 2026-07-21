@@ -42,19 +42,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
   const heroStats = [
     {
       value: t.landing.home.hero.key.point1.title,
-      label: currentLang === 'es' ? 'usuarios' : 'users',
+      label: currentLang === 'es' ? 'yield histórico' : 'historical yield',
     },
     {
       value: t.landing.home.hero.key.point2.title,
-      label: currentLang === 'es' ? 'precisión' : 'accuracy',
+      label: 'hit rate',
     },
     {
       value: t.landing.home.hero.key.point3.title,
-      label: currentLang === 'es' ? 'ligas' : 'leagues',
+      label: 'EV min.',
     },
     {
       value: t.landing.home.hero.key.point4.title,
-      label: currentLang === 'es' ? 'monitoreo' : 'monitoring',
+      label: currentLang === 'es' ? 'max. kelly' : 'max kelly',
     },
   ];
 
