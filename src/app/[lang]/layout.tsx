@@ -6,6 +6,7 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
 import { Toolbar } from '@/shared/components/layout/Toolbar';
 import { Footer } from '@/shared/components/layout/Footer';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 interface Props {
   children: React.ReactNode;
@@ -51,6 +52,7 @@ export default async function RootLayout({ children, params }: Props) {
 
           <Footer lang={currentLang} />
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );
