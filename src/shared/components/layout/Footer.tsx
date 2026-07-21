@@ -1,0 +1,160 @@
+import React from 'react';
+import Link from 'next/link';
+import { useTranslations, type Lang } from '@/data/translations';
+import { BetaForm } from '@/shared/components/widgets/BetaForm';
+import { SectionBadge } from '@/shared/components/ui/SectionBadge';
+import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+
+interface Props {
+  lang: Lang;
+}
+
+/**
+ * Minimalist footer with a differentiated CTA section (distinct from hero),
+ * full-width layout, and clean link columns. FooterGradientShapes removed.
+ */
+export const Footer: React.FC<Props> = ({ lang }) => {
+  const t = useTranslations(lang);
+
+  const homePath = lang === 'en' ? '/' : '/es';
+  const plansPath = lang === 'en' ? '/plans' : '/es/plans';
+  const faqPath = lang === 'en' ? '/faq' : '/es/faq';
+  const termsPath = lang === 'en' ? '/terms' : '/es/terms';
+  const privacyPath = lang === 'en' ? '/privacy' : '/es/privacy';
+  const cookiesPath = lang === 'en' ? '/cookies' : '/es/cookies';
+
+  /** CTA copy — different from hero to avoid repetition */
+  const ctaHeadline =
+    lang === 'es'
+      ? 'Decisiones respaldadas por datos, no por instinto.'
+      : 'Decisions backed by data, not instinct.';
+  const ctaSubtext =
+    lang === 'es'
+      ? 'Únete a la lista de espera y empieza a decidir con inteligencia.'
+      : 'Join the waitlist and start deciding with intelligence.';
+
+  return (
+    <footer className="footer text-text-primary relative z-20 flex flex-col overflow-hidden border-t border-white/[0.06]">
+      <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay" />
+      {/* ─── CTA Section ─────────────────────────────────────── */}
+      <div className="relative flex flex-col px-4 py-24 sm:px-8 lg:px-12 xl:px-20">
+        {/* CTA content: 2-column on desktop */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
+          <ScrollReveal direction="up" delay={0.1} className="lg:max-w-[560px]">
+            <h2 className="title-section">{ctaHeadline}</h2>
+          </ScrollReveal>
+
+          <ScrollReveal
+            direction="up"
+            delay={0.25}
+            className="ml-auto flex flex-col justify-end gap-4 lg:max-w-[400px]"
+          >
+            {/* Top horizontal separator accent */}
+            <div className="flex items-center gap-4">
+              <div className="h-px flex-1 bg-linear-to-l from-white/10 to-transparent" />
+              <SectionBadge label="get started" prefix="" />
+            </div>
+            <p className="text-text-muted text-end text-sm">{ctaSubtext}</p>
+            <BetaForm lang={lang} />
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* ─── Footer Links + Legal ────────────────────────────── */}
+      <ScrollReveal
+        direction="up"
+        delay={0.2}
+        className="relative z-10 flex flex-col gap-12 border-t border-white/[0.06] bg-black/40 px-4 py-12 backdrop-blur-xl sm:px-8 lg:px-12 xl:px-20"
+      >
+        {/* Links row */}
+        <div className="mb-12 flex flex-wrap items-start justify-between gap-12">
+          {/* Brand */}
+          <div className="flex max-w-xs flex-col">
+            <Link href={homePath} className="mb-4 inline-flex">
+              <span className="font-mono text-xl font-bold text-white">
+                Fixed
+              </span>
+            </Link>
+            <p className="text-text-body text-sm leading-relaxed">
+              {t.landing.footer.description}
+            </p>
+          </div>
+
+          {/* Nav columns */}
+          <div className="flex flex-wrap gap-16 max-md:gap-8">
+            {/* Product */}
+            <div className="flex flex-col gap-3 text-left">
+              <span className="text-text-faint font-mono text-[10px] tracking-widest uppercase">
+                {t.landing.footer.link.dimensions.product}
+              </span>
+              <Link
+                href={`${homePath}#features`}
+                className="hover:text-primary text-text-muted text-sm transition-colors duration-200"
+              >
+                {t.navbar.features}
+              </Link>
+              <Link
+                href={`${homePath}#process`}
+                className="hover:text-primary text-text-muted text-sm transition-colors duration-200"
+              >
+                {t.navbar.steps}
+              </Link>
+              <Link
+                href={`${homePath}#about`}
+                className="hover:text-primary text-text-muted text-sm transition-colors duration-200"
+              >
+                {t.navbar.about}
+              </Link>
+            </div>
+
+            {/* More */}
+            <div className="flex flex-col gap-3 text-left">
+              <span className="text-text-faint font-mono text-[10px] tracking-widest uppercase">
+                {t.landing.footer.link.dimensions.more}
+              </span>
+              <Link
+                href={plansPath}
+                className="hover:text-primary text-text-muted text-sm transition-colors duration-200"
+              >
+                {t.navbar.plans}
+              </Link>
+              <Link
+                href={faqPath}
+                className="hover:text-primary text-text-muted text-sm transition-colors duration-200"
+              >
+                {t.navbar.faq}
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Legal bar */}
+        <div className="border-t border-white/[0.06] pt-6">
+          <div className="text-text-faint flex flex-wrap items-center justify-between gap-4 text-xs">
+            <p>© {new Date().getFullYear()} Fixed Inc. All rights reserved.</p>
+            <div className="flex flex-wrap gap-6">
+              <Link
+                href={termsPath}
+                className="hover:text-primary transition-colors duration-200"
+              >
+                {t.landing.footer.link.company.termsOfService}
+              </Link>
+              <Link
+                href={privacyPath}
+                className="hover:text-primary transition-colors duration-200"
+              >
+                {t.landing.footer.link.company.privacyPolicy}
+              </Link>
+              <Link
+                href={cookiesPath}
+                className="hover:text-primary transition-colors duration-200"
+              >
+                {t.landing.footer.link.company.cookies}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+    </footer>
+  );
+};

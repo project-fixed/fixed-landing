@@ -1,21 +1,21 @@
 ---
 name: Fixed
-version: 1.0.0
-description: Luxury tech aesthetic for a predictive sports betting intelligence platform. Dark theme with steel blue accents and glassmorphism.
+version: 1.1.0
+description: Minimalist luxury tech aesthetic for a predictive sports betting intelligence platform. Dark theme with steel blue accents, thin border structures, and high typographic contrast.
 colors:
   primary: '#3e5d6c'
-  primary-lightest: '#b8d4e3'
-  primary-light: '#7d9faf'
-  primary-dark: '#1f3440'
-  primary-darkest: '#0e1a21'
-  accent: '#3e5d6c'
-  background: '#171717'
-  surface: '#1a1a1a'
-  text-main: '#ededed'
-  text-dim: '#a1a1aa'
+  primary-light: '#9ec1d4'
+  primary-dark: '#2c4350'
+  primary-darker: '#1e2f38'
+  primary-darkest: '#152027'
+  background: 'oklch(0.09 0 0)'
+  surface-card: 'oklch(0.18 0 0)'
+  surface-deep: 'oklch(0.14 0 0)'
+  text-primary: 'oklch(0.985 0 0)'
+  text-body: 'oklch(0.7 0 0)'
+  text-muted: 'oklch(0.55 0 0)'
+  text-faint: 'oklch(0.4 0 0)'
   success: '#22c55e'
-  warning: '#facc15'
-  error: '#ef4444'
 typography:
   sans:
     fontFamily: 'Inter, ui-sans-serif, sans-serif'
@@ -25,96 +25,80 @@ rounded:
   sm: 4px
   md: 8px
   lg: 12px
+  xl: 16px
+  '2xl': 24px
 components:
-  card:
-    backgroundColor: '#1a1a1a'
-    rounded: 8px
-    border: '1px solid rgba(255, 255, 255, 0.05)'
-    glassBg: 'rgba(255, 255, 255, 0.02)'
-  button:
-    primaryBg: '#3e5d6c'
-    primaryText: '#ededed'
-    rounded: 8px
+  container:
+    borderColor: 'rgba(255, 255, 255, 0.05)'
+    backgroundColor: 'rgba(255, 255, 255, 0.02)'
+  waitlist-card:
+    borderColor: 'rgba(255, 255, 255, 0.15)'
+    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+    backdropBlur: 'sm'
 ---
 
 ## Overview
 
-Fixed utiliza una estética **Luxury Tech** oscura con acentos steel blue, evocando el ecosistema fintech corporativo. El diseño prioriza la percepción de producto premium con glassmorphism, animaciones sutiles y tipografía limpia.
+Fixed utiliza una estética **Minimalist Luxury Tech** extremadamente limpia, basada en fondos oscuros profundos, acentos en steel blue, líneas finas de retícula y una jerarquía tipográfica rigurosa. Se descarta cualquier tipo de degradado vibrante, sombras pesadas o formas orgánicas llamativas (blobs), priorizando la sobriedad y la precisión del dato.
 
 ## Colors
 
-La paleta se centra en steel blue como color principal de acento sobre fondos oscuros profundos.
+La paleta se centra en tonos oscuros planos y el color steel blue como único acento de interacción y marca.
 
-| Token              | Hex       | Uso                              |
-| ------------------ | --------- | -------------------------------- |
-| `primary`          | `#3e5d6c` | Acentos, botones, bordes activos |
-| `primary-light`    | `#7d9faf` | Hover states                     |
-| `primary-lightest` | `#b8d4e3` | Texto destacado                  |
-| `primary-dark`     | `#1f3440` | Fondos secundarios               |
-| `primary-darkest`  | `#0e1a21` | Fondos terciarios                |
-| `background`       | `#171717` | Fondo base                       |
-| `surface`          | `#1a1a1a` | Cards, superficies elevadas      |
-| `text-main`        | `#ededed` | Texto principal                  |
-| `text-dim`         | `#a1a1aa` | Texto secundario, metadata       |
-
-**WCAG AA:** Contraste `text-main` (#ededed) sobre `background` (#171717) = 14.5:1 (excede 4.5:1).
+| Token             | Color/Hex         | Uso                                        |
+| ----------------- | ----------------- | ------------------------------------------ |
+| `primary`         | `#3e5d6c`         | Color de marca, acentos de estado, bordes  |
+| `primary-light`   | `#9ec1d4`         | Hover states y detalles                    |
+| `primary-darkest` | `#152027`         | Color base para degradado de iluminación   |
+| `background`      | `oklch(0.09 0 0)` | Fondo principal de la aplicación           |
+| `surface-card`    | `oklch(0.18 0 0)` | Fondo de elementos interactivos y popovers |
+| `text-primary`    | `oklch(0.985 0)`  | Títulos principales, números destacados    |
+| `text-body`       | `oklch(0.7 0 0)`  | Párrafos y descripciones                   |
+| `text-muted`      | `oklch(0.55 0)`   | Textos secundarios y labels en mono        |
+| `text-faint`      | `oklch(0.4 0 0)`  | Separadores sutiles y labels de categoría  |
+| `status-success`  | `#22c55e`         | Indicador de estado activo (Open Beta)     |
 
 ## Typography
 
-- **Sans (Inter)**: Texto body, headings, navegación, cards, párrafos, botones
-- **Mono (JetBrains Mono)**: Datos numéricos, odds, porcentajes, terminal/datastream
+- **Mono (JetBrains Mono)**: Reservado para encabezados principales (`h1`, `h2`), números de telemetría/estadísticas, badges de estado, etiquetas de navegación/categoría, y botones interactivos. Generalmente en mayúsculas (uppercase) y con tracking abierto para reforzar el carácter técnico.
+- **Sans (Inter)**: Utilizado exclusivamente para el cuerpo de texto, párrafos largos, explicaciones detalladas y subtítulos de apoyo. Garantiza legibilidad y contraste.
 
 ## Layout
 
-- Contenedor centrado con `max-w-7xl` y padding lateral `px-4`/`px-6`
-- Secciones separadas por `py-20` a `py-32`
-- Hero ocupa viewport completo con overlay de gradiente radial
-- Grid responsive: mobile single column, tablet 2 col, desktop 3-4 col
+- Contenedores alineados con `page-section` que aplican padding lateral responsivo de forma uniforme.
+- Secciones divididas horizontalmente mediante bordes sutiles de color blanco translúcido (`border-y border-white/5` o `border-t border-white/[0.06]`).
+- Ausencia de grids complejos o desordenados; el layout fluye de manera lineal en mobile y se reordena en dos columnas en desktop cuando hay formularios o CTA secundarios.
 
-## Elevation & Depth
+## Elevation, Depth & Borders
 
-- Cards con `bg-white-glass` (glassmorphism) o `bg-white-card`
-- Sombras sutiles: `shadow-sm` para elementos elevados
-- Efecto de profundidad con gradientes radiales animados (`radial-gradient-circle-*`)
-- Blobs animados en background para sensación de capas
-
-## Shapes
-
-- **sm (4px)**: Componentes inline, badges, tags
-- **md (8px)**: Cards, botones, inputs
-- **lg (12px)**: Contenedores grandes, modales
+- **Sin elevaciones complejas**: Se eliminan las sombras. La profundidad se genera exclusivamente superponiendo elementos mediante el uso de opacidad y bordes finos.
+- **Bordes de precisión**: Se usan bordes con baja opacidad (`border-white/5`, `border-white/10`, `border-white/[0.06]`) para delimitar contenedores sin sobrecargar la interfaz.
+- **Efecto de iluminación**: Un gradiente radial muy sutil (`radial-gradient`) en el fondo simula una luz cenital lejana, desvaneciéndose hacia el negro absoluto en la parte inferior.
 
 ## Animations
 
-| Animación          | Propósito                                      | Duración                 |
-| ------------------ | ---------------------------------------------- | ------------------------ |
-| `marquee`          | Scrolling de odds y marcas                     | 40s linear infinite      |
-| `point-card-float` | Cards de métricas en cascada                   | 10s ease-in-out infinite |
-| `blob`             | Formas de gradiente animadas                   | 7s ease infinite         |
-| `sparkle`          | Partículas en hover de botón                   | 0.4s ease-out            |
-| Scroll expand      | Expansión de card a viewport completo (motion) | Basado en scroll         |
+- `marqueeScroll` / `scrollLeft` / `scrollRight`: Usadas para la transmisión continua de odds y datos de forma fluida a 40 segundos por ciclo.
+- `ScrollExpandVideo`: Una animación suave controlada por scroll (`motion`) que escala los elementos multimedia (imágenes del dashboard) a pantalla completa de forma inmersiva.
 
-## Components
+## Key Components
 
-- **OddsCard**: Fondo oscuro con borde sutil, dot de estado (verde/rojo/amarillo), texto mono para odds
-- **KeyPointCard**: Borde gradiente sutil, backdrop blur, icono SVG inline
-- **PlanCard**: Fondo con color dinámico según `backgroundColor` del plan, checkmarks en texto dim
-- **Toolbar**: Navegación sticky con backdrop blur al scrollear, drawer mobile con overlay
-- **ButtonArrow**: Botón con flecha animada que se expande en hover (pill background slide)
-- **ButtonSparkle**: Botón con 6 estrellas SVG que explotan radialmente en hover
+- **HeroBadge**: Indicador de versión con borde fino (`border-white/10`), fondo translúcido y un punto verde pulsante que indica estado activo en tiempo real.
+- **BetaForm**: Campo de entrada limpio y minimalista, con bordes de precisión e input inline.
+- **ScrollExpandVideo**: Contenedor interactivo que responde al scroll y muestra el dashboard del producto sin bordes ni adornos pesados.
+- **Accordion (Shadcn)**: Componente de acordeón reconstruido sobre `@base-ui/react`. Cada pregunta se presenta con tipografía mono, color atenuado (`text-white/50`) que se ilumina al hacer hover (`hover:text-white`), y dividida por una línea horizontal delgada. La respuesta se despliega de manera fluida usando animaciones de alto rendimiento.
 
-## Do's and Don'ts
+## Do's and Don't's
 
 ### Do:
 
-- Usar glassmorphism para cards y superficies sobre fondos con gradiente
-- Mantener la jerarquía tipográfica clara (Display → Sans → Mono)
-- Animar elementos con propósito (scroll reveal, marquee para datos en vivo)
-- Usar la paleta steel blue como único acento de color
+- Usar `font-mono` para títulos y labels técnicos, y `font-sans` para los textos explicativos.
+- Mantener las líneas divisorias extremadamente finas y con baja opacidad.
+- Mantener una paleta cromática restringida a negro, acero (steel blue) y blanco.
+- Asegurar que la legibilidad del texto en contraste con el fondo sea óptima.
 
 ### Don't:
 
-- No usar colores brillantes o saturados fuera de la paleta definida
-- No mezclar tipografías fuera de las 2 definidas
-- No agregar sombras excesivas o múltiples colores de borde
-- No usar jerga de tipster ("fijas 100% seguras")
+- No agregar sombras a los contenedores o botones.
+- No utilizar degradados de colores brillantes en botones o textos.
+- No emplear esquinas redondeadas excesivas en elementos estructurales (máximo `rounded-2xl` para bloques de CTA grandes, de resto `rounded-lg` u ortogonal).
+- No utilizar iconos coloridos ni efectos visuales llamativos.

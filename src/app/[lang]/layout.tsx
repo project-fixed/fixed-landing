@@ -4,8 +4,8 @@ import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/700.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
-import { Toolbar } from '@/components/Toolbar';
-import { Footer } from '@/components/Footer';
+import { Toolbar } from '@/shared/components/layout/Toolbar';
+import { Footer } from '@/shared/components/layout/Footer';
 
 interface Props {
   children: React.ReactNode;
@@ -40,13 +40,9 @@ export default async function RootLayout({ children, params }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="antialiased">
-        {/* Gradient Shapes background element */}
-        <div
-          id="gradient-shapes-container"
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-        >
-          {/* Slots for background visuals */}
-        </div>
+        {/* Precision grid pattern matching the tech aesthetic */}
+
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[60vh] bg-[radial-gradient(ellipse_at_50%_-10%,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_65%)]" />
 
         <div className="relative z-10 flex min-h-screen w-full flex-col">
           <Toolbar lang={currentLang} />
