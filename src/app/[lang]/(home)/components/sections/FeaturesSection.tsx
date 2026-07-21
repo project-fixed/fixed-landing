@@ -9,7 +9,7 @@ interface Props {
 export const FeaturesSection: React.FC<Props> = ({ t }) => {
   return (
     <section id="features" className="relative">
-      <div className="bg-pattern-grid absolute inset-0 opacity-[0.03]" />
+      <div className="bg-pattern-grid absolute inset-0 opacity-[0.04]" />
       <div className="page-section py-20 md:py-24">
         <div className="flex flex-col items-end justify-between gap-6 lg:flex-row">
           <ScrollReveal direction="up" delay={0.1}>

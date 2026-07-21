@@ -36,7 +36,7 @@ export default async function HomePage({ params }: PageProps) {
         className="relative z-10 w-full border-t border-white/10 shadow-[0_-25px_60px_rgba(0,0,0,0.95)]"
         style={{
           background:
-            'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -50%, var(--background) 45%)',
+            'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -30%, var(--background) 45%)',
         }}
       >
         <OddsMarquee lang={currentLang} />

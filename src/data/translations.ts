@@ -3,6 +3,8 @@ export const translations = {
     navbar: {
       home: 'Home',
       features: 'Features',
+      process: 'Process',
+      layers: 'Layers',
       steps: 'Process',
       about: 'About',
       plans: 'Plans',
@@ -250,6 +252,8 @@ export const translations = {
     navbar: {
       home: 'Inicio',
       features: 'Detalles',
+      process: 'Proceso',
+      layers: 'Capas',
       steps: 'Proceso',
       about: 'Acerca',
       plans: 'Planes',

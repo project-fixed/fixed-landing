@@ -1,9 +1,12 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { useTranslations, type Lang } from '@/data/translations';
 import { BetaForm } from '@/shared/components/widgets/BetaForm';
 import { SectionBadge } from '@/shared/components/ui/SectionBadge';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+import { ArrowUp } from 'lucide-react';
 
 interface Props {
   lang: Lang;
@@ -11,7 +14,7 @@ interface Props {
 
 /**
  * Minimalist footer with a differentiated CTA section (distinct from hero),
- * full-width layout, and clean link columns. FooterGradientShapes removed.
+ * full-width layout, clean link columns, and a back-to-top button.
  */
 export const Footer: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
@@ -22,6 +25,10 @@ export const Footer: React.FC<Props> = ({ lang }) => {
   const termsPath = lang === 'en' ? '/terms' : '/es/terms';
   const privacyPath = lang === 'en' ? '/privacy' : '/es/privacy';
   const cookiesPath = lang === 'en' ? '/cookies' : '/es/cookies';
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   /** CTA copy — different from hero to avoid repetition */
   const ctaHeadline =
@@ -98,7 +105,13 @@ export const Footer: React.FC<Props> = ({ lang }) => {
                   href={`${homePath}#process`}
                   className="hover:text-primary text-muted text-sm transition-colors duration-200"
                 >
-                  {t.navbar.steps}
+                  {t.navbar.process}
+                </Link>
+                <Link
+                  href={`${homePath}#layers`}
+                  className="hover:text-primary text-muted text-sm transition-colors duration-200"
+                >
+                  {t.navbar.layers}
                 </Link>
                 <Link
                   href={`${homePath}#about`}
@@ -129,31 +142,43 @@ export const Footer: React.FC<Props> = ({ lang }) => {
             </div>
           </div>
 
-          {/* Legal bar */}
+          {/* Legal bar + Back to Top */}
           <div className="border-t border-white/[0.06] pt-6">
             <div className="text-faint flex flex-wrap items-center justify-between gap-4 text-xs">
               <p>
                 © {new Date().getFullYear()} Fixed Inc. All rights reserved.
               </p>
-              <div className="flex flex-wrap gap-6">
-                <Link
-                  href={termsPath}
-                  className="hover:text-primary transition-colors duration-200"
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex flex-wrap gap-6">
+                  <Link
+                    href={termsPath}
+                    className="hover:text-primary transition-colors duration-200"
+                  >
+                    {t.landing.footer.link.company.termsOfService}
+                  </Link>
+                  <Link
+                    href={privacyPath}
+                    className="hover:text-primary transition-colors duration-200"
+                  >
+                    {t.landing.footer.link.company.privacyPolicy}
+                  </Link>
+                  <Link
+                    href={cookiesPath}
+                    className="hover:text-primary transition-colors duration-200"
+                  >
+                    {t.landing.footer.link.company.cookies}
+                  </Link>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={scrollToTop}
+                  className="group text-muted inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 font-mono text-[11px] font-semibold transition-all duration-200 hover:border-white/20 hover:bg-white/10 hover:text-white active:scale-95"
+                  aria-label={lang === 'es' ? 'Volver arriba' : 'Back to top'}
                 >
-                  {t.landing.footer.link.company.termsOfService}
-                </Link>
-                <Link
-                  href={privacyPath}
-                  className="hover:text-primary transition-colors duration-200"
-                >
-                  {t.landing.footer.link.company.privacyPolicy}
-                </Link>
-                <Link
-                  href={cookiesPath}
-                  className="hover:text-primary transition-colors duration-200"
-                >
-                  {t.landing.footer.link.company.cookies}
-                </Link>
+                  <span>{lang === 'es' ? 'Volver arriba' : 'Back to top'}</span>
+                  <ArrowUp className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                </button>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTranslations, type Lang } from '@/data/translations';
-import { ArrowLeftRight, Menu, X } from 'lucide-react';
+import { ArrowLeftRight, Menu, X, ArrowUpRight } from 'lucide-react';
 import { IconButton } from '@/shared/components/ui/IconButton';
 import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
@@ -19,6 +19,8 @@ interface Props {
 interface NavLink {
   label: string;
   href: string;
+  type: 'route' | 'section';
+  targetId?: string;
 }
 
 /** Helper to remove language prefix from path */
@@ -59,7 +61,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       return;
     }
 
-    const sections = ['hero', 'features', 'about'];
+    const sections = ['hero', 'features', 'process', 'layers', 'about'];
     const observerOptions = {
       root: null,
       rootMargin: '-40% 0px -50% 0px',
@@ -128,18 +130,53 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
   const closeMenu = () => setIsMenuOpen(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const isLinkActive = (linkHref: string) => {
-    const normLinkHref = normalizePathname(linkHref);
-    if (normLinkHref === '/') {
-      return activeSection === 'hero';
+  const isLinkActive = (link: NavLink) => {
+    if (currentNormalizedPath === '/') {
+      if (link.targetId) {
+        return activeSection === link.targetId;
+      }
     }
-    if (normLinkHref === '/#features') {
-      return activeSection === 'features';
-    }
-    if (normLinkHref === '/#about') {
-      return activeSection === 'about';
-    }
+    const normLinkHref = normalizePathname(link.href);
     return activeSection === normLinkHref;
+  };
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    link: NavLink,
+  ) => {
+    closeMenu();
+
+    const isHome = link.targetId === 'hero' || link.href === homePath;
+
+    if (currentNormalizedPath === '/') {
+      if (isHome) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.pushState(null, '', homePath);
+        setActiveSection('hero');
+        return;
+      }
+
+      if (link.targetId) {
+        const element = document.getElementById(link.targetId);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', `${homePath}#${link.targetId}`);
+          setActiveSection(link.targetId);
+        }
+      }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    closeMenu();
+    if (currentNormalizedPath === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', homePath);
+      setActiveSection('hero');
+    }
   };
 
   const targetPath = useMemo(() => {
@@ -164,11 +201,38 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
 
   const navLinks: NavLink[] = useMemo(
     () => [
-      { label: t.navbar.home, href: homePath },
-      { label: t.navbar.features, href: `${homePath}#features` },
-      { label: t.navbar.about, href: `${homePath}#about` },
-      { label: t.navbar.plans, href: plansPath },
-      { label: t.navbar.faq, href: faqPath },
+      {
+        label: t.navbar.home,
+        href: homePath,
+        type: 'route',
+        targetId: 'hero',
+      },
+      {
+        label: t.navbar.features,
+        href: `${homePath}#features`,
+        type: 'section',
+        targetId: 'features',
+      },
+      {
+        label: t.navbar.process,
+        href: `${homePath}#process`,
+        type: 'section',
+        targetId: 'process',
+      },
+      {
+        label: t.navbar.layers,
+        href: `${homePath}#layers`,
+        type: 'section',
+        targetId: 'layers',
+      },
+      {
+        label: t.navbar.about,
+        href: `${homePath}#about`,
+        type: 'section',
+        targetId: 'about',
+      },
+      { label: t.navbar.plans, href: plansPath, type: 'route' },
+      { label: t.navbar.faq, href: faqPath, type: 'route' },
     ],
     [t.navbar, homePath, plansPath, faqPath],
   );
@@ -199,7 +263,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         <Link
           href={homePath}
           className="logo flex cursor-pointer items-center select-none"
-          onClick={closeMenu}
+          onClick={handleLogoClick}
         >
           <Image src={imgLogo} alt="Logo" className="relative z-10 size-9" />
           <span
@@ -259,15 +323,17 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         {/* Nav Links */}
         <nav className="py-2 font-mono">
           {navLinks.map((link, index) => {
-            const active = isLinkActive(link.href);
+            const active = isLinkActive(link);
+            const isRoute = link.type === 'route';
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, link)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 text-sm font-bold tracking-[0.12em] uppercase transition-colors duration-150"
+                className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-150"
               >
                 {/* Hover background */}
                 <span
@@ -276,36 +342,58 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
                   }`}
                 />
 
-                <span
-                  className={`relative z-10 transition-colors duration-150 ${
-                    hoveredIndex === index
-                      ? 'font-extrabold text-white'
-                      : active
-                        ? 'text-primary-light font-extrabold'
-                        : 'text-muted'
-                  }`}
-                >
-                  {link.label}
-                </span>
-
-                {/* Active indicator dot or Hover arrow */}
-                <div className="relative z-10 flex h-4 w-4 items-center justify-end">
+                <div className="relative z-10 flex items-center gap-2">
+                  {/* Visual indicator prefix for section vs route */}
+                  {!isRoute && (
+                    <span
+                      className={`font-mono text-xs font-semibold transition-colors duration-150 ${
+                        active
+                          ? 'text-primary-light font-bold'
+                          : 'text-primary-light/60 group-hover:text-primary-light'
+                      }`}
+                    >
+                      #
+                    </span>
+                  )}
                   <span
-                    className={`bg-primary-light absolute size-1.5 rounded-full transition-all duration-200 ${
-                      active && hoveredIndex !== index
-                        ? 'scale-100 opacity-100'
-                        : 'scale-50 opacity-0'
-                    }`}
-                  />
-                  <span
-                    className={`absolute translate-x-1 text-white transition-all duration-200 ${
+                    className={`transition-colors duration-150 ${
                       hoveredIndex === index
-                        ? 'translate-x-0 opacity-100'
-                        : 'opacity-0'
+                        ? 'font-extrabold text-white'
+                        : active
+                          ? 'text-primary-light font-extrabold'
+                          : 'text-muted'
                     }`}
                   >
-                    →
+                    {link.label}
                   </span>
+                </div>
+
+                {/* Right side: Route Page icon vs Section active/hover indicator */}
+                <div className="relative z-10 flex items-center justify-end">
+                  {isRoute ? (
+                    <span className="text-white/40 transition-all duration-200 group-hover:scale-110 group-hover:text-white">
+                      <ArrowUpRight className="size-4" />
+                    </span>
+                  ) : (
+                    <div className="flex h-4 w-4 items-center justify-end">
+                      <span
+                        className={`bg-primary-light absolute size-1.5 rounded-full transition-all duration-200 ${
+                          active && hoveredIndex !== index
+                            ? 'scale-100 opacity-100'
+                            : 'scale-50 opacity-0'
+                        }`}
+                      />
+                      <span
+                        className={`absolute translate-x-1 text-white/70 transition-all duration-200 ${
+                          hoveredIndex === index
+                            ? 'translate-x-0 opacity-100'
+                            : 'opacity-0'
+                        }`}
+                      >
+                        →
+                      </span>
+                    </div>
+                  )}
                 </div>
               </Link>
             );

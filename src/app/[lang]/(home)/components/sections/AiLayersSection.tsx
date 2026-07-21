@@ -44,7 +44,10 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
   ];
 
   return (
-    <section className="page-section flex flex-col overflow-hidden py-20 md:py-24">
+    <section
+      id="layers"
+      className="page-section flex flex-col overflow-hidden py-20 md:py-24"
+    >
       <div className="w-full">
         <div className="mb-16">
           <ScrollReveal direction="up" delay={0.1}>
