@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTranslations, type Lang } from '@/data/translations';
 import { ArrowLeftRight, Menu, X } from 'lucide-react';
-import { BetaForm } from '@/shared/components/widgets/BetaForm';
 import { IconButton } from '@/shared/components/ui/IconButton';
 import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
@@ -22,32 +21,41 @@ interface NavLink {
   href: string;
 }
 
+/** Helper to remove language prefix from path */
+const normalizePathname = (pathname: string) =>
+  pathname.replace(/^\/(en|es)(\/|$)/, '/');
+
 export const Toolbar: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('');
+
   const panelRef = useRef<HTMLDivElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
+
+  const pathname = usePathname();
+  const currentNormalizedPath = normalizePathname(pathname);
 
   const homePath = lang === 'en' ? '/' : '/es';
   const plansPath = lang === 'en' ? '/plans' : '/es/plans';
   const faqPath = lang === 'en' ? '/faq' : '/es/faq';
   const appAuthUrl = 'https://app.fixed.com/auth';
 
-  const pathname = usePathname();
+  /** Efficient Motion scroll detection without unthrottled global scroll listeners */
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const shouldBeScrolled = latest > 60;
+    if (shouldBeScrolled !== isScrolled) {
+      setIsScrolled(shouldBeScrolled);
+    }
+  });
 
-  // Normalize pathname by removing locale prefix
-  const normalizedPathname = pathname.replace(/^\/(en|es)(\/|$)/, '/');
-
-  // Scroll spy to detect the active section or page
-  const [activeSection, setActiveSection] = useState<string>('');
-
+  /** Scroll spy to detect active section or page */
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    if (normalizedPathname !== '/') {
-      setActiveSection(normalizedPathname);
+    if (currentNormalizedPath !== '/') {
+      setActiveSection(currentNormalizedPath);
       return;
     }
 
@@ -75,7 +83,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       const hash = window.location.hash.replace('#', '');
       if (sections.includes(hash)) {
         setActiveSection(hash);
-      } else if (!hash && normalizedPathname === '/') {
+      } else if (!hash && currentNormalizedPath === '/') {
         setActiveSection('hero');
       }
     };
@@ -87,10 +95,41 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       observer.disconnect();
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [normalizedPathname]);
+  }, [currentNormalizedPath]);
+
+  /** Close menu handlers and event listeners attached ONLY when menu is open */
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        menuBtnRef.current &&
+        !menuBtnRef.current.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const isLinkActive = (linkHref: string) => {
-    const normLinkHref = linkHref.replace(/^\/(en|es)(\/|$)/, '/');
+    const normLinkHref = normalizePathname(linkHref);
     if (normLinkHref === '/') {
       return activeSection === 'hero';
     }
@@ -103,7 +142,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
     return activeSection === normLinkHref;
   };
 
-  const getTargetPath = () => {
+  const targetPath = useMemo(() => {
     const nextLang = lang === 'en' ? 'es' : 'en';
     if (pathname.startsWith(`/${lang}/`)) {
       return pathname.replace(`/${lang}/`, `/${nextLang}/`);
@@ -112,9 +151,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       return `/${nextLang}`;
     }
     return `/${nextLang}${pathname === '/' ? '' : pathname}`;
-  };
-
-  const targetPath = getTargetPath();
+  }, [lang, pathname]);
 
   const handleLangToggle = () => {
     const nextLang = lang === 'en' ? 'es' : 'en';
@@ -125,49 +162,16 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
     closeMenu();
   };
 
-  const navLinks: NavLink[] = [
-    { label: t.navbar.home, href: homePath },
-    { label: t.navbar.features, href: `${homePath}#features` },
-    { label: t.navbar.about, href: `${homePath}#about` },
-    { label: t.navbar.plans, href: plansPath },
-    { label: t.navbar.faq, href: faqPath },
-  ];
-
-  /** Detect scroll for glassmorphism header */
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 600);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  /** Close on Escape key */
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMenuOpen) closeMenu();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isMenuOpen]);
-
-  /** Close on click outside the panel */
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        isMenuOpen &&
-        panelRef.current &&
-        !panelRef.current.contains(e.target as Node) &&
-        menuBtnRef.current &&
-        !menuBtnRef.current.contains(e.target as Node)
-      ) {
-        closeMenu();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMenuOpen]);
-
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const closeMenu = () => setIsMenuOpen(false);
+  const navLinks: NavLink[] = useMemo(
+    () => [
+      { label: t.navbar.home, href: homePath },
+      { label: t.navbar.features, href: `${homePath}#features` },
+      { label: t.navbar.about, href: `${homePath}#about` },
+      { label: t.navbar.plans, href: plansPath },
+      { label: t.navbar.faq, href: faqPath },
+    ],
+    [t.navbar, homePath, plansPath, faqPath],
+  );
 
   return (
     <motion.header
@@ -212,7 +216,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
 
         {/* Right side: CTA + MENU toggle */}
         <div className="flex items-center gap-3">
-          {/* Primary CTA — JOIN FIXED • */}
+          {/* Primary CTA — JOIN FIXED */}
           <a
             href={`${appAuthUrl}?lang=${lang}`}
             target="_blank"
@@ -222,7 +226,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
             <span>{t.button.join}</span>
           </a>
 
-          {/* MENU / CLOSE toggle — icon only */}
+          {/* MENU / CLOSE toggle */}
           <IconButton
             ref={menuBtnRef}
             id="btn-menu-toggle"
@@ -230,6 +234,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
             active={isMenuOpen}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
+            aria-controls="nav-dropdown-panel"
           >
             {isMenuOpen ? (
               <X className="size-5" />
@@ -341,30 +346,20 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
             <ArrowLeftRight className="size-4" />
           </span>
         </Link>
-
-        {/* Divider */}
-        <div className="mx-5 border-t border-white/[0.06]" />
-
-        {/* Mini Beta Email Widget */}
-        <div className="px-5 py-6">
-          <p className="text-text-muted mb-1 font-mono text-xs font-medium tracking-wider">
-            {lang === 'es' ? 'Acceso anticipado' : 'Early access'}
-          </p>
-          <div className="mt-6 w-full">
-            <BetaForm lang={lang} />
-          </div>
-        </div>
       </div>
 
       {/* ─── Backdrop blur overlay ──────────────────────────────── */}
       <div
+        role="button"
+        tabIndex={-1}
+        aria-label="Close menu"
         onClick={closeMenu}
+        onKeyDown={(e) => e.key === 'Escape' && closeMenu()}
         className={`fixed inset-0 -z-10 transition-opacity duration-300 ${
           isMenuOpen
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'
         }`}
-        aria-hidden="true"
       />
     </motion.header>
   );

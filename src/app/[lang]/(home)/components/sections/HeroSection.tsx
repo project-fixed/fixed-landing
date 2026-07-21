@@ -63,7 +63,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
       id="hero"
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="page-section relative overflow-hidden pt-16"
+      className="page-section relative my-auto flex flex-1 flex-col justify-center overflow-hidden py-4"
     >
       <div
         className="pointer-events-none absolute inset-y-0 left-6 z-0 w-px bg-white/0 select-none md:left-12 lg:left-20"
