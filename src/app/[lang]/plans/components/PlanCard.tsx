@@ -64,15 +64,15 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
         </div>
 
         {/* Technical Label */}
-        <span className="text-text-muted font-mono text-[10px] tracking-widest uppercase">
+        <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
           {isPremium ? '[ 02 // PREMIUM ]' : '[ 01 // BASIC ]'}
         </span>
       </div>
 
-      <h3 className="text-text-primary mt-6 font-mono text-xl font-bold tracking-wider uppercase">
+      <h3 className="mt-6 font-mono text-xl font-bold tracking-wider text-white uppercase">
         {planT.title}
       </h3>
-      <p className="text-text-muted mt-2 min-h-[40px] text-start font-sans text-sm leading-relaxed">
+      <p className="text-muted mt-2 min-h-[40px] text-start font-sans text-sm leading-relaxed">
         {planT.description}
       </p>
 
@@ -80,10 +80,10 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
       <div className="my-5 w-full border-t border-white/5" />
 
       {/* Price Render */}
-      <div className="text-text-primary mb-5 font-mono text-3xl font-bold tracking-tight uppercase">
+      <div className="mb-5 font-mono text-3xl font-bold tracking-tight text-white uppercase">
         {priceAmount}
         {pricePeriod && (
-          <span className="text-text-muted ml-1.5 font-mono text-[10px] font-normal tracking-widest uppercase">
+          <span className="text-muted ml-1.5 font-mono text-[10px] font-normal tracking-widest uppercase">
             / {pricePeriod}
           </span>
         )}
@@ -105,7 +105,7 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
               <polyline points="22 4 12 14.01 9 11.01" />
             </svg>
-            <span className="text-text-muted font-sans text-sm">{feature}</span>
+            <span className="text-muted font-sans text-sm">{feature}</span>
           </li>
         ))}
       </ul>

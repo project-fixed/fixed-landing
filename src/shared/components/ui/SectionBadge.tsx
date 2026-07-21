@@ -13,7 +13,7 @@ export const SectionBadge: React.FC<SectionBadgeProps> = ({
 }) => {
   return (
     <span
-      className={`text-text-faint inline-block font-mono text-xs tracking-widest uppercase ${className}`}
+      className={`text-faint inline-block font-mono text-xs tracking-widest uppercase ${className}`}
     >
       {prefix}
       {label}

@@ -91,13 +91,13 @@ export function ReadmeLayout({
                   {title}
                 </h1>
                 {description && (
-                  <p className="text-text-muted mx-auto max-w-[600px] text-base leading-relaxed">
+                  <p className="text-muted mx-auto max-w-[600px] text-base leading-relaxed">
                     {description}
                   </p>
                 )}
               </div>
             )}
-            <div className="text-text-body space-y-6">{children}</div>
+            <div className="text-body space-y-6">{children}</div>
           </div>
 
           {/* Sidepanel */}

@@ -35,7 +35,7 @@ export const AiTimelineSection: React.FC<Props> = ({ lang, id }) => {
   ];
 
   return (
-    <section id={id} className="page-section overflow-hidden pt-24 pb-8">
+    <section id={id} className="page-section overflow-hidden py-20 md:py-24">
       <div className="flex w-full flex-col justify-center gap-8 lg:flex-row xl:gap-24">
         <div className="w-min">
           <ScrollReveal direction="up" delay={0.1} className="sticky top-32">
@@ -43,7 +43,7 @@ export const AiTimelineSection: React.FC<Props> = ({ lang, id }) => {
               <SectionBadge label="process" />
             </div>
             <h2 className="title-hero mb-6">{data.title}</h2>
-            <p className="text-text-muted ml-auto w-[400px] text-lg leading-relaxed lg:ml-0">
+            <p className="text-muted ml-auto w-[400px] text-lg leading-relaxed lg:ml-0">
               {data.description}
             </p>
           </ScrollReveal>
@@ -62,7 +62,7 @@ export const AiTimelineSection: React.FC<Props> = ({ lang, id }) => {
               )}
 
               <div className="group-hover:border-primary/50 bg-surface-deep relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 shadow-xl transition-colors duration-500">
-                <span className="group-hover:text-primary text-text-faint font-mono text-xs transition-colors">
+                <span className="group-hover:text-primary text-faint font-mono text-xs transition-colors">
                   {step.num}
                 </span>
               </div>
@@ -71,7 +71,7 @@ export const AiTimelineSection: React.FC<Props> = ({ lang, id }) => {
                 <h3 className="font-mono text-2xl font-medium tracking-tight text-white md:text-3xl">
                   {step.title}
                 </h3>
-                <p className="text-text-muted max-w-[500px] text-base leading-relaxed md:text-lg">
+                <p className="text-muted max-w-[500px] text-base leading-relaxed md:text-lg">
                   {step.description}
                 </p>
               </div>

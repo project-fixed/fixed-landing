@@ -44,13 +44,16 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
   ];
 
   return (
-    <section className="page-section flex flex-col overflow-hidden py-24">
+    <section
+      id="layers"
+      className="page-section flex flex-col overflow-hidden py-20 md:py-24"
+    >
       <div className="w-full">
         <div className="mb-16">
           <ScrollReveal direction="up" delay={0.1}>
             <SectionBadge label="layers" className="mb-4 block" />
             <h2 className="title-hero">{data.title}</h2>
-            <p className="text-text-muted max-w-[600px] text-base leading-relaxed">
+            <p className="text-muted max-w-[600px] text-base leading-relaxed">
               {data.description}
             </p>
           </ScrollReveal>
@@ -74,7 +77,7 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
                   </div>
 
                   <div className="absolute top-6 right-6">
-                    <span className="text-text-faint font-mono text-[10px] tracking-widest uppercase">
+                    <span className="text-faint font-mono text-[10px] tracking-widest uppercase">
                       Lvl {level}
                     </span>
                   </div>
@@ -83,7 +86,7 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
                     <h3 className="group-hover:text-primary mb-3 font-mono text-xl font-bold tracking-tight text-white transition-colors md:text-2xl">
                       {title}
                     </h3>
-                    <p className="text-text-muted text-sm leading-relaxed">
+                    <p className="text-muted text-sm leading-relaxed">
                       {description}
                     </p>
                   </div>

@@ -73,7 +73,7 @@ function AccordionContent({
     >
       <div
         className={cn(
-          'text-text-body h-(--accordion-panel-height) pt-1 pr-6 pb-6 pl-6 font-sans text-sm leading-relaxed transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0',
+          'text-body h-(--accordion-panel-height) pt-1 pr-6 pb-6 pl-6 font-sans text-sm leading-relaxed transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0',
           className,
         )}
       >

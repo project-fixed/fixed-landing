@@ -25,7 +25,7 @@ export default async function PlansPage({ params }: PageProps) {
         className="mx-auto mb-16 w-full max-w-[700px] text-center"
       >
         <h1 className="title-hero mb-6">{t.landing.plans.title}</h1>
-        <p className="text-text-muted mx-auto max-w-[600px] text-base leading-relaxed">
+        <p className="text-muted mx-auto max-w-[600px] text-base leading-relaxed">
           {t.landing.plans.description}
         </p>
       </ScrollReveal>

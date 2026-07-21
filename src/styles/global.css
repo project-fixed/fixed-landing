@@ -20,14 +20,19 @@
   --color-sparkle-5: #00e6f6;
 
   /* Surface Tokens */
+  --color-canvas: oklch(0.09 0 0);
   --color-surface-card: oklch(0.18 0 0);
   --color-surface-deep: oklch(0.14 0 0);
 
-  /* Text Tokens */
-  --color-text-primary: oklch(0.985 0 0);
-  --color-text-body: oklch(0.7 0 0);
-  --color-text-muted: oklch(0.55 0 0);
-  --color-text-faint: oklch(0.4 0 0);
+  /* Border Tokens */
+  --color-border-subtle: oklch(1 0 0 / 8%);
+  --color-border-medium: oklch(1 0 0 / 15%);
+
+  /* Typography Tokens (generates text-heading, text-body, text-muted, text-faint) */
+  --color-heading: oklch(0.985 0 0);
+  --color-body: oklch(0.82 0 0);
+  --color-muted: oklch(0.72 0 0);
+  --color-faint: oklch(0.58 0 0);
 
   /* Status Tokens */
   --color-status-success: #22c55e;
@@ -49,7 +54,6 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
@@ -89,20 +93,25 @@
 @utility page-section {
   position: relative;
   width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
   padding-inline: 1rem;
-  @media (width > 640px) {
+  @media (width >= 640px) {
     padding-inline: 2rem;
   }
-  @media (width > 1024px) {
+  @media (width >= 1024px) {
     padding-inline: 3rem;
   }
-  @media (width > 1280px) {
+  @media (width >= 1280px) {
+    padding-inline: 4rem;
+  }
+  @media (width >= 1536px) {
     padding-inline: 5rem;
   }
 }
 
 @utility title-hero {
-  @apply font-mono text-[clamp(2.8rem,7vw,5rem)] leading-[1.2] font-extrabold tracking-tight text-white;
+  @apply font-mono text-[2.1rem] leading-[1.2] font-extrabold tracking-tight text-white md:text-[3.6rem] xl:text-[4.5rem] 2xl:text-[5rem];
 }
 
 @utility title-section {
@@ -112,6 +121,7 @@
 /* Default Dark Theme Settings for Shadcn and Tailwind v4 */
 :root {
   color-scheme: dark;
+  --header-height: 4.5rem;
   --background: oklch(0.09 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.12 0 0);
@@ -173,6 +183,10 @@ kbd,
 samp,
 .font-mono {
   font-family: var(--font-mono) !important;
+}
+
+button {
+  cursor: pointer;
 }
 
 /* Custom Glassmorphism Utilities */

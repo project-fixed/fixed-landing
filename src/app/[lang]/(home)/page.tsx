@@ -25,8 +25,8 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <div className="relative w-full">
-      {/* Hero Section Fija (Sticky Background Layer alineada a la línea roja inicial) */}
-      <div className="sticky top-0 z-0 flex min-h-[460px] w-full flex-col justify-center md:h-[calc(100vh-200px)]">
+      {/* Hero Section Fija (Sticky Background Layer alineada y centrada entre Toolbar y Cortina) */}
+      <div className="sticky top-0 z-0 flex min-h-[76dvh] w-full flex-col justify-between pt-(--header-height) md:pt-20">
         <HeroSection currentLang={currentLang} t={t} />
         <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay" />
       </div>
@@ -36,7 +36,7 @@ export default async function HomePage({ params }: PageProps) {
         className="relative z-10 w-full border-t border-white/10 shadow-[0_-25px_60px_rgba(0,0,0,0.95)]"
         style={{
           background:
-            'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -50%, var(--background) 45%)',
+            'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -30%, var(--background) 45%)',
         }}
       >
         <OddsMarquee lang={currentLang} />

@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTranslations, type Lang } from '@/data/translations';
-import { ArrowLeftRight, Menu, X } from 'lucide-react';
-import { BetaForm } from '@/shared/components/widgets/BetaForm';
+import { ArrowLeftRight, Menu, X, ArrowUpRight } from 'lucide-react';
 import { IconButton } from '@/shared/components/ui/IconButton';
 import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
@@ -20,38 +19,49 @@ interface Props {
 interface NavLink {
   label: string;
   href: string;
+  type: 'route' | 'section';
+  targetId?: string;
 }
+
+/** Helper to remove language prefix from path */
+const normalizePathname = (pathname: string) =>
+  pathname.replace(/^\/(en|es)(\/|$)/, '/');
 
 export const Toolbar: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('');
+
   const panelRef = useRef<HTMLDivElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
+
+  const pathname = usePathname();
+  const currentNormalizedPath = normalizePathname(pathname);
 
   const homePath = lang === 'en' ? '/' : '/es';
   const plansPath = lang === 'en' ? '/plans' : '/es/plans';
   const faqPath = lang === 'en' ? '/faq' : '/es/faq';
   const appAuthUrl = 'https://app.fixed.com/auth';
 
-  const pathname = usePathname();
+  /** Efficient Motion scroll detection without unthrottled global scroll listeners */
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const shouldBeScrolled = latest > 60;
+    if (shouldBeScrolled !== isScrolled) {
+      setIsScrolled(shouldBeScrolled);
+    }
+  });
 
-  // Normalize pathname by removing locale prefix
-  const normalizedPathname = pathname.replace(/^\/(en|es)(\/|$)/, '/');
-
-  // Scroll spy to detect the active section or page
-  const [activeSection, setActiveSection] = useState<string>('');
-
+  /** Scroll spy to detect active section or page */
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    if (normalizedPathname !== '/') {
-      setActiveSection(normalizedPathname);
+    if (currentNormalizedPath !== '/') {
+      setActiveSection(currentNormalizedPath);
       return;
     }
 
-    const sections = ['hero', 'features', 'about'];
+    const sections = ['hero', 'features', 'process', 'layers', 'about'];
     const observerOptions = {
       root: null,
       rootMargin: '-40% 0px -50% 0px',
@@ -75,7 +85,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       const hash = window.location.hash.replace('#', '');
       if (sections.includes(hash)) {
         setActiveSection(hash);
-      } else if (!hash && normalizedPathname === '/') {
+      } else if (!hash && currentNormalizedPath === '/') {
         setActiveSection('hero');
       }
     };
@@ -87,23 +97,89 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       observer.disconnect();
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [normalizedPathname]);
+  }, [currentNormalizedPath]);
 
-  const isLinkActive = (linkHref: string) => {
-    const normLinkHref = linkHref.replace(/^\/(en|es)(\/|$)/, '/');
-    if (normLinkHref === '/') {
-      return activeSection === 'hero';
+  /** Close menu handlers and event listeners attached ONLY when menu is open */
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        menuBtnRef.current &&
+        !menuBtnRef.current.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  const isLinkActive = (link: NavLink) => {
+    if (currentNormalizedPath === '/') {
+      if (link.targetId) {
+        return activeSection === link.targetId;
+      }
     }
-    if (normLinkHref === '/#features') {
-      return activeSection === 'features';
-    }
-    if (normLinkHref === '/#about') {
-      return activeSection === 'about';
-    }
+    const normLinkHref = normalizePathname(link.href);
     return activeSection === normLinkHref;
   };
 
-  const getTargetPath = () => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    link: NavLink,
+  ) => {
+    closeMenu();
+
+    const isHome = link.targetId === 'hero' || link.href === homePath;
+
+    if (currentNormalizedPath === '/') {
+      if (isHome) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.pushState(null, '', homePath);
+        setActiveSection('hero');
+        return;
+      }
+
+      if (link.targetId) {
+        const element = document.getElementById(link.targetId);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', `${homePath}#${link.targetId}`);
+          setActiveSection(link.targetId);
+        }
+      }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    closeMenu();
+    if (currentNormalizedPath === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', homePath);
+      setActiveSection('hero');
+    }
+  };
+
+  const targetPath = useMemo(() => {
     const nextLang = lang === 'en' ? 'es' : 'en';
     if (pathname.startsWith(`/${lang}/`)) {
       return pathname.replace(`/${lang}/`, `/${nextLang}/`);
@@ -112,9 +188,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       return `/${nextLang}`;
     }
     return `/${nextLang}${pathname === '/' ? '' : pathname}`;
-  };
-
-  const targetPath = getTargetPath();
+  }, [lang, pathname]);
 
   const handleLangToggle = () => {
     const nextLang = lang === 'en' ? 'es' : 'en';
@@ -125,49 +199,43 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
     closeMenu();
   };
 
-  const navLinks: NavLink[] = [
-    { label: t.navbar.home, href: homePath },
-    { label: t.navbar.features, href: `${homePath}#features` },
-    { label: t.navbar.about, href: `${homePath}#about` },
-    { label: t.navbar.plans, href: plansPath },
-    { label: t.navbar.faq, href: faqPath },
-  ];
-
-  /** Detect scroll for glassmorphism header */
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 600);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  /** Close on Escape key */
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMenuOpen) closeMenu();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isMenuOpen]);
-
-  /** Close on click outside the panel */
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        isMenuOpen &&
-        panelRef.current &&
-        !panelRef.current.contains(e.target as Node) &&
-        menuBtnRef.current &&
-        !menuBtnRef.current.contains(e.target as Node)
-      ) {
-        closeMenu();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMenuOpen]);
-
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const closeMenu = () => setIsMenuOpen(false);
+  const navLinks: NavLink[] = useMemo(
+    () => [
+      {
+        label: t.navbar.home,
+        href: homePath,
+        type: 'route',
+        targetId: 'hero',
+      },
+      {
+        label: t.navbar.features,
+        href: `${homePath}#features`,
+        type: 'section',
+        targetId: 'features',
+      },
+      {
+        label: t.navbar.process,
+        href: `${homePath}#process`,
+        type: 'section',
+        targetId: 'process',
+      },
+      {
+        label: t.navbar.layers,
+        href: `${homePath}#layers`,
+        type: 'section',
+        targetId: 'layers',
+      },
+      {
+        label: t.navbar.about,
+        href: `${homePath}#about`,
+        type: 'section',
+        targetId: 'about',
+      },
+      { label: t.navbar.plans, href: plansPath, type: 'route' },
+      { label: t.navbar.faq, href: faqPath, type: 'route' },
+    ],
+    [t.navbar, homePath, plansPath, faqPath],
+  );
 
   return (
     <motion.header
@@ -175,7 +243,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed top-0 right-0 left-0 z-50 w-full px-6 pt-0 transition-all duration-500 ease-in-out md:pt-2"
+      className="fixed top-0 right-0 left-0 z-50 w-full px-0 pt-0 transition-all duration-500 ease-in-out md:pt-2"
     >
       {/* ─── Top-down Gradient & Blur Overlay Layer ──────────────────────────── */}
       <div
@@ -187,7 +255,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       {/* ─── Main Bar ──────────────────────────────────────────── */}
       <div
         id="toolbar-container"
-        className={`mx-auto flex w-full items-center justify-between border-b py-4 transition-colors duration-500 ease-in-out ${
+        className={`page-section relative flex items-center justify-between border-b py-4 transition-colors duration-500 ease-in-out ${
           isScrolled ? 'border-transparent' : 'border-white/5'
         }`}
       >
@@ -195,7 +263,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         <Link
           href={homePath}
           className="logo flex cursor-pointer items-center select-none"
-          onClick={closeMenu}
+          onClick={handleLogoClick}
         >
           <Image src={imgLogo} alt="Logo" className="relative z-10 size-9" />
           <span
@@ -212,7 +280,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
 
         {/* Right side: CTA + MENU toggle */}
         <div className="flex items-center gap-3">
-          {/* Primary CTA — JOIN FIXED • */}
+          {/* Primary CTA — JOIN FIXED */}
           <a
             href={`${appAuthUrl}?lang=${lang}`}
             target="_blank"
@@ -222,7 +290,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
             <span>{t.button.join}</span>
           </a>
 
-          {/* MENU / CLOSE toggle — icon only */}
+          {/* MENU / CLOSE toggle */}
           <IconButton
             ref={menuBtnRef}
             id="btn-menu-toggle"
@@ -230,6 +298,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
             active={isMenuOpen}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
+            aria-controls="nav-dropdown-panel"
           >
             {isMenuOpen ? (
               <X className="size-5" />
@@ -244,7 +313,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       <div
         ref={panelRef}
         id="nav-dropdown-panel"
-        className={`bg-surface-deep/95 absolute top-full right-6 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`bg-surface-deep/95 absolute top-full right-4 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out sm:right-8 lg:right-12 xl:right-16 ${
           isMenuOpen
             ? 'pointer-events-auto translate-y-0 scale-100 opacity-100'
             : 'pointer-events-none -translate-y-3 scale-95 opacity-0'
@@ -254,15 +323,17 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         {/* Nav Links */}
         <nav className="py-2 font-mono">
           {navLinks.map((link, index) => {
-            const active = isLinkActive(link.href);
+            const active = isLinkActive(link);
+            const isRoute = link.type === 'route';
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, link)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 text-sm font-bold tracking-[0.12em] uppercase transition-colors duration-150"
+                className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-150"
               >
                 {/* Hover background */}
                 <span
@@ -271,36 +342,58 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
                   }`}
                 />
 
-                <span
-                  className={`relative z-10 transition-colors duration-150 ${
-                    hoveredIndex === index
-                      ? 'font-extrabold text-white'
-                      : active
-                        ? 'text-primary-light font-extrabold'
-                        : 'text-text-muted'
-                  }`}
-                >
-                  {link.label}
-                </span>
-
-                {/* Active indicator dot or Hover arrow */}
-                <div className="relative z-10 flex h-4 w-4 items-center justify-end">
+                <div className="relative z-10 flex items-center gap-2">
+                  {/* Visual indicator prefix for section vs route */}
+                  {!isRoute && (
+                    <span
+                      className={`font-mono text-xs font-semibold transition-colors duration-150 ${
+                        active
+                          ? 'text-primary-light font-bold'
+                          : 'text-primary-light/60 group-hover:text-primary-light'
+                      }`}
+                    >
+                      #
+                    </span>
+                  )}
                   <span
-                    className={`bg-primary-light absolute size-1.5 rounded-full transition-all duration-200 ${
-                      active && hoveredIndex !== index
-                        ? 'scale-100 opacity-100'
-                        : 'scale-50 opacity-0'
-                    }`}
-                  />
-                  <span
-                    className={`absolute translate-x-1 text-white transition-all duration-200 ${
+                    className={`transition-colors duration-150 ${
                       hoveredIndex === index
-                        ? 'translate-x-0 opacity-100'
-                        : 'opacity-0'
+                        ? 'font-extrabold text-white'
+                        : active
+                          ? 'text-primary-light font-extrabold'
+                          : 'text-muted'
                     }`}
                   >
-                    →
+                    {link.label}
                   </span>
+                </div>
+
+                {/* Right side: Route Page icon vs Section active/hover indicator */}
+                <div className="relative z-10 flex items-center justify-end">
+                  {isRoute ? (
+                    <span className="text-white/40 transition-all duration-200 group-hover:scale-110 group-hover:text-white">
+                      <ArrowUpRight className="size-4" />
+                    </span>
+                  ) : (
+                    <div className="flex h-4 w-4 items-center justify-end">
+                      <span
+                        className={`bg-primary-light absolute size-1.5 rounded-full transition-all duration-200 ${
+                          active && hoveredIndex !== index
+                            ? 'scale-100 opacity-100'
+                            : 'scale-50 opacity-0'
+                        }`}
+                      />
+                      <span
+                        className={`absolute translate-x-1 text-white/70 transition-all duration-200 ${
+                          hoveredIndex === index
+                            ? 'translate-x-0 opacity-100'
+                            : 'opacity-0'
+                        }`}
+                      >
+                        →
+                      </span>
+                    </div>
+                  )}
                 </div>
               </Link>
             );
@@ -317,7 +410,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
           className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 font-mono text-sm font-bold tracking-[0.12em] transition-colors duration-150"
         >
           <span className="absolute inset-0 rounded-none bg-white/[0.04] opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
-          <span className="text-text-muted relative z-10 flex items-center gap-3 transition-colors duration-150 group-hover:text-white">
+          <span className="text-muted relative z-10 flex items-center gap-3 transition-colors duration-150 group-hover:text-white">
             {lang === 'en' ? (
               <Image
                 src={imgSpain}
@@ -341,30 +434,20 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
             <ArrowLeftRight className="size-4" />
           </span>
         </Link>
-
-        {/* Divider */}
-        <div className="mx-5 border-t border-white/[0.06]" />
-
-        {/* Mini Beta Email Widget */}
-        <div className="px-5 py-6">
-          <p className="text-text-muted mb-1 font-mono text-xs font-medium tracking-wider">
-            {lang === 'es' ? 'Acceso anticipado' : 'Early access'}
-          </p>
-          <div className="mt-6 w-full">
-            <BetaForm lang={lang} />
-          </div>
-        </div>
       </div>
 
       {/* ─── Backdrop blur overlay ──────────────────────────────── */}
       <div
+        role="button"
+        tabIndex={-1}
+        aria-label="Close menu"
         onClick={closeMenu}
+        onKeyDown={(e) => e.key === 'Escape' && closeMenu()}
         className={`fixed inset-0 -z-10 transition-opacity duration-300 ${
           isMenuOpen
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'
         }`}
-        aria-hidden="true"
       />
     </motion.header>
   );

@@ -63,13 +63,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
       id="hero"
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="page-section relative overflow-hidden pt-16"
+      className="page-section relative my-auto flex flex-1 flex-col justify-center overflow-hidden py-4"
     >
-      <div
-        className="pointer-events-none absolute inset-y-0 left-6 z-0 w-px bg-white/0 select-none md:left-12 lg:left-20"
-        aria-hidden="true"
-      />
-
       <motion.div
         className="pointer-events-none absolute inset-0 z-0"
         style={{ x: gridX, y: gridY }}
@@ -77,9 +72,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
         <HeroDecorativeGrid />
       </motion.div>
 
-      <div className="relative z-10 flex w-full flex-col justify-between gap-6 2xl:px-20">
+      <div className="relative z-10 flex w-full flex-col justify-between gap-6">
         {/* Columna Izquierda (Texto y Título amplio) */}
-        <div className="flex flex-col items-start gap-6">
+        <div className="flex flex-col items-start gap-6 xl:w-[85%]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,9 +102,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
               </span>
             </h1>
 
-            <span className="bg-primary hidden h-[10px] w-14 lg:block" />
+            <span className="bg-primary hidden h-2 w-14 lg:block" />
 
-            <p className="text-text-muted max-w-[440px] leading-relaxed">
+            <p className="text-muted max-w-[440px] leading-relaxed">
               {t.landing.home.hero.description}
             </p>
           </motion.div>
@@ -117,7 +112,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
 
         {/* Bloque Flotante Derecha (Tarjeta Early Access + Stats en Parallax) */}
         <motion.div
-          className="relative flex flex-col gap-6 lg:absolute lg:right-0 lg:bottom-4 lg:z-20"
+          className="relative flex flex-col gap-6 lg:absolute lg:right-0 lg:bottom-0 lg:z-20"
           style={{ x: formX, y: formY }}
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -125,17 +120,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
         >
           {/* Tarjeta de Early Access */}
           <div className="ml-auto hidden w-[320px] rounded-2xl border border-white/15 bg-white/10 p-6 text-right backdrop-blur-md lg:block xl:w-[400px]">
-            <p className="text-text mb-1 font-mono text-xs tracking-widest capitalize">
+            <p className="text-body mb-1 font-mono text-xs tracking-widest capitalize">
               {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
             </p>
-            <p className="text-text-muted mb-5 text-xs font-medium">
+            <p className="text-muted mb-5 text-xs font-medium">
               {currentLang === 'es'
                 ? 'Únete a la lista de espera y sé el primero en probar Fixed.'
                 : 'Join the waitlist and be the first to try Fixed.'}
             </p>
             <BetaForm lang={currentLang} />
           </div>
-          <div className="ml-auto lg:hidden">
+          <div className="ml-auto w-75 lg:hidden">
             <BetaForm lang={currentLang} />
           </div>
 
@@ -151,7 +146,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
                 <span className="mr-2 font-mono text-base font-bold text-white">
                   <AnimatedStat value={stat.value} />
                 </span>
-                <span className="text-text-muted text-xs">{stat.label}</span>
+                <span className="text-muted text-xs">{stat.label}</span>
                 {i < heroStats.length - 1 && (
                   <span className="mx-4 text-white/15">·</span>
                 )}

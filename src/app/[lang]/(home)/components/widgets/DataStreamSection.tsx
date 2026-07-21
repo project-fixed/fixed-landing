@@ -25,12 +25,12 @@ export const DataStreamSection: React.FC<Props> = ({ lang }) => {
             {[...row1, ...row1, ...row1].map((item, idx) => (
               <div
                 key={`ds1-${idx}`}
-                className="bg-surface-deep/30 text-text-muted flex items-center gap-3 rounded-lg border border-white/5 px-4 py-2.5 font-mono text-xs shadow-inner backdrop-blur-sm"
+                className="bg-surface-deep/30 text-muted flex items-center gap-3 rounded-lg border border-white/5 px-4 py-2.5 font-mono text-xs shadow-inner backdrop-blur-sm"
               >
                 <span className="bg-status-success h-1.5 w-1.5 animate-pulse rounded-full" />
-                <span className="text-text-faint font-bold">SYSTEM_LOG //</span>
+                <span className="text-faint font-bold">SYSTEM_LOG //</span>
                 <span className="text-status-success/90">{item}</span>
-                <span className="text-text-faint">[OK]</span>
+                <span className="text-faint">[OK]</span>
               </div>
             ))}
           </div>
@@ -41,14 +41,12 @@ export const DataStreamSection: React.FC<Props> = ({ lang }) => {
             {[...row2, ...row2, ...row2].map((item, idx) => (
               <div
                 key={`ds2-${idx}`}
-                className="bg-surface-deep/20 text-text-muted flex items-center gap-3 rounded-lg border border-white/5 px-4 py-2.5 font-mono text-xs backdrop-blur-sm"
+                className="bg-surface-deep/20 text-muted flex items-center gap-3 rounded-lg border border-white/5 px-4 py-2.5 font-mono text-xs backdrop-blur-sm"
               >
-                <span className="bg-text-faint h-1.5 w-1.5 rounded-full" />
-                <span className="text-text-faint font-bold">
-                  ANALYSIS_CORE //
-                </span>
-                <span className="text-text-body">{item}</span>
-                <span className="text-text-faint">[PENDING...]</span>
+                <span className="bg-faint h-1.5 w-1.5 rounded-full" />
+                <span className="text-faint font-bold">ANALYSIS_CORE //</span>
+                <span className="text-body">{item}</span>
+                <span className="text-faint">[PENDING...]</span>
               </div>
             ))}
           </div>
