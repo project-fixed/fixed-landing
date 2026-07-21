@@ -14,7 +14,7 @@ export const FaqSection: React.FC<Props> = ({ lang }) => {
     <>
       <div className="mx-auto mb-12 w-full max-w-[700px] text-center">
         <h2 className="title-section mb-6">{t.landing.faq.title}</h2>
-        <p className="text-text-body mx-auto max-w-[600px] text-base leading-relaxed max-sm:px-4">
+        <p className="text-body mx-auto max-w-[600px] text-base leading-relaxed max-sm:px-4">
           {t.landing.faq.description}
         </p>
       </div>

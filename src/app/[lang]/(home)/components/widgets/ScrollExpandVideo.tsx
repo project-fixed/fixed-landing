@@ -162,27 +162,27 @@ function AbstractDashboard() {
               </div>
               <div className="flex items-center gap-2 px-2 py-1.5 opacity-55">
                 <div className="h-3 w-3 rounded bg-white/10" />
-                <div className="text-text-body font-mono text-xs">History</div>
+                <div className="text-body font-mono text-xs">History</div>
               </div>
               <div className="flex items-center gap-2 px-2 py-1.5 opacity-55">
                 <div className="h-3 w-3 rounded bg-white/10" />
-                <div className="text-text-body font-mono text-xs">Settings</div>
+                <div className="text-body font-mono text-xs">Settings</div>
               </div>
             </div>
 
-            <div className="text-text-muted mt-2 font-mono text-[10px] tracking-widest uppercase">
+            <div className="text-muted mt-2 font-mono text-[10px] tracking-widest uppercase">
               Torneos
             </div>
             <div className="flex flex-col gap-2 opacity-75">
               <div className="flex items-center gap-2 px-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                <div className="text-text-body truncate font-mono text-[11px]">
+                <div className="text-body truncate font-mono text-[11px]">
                   Eliminatoria Sudam.
                 </div>
               </div>
               <div className="flex items-center gap-2 px-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                <div className="text-text-body truncate font-mono text-[11px]">
+                <div className="text-body truncate font-mono text-[11px]">
                   UEFA Nations League
                 </div>
               </div>
@@ -201,7 +201,7 @@ function AbstractDashboard() {
             <div className="flex h-12 w-full items-center justify-between rounded-xl border border-white/[0.04] bg-white/[0.01] px-4">
               <div className="flex flex-1 items-center gap-3">
                 <div className="h-4 w-4 rounded-full bg-white/10" />
-                <div className="text-text-muted font-mono text-[11px]">
+                <div className="text-muted font-mono text-[11px]">
                   Search your fixed...
                 </div>
               </div>
@@ -218,7 +218,7 @@ function AbstractDashboard() {
               <div className="font-mono text-lg font-bold tracking-wide text-white uppercase">
                 Dashboard
               </div>
-              <div className="text-text-muted font-mono text-[11px]">
+              <div className="text-muted font-mono text-[11px]">
                 Apuestas Deportivas | Jueves 10/10/24
               </div>
             </div>
@@ -238,7 +238,7 @@ function AbstractDashboard() {
                 <div className="font-mono text-xs font-bold text-white">
                   Bolivia vs Colombia
                 </div>
-                <div className="text-text-muted font-mono text-[10px] leading-tight">
+                <div className="text-muted font-mono text-[10px] leading-tight">
                   Doble oportunidad: Empate o Bolivia
                 </div>
               </div>
@@ -256,7 +256,7 @@ function AbstractDashboard() {
                 <div className="font-mono text-xs font-bold text-white">
                   Venezuela vs Argentina
                 </div>
-                <div className="text-text-muted font-mono text-[10px] leading-tight">
+                <div className="text-muted font-mono text-[10px] leading-tight">
                   Doble oportunidad: Empate o Argentina
                 </div>
               </div>
@@ -274,7 +274,7 @@ function AbstractDashboard() {
                 <div className="font-mono text-xs font-bold text-white">
                   Chile vs Brasil
                 </div>
-                <div className="text-text-muted font-mono text-[10px] leading-tight">
+                <div className="text-muted font-mono text-[10px] leading-tight">
                   Ganador directo: Brasil
                 </div>
               </div>
@@ -282,7 +282,7 @@ function AbstractDashboard() {
 
             {/* Bottom panel / Chart preview */}
             <div className="hidden flex-1 flex-col gap-3 rounded-xl border border-white/[0.04] bg-white/[0.01] p-4 sm:flex">
-              <div className="text-text-muted font-mono text-[10px]">
+              <div className="text-muted font-mono text-[10px]">
                 HISTORICAL SIMULATION (ROI)
               </div>
               {/* Mock chart lines using divs */}

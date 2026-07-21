@@ -98,7 +98,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
                 ? '¡Registro Completado!'
                 : 'Registration Complete!'}
             </h3>
-            <p className="text-text-body text-sm leading-relaxed">
+            <p className="text-body text-sm leading-relaxed">
               {t.landing.home.hero.betaSuccess}
             </p>
           </motion.div>
@@ -123,7 +123,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang }) => {
                 }}
                 disabled={status === 'loading'}
                 placeholder={t.landing.home.hero.betaPlaceholder}
-                className="placeholder:text-text-faint min-w-0 flex-1 truncate bg-transparent py-2 pr-2 font-mono text-xs text-white outline-none disabled:opacity-50"
+                className="placeholder:text-faint min-w-0 flex-1 truncate bg-transparent py-2 pr-2 font-mono text-xs text-white outline-none disabled:opacity-50"
                 required
               />
               <button

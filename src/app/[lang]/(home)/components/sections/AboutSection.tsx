@@ -14,7 +14,10 @@ interface Props {
 
 export const AboutSection: React.FC<Props> = ({ t }) => {
   return (
-    <section id="about" className="page-section border-t border-white/5 py-28">
+    <section
+      id="about"
+      className="page-section border-t border-white/5 py-20 md:py-24"
+    >
       <div className="flex w-full flex-wrap items-center justify-center gap-16">
         <ScrollReveal
           direction="left"
@@ -37,7 +40,7 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
             <span className="text-primary mt-2 block font-mono text-xl font-bold">
               {t.landing.home.about.subtitle}
             </span>
-            <p className="text-text-body my-6 text-base leading-relaxed">
+            <p className="text-body my-6 text-base leading-relaxed">
               {t.landing.home.about.description}
             </p>
           </ScrollReveal>

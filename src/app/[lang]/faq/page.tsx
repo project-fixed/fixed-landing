@@ -51,7 +51,7 @@ export default async function FaqPage({ params }: PageProps) {
   ];
 
   return (
-    <section className="page-section container mx-auto flex min-h-screen flex-col items-center gap-24 pt-36 lg:flex-row">
+    <section className="page-section flex min-h-screen flex-col items-center gap-24 pt-36 lg:flex-row">
       <div className="bg-pattern-grid absolute inset-0 opacity-[0.05]" />
       <div className="absolute inset-0 h-full w-full bg-linear-to-b from-transparent via-transparent to-black"></div>
 
@@ -62,7 +62,7 @@ export default async function FaqPage({ params }: PageProps) {
       >
         <h1 className="title-hero">{t.landing.faq.title}</h1>
         <span className="bg-primary/50 mt-4 block h-[10px] w-14" />
-        <p className="text-text-muted mt-6 max-w-[400px] leading-relaxed">
+        <p className="text-muted mt-6 max-w-[400px] leading-relaxed">
           {t.landing.faq.description}
         </p>
       </ScrollReveal>

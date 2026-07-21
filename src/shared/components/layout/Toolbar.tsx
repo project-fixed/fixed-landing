@@ -179,7 +179,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed top-0 right-0 left-0 z-50 w-full px-6 pt-0 transition-all duration-500 ease-in-out md:pt-2"
+      className="fixed top-0 right-0 left-0 z-50 w-full px-0 pt-0 transition-all duration-500 ease-in-out md:pt-2"
     >
       {/* ─── Top-down Gradient & Blur Overlay Layer ──────────────────────────── */}
       <div
@@ -191,7 +191,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       {/* ─── Main Bar ──────────────────────────────────────────── */}
       <div
         id="toolbar-container"
-        className={`mx-auto flex w-full items-center justify-between border-b py-4 transition-colors duration-500 ease-in-out ${
+        className={`page-section relative flex items-center justify-between border-b py-4 transition-colors duration-500 ease-in-out ${
           isScrolled ? 'border-transparent' : 'border-white/5'
         }`}
       >
@@ -249,7 +249,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       <div
         ref={panelRef}
         id="nav-dropdown-panel"
-        className={`bg-surface-deep/95 absolute top-full right-6 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`bg-surface-deep/95 absolute top-full right-4 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-2xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 ease-out sm:right-8 lg:right-12 xl:right-16 ${
           isMenuOpen
             ? 'pointer-events-auto translate-y-0 scale-100 opacity-100'
             : 'pointer-events-none -translate-y-3 scale-95 opacity-0'
@@ -282,7 +282,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
                       ? 'font-extrabold text-white'
                       : active
                         ? 'text-primary-light font-extrabold'
-                        : 'text-text-muted'
+                        : 'text-muted'
                   }`}
                 >
                   {link.label}
@@ -322,7 +322,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
           className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 font-mono text-sm font-bold tracking-[0.12em] transition-colors duration-150"
         >
           <span className="absolute inset-0 rounded-none bg-white/[0.04] opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
-          <span className="text-text-muted relative z-10 flex items-center gap-3 transition-colors duration-150 group-hover:text-white">
+          <span className="text-muted relative z-10 flex items-center gap-3 transition-colors duration-150 group-hover:text-white">
             {lang === 'en' ? (
               <Image
                 src={imgSpain}

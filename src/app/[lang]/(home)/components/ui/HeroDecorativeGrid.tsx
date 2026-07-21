@@ -6,9 +6,9 @@ import React from 'react';
  * Positioned on the right half of the hero to not compete with the copy.
  */
 export const HeroDecorativeGrid: React.FC = () => {
-  const cols = 14;
-  const rows = 10;
-  const spacing = 28;
+  const cols = 15;
+  const rows = 7;
+  const spacing = 27;
 
   return (
     <div
@@ -41,47 +41,6 @@ export const HeroDecorativeGrid: React.FC = () => {
           )),
         )}
       </svg>
-
-      {/* Subtle corner bracket lines — top-right decoration */}
-      <svg
-        className="absolute top-16 right-12 opacity-20"
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-      >
-        <path
-          d="M10 2 L2 2 L2 10"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          className="text-primary-light"
-        />
-        <path
-          d="M30 2 L38 2 L38 10"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          className="text-primary-light"
-        />
-        <path
-          d="M10 38 L2 38 L2 30"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          className="text-primary-light"
-        />
-        <path
-          d="M30 38 L38 38 L38 30"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          className="text-primary-light"
-        />
-      </svg>
-
-      {/* Vertical line accent */}
-      <div className="via-primary/20 absolute top-0 right-16 bottom-0 w-px bg-gradient-to-b from-transparent to-transparent" />
     </div>
   );
 };

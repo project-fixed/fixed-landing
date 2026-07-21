@@ -46,17 +46,15 @@ export const OddsCard: React.FC<Props> = ({
           </span>
 
           {/* Time (Clock Icon + Text) */}
-          <div className="text-text-muted flex items-center gap-1">
-            <Clock className="text-text-faint h-3.5 w-3.5" />
-            <span className="text-text-body font-medium">{time}</span>
+          <div className="text-muted flex items-center gap-1">
+            <Clock className="text-faint h-3.5 w-3.5" />
+            <span className="text-body font-medium">{time}</span>
           </div>
 
           {/* Probability (Target Icon + Text) */}
-          <div className="text-text-muted flex items-center gap-1">
-            <Target className="text-text-faint h-3.5 w-3.5" />
-            <span className="text-text-body font-medium">
-              {formattedPercent}
-            </span>
+          <div className="text-muted flex items-center gap-1">
+            <Target className="text-faint h-3.5 w-3.5" />
+            <span className="text-body font-medium">{formattedPercent}</span>
           </div>
         </div>
 
@@ -69,7 +67,7 @@ export const OddsCard: React.FC<Props> = ({
 
       {/* Row 3: Match description and status dot */}
       <div className="flex items-center justify-between gap-2">
-        <span className="text-text-muted line-clamp-1 flex-1 text-[11px]">
+        <span className="text-muted line-clamp-1 flex-1 text-[11px]">
           {match}
         </span>
         {status && (
@@ -79,7 +77,7 @@ export const OddsCard: React.FC<Props> = ({
                 ? 'bg-status-success'
                 : status === 'lost'
                   ? 'bg-destructive'
-                  : 'bg-text-faint'
+                  : 'bg-faint'
             }`}
           />
         )}
