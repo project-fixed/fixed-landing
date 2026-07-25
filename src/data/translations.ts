@@ -255,6 +255,13 @@ export const translations = {
           },
         },
       },
+      notFound: {
+        title: '404 - Page Not Found',
+        description:
+          'The page you are looking for does not exist or has been moved.',
+        buttonHome: 'Back to Home',
+        buttonPlans: 'Explore Plans',
+      },
     },
   },
   es: {
@@ -516,6 +523,13 @@ export const translations = {
             cookies: 'Cookies',
           },
         },
+      },
+      notFound: {
+        title: '404 - Página no encontrada',
+        description:
+          'La página que buscas no existe o ha sido movida temporalmente.',
+        buttonHome: 'Volver al Inicio',
+        buttonPlans: 'Explorar Planes',
       },
     },
   },
