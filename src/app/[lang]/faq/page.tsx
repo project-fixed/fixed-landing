@@ -67,7 +67,7 @@ export default async function FaqPage({ params }: PageProps) {
         </p>
       </ScrollReveal>
       <ScrollReveal direction="up" delay={0.25} className="w-full lg:w-2/3">
-        <Accordion type="single" defaultValue="item-1">
+        <Accordion type="single" defaultValue={['item-1']}>
           {faqItems.map((item) => (
             <AccordionItem key={item.id} value={item.id}>
               <AccordionTrigger>{item.title}</AccordionTrigger>

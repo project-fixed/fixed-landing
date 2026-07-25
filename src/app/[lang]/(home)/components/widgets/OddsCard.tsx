@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Target } from 'lucide-react';
+import { Clock, Target, Check, X } from 'lucide-react';
 
 export interface Props {
   time: string;
@@ -11,6 +11,8 @@ export interface Props {
   style?: React.CSSProperties;
   ev?: string;
   status?: 'won' | 'lost' | 'pending';
+  statusColor?: 'green' | 'red';
+  variant?: 'default' | 'compact';
 }
 
 export const OddsCard: React.FC<Props> = ({
@@ -23,6 +25,7 @@ export const OddsCard: React.FC<Props> = ({
   style,
   ev = '+10.0%',
   status,
+  variant = 'default',
 }) => {
   const formattedPercent = String(percent).includes('%')
     ? percent
@@ -31,6 +34,54 @@ export const OddsCard: React.FC<Props> = ({
   const formattedEv = ev.startsWith('EV')
     ? ev
     : `EV ${ev.startsWith('+') || ev.startsWith('-') ? ev : `+${ev}`}`;
+
+  if (variant === 'compact') {
+    return (
+      <div
+        className={`flex flex-col justify-between gap-2 rounded-lg border border-white/5 bg-white/[0.03] p-2.5 transition-colors hover:bg-white/[0.06] ${className}`}
+        style={style}
+      >
+        {/* Top Row: EV + Time + Prob (inline) & Unboxed Cuota */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            {/* EV Text (unboxed) */}
+            <span className="font-mono text-[10px] font-bold text-emerald-400">
+              {formattedEv}
+            </span>
+
+            {/* Time & Prob inline */}
+            <div className="flex items-center gap-1.5 font-mono text-[8px] text-white/40">
+              <div className="flex items-center gap-0.5">
+                <Clock className="h-2.5 w-2.5 text-white/50" />
+                <span>{time}</span>
+              </div>
+              <div className="flex items-center gap-0.5">
+                <Target className="h-2.5 w-2.5 text-white/50" />
+                <span>{formattedPercent}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Cuota Text (unboxed) */}
+          <span className="font-mono text-[9px] font-medium text-white">
+            {odds}
+          </span>
+        </div>
+
+        {/* Bet Title */}
+        <h4 className="font-sans! text-[11px] font-medium tracking-tight text-white">
+          {match}
+        </h4>
+
+        {/* Teams & Status Dot */}
+        <div className="flex items-center justify-between">
+          <p className="truncate font-sans text-[10.5px] text-white/60">
+            {type}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -41,9 +92,7 @@ export const OddsCard: React.FC<Props> = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5 text-[11px] sm:text-xs">
           {/* EV Badge */}
-          <span className="text-status-success font-semibold">
-            {formattedEv}
-          </span>
+          <span className="font-semibold text-emerald-400">{formattedEv}</span>
 
           {/* Time (Clock Icon + Text) */}
           <div className="text-muted flex items-center gap-1">
@@ -63,24 +112,19 @@ export const OddsCard: React.FC<Props> = ({
       </div>
 
       {/* Row 2: Prediction Type / Market */}
-      <div className="line-clamp-1 text-sm font-medium text-white">{type}</div>
+      <div className="line-clamp-1 text-sm font-medium text-white">{match}</div>
 
       {/* Row 3: Match description and status dot */}
       <div className="flex items-center justify-between gap-2">
-        <span className="text-muted line-clamp-1 flex-1 text-[11px]">
-          {match}
-        </span>
-        {status && (
-          <div
-            className={`h-2 w-2 shrink-0 rounded-full ${
-              status === 'won'
-                ? 'bg-status-success'
-                : status === 'lost'
-                  ? 'bg-destructive'
-                  : 'bg-faint'
-            }`}
-          />
-        )}
+        <span className="text-muted line-clamp-1 flex-1 text-xs">{type}</span>
+        {status &&
+          (status === 'won' ? (
+            <Check className="h-4 w-4 shrink-0 text-emerald-400" />
+          ) : status === 'lost' ? (
+            <X className="text-destructive h-4 w-4 shrink-0" />
+          ) : (
+            <div className="bg-faint h-1.5 w-1.5 shrink-0 rounded-full" />
+          ))}
       </div>
     </div>
   );

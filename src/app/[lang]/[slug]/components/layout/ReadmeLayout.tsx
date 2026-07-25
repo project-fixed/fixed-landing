@@ -57,6 +57,9 @@ export function ReadmeLayout({
     const y = el.getBoundingClientRect().top + window.scrollY - 100;
     window.scrollTo({ top: y, behavior: 'smooth' });
     setActiveId(id);
+    if (window.innerWidth < 1024) {
+      setTocOpen(false);
+    }
   };
 
   return (
@@ -64,7 +67,7 @@ export function ReadmeLayout({
       <ScrollReveal
         direction="up"
         delay={0.1}
-        className="bg-bg-primary/90 max-w-[900px] rounded-xl border border-white/10 shadow-2xl backdrop-blur-2xl"
+        className="bg-surface-deep/90 w-full max-w-[900px] rounded-xl border border-white/10 shadow-2xl backdrop-blur-2xl"
       >
         {/* ── Title Bar ── */}
         <div className="flex items-center gap-3 border-b border-white/5 bg-white/5 px-5 py-3.5 select-none">
@@ -83,11 +86,19 @@ export function ReadmeLayout({
 
         {/* ── Body ── */}
         <div className="relative flex">
+          {/* Mobile backdrop */}
+          {tocOpen && (
+            <div
+              onClick={() => setTocOpen(false)}
+              className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+            />
+          )}
+
           {/* Content */}
-          <div className="min-w-0 flex-1 px-8 py-10 md:px-12">
+          <div className="min-w-0 flex-1 px-4 py-8 sm:px-8 md:px-12">
             {title && (
               <div className="mb-12 max-w-[700px]">
-                <h1 className="mb-6 text-5xl leading-tight font-extrabold text-white">
+                <h1 className="mb-6 text-3xl leading-tight font-extrabold text-white sm:text-4xl md:text-5xl">
                   {title}
                 </h1>
                 {description && (
@@ -102,7 +113,11 @@ export function ReadmeLayout({
 
           {/* Sidepanel */}
           <div
-            className={`bg-bg-primary/90 sticky top-0 h-screen w-64 shrink-0 self-start border-l border-white/5 transition-all duration-300 ease-in-out ${tocOpen ? 'opacity-100' : 'pointer-events-none w-0 opacity-0'} `}
+            className={`bg-surface-card/95 fixed top-24 right-6 z-45 max-h-[70vh] overflow-y-auto rounded-xl border border-white/5 shadow-2xl backdrop-blur-xl transition-all duration-300 ease-in-out lg:sticky lg:top-0 lg:right-auto lg:z-0 lg:h-screen lg:max-h-screen lg:shrink-0 lg:self-start lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:bg-transparent lg:shadow-none lg:backdrop-blur-none ${
+              tocOpen
+                ? 'pointer-events-auto w-64 translate-x-0 opacity-100'
+                : 'pointer-events-none w-64 translate-x-4 opacity-0 lg:w-0 lg:translate-x-0'
+            } `}
           >
             <nav className="w-64 p-6">
               <div className="mb-5 font-sans text-[11px] font-semibold tracking-wider text-white/30 uppercase">

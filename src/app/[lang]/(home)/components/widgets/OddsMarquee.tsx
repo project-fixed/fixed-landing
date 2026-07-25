@@ -5,10 +5,10 @@ import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 const oddsData1 = [
   {
     time: '21:00',
-    percent: '58%',
+    percent: '68%',
     odds: '1.85',
-    type: 'Gana Real Madrid',
-    match: 'Real Madrid - Barcelona',
+    type: 'Más de 2.5 Goles',
+    match: 'Real Madrid vs Barcelona',
     league: 'LaLiga',
     ev: '+12.4%',
     status: 'won',
@@ -17,18 +17,18 @@ const oddsData1 = [
     time: '19:30',
     percent: '62%',
     odds: '2.10',
-    type: 'Más de 2.5 Goles',
-    match: 'Arsenal - Chelsea',
+    type: 'Más de 5.5 Córners',
+    match: 'Arsenal vs Chelsea',
     league: 'Premier League',
     ev: '+10.5%',
     status: 'lost',
   },
   {
     time: '20:45',
-    percent: '55%',
-    odds: '1.75',
-    type: 'Ambos Anotan: Sí',
-    match: 'Juventus - AC Milan',
+    percent: '65%',
+    odds: '1.90',
+    type: 'Más de 4.5 Tiros a Puerta',
+    match: 'Juventus vs AC Milan',
     league: 'Serie A',
     ev: '+8.9%',
     status: 'won',
@@ -36,19 +36,19 @@ const oddsData1 = [
   {
     time: '18:00',
     percent: '70%',
-    odds: '1.45',
-    type: 'Gana Bayern Munich',
-    match: 'Bayern Munich - Dortmund',
+    odds: '1.75',
+    type: 'Más de 2.5 Tarjetas Amarillas',
+    match: 'Bayern Munich vs Dortmund',
     league: 'Bundesliga',
     ev: '+14.1%',
     status: 'won',
   },
   {
     time: '22:00',
-    percent: '45%',
-    odds: '2.50',
-    type: 'Empate (X)',
-    match: 'PSG - Marseille',
+    percent: '58%',
+    odds: '1.95',
+    type: 'Más de 5.5 Tiros',
+    match: 'PSG vs Marseille',
     league: 'Ligue 1',
     ev: '+6.2%',
     status: 'lost',
@@ -58,7 +58,7 @@ const oddsData1 = [
     percent: '60%',
     odds: '2.05',
     type: 'Menos de 2.5 Goles',
-    match: 'Napoli - Atalanta',
+    match: 'Napoli vs Atalanta',
     league: 'Serie A',
     ev: '+9.7%',
     status: 'won',
@@ -69,19 +69,19 @@ const oddsData2 = [
   {
     time: '16:30',
     percent: '80%',
-    odds: '1.25',
+    odds: '1.55',
     type: 'Más de 1.5 Goles',
-    match: 'Man City - Fulham',
+    match: 'Man City vs Fulham',
     league: 'Premier League',
     ev: '+15.3%',
     status: 'won',
   },
   {
     time: '17:00',
-    percent: '50%',
+    percent: '64%',
     odds: '1.95',
-    type: 'Gana Atl. Madrid',
-    match: 'Sevilla - Atl. Madrid',
+    type: 'Más de 4.5 Tiros a Puerta',
+    match: 'Sevilla vs Atl. Madrid',
     league: 'LaLiga',
     ev: '+11.8%',
     status: 'won',
@@ -89,40 +89,40 @@ const oddsData2 = [
   {
     time: '20:00',
     percent: '65%',
-    odds: '1.65',
-    type: 'Menos de 3.5 Goles',
-    match: 'Ajax - PSV',
-    league: 'Eredivisie',
+    odds: '1.80',
+    type: 'Más de 9.5 Córners Totales',
+    match: 'Inter vs Napoli',
+    league: 'Serie A',
     ev: '+13.0%',
     status: 'lost',
   },
   {
     time: '19:00',
     percent: '59%',
-    odds: '1.80',
-    type: 'Gana Liverpool',
-    match: 'Liverpool - Everton',
+    odds: '1.85',
+    type: 'Más de 5.5 Tiros',
+    match: 'Liverpool vs Everton',
     league: 'Premier League',
     ev: '+10.2%',
     status: 'won',
   },
   {
     time: '21:30',
-    percent: '48%',
-    odds: '2.20',
-    type: 'Ambos Anotan: No',
-    match: 'Inter - Napoli',
-    league: 'Serie A',
+    percent: '62%',
+    odds: '2.00',
+    type: 'Más de 2.5 Tarjetas Amarillas',
+    match: 'Lille vs Monaco',
+    league: 'Ligue 1',
     ev: '+7.5%',
     status: 'lost',
   },
   {
     time: '18:45',
     percent: '71%',
-    odds: '1.50',
-    type: 'Gana Benfica',
-    match: 'Benfica - Porto',
-    league: 'Primeira Liga',
+    odds: '1.70',
+    type: 'Más de 5.5 Córners',
+    match: 'Bayer Leverkusen vs RB Leipzig',
+    league: 'Bundesliga',
     ev: '+14.6%',
     status: 'won',
   },
@@ -132,19 +132,19 @@ const oddsData3 = [
   {
     time: '15:00',
     percent: '72%',
-    odds: '1.55',
-    type: 'Gana Leverkusen',
-    match: 'Bayer Leverkusen - Koln',
+    odds: '1.65',
+    type: 'Más de 2.5 Goles',
+    match: 'Bayer Leverkusen vs Koln',
     league: 'Bundesliga',
     ev: '+13.8%',
     status: 'won',
   },
   {
     time: '18:30',
-    percent: '53%',
+    percent: '63%',
     odds: '1.90',
-    type: 'Más de 2.5 Goles',
-    match: 'Tottenham - Aston Villa',
+    type: 'Más de 4.5 Tiros a Puerta',
+    match: 'Tottenham vs Aston Villa',
     league: 'Premier League',
     ev: '+9.1%',
     status: 'lost',
@@ -152,20 +152,20 @@ const oddsData3 = [
   {
     time: '20:15',
     percent: '61%',
-    odds: '1.70',
-    type: 'Gana Roma',
-    match: 'Roma - Lazio',
+    odds: '1.75',
+    type: 'Más de 2.5 Tarjetas Amarillas',
+    match: 'Roma vs Lazio',
     league: 'Serie A',
     ev: '+11.2%',
     status: 'won',
   },
   {
     time: '22:30',
-    percent: '42%',
-    odds: '2.80',
-    type: 'Empate (X)',
-    match: 'Porto - Benfica',
-    league: 'Primeira Liga',
+    percent: '56%',
+    odds: '2.10',
+    type: 'Más de 9.5 Córners Totales',
+    match: 'Real Sociedad vs Real Betis',
+    league: 'LaLiga',
     ev: '+5.5%',
     status: 'lost',
   },
@@ -174,8 +174,8 @@ const oddsData3 = [
     percent: '68%',
     odds: '1.60',
     type: 'Menos de 2.5 Goles',
-    match: 'Sporting - Braga',
-    league: 'Primeira Liga',
+    match: 'Marseille vs Lyon',
+    league: 'Ligue 1',
     ev: '+12.9%',
     status: 'won',
   },
@@ -183,9 +183,9 @@ const oddsData3 = [
     time: '19:15',
     percent: '64%',
     odds: '1.85',
-    type: 'Gana Galatasaray',
-    match: 'Galatasaray - Fenerbahce',
-    league: 'Süper Lig',
+    type: 'Más de 5.5 Tiros',
+    match: 'Fiorentina vs Bologna',
+    league: 'Serie A',
     ev: '+11.0%',
     status: 'won',
   },
@@ -194,36 +194,22 @@ const oddsData3 = [
 const getLocalizedType = (type: string, lang: string) => {
   if (lang === 'es') return type;
   switch (type) {
-    case 'Gana Real Madrid':
-      return 'Real Madrid to Win';
     case 'Más de 2.5 Goles':
       return 'Over 2.5 Goals';
-    case 'Ambos Anotan: Sí':
-      return 'Both Teams to Score: Yes';
-    case 'Gana Bayern Munich':
-      return 'Bayern Munich to Win';
-    case 'Empate (X)':
-      return 'Draw (X)';
     case 'Menos de 2.5 Goles':
       return 'Under 2.5 Goals';
     case 'Más de 1.5 Goles':
       return 'Over 1.5 Goals';
-    case 'Gana Atl. Madrid':
-      return 'Atl. Madrid to Win';
-    case 'Menos de 3.5 Goles':
-      return 'Under 3.5 Goals';
-    case 'Gana Liverpool':
-      return 'Liverpool to Win';
-    case 'Ambos Anotan: No':
-      return 'Both Teams to Score: No';
-    case 'Gana Benfica':
-      return 'Benfica to Win';
-    case 'Gana Leverkusen':
-      return 'Leverkusen to Win';
-    case 'Gana Roma':
-      return 'Roma to Win';
-    case 'Gana Galatasaray':
-      return 'Galatasaray to Win';
+    case 'Más de 5.5 Córners':
+      return 'Over 5.5 Corners';
+    case 'Más de 9.5 Córners Totales':
+      return 'Over 9.5 Total Corners';
+    case 'Más de 4.5 Tiros a Puerta':
+      return 'Over 4.5 Shots on Target';
+    case 'Más de 2.5 Tarjetas Amarillas':
+      return 'Over 2.5 Yellow Cards';
+    case 'Más de 5.5 Tiros':
+      return 'Over 5.5 Shots';
     default:
       return type;
   }
