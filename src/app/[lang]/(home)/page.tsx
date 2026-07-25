@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslations } from '@/data/translations';
 import { OddsMarquee } from '@/app/[lang]/(home)/components/widgets/OddsMarquee';
 import { HeroSection } from './components/sections/HeroSection';
-import { FeaturesSection } from './components/sections/FeaturesSection';
-import { AiTimelineSection } from './components/sections/AiTimelineSection';
+import { DashboardPreviewSection } from './components/sections/DashboardPreviewSection';
+import { InteractiveFeaturesSection } from './components/sections/InteractiveFeaturesSection';
 import { DataStreamSection } from '@/app/[lang]/(home)/components/widgets/DataStreamSection';
 import { AiLayersSection } from './components/sections/AiLayersSection';
 import { BrandsSection } from './components/sections/BrandsSection';
@@ -41,8 +41,8 @@ export default async function HomePage({ params }: PageProps) {
       >
         <OddsMarquee lang={currentLang} />
 
-        <FeaturesSection t={t} lang={currentLang} />
-        <AiTimelineSection lang={currentLang} id="process" />
+        <DashboardPreviewSection t={t} lang={currentLang} />
+        <InteractiveFeaturesSection lang={currentLang} />
         <DataStreamSection lang={currentLang} />
         <AiLayersSection lang={currentLang} />
         <BrandsSection />

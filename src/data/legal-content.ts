@@ -23,7 +23,7 @@ type LegalDoc = {
 const cookiesContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Cookies Policy',
-    lastUpdated: 'Last Updated June 12, 2026',
+    lastUpdated: 'Last Updated July 24, 2026',
     sections: [
       {
         title: '1. What are Cookies?',
@@ -34,7 +34,7 @@ const cookiesContent: Record<Lang, LegalDoc> = {
       {
         title: '2. How We Use Cookies',
         paragraphs: [
-          'At Fixed, we use essential cookies to maintain your active session, remember your language preference (English or Spanish), and collect anonymous analytical metrics to optimize performance.',
+          'At Fixed, we use a single first-party cookie to remember your language preference (English or Spanish) across your visits. We also use analytics tools to collect statistics on site performance and user navigation.',
         ],
       },
       {
@@ -42,30 +42,26 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         isList: true,
         items: [
           {
-            bold: 'Technical Cookies:',
-            text: 'Essential for loading and running the site correctly.',
+            bold: 'Preference Cookies (First-party):',
+            text: 'We store a "language" cookie to remember your choice of locale (en/es) so the site loads in your preferred language next time you visit.',
           },
           {
-            bold: 'Preference Cookies:',
-            text: 'Safely store your locale choice.',
-          },
-          {
-            bold: 'Analytical Cookies:',
-            text: 'Help us measure visitor volume and page performance anonymously.',
+            bold: 'Analytical Trackers (Third-party & Privacy-first):',
+            text: 'We use Vercel Analytics for privacy-first, server-side traffic measurement. We also use Google Analytics to track user interaction, page views, and traffic sources using cookies (_ga, _gid). Google Analytics compiles aggregate reports that help us optimize platform usability.',
           },
         ],
       },
       {
         title: '4. Managing Cookies',
         paragraphs: [
-          'You can block, disable, or delete cookies at any time through your internet browser settings. Note that disabling essential cookies might affect the website layout or performance.',
+          'You can block, disable, or delete cookies at any time through your internet browser settings. Note that disabling cookies may reset your language preference or impact the tracking of performance metrics.',
         ],
       },
     ],
   },
   es: {
     title: 'Política de Cookies',
-    lastUpdated: 'Última actualización: 12 de Junio de 2026',
+    lastUpdated: 'Última actualización: 24 de Julio de 2026',
     sections: [
       {
         title: '1. ¿Qué son las Cookies?',
@@ -76,7 +72,7 @@ const cookiesContent: Record<Lang, LegalDoc> = {
       {
         title: '2. ¿Cómo Usamos las Cookies?',
         paragraphs: [
-          'En Fixed utilizamos cookies esenciales para mantener su sesión activa, recordar su idioma de preferencia (inglés o español) y recopilar métricas analíticas anónimas sobre el tráfico de nuestra landing page para optimizar el rendimiento.',
+          'En Fixed utilizamos una única cookie propia para recordar su idioma de preferencia (inglés o español) en sus futuras visitas. También empleamos herramientas analíticas para recopilar estadísticas sobre el rendimiento del sitio y la navegación del usuario.',
         ],
       },
       {
@@ -84,23 +80,19 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         isList: true,
         items: [
           {
-            bold: 'Cookies Técnicas:',
-            text: 'Esenciales para que el sitio cargue y funcione correctamente.',
+            bold: 'Cookies de Preferencia (Propias):',
+            text: 'Almacenamos la cookie de idioma "language" para recordar su elección de traducción (es/en) y cargar la web automáticamente en su idioma la próxima vez.',
           },
           {
-            bold: 'Cookies de Preferencia:',
-            text: 'Guardan su elección de idioma de forma local.',
-          },
-          {
-            bold: 'Cookies Analíticas:',
-            text: 'Nos permiten medir de forma anónima cuántos usuarios nos visitan y qué secciones prefieren.',
+            bold: 'Rastreadores Analíticos (Terceros y Privacidad):',
+            text: 'Utilizamos Vercel Analytics para medir el tráfico del lado del servidor de forma anónima. Adicionalmente, utilizamos Google Analytics para medir la interacción del usuario, páginas vistas y origen del tráfico mediante el uso de cookies (_ga, _gid), lo cual nos genera reportes estadísticos agregados para optimizar el sitio.',
           },
         ],
       },
       {
         title: '4. Controlar las Cookies',
         paragraphs: [
-          'Usted puede bloquear, desactivar o eliminar las cookies en cualquier momento a través de la configuración de su navegador de Internet. Tenga en cuenta que desactivar ciertas cookies esenciales podría afectar negativamente la visualización o funcionalidad de nuestra plataforma.',
+          'Usted puede bloquear, desactivar o eliminar las cookies en cualquier momento a través de la configuración de su navegador de Internet. Tenga en cuenta que desactivar las cookies de analítica o idioma podría restablecer su preferencia de idioma predeterminada o limitar nuestra capacidad de optimizar el rendimiento del sitio.',
         ],
       },
     ],
@@ -110,60 +102,66 @@ const cookiesContent: Record<Lang, LegalDoc> = {
 const privacyContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Privacy Policy',
-    lastUpdated: 'Last Updated June 12, 2026',
+    lastUpdated: 'Last Updated July 24, 2026',
     sections: [
       {
         title: '1. Information Collection',
         paragraphs: [
-          'We collect basic personal information, such as your email address, when you register for our private beta. Additionally, we gather non-identifiable technical browsing data to optimize user experience and improve our models.',
+          'We collect basic personal information, such as your email address, when you register for our private beta waitlist. Additionally, we gather non-identifiable technical browsing data (such as browser language preference) and website interaction metrics to optimize user experience. No phone numbers, passwords, or financial details are requested or stored in this phase.',
         ],
       },
       {
         title: '2. How We Use Data',
         paragraphs: [
-          'Your email is used solely to grant you access to the beta, send you critical model alerts, and provide product updates. We do not sell or share your personal data with third parties.',
+          'Your email is used solely to manage your place in the private beta waitlist, prevent duplicate registrations, and send you product updates, notifications, or invitations to join the platform once it is active. We do not sell, rent, or share your personal data with third-party advertisers.',
         ],
       },
       {
-        title: '3. Information Security',
+        title: '3. Data Processors (Third Parties)',
         paragraphs: [
-          'We implement industry-standard security protocols, including SSL encryption and secure storage, to protect your data from unauthorized access, alteration, or disclosure.',
+          'To run this beta phase, we share limited data with the following trusted third-party providers:',
+          '- Supabase: Used as our primary secure cloud database to host registration records.',
+          '- Resend: Used to deliver transactional email confirmations and product updates. Each email sent contains an automatic opt-out (unsubscribe) option.',
+          '- Google Analytics: Processes anonymized navigation metrics and device information to help us measure site performance. No directly identifying personal details are sent to Google LLC.',
         ],
       },
       {
         title: '4. Your Rights',
         paragraphs: [
-          'You have the right to request the deletion of your data or account cancellation at any time by contacting our support channel.',
+          'You have the right to request the deletion of your email address from our waitlist at any time by contacting our support channel at support@fixed.com.',
         ],
       },
     ],
   },
   es: {
     title: 'Política de Privacidad',
-    lastUpdated: 'Última actualización: 12 de Junio de 2026',
+    lastUpdated: 'Última actualización: 24 de Julio de 2026',
     sections: [
       {
         title: '1. Recopilación de Información',
         paragraphs: [
-          'Recopilamos información personal básica como su correo electrónico al registrarse en nuestra beta privada. Además, recopilamos datos técnicos de navegación no identificables para optimizar la experiencia de usuario y mejorar nuestros algoritmos de procesamiento.',
+          'Recopilamos información personal básica como su correo electrónico al registrarse en la lista de espera de nuestra beta privada. Además, recopilamos datos técnicos de navegación no identificables (como el idioma de preferencia de su navegador) y métricas de interacción con el sitio para optimizar la experiencia de usuario. No solicitamos ni almacenamos contraseñas, números telefónicos ni información financiera en esta fase.',
         ],
       },
       {
         title: '2. Uso de los Datos',
         paragraphs: [
-          'Su dirección de correo electrónico se utiliza exclusivamente para otorgarle acceso a la beta, enviarle alertas críticas del modelo y actualizaciones del producto. No vendemos ni compartimos sus datos personales con terceros.',
+          'Su dirección de correo electrónico se utiliza exclusivamente para gestionar su lugar en la lista de espera de la Beta privada, evitar registros duplicados y enviarle actualizaciones, notificaciones o invitaciones para ingresar a la plataforma. No vendemos, alquilamos ni compartimos sus datos personales con anunciantes externos.',
         ],
       },
       {
-        title: '3. Seguridad de la Información',
+        title: '3. Proveedores de Servicios (Terceros)',
         paragraphs: [
-          'Implementamos protocolos de seguridad estándar de la industria, incluyendo encriptación SSL y almacenamiento seguro, para proteger sus datos contra acceso no autorizado, alteración o destrucción.',
+          'Para el correcto funcionamiento de esta fase Beta, compartimos información limitada con los siguientes proveedores de servicios externos de confianza:',
+          '- Supabase: Utilizado como nuestra base de datos segura en la nube para registrar los correos electrónicos.',
+          '- Resend: Utilizado como nuestra plataforma de distribución para enviarle confirmaciones de registro y novedades. Cada correo incluye un enlace de baja automática.',
+          '- Google Analytics: Proveedor analítico de Google LLC utilizado para evaluar patrones de tráfico y rendimiento de forma agregada. Las direcciones IP se anonimizan antes de su procesamiento.',
         ],
       },
       {
         title: '4. Sus Derechos',
         paragraphs: [
-          'Usted tiene derecho a solicitar la eliminación de sus datos o la cancelación de su cuenta de suscripción enviando una solicitud directa a nuestro soporte de correo.',
+          'Usted tiene derecho a solicitar la eliminación de su correo electrónico de nuestra lista de espera en cualquier momento enviando una solicitud directa a nuestro soporte en support@fixed.com.',
         ],
       },
     ],
@@ -173,60 +171,74 @@ const privacyContent: Record<Lang, LegalDoc> = {
 const termsContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Terms of Service',
-    lastUpdated: 'Last Updated June 12, 2026',
+    lastUpdated: 'Last Updated July 24, 2026',
     sections: [
       {
         title: '1. Acceptance of Terms',
         paragraphs: [
-          'By accessing or using Fixed services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our platform.',
+          'By accessing or browsing the Fixed website and registering your email in our waitlist, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, please do not use the site.',
         ],
       },
       {
-        title: '2. Use of Predictive Intelligence',
+        title: '2. Beta Phase and Waitlist',
         paragraphs: [
-          'Fixed provides predictive models and data-driven analysis based on sports statistics and historical trends. All our content is provided for informational and analytical purposes only. We do not guarantee financial outcomes or returns on investment.',
+          'Fixed is currently under development (Private Beta). This website is an informational landing page. All predictions, odds, and metrics displayed here are simulated and for illustrative or historical purposes only. They do not represent live bets or guarantee access to any paid service.',
+          'By registering your email on the waitlist, you represent and warrant that you are at least 18 years of age. Fixed reserves the right to immediately remove any registered email if we suspect the user does not meet this age requirement.',
         ],
       },
       {
         title: '3. Limitation of Liability',
         paragraphs: [
-          'Fixed shall not be liable for any financial losses, direct or indirect damages resulting from the use of our predictions or market alerts. Final decisions remain the sole responsibility of the user.',
+          'Fixed is not responsible for any financial losses, bets, or decisions made based on the illustrative information displayed on this site. Since there are no active paid subscriptions or payment methods on this site, no financial liability or refund obligations are assumed.',
         ],
       },
       {
-        title: '4. User Accounts and Subscriptions',
+        title: '4. Intellectual Property',
         paragraphs: [
-          'You are responsible for maintaining the confidentiality of your account credentials. We reserve the right to terminate or suspend access immediately if unauthorized sharing or misuse of the platform is detected.',
+          'All visual content, interface designs, texts, logos, and AI processing concepts shown on the site are the exclusive property of Fixed and protected by intellectual property laws.',
+        ],
+      },
+      {
+        title: '5. Governing Law',
+        paragraphs: [
+          'These terms of use are governed by the laws of the Republic of Peru. Any legal inquiries or disputes shall be submitted to the competent courts of Lima, Peru.',
         ],
       },
     ],
   },
   es: {
     title: 'Términos de Servicio',
-    lastUpdated: 'Última actualización: 12 de Junio de 2026',
+    lastUpdated: 'Última actualización: 24 de Julio de 2026',
     sections: [
       {
         title: '1. Aceptación de los Términos',
         paragraphs: [
-          'Al acceder o utilizar los servicios de Fixed, usted acepta estar sujeto a estos Términos de Servicio. Si no está de acuerdo con alguna parte de estos términos, no podrá acceder a nuestra plataforma.',
+          'Al acceder o navegar por el sitio web de Fixed y registrar su correo en la lista de espera, usted acepta estar sujeto a estos Términos de Servicio. Si no está de acuerdo con alguna parte de estos términos, por favor no utilice el sitio.',
         ],
       },
       {
-        title: '2. Uso de la Inteligencia Predictiva',
+        title: '2. Fase Beta y Lista de Espera',
         paragraphs: [
-          'Fixed proporciona modelos predictivos e información basada en datos históricos y estadísticos deportivos. Todo nuestro contenido se ofrece con fines informativos y analíticos. No garantizamos resultados financieros ni retornos de inversión.',
+          'Fixed se encuentra actualmente en fase de desarrollo (Beta privada). Este sitio es una landing page de carácter informativo. Todas las predicciones, cuotas y métricas que se muestran aquí son simulaciones de carácter ilustrativo e histórico. No constituyen recomendaciones en vivo ni garantizan el acceso a un servicio de pago activo.',
+          'Al registrar su correo electrónico en la lista de espera, usted declara y garantiza que tiene al menos 18 años de edad. Fixed se reserva el derecho de eliminar cualquier registro de forma inmediata si sospechamos que el usuario no cumple con este requisito de edad.',
         ],
       },
       {
         title: '3. Limitación de Responsabilidad',
         paragraphs: [
-          'Fixed no se hace responsable de pérdidas financieras, daños directos o indirectos derivados del uso de nuestras predicciones o alertas de mercado. Las decisiones finales son responsabilidad exclusiva del usuario.',
+          'Fixed no se hace responsable de pérdidas financieras, apuestas o decisiones tomadas con base en la información ilustrativa de este sitio. Al no existir servicios de pago ni pasarelas de cobro activas en esta landing page, no se asume responsabilidad contractual ni obligación de reembolso.',
         ],
       },
       {
-        title: '4. Cuentas de Usuario y Suscripciones',
+        title: '4. Propiedad Intelectual',
         paragraphs: [
-          'El usuario es responsable de mantener la confidencialidad de sus credenciales de acceso. Nos reservamos el derecho de rescindir o suspender el acceso de forma inmediata si se detecta un uso indebido de los datos o de la cuenta.',
+          'Todo el contenido visual, diseño de interfaz, textos, logotipos y conceptos de procesamiento de IA mostrados en el sitio son propiedad exclusiva de Fixed y están protegidos por las leyes de propiedad intelectual.',
+        ],
+      },
+      {
+        title: '5. Legislación Aplicable',
+        paragraphs: [
+          'Estos términos se rigen preliminarmente por las leyes de la República del Perú. Cualquier consulta legal o disputa se someterá a los tribunales competentes de Lima, Perú.',
         ],
       },
     ],

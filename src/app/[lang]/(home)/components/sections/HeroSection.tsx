@@ -74,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
 
       <div className="relative z-10 flex w-full flex-col justify-between gap-6">
         {/* Columna Izquierda (Texto y Título amplio) */}
-        <div className="flex flex-col items-start gap-6 xl:w-[85%]">
+        <div className="flex flex-col items-start gap-6 xl:w-[80%]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

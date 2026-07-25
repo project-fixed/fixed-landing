@@ -247,7 +247,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
     >
       {/* ─── Top-down Gradient & Blur Overlay Layer ──────────────────────────── */}
       <div
-        className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-[300px] bg-linear-to-b from-black/0 via-transparent to-transparent [mask-image:linear-gradient(to_bottom,black_20%,transparent_100%)] transition-opacity duration-500 ${
+        className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-[300px] bg-linear-to-b from-black via-transparent to-transparent [mask-image:linear-gradient(to_bottom,black_20%,transparent_100%)] transition-opacity duration-500 ${
           isScrolled ? 'opacity-100' : 'opacity-0'
         }`}
       />

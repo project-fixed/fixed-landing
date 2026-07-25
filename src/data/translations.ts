@@ -65,61 +65,54 @@ export const translations = {
           'Syncing predictions to Supabase database & Webhooks...',
           'Resolving settled bets and updating Yield metrics...',
         ],
-        features: {
+        dashboardPreview: {
           title: 'The End of Intuition. Applied Quantitative Intelligence.',
           description:
-            'We strip away market noise and replace speculation with mathematical conviction. Explore our interactive dashboard designed to expose structural value across the top 5 European leagues.',
+            'We strip away market noise and replace speculation with mathematical conviction. Experience predictive intelligence firsthand.',
+        },
+        features: {
+          title: 'Built to Give You the Edge',
+          description:
+            'Everything you need to stop gambling on instinct and start investing with data-backed mathematical conviction.',
           accordion: {
             item1: {
-              title: 'Interactive Multi-League Dashboard',
-              subtitle: 'Real-time organization by league',
+              title: 'Discover',
+              subtitle: "Daily 'Fijas' & top market picks",
               description:
-                'Filter value bets instantly across LaLiga, Premier League, Serie A, Bundesliga, and Ligue 1 in dedicated columns.',
+                'Save hours of manual research. Access an infinite carousel of algorithmically verified daily picks across top European leagues with positive EV, match times, and hit rate statistics.',
             },
             item2: {
-              title: 'Deep Match Analysis & Markets Breakdown',
-              subtitle: 'Granular statistics per team',
+              title: 'Analyze',
+              subtitle: 'Granular match projections & Top Value Bets',
               description:
-                'Examine detailed statistical projections for 5 core markets: Goals, Shots, Shots on Target, Corners, and Yellow Cards.',
-            },
-            item3: {
-              title: 'Confidence Tiering & Top Value Bets',
-              subtitle: 'Ranks led by "La Fija"',
-              description:
-                'Prioritize recommendations grouped by confidence level—from high-conviction "La Fija" to balanced medium and low risk options.',
-            },
-            item4: {
-              title: 'Kelly Stake & Expected Value (EV%)',
-              subtitle: 'Strict bankroll management',
-              description:
-                'Never guess how much to wager. Every pick includes exact EV percentage and recommended Kelly Criterion allocation.',
+                'Get complete context in one single view. Inspect granular match projections for goals, shots, corners, and cards side-by-side with institutional Top Value Bets (EV > 5%).',
             },
           },
         },
         ai: {
           layers: {
-            title: 'Analytical Pipeline Layers',
+            title: 'The Intelligence Engine Behind Fixed',
             description:
-              'Our engine processes matches through four quantitative layers before triggering a value recommendation.',
+              'Four sophisticated layers processing real-time football data into clear, profitable decisions.',
             layer1: {
-              title: 'Dynamic ELO Rating',
+              title: 'Real Power Evaluation',
               description:
-                'Continuous adjustment of team power metrics, head-to-head dominance, and form vectors.',
+                'Dynamic ELO ratings continuously assess true team strength, H2H dominance, and current form.',
             },
             layer2: {
-              title: 'Feature Engineering',
+              title: 'Total Statistical Context',
               description:
-                'Ingestion of historical match statistics across 5 target markets from official Sports API sources.',
+                'Automated ingestion of historical metrics across 5 key betting markets from official Sports APIs.',
             },
             layer3: {
-              title: 'XGBoost ML Engine',
+              title: 'Self-Learning Machine Learning',
               description:
-                'Daily Champion vs Challenger tree-based model re-training to adapt to rapid performance shifts.',
+                'Daily XGBoost Champion vs. Challenger model retraining to stay ahead of performance shifts.',
             },
             layer4: {
-              title: 'Value & Risk Optimization',
+              title: 'Math Against the House',
               description:
-                'Filtering EV > 5% opportunities and calculating conservative Kelly Criterion stakes (Max 5%).',
+                'Strict EV > 5% filtering and conservative Kelly bankroll sizing to safeguard long-term growth.',
             },
           },
           process: {
@@ -332,61 +325,54 @@ export const translations = {
           'Sincronizando predicciones en Supabase y Webhooks...',
           'Resolviendo apuestas finalizadas y actualizando métricas de Yield...',
         ],
-        features: {
+        dashboardPreview: {
           title: 'El Fin de la Intuición. Inteligencia Cuantitativa Aplicada.',
           description:
-            'Eliminamos el ruido del mercado y reemplazamos la especulación con convicción matemática. Explora nuestro dashboard interactivo diseñado para exponer valor estructural en las 5 principales ligas europeas.',
+            'Eliminamos el ruido del mercado y reemplazamos la especulación con convicción matemática. Experimenta la inteligencia predictiva de primera mano.',
+        },
+        features: {
+          title: 'Diseñado para darte la Ventaja Matemática',
+          description:
+            'Todo lo que necesitas para dejar de apostar por corazonada y empezar a invertir con convicción respaldada por datos.',
           accordion: {
             item1: {
-              title: 'Dashboard Multiliga Interactivo',
-              subtitle: 'Organización por liga en tiempo real',
+              title: 'Descubre',
+              subtitle: 'Las Fijas del día y mejores selecciones',
               description:
-                'Filtra las apuestas de valor al instante en LaLiga, Premier League, Serie A, Bundesliga y Ligue 1 organizadas en columnas dedicadas.',
+                'Ahorra horas de análisis manual. Accede a un carrusel interactivo de selecciones diarias verificadas algorítmicamente por ligas europeas con EV positivo, horarios y estadísticas.',
             },
             item2: {
-              title: 'Análisis Detallado por Partido y Mercados',
-              subtitle: 'Proyecciones granulares por equipo',
+              title: 'Analiza',
+              subtitle: 'Desglose profundo de cada partido y Top Value Bets',
               description:
-                'Examina proyecciones estadísticas en 5 mercados clave: Goles, Tiros, Tiros a Puerta, Córners y Tarjetas Amarillas.',
-            },
-            item3: {
-              title: 'Niveles de Confianza y Top Value Bets',
-              subtitle: 'Rankings encabezados por "La Fija"',
-              description:
-                'Prioriza recomendaciones agrupadas por nivel de confianza: desde la convicción alta ("La Fija") hasta opciones de riesgo medio y bajo.',
-            },
-            item4: {
-              title: 'Stake de Kelly y Valor Esperado (EV%)',
-              subtitle: 'Gestión estricta de bankroll',
-              description:
-                'Sin adivinanzas sobre cuánto apostar. Cada oportunidad incluye el porcentaje de EV y la asignación sugerida por el Criterio de Kelly.',
+                'Obtén contexto completo en una sola vista. Examina proyecciones detalladas de goles, tiros, córners y tarjetas junto a las mejores jugadas de Valor Esperado (EV > 5%).',
             },
           },
         },
         ai: {
           layers: {
-            title: 'Capas del Pipeline Analítico',
+            title: 'El Motor de Inteligencia Detrás de Fixed',
             description:
-              'Nuestro motor procesa los partidos a través de cuatro capas cuantitativas antes de emitir una recomendación de valor.',
+              'Cuatro capas cuantitativas que transforman datos complejos de fútbol en decisiones claras y rentables.',
             layer1: {
-              title: 'Rating ELO Dinámico',
+              title: 'Evaluación del Poder Real',
               description:
-                'Ajuste continuo del poder de equipo, dominancia H2H y vectores de forma reciente.',
+                'Ratings ELO Dinámicos que miden la fuerza real de cada equipo, dominancia H2H y estado de forma.',
             },
             layer2: {
-              title: 'Ingeniería de Features',
+              title: 'Contexto Estadístico Total',
               description:
-                'Ingesta de estadísticas históricas en 5 mercados clave desde fuentes oficiales de Sports API.',
+                'Ingesta automatizada de métricas históricas en 5 mercados clave desde fuentes de datos oficiales.',
             },
             layer3: {
-              title: 'Motor ML XGBoost',
+              title: 'Algoritmo de Auto-Aprendizaje',
               description:
-                'Re-entrenamiento diario Champion vs Challenger basado en árboles para adaptarse al rendimiento.',
+                'Re-entrenamiento diario de modelos XGBoost (Champion vs Challenger) para adaptarse a cambios de rendimiento.',
             },
             layer4: {
-              title: 'Optimización de Valor y Riesgo',
+              title: 'Matemática contra la Casa',
               description:
-                'Filtrado de oportunidades con EV > 5% y cálculo de stake conservador por Criterio de Kelly (Máx 5%).',
+                'Filtrado estricto de EV > 5% y cálculo conservador de Kelly para asegurar el crecimiento sostenido de tu capital.',
             },
           },
           process: {

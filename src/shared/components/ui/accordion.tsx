@@ -41,12 +41,7 @@ function AccordionTrigger({
         )}
         {...props}
       >
-        <span className="flex items-center gap-3">
-          <span className="group-aria-expanded/accordion-trigger:text-primary-light font-mono text-xs text-white/20 transition-colors duration-200 select-none group-hover:text-white/45">
-            &gt;
-          </span>
-          <span>{children}</span>
-        </span>
+        <span>{children}</span>
         <Plus
           data-slot="accordion-trigger-icon"
           className="pointer-events-none size-4 shrink-0 text-white/20 transition-transform duration-200 group-hover:text-white/45 group-aria-expanded/accordion-trigger:hidden"
