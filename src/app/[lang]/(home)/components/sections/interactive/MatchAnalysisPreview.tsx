@@ -241,18 +241,15 @@ const TOP_VALUE_BETS: ValueBetCardData[] = [
 
 export const MatchAnalysisPreview: React.FC = () => {
   return (
-    <div className="flex w-full flex-col gap-4 overflow-hidden rounded-2xl p-1 lg:flex-row xl:items-stretch">
+    <div className="flex w-full flex-col gap-4 overflow-hidden rounded-2xl md:p-1 lg:flex-row xl:items-stretch">
       {/* Left Panel: Match Projections View */}
       <div className="relative z-10 flex flex-1 flex-col justify-between overflow-hidden rounded-xl border border-white/10 p-4 shadow-2xl backdrop-blur-md sm:p-5">
         {/* Ambient Red & Yellow Team Glows */}
         <div className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-r from-red-600/20 via-transparent to-yellow-500/20 blur-[100px]" />
         {/* Matchup Banner */}
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-0.5 font-mono text-[9px] font-semibold tracking-widest text-white/60 uppercase">
-            Bundesliga
-          </div>
-          <span className="mt-1 font-mono text-[10px] text-white/40">
-            Jornada 36
+          <span className="mb-1 font-mono text-[10px] text-white/40">
+            Bundesliga: Jornada 36
           </span>
           <h3 className="mt-1 font-sans text-xl font-extrabold tracking-tight text-white sm:text-2xl">
             Bayern Munich vs Borussia Dortmund
@@ -279,7 +276,7 @@ export const MatchAnalysisPreview: React.FC = () => {
         <div className="mt-4 flex w-full flex-1 flex-col justify-between">
           <div className="grid grid-cols-3 items-center border-b border-white/10 pb-2 font-mono text-[10px] font-bold tracking-wider text-white/30 uppercase">
             <div className="text-left">Local</div>
-            <div className="text-center">Predicciones</div>
+            <div className="text-center">Estadísticas</div>
             <div className="text-right">Visitante</div>
           </div>
 

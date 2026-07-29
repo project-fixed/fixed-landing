@@ -12,7 +12,7 @@ export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
   return (
     <section id="features" className="relative">
       <div className="bg-pattern-grid absolute inset-0 opacity-[0.04]" />
-      <div className="page-section py-20 md:py-24">
+      <div className="page-section pt-20 md:pt-24">
         <div className="flex flex-col items-end justify-between gap-6 lg:flex-row">
           <ScrollReveal direction="up" delay={0.1}>
             <h2 className="title-section lg:max-w-[760px]">
@@ -28,7 +28,7 @@ export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
       </div>
 
       <ScrollExpandVideo
-        cursorText={lang === 'es' ? 'Explorar Dashboard' : 'Explore Dashboard'}
+        cursorText={lang === 'es' ? 'Ver Demo' : 'Play demo'}
       ></ScrollExpandVideo>
     </section>
   );

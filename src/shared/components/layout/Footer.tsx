@@ -99,13 +99,13 @@ export const Footer: React.FC<Props> = ({ lang }) => {
                   href={`${homePath}#features`}
                   className="hover:text-primary text-muted text-sm transition-colors duration-200"
                 >
-                  {t.navbar.features}
+                  {t.navbar.dashboard}
                 </Link>
                 <Link
-                  href={`${homePath}#process`}
+                  href={`${homePath}#interactive-features`}
                   className="hover:text-primary text-muted text-sm transition-colors duration-200"
                 >
-                  {t.navbar.process}
+                  {t.navbar.features}
                 </Link>
                 <Link
                   href={`${homePath}#layers`}

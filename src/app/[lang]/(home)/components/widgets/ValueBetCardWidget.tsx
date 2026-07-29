@@ -38,8 +38,8 @@ export const ValueBetCardWidget: React.FC<ValueBetCardWidgetProps> = ({
     <div
       className={`relative flex flex-col justify-between rounded-lg p-2.5 transition-all duration-200 ${
         card.isHighlighted
-          ? 'border-primary-light/10 ring-primary-light/20 border bg-gradient-to-b from-[#1b2b36] to-black/90 shadow-[0_0_15px_rgba(62,93,108,0.3)] ring-1'
-          : 'border border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]'
+          ? 'border-primary-light/10 ring-primary-light/20 from-primary/20 to-secondary border bg-linear-to-b shadow-[0_0_15px_rgba(62,93,108,0.3)] ring-1'
+          : 'border border-white/10 bg-white/2 hover:border-white/20 hover:bg-white/5'
       } ${className}`}
     >
       {/* Top Row: Rank, EV, Conf */}
