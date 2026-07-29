@@ -2,10 +2,9 @@ export const translations = {
   en: {
     navbar: {
       home: 'Home',
+      dashboard: 'Dashboard',
       features: 'Features',
-      process: 'Process',
-      layers: 'Layers',
-      steps: 'Process',
+      layers: 'AI Engine',
       about: 'About',
       plans: 'Plans',
       faq: 'FAQ',
@@ -25,7 +24,7 @@ export const translations = {
             end: 'clear decisions',
           },
           description:
-            'Predictive intelligence for sports betting. Decisions backed by data, not instinct.',
+            'Every match has a best bet. We find it \u2014 with the right risk for every play. Clear decisions. Real edge.',
           betaPlaceholder: 'Enter your email for early access...',
           betaButton: 'Join Beta',
           betaLoadingButton: 'Joining...',
@@ -35,214 +34,184 @@ export const translations = {
             'This email is already registered on the waitlist.',
           betaErrorGeneric: 'An error occurred. Please try again later.',
           online: '10k people online',
-          oddsTitle: 'Latest Opportunities Detected by the Model',
+          oddsTitle: 'Live Picks With Real Edge',
           key: {
             point1: {
               title: '12%',
-              description: 'Historical Yield delivered by our predictive model',
+              description: 'Historical return on our picks',
             },
             point2: {
               title: '65%',
-              description: 'Hit rate accuracy across isolated value bets',
+              description: 'Win rate on recommended bets',
             },
             point3: {
               title: '>5%',
-              description: 'Minimum Expected Value (EV) threshold',
+              description: 'Minimum edge to qualify',
             },
             point4: {
               title: '5%',
-              description: 'Max Kelly Criterion bankroll allocation per pick',
+              description: 'Max stake per bet (bankroll safety)',
             },
           },
         },
         datastream: [
-          'Ingesting Sports API data (Top 5 European Leagues)...',
-          'Updating Dynamic ELO Ratings and team form vectors...',
-          'Executing daily XGBoost Champion vs Challenger training...',
-          'Filtering opportunities with Expected Value (EV > 5%)...',
-          'Calculating optimal stakes via Kelly Criterion (Cap: 5%)...',
-          'Categorizing confidence levels (La Fija, Medium, Low)...',
-          'Syncing predictions to Supabase database & Webhooks...',
-          'Resolving settled bets and updating Yield metrics...',
+          'Scanning top 5 European leagues for fresh data...',
+          "Rating each team's true strength and current form...",
+          'Running daily simulations to sharpen predictions...',
+          'Filtering only the bets with a real mathematical edge...',
+          'Calculating the perfect stake size to protect your bankroll...',
+          'Tagging picks by confidence level (High, Medium, Low)...',
+          'Pushing winning picks to your dashboard...',
+          'Tracking results and updating your performance stats...',
         ],
         dashboardPreview: {
           title: 'The End of Intuition. Applied Quantitative Intelligence.',
           description:
-            'We strip away market noise and replace speculation with mathematical conviction. Experience predictive intelligence firsthand.',
+            'We strip away the noise and show you only what matters: the bets with real edge. See it in action.',
         },
         features: {
-          title: 'Built to Give You the Edge',
+          title: 'Your Edge, Every Matchday',
           description:
-            'Everything you need to stop gambling on instinct and start investing with data-backed mathematical conviction.',
+            'We do the hard work so you don\u2019t have to. Every pick is calculated, verified, and ready to act on.',
           accordion: {
             item1: {
               title: 'Discover',
-              subtitle: "Daily 'Fijas' & top market picks",
+              subtitle: 'Your daily winning picks, served fresh',
               description:
-                'Save hours of manual research. Access an infinite carousel of algorithmically verified daily picks across top European leagues with positive EV, match times, and hit rate statistics.',
+                'No more scrolling through endless stats. Every day we serve you the best opportunities across the top leagues \u2014 with the confidence level, match time, and potential value already figured out. Just open the app and see what\u2019s waiting for you.',
             },
             item2: {
               title: 'Analyze',
-              subtitle: 'Granular match projections & Top Value Bets',
+              subtitle: 'See exactly what the model sees',
               description:
-                'Get complete context in one single view. Inspect granular match projections for goals, shots, corners, and cards side-by-side with institutional Top Value Bets (EV > 5%).',
+                'One tap and you get the full picture. Goals, shots, corners, cards \u2014 all projected side by side with the bets that actually have an edge. No noise, no fluff. Just the data that matters, exactly when you need it.',
             },
           },
         },
         ai: {
           layers: {
-            title: 'The Intelligence Engine Behind Fixed',
+            title: 'The Brain That Finds Your Edge',
             description:
-              'Four sophisticated layers processing real-time football data into clear, profitable decisions.',
+              'Four layers of intelligence working around the clock to separate winning bets from traps.',
             layer1: {
-              title: 'Real Power Evaluation',
+              title: "Know Who's Really the Better Team",
               description:
-                'Dynamic ELO ratings continuously assess true team strength, H2H dominance, and current form.',
+                'Form is temporary, class is real. We track true team strength, head-to-head dominance, and current momentum \u2014 not just league position.',
             },
             layer2: {
-              title: 'Total Statistical Context',
+              title: 'The Full Picture, Every Time',
               description:
-                'Automated ingestion of historical metrics across 5 key betting markets from official Sports APIs.',
+                'We pull in years of data across goals, shots, corners, and cards from the top leagues. Nothing gets missed.',
             },
             layer3: {
-              title: 'Self-Learning Machine Learning',
+              title: 'A Model That Gets Smarter Every Day',
               description:
-                'Daily XGBoost Champion vs. Challenger model retraining to stay ahead of performance shifts.',
+                'Our algorithm retrains daily \u2014 comparing its own predictions against reality to stay sharp and adapt to how teams evolve.',
             },
             layer4: {
-              title: 'Math Against the House',
+              title: 'Only the Bets That Beat the Bookie',
               description:
-                'Strict EV > 5% filtering and conservative Kelly bankroll sizing to safeguard long-term growth.',
+                'We filter out every pick that doesn\u2019t have a clear mathematical edge. And when we find one, we tell you exactly how much to stake \u2014 no guesswork.',
             },
           },
           process: {
-            title: 'How Fixed Works',
+            title: 'How It Works',
             description:
-              'A transparent look into how we turn complex football data into profitable decisions.',
+              'From raw data to ready-to-play picks \u2014 here\u2019s how we get you the edge.',
             step1: {
-              title: 'Account & Auth',
+              title: 'Create Your Account',
               description:
-                'Sign up securely with Supabase Auth to access the full quantitative dashboard.',
+                'Sign up in seconds and unlock your personal betting dashboard. No complicated setup, just instant access.',
             },
             step2: {
-              title: 'Explore the Dashboard',
+              title: 'Browse Today\u2019s Picks',
               description:
-                'View daily Value Bets categorized across the top 5 European leagues with live Hit Rate and Yield stats.',
+                'See every recommended bet across the top leagues \u2014 with confidence level, edge percentage, and stake size already calculated.',
             },
             step3: {
-              title: 'Inspect Match Deep Dives',
+              title: 'Dive Into Any Match',
               description:
-                'Analyze team-by-team breakdowns for Goals, Shots, Shots on Target, Corners, and Yellow Cards.',
+                'Tap any game to see the full breakdown: goals, shots, corners, cards \u2014 all projected so you know exactly what to expect.',
             },
             step4: {
-              title: 'Execute Recommended Kelly Stake',
+              title: 'Place Your Bet',
               description:
-                'Follow the EV% calculations and Kelly Criterion stake limits to execute bets on your favorite sportsbook.',
+                'Take the recommended stake and play it at your sportsbook. That\u2019s it. No guesswork, no stress.',
             },
-          },
-        },
-        steps: {
-          title: 'Quick Guide: How to Use Our Platform',
-          description:
-            'Follow these simple steps to make the most of our sports betting platform.',
-          step1: {
-            title: '1. Sign Up',
-            description:
-              'Create an account securely using Supabase Auth to unlock access to the dashboard.',
-          },
-          step2: {
-            title: '2. Access Dashboard',
-            description:
-              'Log in to view live Value Bets sorted across top 5 European leagues.',
-          },
-          step3: {
-            title: '3. Explore Match Deep Dives',
-            description:
-              'Inspect team statistics for Goals, Shots, Corners, and Cards for any fixture.',
-          },
-          step4: {
-            title: '4. Check Top Value Bets',
-            description:
-              'Filter recommendations by confidence tier: La Fija, Medium, or Low risk.',
-          },
-          step5: {
-            title: '5. Place Your Bet with Kelly Stake',
-            description:
-              'Apply the exact recommended Kelly Criterion bankroll percentage at your preferred sportsbook.',
           },
         },
         about: {
-          title: 'About Us',
-          subtitle: 'The Mathematical Edge',
+          title: 'Who We Are',
+          subtitle: 'The Math Behind Your Wins',
           description:
-            'We are a quantitative data intelligence firm focused on the sports market. Built by software engineers and data analysts, Fixed leverages machine learning (XGBoost) and Dynamic ELO ratings to strip away market noise and expose structural value. Our model only highlights picks with positive Expected Value (EV > 5%), giving you a clear mathematical edge.',
+            'We\u2019re a team of data nerds who love football and hate losing money. We built Fixed to give regular bettors the same kind of quantitative analysis that hedge funds use. Our system crunches millions of data points, filters out the noise, and only surfaces the bets that have a real mathematical edge. No hype, no gut feelings \u2014 just cold, hard probability working for you.',
         },
       },
       plans: {
-        title: 'Institutional Grade Predictive Intelligence',
+        title: 'Start Winning With Data',
         description:
-          'Join the waitlist to access our quantitative dashboard and value bet notifications.',
+          'Join the waitlist and get instant access to your personal betting edge.',
         plan: {
           free: {
             title: 'Beta Access',
             price: 'Free / Waitlist',
-            description: 'Early access to the interactive dashboard.',
+            description: 'Get in early and start making smarter bets today.',
             features: {
-              feature1: 'Full dashboard access across Top 5 European leagues',
-              feature2: 'Live Hit Rate (65%) and Yield (12%) tracking',
-              feature3: 'Match deep dives across 5 core markets',
+              feature1:
+                'Full access to daily picks across the top 5 European leagues',
+              feature2: 'Track your win rate and returns in real time',
+              feature3: 'Deep match analysis for every fixture',
             },
           },
           premium: {
             title: 'Pro Suite',
             price: 'Coming Soon',
             description:
-              'Advanced features for high-frequency quantitative bettors.',
+              'For serious bettors who want every possible advantage.',
             features: {
-              feature1: 'All Beta Access features included',
-              feature2: 'Automated webhook alerts & custom thresholds',
-              feature3: 'Historical database export & API access',
-              feature4: 'Priority support and custom bankroll models',
+              feature1: 'Everything in Beta, plus...',
+              feature2: 'Instant alerts when a new value bet drops',
+              feature3: 'Export historical data & connect via API',
+              feature4: 'Priority support & custom bankroll strategies',
             },
           },
         },
       },
       faq: {
-        title: 'Frequently Asked Questions',
+        title: 'Got Questions? We\u2019ve Got Answers.',
         description:
-          'Find out everything you need to know about our quantitative sports intelligence platform.',
+          'Everything you need to know about how Fixed helps you bet smarter.',
         questions: {
           question1: {
-            title: 'How does Fixed generate betting recommendations?',
+            title: 'How does Fixed find winning bets?',
             answer:
-              'We combine Dynamic ELO Ratings with daily re-trained XGBoost machine learning models (Champion vs Challenger). The system calculates the true mathematical probability of outcomes and only recommends picks when Expected Value (EV) exceeds 5%.',
+              'We use a smart system that rates every team\u2019s real strength, studies years of match data, and runs thousands of simulations daily. When the numbers show a clear advantage over what the bookies are offering, we flag it as a pick. Simple as that.',
           },
           question2: {
-            title: 'What markets and leagues are supported?',
+            title: 'Which leagues and markets do you cover?',
             answer:
-              'We focus on the top 5 European leagues (LaLiga, Premier League, Serie A, Bundesliga, Ligue 1) across 5 high-volume statistical markets: Goals, Shots, Shots on Target, Corners, and Yellow Cards.',
+              'We focus on the top 5 European leagues: LaLiga, Premier League, Serie A, Bundesliga, and Ligue 1. We analyze goals, shots, shots on target, corners, and yellow cards \u2014 the markets with the most predictable data.',
           },
           question3: {
-            title: 'What performance metrics can I expect?',
+            title: 'What kind of results can I expect?',
             answer:
-              'Our model maintains a verified historical Hit Rate of ~65% and a Yield of ~12%. Rather than promising impossible win rates, we focus on consistent long-term mathematical edge through Expected Value.',
+              'Our model has a verified win rate of ~65% with a return on investment of ~12%. We don\u2019t promise impossible win streaks \u2014 we focus on consistent, long-term gains through smart value betting.',
           },
           question4: {
-            title: 'How does bankroll management work with Kelly Criterion?',
+            title: 'How do you manage risk and bankroll?',
             answer:
-              'Every recommendation includes a recommended stake percentage calculated using the Kelly Criterion, capped at a conservative maximum of 5% of your total bankroll to protect capital.',
+              'Every pick comes with a recommended stake size, calculated to grow your bankroll steadily while keeping your money safe. We cap each bet at a maximum of 5% of your total bankroll so you never overexpose yourself.',
           },
           question5: {
-            title: 'How do I access the platform?',
+            title: 'How do I get started?',
             answer:
-              'Simply join our Beta waitlist with your email. Once granted access, you can authenticate via Supabase Auth to explore the full dashboard and match analysis views.',
+              'Just drop your email on the waitlist. Once you\u2019re in, you\u2019ll get access to the full dashboard with all the picks, analysis, and tools ready to go.',
           },
         },
       },
       footer: {
         title: 'Fixed',
-        description:
-          'Institutional-grade predictive analytics for football markets.',
+        description: 'Smarter bets, better returns. Let the math work for you.',
         link: {
           dimensions: {
             product: 'Product',
@@ -255,16 +224,22 @@ export const translations = {
           },
         },
       },
+      notFound: {
+        title: '404 - Page Not Found',
+        description:
+          'The page you are looking for does not exist or has been moved.',
+        buttonHome: 'Back to Home',
+        buttonPlans: 'Explore Plans',
+      },
     },
   },
   es: {
     navbar: {
       home: 'Inicio',
-      features: 'Detalles',
-      process: 'Proceso',
-      layers: 'Capas',
-      steps: 'Proceso',
-      about: 'Acerca',
+      dashboard: 'Dashboard',
+      features: 'Funciones',
+      layers: 'Motor IA',
+      about: 'Nosotros',
       plans: 'Planes',
       faq: 'Manual',
     },
@@ -283,7 +258,7 @@ export const translations = {
             end: 'decisiones claras',
           },
           description:
-            'Inteligencia predictiva para apuestas deportivas. Decisiones respaldadas por datos, no por instinto.',
+            'Cada partido tiene su mejor jugada. Nosotros la encontramos — con el riesgo justo para cada una. Decisiones claras. Ventaja real.',
           betaPlaceholder: 'Ingresa tu email para acceso anticipado...',
           betaButton: 'Unirse a la Beta',
           betaLoadingButton: 'Uniéndose...',
@@ -295,216 +270,188 @@ export const translations = {
           betaErrorGeneric:
             'Hubo un error. Por favor, inténtalo de nuevo más tarde.',
           online: '10k personas en línea',
-          oddsTitle: 'Últimas Oportunidades Detectadas por el Modelo',
+          oddsTitle: 'Picks en Vivo con Ventaja Real',
           key: {
             point1: {
               title: '12%',
-              description: 'Yield histórico sostenido por el modelo predictivo',
+              description: 'Retorno histórico de nuestras selecciones',
             },
             point2: {
               title: '65%',
-              description: 'Tasa de acierto (Hit Rate) en apuestas de valor',
+              description: 'Acierto en apuestas recomendadas',
             },
             point3: {
               title: '>5%',
-              description: 'Umbral mínimo de Valor Esperado (EV)',
+              description: 'Ventaja mínima para recomendar',
             },
             point4: {
               title: '5%',
-              description: 'Límite máximo de gestión de bankroll (Kelly)',
+              description: 'Stake máximo por jugada (bankroll seguro)',
             },
           },
         },
         datastream: [
-          'Ingiriendo datos de Sports API (5 ligas principales europeas)...',
-          'Actualizando Ratings ELO Dinámicos y vectores de forma...',
-          'Ejecutando entrenamiento diario XGBoost (Champion vs Challenger)...',
-          'Filtrando oportunidades con Valor Esperado (EV > 5%)...',
-          'Calculando stake óptimo vía Criterio de Kelly (Límite: 5%)...',
-          'Categorizando nivel de confianza (La Fija, Media, Baja)...',
-          'Sincronizando predicciones en Supabase y Webhooks...',
-          'Resolviendo apuestas finalizadas y actualizando métricas de Yield...',
+          'Escaneando las 5 mejores ligas europeas en busca de datos frescos...',
+          'Evaluando la fuerza real de cada equipo y su momento de forma...',
+          'Ejecutando simulaciones diarias para afinar predicciones...',
+          'Filtrando solo las apuestas con ventaja matemática real...',
+          'Calculando el stake perfecto para proteger tu bankroll...',
+          'Etiquetando picks por nivel de confianza (Alta, Media, Baja)...',
+          'Subiendo los picks ganadores a tu dashboard...',
+          'Rastreando resultados y actualizando tu rendimiento...',
         ],
         dashboardPreview: {
           title: 'El Fin de la Intuición. Inteligencia Cuantitativa Aplicada.',
           description:
-            'Eliminamos el ruido del mercado y reemplazamos la especulación con convicción matemática. Experimenta la inteligencia predictiva de primera mano.',
+            'Eliminamos el ruido y te mostramos solo lo que importa: las apuestas con ventaja real. Vélo en acción.',
         },
         features: {
-          title: 'Diseñado para darte la Ventaja Matemática',
+          title: 'Tu Ventaja, Cada Jornada',
           description:
-            'Todo lo que necesitas para dejar de apostar por corazonada y empezar a invertir con convicción respaldada por datos.',
+            'Hacemos el trabajo pesado para que tú solo tengas que ganar. Cada selección está calculada, verificada y lista para la acción.',
           accordion: {
             item1: {
               title: 'Descubre',
-              subtitle: 'Las Fijas del día y mejores selecciones',
+              subtitle: 'Tus picks ganadores del día, servidos en bandeja',
               description:
-                'Ahorra horas de análisis manual. Accede a un carrusel interactivo de selecciones diarias verificadas algorítmicamente por ligas europeas con EV positivo, horarios y estadísticas.',
+                'Olvídate de pasar horas entre estadísticas. Cada día te mostramos las mejores oportunidades de las ligas top — con el nivel de confianza, el horario y el valor potencial ya calculados. Solo abre la app y mira lo que tenemos para ti.',
             },
             item2: {
               title: 'Analiza',
-              subtitle: 'Desglose profundo de cada partido y Top Value Bets',
+              subtitle: 'Ve exactamente lo que ve el modelo',
               description:
-                'Obtén contexto completo en una sola vista. Examina proyecciones detalladas de goles, tiros, córners y tarjetas junto a las mejores jugadas de Valor Esperado (EV > 5%).',
+                'Un solo toque y tienes la foto completa. Goles, tiros, córners, tarjetas — todo proyectado junto a las apuestas que realmente tienen ventaja. Sin ruido, sin rodeos. Solo los datos que importan, justo cuando los necesitas.',
             },
           },
         },
         ai: {
           layers: {
-            title: 'El Motor de Inteligencia Detrás de Fixed',
+            title: 'El Cerebro Que Encuentra Tu Ventaja',
             description:
-              'Cuatro capas cuantitativas que transforman datos complejos de fútbol en decisiones claras y rentables.',
+              'Cuatro capas de inteligencia trabajando 24/7 para separar las apuestas ganadoras de las trampas.',
             layer1: {
-              title: 'Evaluación del Poder Real',
+              title: 'Sabé Quién Es Realmente el Mejor',
               description:
-                'Ratings ELO Dinámicos que miden la fuerza real de cada equipo, dominancia H2H y estado de forma.',
+                'La forma es pasajera, la clase es real. Medimos la fuerza verdadera de cada equipo, el historial cara a cara y el momento actual — no solo la posición en la tabla.',
             },
             layer2: {
-              title: 'Contexto Estadístico Total',
+              title: 'La Foto Completa, Siempre',
               description:
-                'Ingesta automatizada de métricas históricas en 5 mercados clave desde fuentes de datos oficiales.',
+                'Procesamos años de datos de goles, tiros, córners y tarjetas de las mejores ligas. Nada se nos escapa.',
             },
             layer3: {
-              title: 'Algoritmo de Auto-Aprendizaje',
+              title: 'Un Modelo Que Aprende Cada Día',
               description:
-                'Re-entrenamiento diario de modelos XGBoost (Champion vs Challenger) para adaptarse a cambios de rendimiento.',
+                'Nuestro algoritmo se re-entrena a diario — comparando sus predicciones contra la realidad para mantenerse afilado y adaptarse a la evolución de los equipos.',
             },
             layer4: {
-              title: 'Matemática contra la Casa',
+              title: 'Solo las Apuestas Que Vencen a la Casa',
               description:
-                'Filtrado estricto de EV > 5% y cálculo conservador de Kelly para asegurar el crecimiento sostenido de tu capital.',
+                'Filtramos cada selección que no tenga una ventaja matemática clara. Y cuando encontramos una, te decimos exactamente cuánto arriesgar — sin adivinanzas.',
             },
           },
           process: {
-            title: 'Cómo Funciona Fixed',
+            title: 'Cómo Funciona',
             description:
-              'Una mirada transparente a cómo convertimos datos complejos de fútbol en decisiones rentables.',
+              'De los datos crudos a los picks listos para jugar \u2014 así es como encontramos tu ventaja.',
             step1: {
-              title: 'Cuenta y Autenticación',
+              title: 'Crea tu Cuenta',
               description:
-                'Regístrate de forma segura con Supabase Auth para acceder al dashboard cuantitativo completo.',
+                'Regístrate en segundos y desbloquea tu dashboard personal. Sin complicaciones, acceso instantáneo.',
             },
             step2: {
-              title: 'Explora el Dashboard',
+              title: 'Explora los Picks del Día',
               description:
-                'Consulta las Value Bets diarias por liga europea con métricas de Hit Rate e Yield en tiempo real.',
+                'Ve cada apuesta recomendada en las ligas top \u2014 con nivel de confianza, porcentaje de ventaja y stake ya calculados.',
             },
             step3: {
-              title: 'Analiza los Partidos en Detalle',
+              title: 'Analiza Cualquier Partido',
               description:
-                'Examina el desglose equipo por equipo en Goles, Tiros, Tiros a Puerta, Córners y Tarjetas.',
+                'Toca cualquier juego y ve el desglose completo: goles, tiros, córners, tarjetas \u2014 todo proyectado para que sepas qué esperar.',
             },
             step4: {
-              title: 'Ejecuta con el Stake de Kelly',
+              title: 'Coloca tu Apuesta',
               description:
-                'Sigue el porcentaje de EV y los límites de bankroll del Criterio de Kelly en tu casa de apuestas favorita.',
+                'Toma el stake recomendado y juéguelo en tu casa de apuestas. Eso es todo. Sin dudas, sin estrés.',
             },
-          },
-        },
-        steps: {
-          title: 'Guía Rápida: Cómo Usar Nuestra Plataforma',
-          description:
-            'Sigue estos simples pasos para aprovechar al máximo nuestra plataforma de apuestas deportivas.',
-          step1: {
-            title: '1. Regístrate',
-            description:
-              'Crea una cuenta de forma segura mediante Supabase Auth para desbloquear el acceso al dashboard.',
-          },
-          step2: {
-            title: '2. Accede al Dashboard',
-            description:
-              'Inicia sesión para consultar las Value Bets en vivo organizadas por las 5 principales ligas europeas.',
-          },
-          step3: {
-            title: '3. Explora el Análisis del Partido',
-            description:
-              'Inspecciona las estadísticas del equipo para Goles, Tiros, Córners y Tarjetas en cualquier encuentro.',
-          },
-          step4: {
-            title: '4. Revisa las Top Value Bets',
-            description:
-              'Filtra recomendaciones según el nivel de confianza: La Fija, Riesgo Medio o Bajo.',
-          },
-          step5: {
-            title: '5. Realiza tu Apuesta con Stake Kelly',
-            description:
-              'Aplica el porcentaje de bankroll exacto sugerido por el Criterio de Kelly en tu casa de apuestas preferida.',
           },
         },
         about: {
-          title: 'Sobre Nosotros',
-          subtitle: 'La Ventaja Matemática',
+          title: 'Quiénes Somos',
+          subtitle: 'La Mates Detrás de Tus Ganancias',
           description:
-            'Somos una firma de inteligencia de datos cuantitativos enfocada en el mercado deportivo. Construida por ingenieros de software y analistas de datos, Fixed aprovecha el aprendizaje automático (XGBoost) y ratings de ELO Dinámico para eliminar el ruido del mercado y exponer valor estructural. Nuestro modelo solo resalta selecciones con Valor Esperado positivo (EV > 5%), brindándote una clara ventaja matemática.',
+            'Somos un equipo de nerds de los datos que amamos el fútbol y odiamos perder dinero. Creamos Fixed para darle a cualquier apostador el mismo tipo de análisis cuantitativo que usan los hedge funds. Nuestro sistema procesa millones de datos, filtra el ruido y solo muestra las apuestas que tienen una ventaja matemática real. Sin hype, sin corazonadas \u2014 solo probabilidad fría y dura trabajando para ti.',
         },
       },
       plans: {
-        title: 'Inteligencia Predictiva de Grado Institucional',
+        title: 'Empieza a Ganar con Datos',
         description:
-          'Únete a la lista de espera para acceder a nuestro dashboard cuantitativo y alertas de apuestas de valor.',
+          'Únete a la lista de espera y obtén acceso instantáneo a tu ventaja personal para apostar.',
         plan: {
           free: {
             title: 'Acceso Beta',
             price: 'Gratis / Espera',
-            description: 'Acceso anticipado al dashboard interactivo.',
+            description:
+              'Entra temprano y empieza a apostar más inteligente desde hoy.',
             features: {
-              feature1: 'Acceso completo al dashboard de las 5 ligas top',
-              feature2: 'Monitoreo de Hit Rate (65%) e Yield (12%) en vivo',
-              feature3: 'Análisis detallado por partido en 5 mercados clave',
+              feature1:
+                'Acceso total a picks diarios de las 5 mejores ligas europeas',
+              feature2: 'Sigue tu tasa de acierto y retorno en tiempo real',
+              feature3: 'Análisis profundo de cada partido',
             },
           },
           premium: {
             title: 'Suite Pro',
             price: 'Próximamente',
             description:
-              'Funciones avanzadas para apostadores cuantitativos de alta frecuencia.',
+              'Para apostadores serios que quieren cada ventaja posible.',
             features: {
-              feature1: 'Todas las características del Acceso Beta',
-              feature2: 'Alertas automatizadas vía webhook y umbrales a medida',
-              feature3: 'Exportación de base de datos histórica y acceso a API',
+              feature1: 'Todo lo del Acceso Beta, más...',
+              feature2:
+                'Alertas al instante cuando aparezca una nueva apuesta de valor',
+              feature3: 'Exporta datos históricos y conecta vía API',
               feature4:
-                'Soporte prioritario y modelos de bankroll personalizados',
+                'Soporte prioritario y estrategias de bankroll personalizadas',
             },
           },
         },
       },
       faq: {
-        title: 'Preguntas Frecuentes',
+        title: '¿Preguntas? Tenemos Respuestas.',
         description:
-          'Descubre todo lo que necesitas saber sobre nuestra plataforma de inteligencia deportiva cuantitativa.',
+          'Todo lo que necesitas saber sobre cómo Fixed te ayuda a apostar más inteligente.',
         questions: {
           question1: {
-            title: '¿Cómo genera Fixed sus recomendaciones de apuestas?',
+            title: '¿Cómo encuentra Fixed apuestas ganadoras?',
             answer:
-              'Combinamos Ratings ELO Dinámicos con modelos de aprendizaje automático XGBoost re-entrenados diariamente (Champion vs Challenger). El sistema calcula la probabilidad matemática real de los resultados y solo recomienda jugadas cuando el Valor Esperado (EV) supera el 5%.',
+              'Usamos un sistema inteligente que evalúa la fuerza real de cada equipo, estudia años de datos de partidos y ejecuta miles de simulaciones al día. Cuando los números muestran una ventaja clara frente a lo que ofrece la casa de apuestas, lo marcamos como pick. Así de simple.',
           },
           question2: {
-            title: '¿Qué mercados y ligas están soportados?',
+            title: '¿Qué ligas y mercados cubren?',
             answer:
-              'Nos enfocamos en las 5 principales ligas europeas (LaLiga, Premier League, Serie A, Bundesliga, Ligue 1) a través de 5 mercados estadísticos de alto volumen: Goles, Tiros, Tiros a Puerta, Córners y Tarjetas Amarillas.',
+              'Nos enfocamos en las 5 mejores ligas europeas: LaLiga, Premier League, Serie A, Bundesliga y Ligue 1. Analizamos goles, tiros, tiros a puerta, córners y tarjetas amarillas — los mercados con datos más predecibles.',
           },
           question3: {
-            title: '¿Qué métricas de rendimiento puedo esperar?',
+            title: '¿Qué resultados puedo esperar?',
             answer:
-              'Nuestro modelo mantiene un Hit Rate histórico verificado de ~65% y un Yield de ~12%. En lugar de prometer tasas de acierto imposibles, nos enfocamos en una ventaja matemática constante a largo plazo a través del Valor Esperado.',
+              'Nuestro modelo tiene una tasa de acierto verificada de ~65% con un retorno de inversión de ~12%. No prometemos rachas imposibles — nos enfocamos en ganancias consistentes a largo plazo mediante apuestas de valor inteligentes.',
           },
           question4: {
-            title:
-              '¿Cómo funciona la gestión de bankroll con el Criterio de Kelly?',
+            title: '¿Cómo gestionan el riesgo y el bankroll?',
             answer:
-              'Cada recomendación incluye un porcentaje de stake sugerido calculado mediante el Criterio de Kelly, limitado a un máximo conservador del 5% de tu bankroll total para proteger el capital.',
+              'Cada pick incluye un stake recomendado, calculado para hacer crecer tu bankroll de forma constante mientras mantienes tu dinero seguro. Limitamos cada apuesta al 5% de tu bankroll total para que nunca te sobreexpongas.',
           },
           question5: {
-            title: '¿Cómo accedo a la plataforma?',
+            title: '¿Cómo empiezo?',
             answer:
-              'Simplemente únete a nuestra lista de espera Beta introduciendo tu correo. Una vez otorgado el acceso, podrás autenticarte vía Supabase Auth para explorar el dashboard completo y las vistas de análisis por partido.',
+              'Solo deja tu email en la lista de espera. Una vez dentro, tendrás acceso al dashboard completo con todos los picks, análisis y herramientas listos para usar.',
           },
         },
       },
       footer: {
         title: 'Fixed',
         description:
-          'Análisis predictivo de grado institucional para mercados de fútbol.',
+          'Apuestas más inteligentes, mejores retornos. Deja que la mates trabaje para ti.',
         link: {
           dimensions: {
             product: 'Producto',
@@ -516,6 +463,13 @@ export const translations = {
             cookies: 'Cookies',
           },
         },
+      },
+      notFound: {
+        title: '404 - Página no encontrada',
+        description:
+          'La página que buscas no existe o ha sido movida temporalmente.',
+        buttonHome: 'Volver al Inicio',
+        buttonPlans: 'Explorar Planes',
       },
     },
   },

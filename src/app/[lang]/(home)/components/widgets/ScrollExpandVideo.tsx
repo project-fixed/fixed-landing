@@ -36,7 +36,7 @@ export function ScrollExpandVideo({
     [0, 1],
     ['min(50vw, 600px)', '100vw'],
   );
-  const height = useTransform(smoothProgress, [0, 1], ['40vh', '100vh']);
+
   const borderRadius = useTransform(smoothProgress, [0, 1], ['24px', '0px']);
   const padding = useTransform(smoothProgress, [0, 1], ['8px', '0px']); // Animate padding of outer wrapper
   const innerRadius = useTransform(smoothProgress, [0, 1], ['16px', '0px']); // Animate inner border radius
@@ -64,11 +64,14 @@ export function ScrollExpandVideo({
   }, [isHovered, cursorX, cursorY]);
 
   return (
-    <section ref={containerRef} className="relative h-[230vh] w-full">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative h-[40vh] w-full md:h-[60vh] lg:h-[180vh]"
+    >
+      <div className="sticky top-0 flex h-[50vh] w-full items-center justify-center overflow-hidden md:h-[70vh] lg:h-screen">
         <motion.div
-          style={{ width, height, borderRadius, padding }}
-          className="bg-surface-deep relative flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl"
+          style={{ width, borderRadius, padding }}
+          className="bg-surface-deep relative flex aspect-video items-center justify-center overflow-hidden border border-white/15 shadow-2xl xl:aspect-[16/8]"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -86,7 +89,7 @@ export function ScrollExpandVideo({
 
       {/* Custom Cursor Pill */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-50 flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-black shadow-xl"
+        className="pointer-events-none fixed top-6 left-6 z-50 flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-black shadow-xl"
         style={{
           x: cursorX,
           y: cursorY,

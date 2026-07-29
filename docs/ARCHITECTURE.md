@@ -64,7 +64,7 @@ graph TD
 3. Se realiza una llamada `POST` a `/api/beta`.
 4. La ruta API `/api/beta` valida el email en el servidor y aplica rate limiting basado en la IP del cliente (máx. 5 req/min).
 5. **Guardado de Datos**:
-   - _Producción_: Se conecta mediante `@supabase/supabase-js` e inserta el correo en la tabla `beta_leads`. Retorna `409` si el email ya existe.
+   - _Producción_: Se conecta mediante `@supabase/supabase-js` e inserta el correo en la tabla `leads`. Retorna `409` si el email ya existe.
    - _Desarrollo (Fallback)_: Si faltan credenciales, escribe el lead en `scratch/beta_subscribers.json` local.
 6. **Notificaciones Post-Registro** (Asíncronas en segundo plano):
    - Envía alertas formateadas a Microsoft Teams vía webhook si se configuró `TEAMS_WEBHOOK_URL`.

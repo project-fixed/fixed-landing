@@ -43,7 +43,6 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
   const homePath = lang === 'en' ? '/' : '/es';
   const plansPath = lang === 'en' ? '/plans' : '/es/plans';
   const faqPath = lang === 'en' ? '/faq' : '/es/faq';
-  const appAuthUrl = 'https://app.fixed.com/auth';
 
   /** Efficient Motion scroll detection without unthrottled global scroll listeners */
   const { scrollY } = useScroll();
@@ -61,7 +60,13 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
       return;
     }
 
-    const sections = ['hero', 'features', 'process', 'layers', 'about'];
+    const sections = [
+      'hero',
+      'features',
+      'interactive-features',
+      'layers',
+      'about',
+    ];
     const observerOptions = {
       root: null,
       rootMargin: '-40% 0px -50% 0px',
@@ -179,6 +184,20 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
     }
   };
 
+  const handleJoinBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    closeMenu();
+    if (currentNormalizedPath === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        const isMobileWidth = window.innerWidth < 1024;
+        const idSuffix = isMobileWidth ? 'mobile' : 'desktop';
+        const input = document.getElementById(`beta-email-input-${idSuffix}`);
+        if (input) input.focus();
+      }, 600);
+    }
+  };
+
   const targetPath = useMemo(() => {
     const nextLang = lang === 'en' ? 'es' : 'en';
     if (pathname.startsWith(`/${lang}/`)) {
@@ -208,16 +227,16 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         targetId: 'hero',
       },
       {
-        label: t.navbar.features,
+        label: t.navbar.dashboard,
         href: `${homePath}#features`,
         type: 'section',
         targetId: 'features',
       },
       {
-        label: t.navbar.process,
-        href: `${homePath}#process`,
+        label: t.navbar.features,
+        href: `${homePath}#interactive-features`,
         type: 'section',
-        targetId: 'process',
+        targetId: 'interactive-features',
       },
       {
         label: t.navbar.layers,
@@ -281,14 +300,13 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         {/* Right side: CTA + MENU toggle */}
         <div className="flex items-center gap-3">
           {/* Primary CTA — JOIN FIXED */}
-          <a
-            href={`${appAuthUrl}?lang=${lang}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-white px-5 py-2.5 font-mono text-sm font-extrabold tracking-wider text-black backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-white/80 active:scale-95"
+          <Link
+            href={`${homePath}?focus=beta`}
+            onClick={handleJoinBetaClick}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-white px-5 py-2 font-mono text-sm font-extrabold tracking-wider text-black backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-white/80 active:scale-95"
           >
             <span>{t.button.join}</span>
-          </a>
+          </Link>
 
           {/* MENU / CLOSE toggle */}
           <IconButton

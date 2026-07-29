@@ -52,10 +52,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
       value: t.landing.home.hero.key.point3.title,
       label: 'EV min.',
     },
-    {
-      value: t.landing.home.hero.key.point4.title,
-      label: currentLang === 'es' ? 'max. kelly' : 'max kelly',
-    },
   ];
 
   return (
@@ -104,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
 
             <span className="bg-primary hidden h-2 w-14 lg:block" />
 
-            <p className="text-muted max-w-[440px] leading-relaxed">
+            <p className="text-muted max-w-[440px] text-sm leading-relaxed lg:text-base">
               {t.landing.home.hero.description}
             </p>
           </motion.div>
@@ -120,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
         >
           {/* Tarjeta de Early Access */}
           <div className="ml-auto hidden w-[320px] rounded-2xl border border-white/15 bg-white/10 p-6 text-right backdrop-blur-md lg:block xl:w-[400px]">
-            <p className="text-body mb-1 font-mono text-xs tracking-widest capitalize">
+            <p className="mb-1 font-mono text-xs tracking-widest text-white capitalize">
               {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
             </p>
             <p className="text-muted mb-5 text-xs font-medium">
@@ -128,10 +124,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
                 ? 'Únete a la lista de espera y sé el primero en probar Fixed.'
                 : 'Join the waitlist and be the first to try Fixed.'}
             </p>
-            <BetaForm lang={currentLang} />
+            <BetaForm lang={currentLang} idSuffix="desktop" />
           </div>
           <div className="ml-auto w-75 lg:hidden">
-            <BetaForm lang={currentLang} />
+            <BetaForm lang={currentLang} idSuffix="mobile" />
           </div>
 
           {/* Estadísticas */}
@@ -143,12 +139,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
           >
             {heroStats.map((stat, i) => (
               <div key={i} className="flex items-baseline">
-                <span className="mr-2 font-mono text-base font-bold text-white">
+                <span className="mr-2 font-mono text-base font-semibold text-white md:text-xl">
                   <AnimatedStat value={stat.value} />
                 </span>
                 <span className="text-muted text-xs">{stat.label}</span>
                 {i < heroStats.length - 1 && (
-                  <span className="mx-4 text-white/15">·</span>
+                  <span className="mx-2 text-white/15 md:mx-4">·</span>
                 )}
               </div>
             ))}

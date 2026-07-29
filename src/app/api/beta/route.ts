@@ -55,6 +55,30 @@ function validateEmail(email: string): boolean {
   return regex.test(email.trim());
 }
 
+const DISPOSABLE_DOMAINS = [
+  'mailinator.com',
+  'yopmail.com',
+  'tempmail.com',
+  'dispostable.com',
+  'guerrillamail.com',
+  '10minutemail.com',
+  'trashmail.com',
+  'maildrop.cc',
+  'temp-mail.org',
+];
+
+const COMMON_TYPOS: Record<string, string> = {
+  'gamil.com': 'gmail.com',
+  'gmial.com': 'gmail.com',
+  'gmaill.com': 'gmail.com',
+  'gmal.com': 'gmail.com',
+  'hotmial.com': 'hotmail.com',
+  'hotmaill.com': 'hotmail.com',
+  'outlok.com': 'outlook.com',
+  'yaho.com': 'yahoo.com',
+  'yahooo.com': 'yahoo.com',
+};
+
 export async function POST(request: Request) {
   try {
     // 1. Rate Limiting basado en IP
@@ -68,7 +92,7 @@ export async function POST(request: Request) {
 
     // 2. Extraer y validar el cuerpo
     const body = await request.json();
-    const { email, lang } = body;
+    const { email, lang, utm_source, utm_medium, utm_campaign } = body;
     const currentLang = lang === 'es' ? 'es' : 'en';
 
     if (!email || typeof email !== 'string' || !validateEmail(email)) {
@@ -79,15 +103,37 @@ export async function POST(request: Request) {
     }
 
     const normalizedEmail = email.trim().toLowerCase();
+    const domain = normalizedEmail.split('@')[1];
+
+    if (COMMON_TYPOS[domain]) {
+      const suggestion = COMMON_TYPOS[domain];
+      const errMsg =
+        currentLang === 'es'
+          ? `¿Quisiste decir @${suggestion}?`
+          : `Did you mean @${suggestion}?`;
+      return NextResponse.json({ message: errMsg }, { status: 400 });
+    }
+
+    if (DISPOSABLE_DOMAINS.includes(domain)) {
+      const errMsg =
+        currentLang === 'es'
+          ? 'No se permiten correos electrónicos temporales o desechables.'
+          : 'Disposable email addresses are not allowed.';
+      return NextResponse.json({ message: errMsg }, { status: 400 });
+    }
 
     // 3. Obtener variables de entorno
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseUrl =
+      process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+    const supabaseServiceKey =
+      process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
     const teamsWebhookUrl = process.env.TEAMS_WEBHOOK_URL;
     const resendApiKey = process.env.RESEND_API_KEY;
 
     let isSaved = false;
     let isNewLead = false;
+    let isLocalFallback = false;
+    let userNumber = 100;
 
     // 4. Modo Supabase (Producción)
     if (supabaseUrl && supabaseServiceKey) {
@@ -96,16 +142,52 @@ export async function POST(request: Request) {
       );
       const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-      // Insertar lead en la tabla beta_leads
-      const { error } = await supabase
-        .from('beta_leads')
-        .insert([{ email: normalizedEmail, lang: currentLang }]);
+      // Insertar lead en la tabla leads
+      const { error } = await supabase.from('leads').insert([
+        {
+          email: normalizedEmail,
+          lang: currentLang,
+          status: 'pending',
+          utm_source: utm_source || null,
+          utm_medium: utm_medium || null,
+          utm_campaign: utm_campaign || null,
+        },
+      ]);
 
       if (error) {
         // El código 23505 indica clave duplicada en PostgreSQL
         if (error.code === '23505') {
+          let dupUserNumber = 100;
+          try {
+            const { data: existingLead, error: findError } = await supabase
+              .from('leads')
+              .select('created_at')
+              .eq('email', normalizedEmail)
+              .single();
+
+            if (!findError && existingLead) {
+              const { count, error: countError } = await supabase
+                .from('leads')
+                .select('*', { count: 'exact', head: true })
+                .lte('created_at', existingLead.created_at);
+
+              if (!countError && count !== null) {
+                dupUserNumber = count;
+              }
+            }
+          } catch (err) {
+            console.error(
+              '[Beta API] Error al obtener posición de duplicado:',
+              err,
+            );
+          }
+
           return NextResponse.json(
-            { message: 'This email is already registered.' },
+            {
+              message: 'This email is already registered.',
+              userNumber: dupUserNumber,
+              isDuplicate: true,
+            },
             { status: 409 },
           );
         }
@@ -118,6 +200,27 @@ export async function POST(request: Request) {
 
       isSaved = true;
       isNewLead = true;
+
+      // Obtener el número total de leads (posición en la lista de espera)
+      try {
+        const { count, error: countError } = await supabase
+          .from('leads')
+          .select('*', { count: 'exact', head: true });
+
+        if (!countError && count !== null) {
+          userNumber = count;
+        } else {
+          console.error(
+            '[Beta API] Error al contar registros en Supabase:',
+            countError,
+          );
+        }
+      } catch (err) {
+        console.error(
+          '[Beta API] Error inesperado al contar en Supabase:',
+          err,
+        );
+      }
     } else {
       // 5. Modo Local Fallback (Desarrollo)
       console.warn(
@@ -139,7 +242,12 @@ export async function POST(request: Request) {
       let subscribers: Array<{
         email: string;
         lang: string;
+        status: string;
+        utm_source: string | null;
+        utm_medium: string | null;
+        utm_campaign: string | null;
         created_at: string;
+        updated_at: string;
       }> = [];
 
       try {
@@ -151,21 +259,31 @@ export async function POST(request: Request) {
       }
 
       // Validar duplicado
-      const duplicateExists = subscribers.some(
+      const duplicateIndex = subscribers.findIndex(
         (sub) => sub.email === normalizedEmail,
       );
-      if (duplicateExists) {
+      if (duplicateIndex !== -1) {
         return NextResponse.json(
-          { message: 'This email is already registered.' },
+          {
+            message: 'This email is already registered.',
+            userNumber: duplicateIndex + 1,
+            isDuplicate: true,
+          },
           { status: 409 },
         );
       }
 
       // Guardar el registro
+      const nowStr = new Date().toISOString();
       subscribers.push({
         email: normalizedEmail,
         lang: currentLang,
-        created_at: new Date().toISOString(),
+        status: 'pending',
+        utm_source: utm_source || null,
+        utm_medium: utm_medium || null,
+        utm_campaign: utm_campaign || null,
+        created_at: nowStr,
+        updated_at: nowStr,
       });
 
       await fs.writeFile(
@@ -176,6 +294,8 @@ export async function POST(request: Request) {
       console.log(`[Beta API] Guardado local exitoso en ${filePath}`);
       isSaved = true;
       isNewLead = true;
+      isLocalFallback = true;
+      userNumber = subscribers.length;
     }
 
     // 6. Notificaciones opcionales post-registro (Solo si se guardó con éxito)
@@ -203,6 +323,9 @@ export async function POST(request: Request) {
                     value: currentLang === 'es' ? 'Español 🇪🇸' : 'Inglés 🇬🇧',
                   },
                   { name: 'Fecha', value: new Date().toLocaleString() },
+                  { name: 'UTM Source', value: utm_source || 'N/A' },
+                  { name: 'UTM Medium', value: utm_medium || 'N/A' },
+                  { name: 'UTM Campaign', value: utm_campaign || 'N/A' },
                 ],
                 markdown: true,
               },
@@ -279,7 +402,11 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { message: 'Successfully subscribed to the beta!' },
+      {
+        message: 'Successfully subscribed to the beta!',
+        isLocalFallback,
+        userNumber,
+      },
       { status: 200 },
     );
   } catch (error) {

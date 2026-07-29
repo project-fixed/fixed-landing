@@ -16,7 +16,7 @@ export const HeroBadge: React.FC<HeroBadgeProps> = ({ label }) => {
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
       </span>
-      <span className="text-muted font-mono text-xs leading-[1.2] font-medium tracking-widest uppercase">
+      <span className="text-muted font-mono text-[10px] leading-[1.2] font-medium tracking-widest uppercase lg:text-xs">
         {label}
       </span>
     </div>

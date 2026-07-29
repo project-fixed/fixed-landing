@@ -8,6 +8,7 @@ import { Toolbar } from '@/shared/components/layout/Toolbar';
 import { Footer } from '@/shared/components/layout/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 interface Props {
   children: React.ReactNode;
@@ -20,20 +21,63 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const isEn = lang === 'en';
+  const currentLang = lang === 'es' ? 'es' : 'en';
+  const isEn = currentLang === 'en';
+
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://fixed-landing-beta.vercel.app';
+  const canonicalUrl = `${baseUrl}/${currentLang}`;
+
+  const title = isEn
+    ? 'Fixed - Stop guessing and start winning more with AI'
+    : 'Fixed - Deja de adivinar y empieza a ganar más con IA';
+
+  const description = isEn
+    ? 'Leave doubts behind. Our AI analyzes every detail to offer you the fixed outcome of the match.'
+    : 'Deja las dudas atrás. Nuestra IA analiza cada detalle para ofrecerte la fija del partido.';
+
   return {
-    title: isEn
-      ? 'Fixed - Stop guessing and start winning more with AI'
-      : 'Fixed - Deja de adivinar y empieza a ganar más con IA',
-    description: isEn
-      ? 'Leave doubts behind. Our AI analyzes every detail to offer you the fixed outcome of the match.'
-      : 'Deja las dudas atrás. Nuestra IA analiza cada detalle para ofrecerte la fija del partido.',
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en`,
+        es: `${baseUrl}/es`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: 'Fixed',
+      images: [
+        {
+          url: `${baseUrl}/images/ai_prediction_widget.png`, // Usamos uno de los widgets del dashboard que ya existen como OG Image preliminar
+          width: 1200,
+          height: 630,
+          alt: 'Fixed Predictive Intelligence Dashboard',
+        },
+      ],
+      locale: isEn ? 'en_US' : 'es_ES',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${baseUrl}/images/ai_prediction_widget.png`],
+    },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
+    },
   };
 }
 
 export default async function RootLayout({ children, params }: Props) {
   const { lang } = await params;
   const currentLang = lang === 'es' ? 'es' : 'en';
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
     <html lang={currentLang} className="dark">
@@ -55,6 +99,7 @@ export default async function RootLayout({ children, params }: Props) {
         </div>
         <SpeedInsights />
         <Analytics />
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );

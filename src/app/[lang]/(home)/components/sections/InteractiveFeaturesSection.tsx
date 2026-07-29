@@ -91,6 +91,26 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
                   <p className="text-body text-sm leading-relaxed text-white/70">
                     {item.description}
                   </p>
+
+                  {/* Inline Visual Preview for mobile/tablet (below xl) */}
+                  <div className="mt-5 w-full overflow-hidden rounded-xl border border-white/10 bg-black/60 p-4 backdrop-blur-md xl:hidden">
+                    {/* Top Bar Mockup Header */}
+                    <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-white/20" />
+                        <span className="h-2 w-2 rounded-full bg-white/20" />
+                        <span className="h-2 w-2 rounded-full bg-white/20" />
+                      </div>
+                      <span className="font-mono text-[9px] tracking-wider text-white/30">
+                        fixed.app
+                      </span>
+                    </div>
+
+                    <div className="relative w-full overflow-hidden">
+                      {item.id === 'item-1' && <LeaguesPreview />}
+                      {item.id === 'item-2' && <MatchAnalysisPreview />}
+                    </div>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -101,7 +121,7 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
         <ScrollReveal
           direction="up"
           delay={0.3}
-          className="flex h-full w-full min-w-0 shrink-0 flex-col xl:sticky xl:top-28 xl:w-[64%]"
+          className="hidden h-full w-full min-w-0 shrink-0 flex-col xl:sticky xl:top-28 xl:flex xl:w-[64%]"
         >
           <div className="relative flex h-full min-h-[560px] w-full min-w-0 shrink-0 flex-col justify-between overflow-hidden rounded-xl border border-white/10 bg-black/70 p-5 backdrop-blur-xl sm:p-6 xl:min-h-[600px]">
             {/* Dynamic Background Glow */}
