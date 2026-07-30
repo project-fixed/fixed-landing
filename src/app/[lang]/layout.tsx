@@ -53,7 +53,7 @@ export async function generateMetadata({
       siteName: 'Fixed',
       images: [
         {
-          url: `${baseUrl}/images/ai_prediction_widget.png`, // Usamos uno de los widgets del dashboard que ya existen como OG Image preliminar
+          url: `${baseUrl}/images/fixed_isotype_dark_mode.png`, // Usamos uno de los widgets del dashboard que ya existen como OG Image preliminar
           width: 1200,
           height: 630,
           alt: 'Fixed Predictive Intelligence Dashboard',
@@ -66,7 +66,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [`${baseUrl}/images/ai_prediction_widget.png`],
+      images: [`${baseUrl}/images/fixed_isotype_dark_mode.png`],
     },
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',

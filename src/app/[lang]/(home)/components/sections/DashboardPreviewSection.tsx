@@ -2,6 +2,8 @@ import React from 'react';
 import type { Translations, Lang } from '@/data/translations';
 import { ScrollExpandVideo } from '@/app/[lang]/(home)/components/widgets/ScrollExpandVideo';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+import Image from 'next/image';
+import imgDashboard from '@/assets/images/dashboard.png';
 
 interface Props {
   t: Translations;
@@ -27,9 +29,14 @@ export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
         </div>
       </div>
 
-      <ScrollExpandVideo
-        cursorText={lang === 'es' ? 'Ver Demo' : 'Play demo'}
-      ></ScrollExpandVideo>
+      <ScrollExpandVideo cursorText={lang === 'es' ? 'Ver Demo' : 'Play demo'}>
+        <Image
+          src={imgDashboard}
+          alt="Dashboard Preview"
+          className="h-full w-full object-cover object-top"
+          priority
+        />
+      </ScrollExpandVideo>
     </section>
   );
 };

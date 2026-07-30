@@ -284,7 +284,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
           className="logo flex cursor-pointer items-center select-none"
           onClick={handleLogoClick}
         >
-          <Image src={imgLogo} alt="Logo" className="relative z-10 size-9" />
+          <Image src={imgLogo} alt="Logo" className="relative z-10 size-11" />
           <span
             id="brand"
             className={`text-md overflow-hidden font-mono font-bold whitespace-nowrap text-white uppercase transition-all duration-500 ease-out max-[425px]:hidden ${
