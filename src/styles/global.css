@@ -2,8 +2,8 @@
 
 @theme {
   /* Fonts */
-  --font-sans: 'Inter', ui-sans-serif, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 
   /* Primary Accent: Steel Blue Ramp */
   --color-primary-light: #9ec1d4;

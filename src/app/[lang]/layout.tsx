@@ -1,9 +1,18 @@
 import '@/styles/global.css';
 import React from 'react';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/700.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/700.css';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 import { Toolbar } from '@/shared/components/layout/Toolbar';
 import { Footer } from '@/shared/components/layout/Footer';
 import { SplashLoader } from '@/shared/components/layout/SplashLoader';
@@ -81,7 +90,10 @@ export default async function RootLayout({ children, params }: Props) {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
-    <html lang={currentLang} className="dark">
+    <html
+      lang={currentLang}
+      className={`${inter.variable} ${jetbrainsMono.variable} dark`}
+    >
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />

@@ -133,7 +133,7 @@ export async function POST(request: Request) {
     let isSaved = false;
     let isNewLead = false;
     let isLocalFallback = false;
-    let userNumber = 100;
+    let userNumber = 600;
 
     // 4. Modo Supabase (Producción)
     if (supabaseUrl && supabaseServiceKey) {
@@ -157,7 +157,7 @@ export async function POST(request: Request) {
       if (error) {
         // El código 23505 indica clave duplicada en PostgreSQL
         if (error.code === '23505') {
-          let dupUserNumber = 100;
+          let dupUserNumber = 600;
           try {
             const { data: existingLead, error: findError } = await supabase
               .from('leads')
@@ -172,7 +172,7 @@ export async function POST(request: Request) {
                 .lte('created_at', existingLead.created_at);
 
               if (!countError && count !== null) {
-                dupUserNumber = count;
+                dupUserNumber = count + 600;
               }
             }
           } catch (err) {
@@ -208,7 +208,7 @@ export async function POST(request: Request) {
           .select('*', { count: 'exact', head: true });
 
         if (!countError && count !== null) {
-          userNumber = count;
+          userNumber = count + 600;
         } else {
           console.error(
             '[Beta API] Error al contar registros en Supabase:',
@@ -266,7 +266,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
           {
             message: 'This email is already registered.',
-            userNumber: duplicateIndex + 1,
+            userNumber: duplicateIndex + 1 + 600,
             isDuplicate: true,
           },
           { status: 409 },
@@ -295,7 +295,7 @@ export async function POST(request: Request) {
       isSaved = true;
       isNewLead = true;
       isLocalFallback = true;
-      userNumber = subscribers.length;
+      userNumber = subscribers.length + 600;
     }
 
     // 6. Notificaciones opcionales post-registro (Solo si se guardó con éxito)
@@ -351,6 +351,11 @@ export async function POST(request: Request) {
       if (resendApiKey) {
         try {
           console.log('[Beta API] Enviando email de bienvenida con Resend...');
+          const siteUrl =
+            process.env.NEXT_PUBLIC_SITE_URL ||
+            'https://fixed-landing.vercel.app';
+          const logoUrl = `${siteUrl}/images/fixed_isotype_dark_mode.jpeg`;
+
           const emailSubject =
             currentLang === 'es'
               ? '¡Bienvenido a la Beta Privada de Fixed!'
@@ -359,23 +364,75 @@ export async function POST(request: Request) {
           const emailHtml =
             currentLang === 'es'
               ? `
-              <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #111;">
-                <h2 style="color: #3e5d6c;">¡Gracias por unirte a la lista de espera de Fixed!</h2>
-                <p>Hemos recibido tu solicitud de acceso anticipado con el correo <strong>${normalizedEmail}</strong>.</p>
-                <p>Nuestros modelos de inteligencia predictiva están procesando datos deportivos en tiempo real. Te avisaremos tan pronto como tengamos una vacante para ti en la beta privada.</p>
-                <br />
-                <hr style="border: 0; border-top: 1px border #eee;" />
-                <p style="font-size: 12px; color: #777;">Fixed - Inteligencia predictiva para apuestas deportivas.</p>
+              <div style="background-color: #000000; margin: 0; padding: 40px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100%;">
+                <div style="max-width: 560px; margin: 0 auto;">
+                  <div style="text-align: center; margin-bottom: 32px;">
+                    <img src="${logoUrl}" style="height: 66px; width: auto; vertical-align: middle;" alt="Fixed Logo" />
+                  </div>
+                  
+                  <div style="background-color: #ffffff; border-radius: 12px; padding: 40px 32px; border: 1px solid #e4e4e7;">
+                    <h2 style="font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 22px; font-weight: 700; line-height: 1.3; color: #09090b; margin-top: 0; margin-bottom: 24px; text-align: center;">¡Gracias por unirte a la lista de espera!</h2>
+                    
+                    <p style="font-size: 15px; line-height: 1.6; color: #3f3f46; margin-bottom: 24px; font-family: 'Inter', sans-serif;">Hemos recibido tu solicitud de acceso anticipado. Tu registro en nuestra base de datos de la beta privada se ha completado correctamente:</p>
+                    
+                    <div style="background-color: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 8px; padding: 20px 16px; text-align: center; margin: 24px 0;">
+                      <div style="font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #71717a; margin-bottom: 4px;">Nro. de Registro</div>
+                      <div style="font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: #3e5d6c; margin-bottom: 16px;">#${userNumber}</div>
+                      
+                      <div style="border-top: 1px solid #e4e4e7; margin: 12px 0;"></div>
+                      
+                      <div style="font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #71717a; margin-bottom: 4px;">Correo registrado</div>
+                      <div style="font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: #18181b; word-break: break-all;">${normalizedEmail}</div>
+                    </div>
+                    
+                    <p style="font-size: 15px; line-height: 1.6; color: #3f3f46; margin-bottom: 24px; font-family: 'Inter', sans-serif;">Nuestros modelos de inteligencia predictiva están procesando datos deportivos en tiempo real. Te avisaremos por este medio tan pronto como tengamos una vacante para ti en la beta privada.</p>
+                    
+                    <div style="text-align: center; margin-top: 32px; margin-bottom: 16px;">
+                      <a href="${siteUrl}" style="display: inline-block; background-color: #3e5d6c; color: #ffffff !important; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px;" target="_blank">Ir a la Web</a>
+                    </div>
+                  </div>
+                  
+                  <div style="text-align: center; margin-top: 32px; padding: 0 20px;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.5; color: #71717a; margin: 0;">Fixed — Inteligencia predictiva para apuestas deportivas.</p>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.5; color: #71717a; margin: 6px 0 0 0; opacity: 0.7;">Si no solicitaste este registro, puedes ignorar este correo.</p>
+                  </div>
+                </div>
               </div>
             `
               : `
-              <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #111;">
-                <h2 style="color: #3e5d6c;">Thanks for joining the Fixed Waitlist!</h2>
-                <p>We've received your request for early access using the email <strong>${normalizedEmail}</strong>.</p>
-                <p>Our predictive intelligence models are processing sports data in real-time. We will notify you as soon as a slot opens up in our private beta.</p>
-                <br />
-                <hr style="border: 0; border-top: 1px border #eee;" />
-                <p style="font-size: 12px; color: #777;">Fixed - Predictive intelligence for sports betting.</p>
+              <div style="background-color: #000000; margin: 0; padding: 40px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100%;">
+                <div style="max-width: 560px; margin: 0 auto;">
+                  <div style="text-align: center; margin-bottom: 32px;">
+                    <img src="${logoUrl}" style="height: 66px; width: auto; vertical-align: middle;" alt="Fixed Logo" />
+                  </div>
+                  
+                  <div style="background-color: #ffffff; border-radius: 12px; padding: 40px 32px; border: 1px solid #e4e4e7;">
+                    <h2 style="font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 22px; font-weight: 700; line-height: 1.3; color: #09090b; margin-top: 0; margin-bottom: 24px; text-align: center;">Thanks for joining the waitlist!</h2>
+                    
+                    <p style="font-size: 15px; line-height: 1.6; color: #3f3f46; margin-bottom: 24px; font-family: 'Inter', sans-serif;">We've received your request for early access. Your registration in our private beta database has been successfully completed:</p>
+                    
+                    <div style="background-color: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 8px; padding: 20px 16px; text-align: center; margin: 24px 0;">
+                      <div style="font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #71717a; margin-bottom: 4px;">Registration No.</div>
+                      <div style="font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: #3e5d6c; margin-bottom: 16px;">#${userNumber}</div>
+                      
+                      <div style="border-top: 1px solid #e4e4e7; margin: 12px 0;"></div>
+                      
+                      <div style="font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #71717a; margin-bottom: 4px;">Registered Email</div>
+                      <div style="font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: #18181b; word-break: break-all;">${normalizedEmail}</div>
+                    </div>
+                    
+                    <p style="font-size: 15px; line-height: 1.6; color: #3f3f46; margin-bottom: 24px; font-family: 'Inter', sans-serif;">Our predictive intelligence models are processing sports data in real-time. We will notify you as soon as a slot opens up in our private beta.</p>
+                    
+                    <div style="text-align: center; margin-top: 32px; margin-bottom: 16px;">
+                      <a href="${siteUrl}" style="display: inline-block; background-color: #3e5d6c; color: #ffffff !important; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px;" target="_blank">Go to Website</a>
+                    </div>
+                  </div>
+                  
+                  <div style="text-align: center; margin-top: 32px; padding: 0 20px;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.5; color: #71717a; margin: 0;">Fixed — Predictive intelligence for sports betting.</p>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.5; color: #71717a; margin: 6px 0 0 0; opacity: 0.7;">If you did not request this registration, you can safely ignore this email.</p>
+                  </div>
+                </div>
               </div>
             `;
 
@@ -386,7 +443,7 @@ export async function POST(request: Request) {
               Authorization: `Bearer ${resendApiKey}`,
             },
             body: JSON.stringify({
-              from: 'Fixed Beta <beta@fixed.com>', // Configura este remitente con tu dominio verificado en Resend
+              from: 'Fixed Beta <beta@fixed.software>', // Configura este remitente con tu dominio verificado en Resend
               to: [normalizedEmail],
               subject: emailSubject,
               html: emailHtml,

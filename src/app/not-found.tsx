@@ -1,13 +1,25 @@
 import Link from 'next/link';
 import '@/styles/global.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/700.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/700.css';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export default function GlobalNotFound() {
   return (
-    <html lang="es" className="dark">
+    <html
+      lang="es"
+      className={`${inter.variable} ${jetbrainsMono.variable} dark`}
+    >
       <head>
         <title>404 - Página no encontrada | Fixed</title>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

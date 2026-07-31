@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vista Previa de Email (ES) - Fixed</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap');
+
+      body {
+        background-color: #000000;
+        margin: 0;
+        padding: 40px 20px;
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .logo-img {
+        height: 66px;
+        width: auto;
+        vertical-align: middle;
+      }
+
+      .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 40px 32px;
+        border: 1px solid #e4e4e7;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      }
+
+      .title {
+        font-family:
+          'Space Grotesk',
+          -apple-system,
+          sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #09090b;
+        margin-top: 0;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .info-box {
+        background-color: #f4f4f5;
+        border: 1px solid #e4e4e7;
+        border-radius: 8px;
+        padding: 20px 16px;
+        text-align: center;
+        margin: 24px 0;
+      }
+
+      .info-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #71717a;
+        margin-bottom: 4px;
+      }
+
+      .info-value-number {
+        font-family: 'Space Mono', monospace;
+        font-size: 28px;
+        font-weight: 700;
+        color: #3e5d6c;
+        margin-bottom: 16px;
+      }
+
+      .info-value-email {
+        font-family: 'Space Mono', monospace;
+        font-size: 14px;
+        font-weight: 700;
+        color: #18181b;
+        word-break: break-all;
+      }
+
+      .info-divider {
+        border: 0;
+        border-top: 1px solid #e4e4e7;
+        margin: 12px 0;
+      }
+
+      .body-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #3f3f46;
+        margin-bottom: 24px;
+      }
+
+      .btn-container {
+        text-align: center;
+        margin-top: 32px;
+        margin-bottom: 16px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #3e5d6c;
+        color: #ffffff !important;
+        text-decoration: none;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 14px 28px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn:hover {
+        background-color: #2c4350;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 32px;
+        padding: 0 20px;
+      }
+
+      .footer-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #71717a;
+        margin: 0;
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 24px 12px;
+        }
+        .card {
+          padding: 32px 20px;
+        }
+        .title {
+          font-size: 19px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="/images/fixed_isotype_dark_mode.jpeg"
+          class="logo-img"
+          alt="Fixed Logo"
+        />
+      </div>
+
+      <div class="card">
+        <h2 class="title">¡Gracias por unirte a la lista de espera!</h2>
+
+        <p class="body-text">
+          Hemos recibido tu solicitud de acceso anticipado. Tu registro en
+          nuestra base de datos de la beta privada se ha completado
+          correctamente:
+        </p>
+
+        <div class="info-box">
+          <div class="info-label">Nro. de Registro</div>
+          <div class="info-value-number">#742</div>
+
+          <div class="info-divider"></div>
+
+          <div class="info-label">Correo registrado</div>
+          <div class="info-value-email">user@example.com</div>
+        </div>
+
+        <p class="body-text">
+          Nuestros modelos de inteligencia predictiva están procesando datos
+          deportivos en tiempo real. Te avisaremos por este medio tan pronto
+          como tengamos una vacante para ti en la beta privada.
+        </p>
+
+        <div class="btn-container">
+          <a
+            href="https://fixed-landing-beta.vercel.app"
+            class="btn"
+            target="_blank"
+            >Ir a la Web</a
+          >
+        </div>
+      </div>
+
+      <div class="footer">
+        <p class="footer-text">
+          Fixed — Inteligencia predictiva para apuestas deportivas.
+        </p>
+        <p
+          class="footer-text"
+          style="margin-top: 6px; font-size: 11px; opacity: 0.7"
+        >
+          Si no solicitaste este registro, puedes ignorar este correo.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
