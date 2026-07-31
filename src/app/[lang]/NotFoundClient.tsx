@@ -42,10 +42,10 @@ export function NotFoundClient() {
             {t.buttonHome}
           </Link>
           <Link
-            href={`/${lang}/plans`}
+            href={`/${lang}/faq`}
             className="group bg-white-glass hover:bg-white-glass/20 relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-white/10 px-6 py-3 font-mono text-sm font-extrabold tracking-wider text-white backdrop-blur-sm transition-all duration-300 hover:border-white/20 active:scale-95 sm:w-auto"
           >
-            {t.buttonPlans}
+            {translations[lang].landing.faq.title}
           </Link>
         </div>
       </div>

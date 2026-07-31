@@ -20,7 +20,6 @@ export const Footer: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
 
   const homePath = lang === 'en' ? '/' : '/es';
-  const plansPath = lang === 'en' ? '/plans' : '/es/plans';
   const faqPath = lang === 'en' ? '/faq' : '/es/faq';
   const termsPath = lang === 'en' ? '/terms' : '/es/terms';
   const privacyPath = lang === 'en' ? '/privacy' : '/es/privacy';
@@ -126,12 +125,6 @@ export const Footer: React.FC<Props> = ({ lang }) => {
                 <span className="text-faint font-mono text-[10px] tracking-widest uppercase">
                   {t.landing.footer.link.dimensions.more}
                 </span>
-                <Link
-                  href={plansPath}
-                  className="hover:text-primary text-muted text-sm transition-colors duration-200"
-                >
-                  {t.navbar.plans}
-                </Link>
                 <Link
                   href={faqPath}
                   className="hover:text-primary text-muted text-sm transition-colors duration-200"
