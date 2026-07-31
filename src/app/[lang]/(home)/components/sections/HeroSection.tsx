@@ -8,6 +8,7 @@ import { HeroBadge } from '@/app/[lang]/(home)/components/ui/HeroBadge';
 import { HeroDecorativeGrid } from '@/app/[lang]/(home)/components/ui/HeroDecorativeGrid';
 import { BetaForm } from '@/shared/components/widgets/BetaForm';
 import { AnimatedStat } from '@/shared/components/ui/AnimatedStat';
+import { useSplashDone } from '@/shared/components/layout/SplashContext';
 
 interface HeroSectionProps {
   currentLang: Lang;
@@ -16,6 +17,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
   const containerRef = useRef<HTMLElement>(null);
+  const splashDone = useSplashDone();
 
   // Mouse Tracking Parallax
   const mouseX = useMotionValue(0);
@@ -73,7 +75,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
         <div className="flex flex-col items-start gap-6 xl:w-[80%]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={splashDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="flex flex-col items-start gap-6"
           >
@@ -111,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
           className="relative flex flex-col gap-6 lg:absolute lg:right-0 lg:bottom-0 lg:z-20"
           style={{ x: formX, y: formY }}
           initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={splashDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           {/* Tarjeta de Early Access */}
@@ -133,7 +135,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
           {/* Estadísticas */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={splashDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-wrap items-center justify-end gap-y-4"
           >

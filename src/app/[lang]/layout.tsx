@@ -6,6 +6,7 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
 import { Toolbar } from '@/shared/components/layout/Toolbar';
 import { Footer } from '@/shared/components/layout/Footer';
+import { SplashLoader } from '@/shared/components/layout/SplashLoader';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -90,13 +91,15 @@ export default async function RootLayout({ children, params }: Props) {
 
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[60vh] bg-[radial-gradient(ellipse_at_50%_-10%,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_65%)]" />
 
-        <div className="relative z-10 flex min-h-screen w-full flex-col">
-          <Toolbar lang={currentLang} />
+        <SplashLoader>
+          <div className="relative z-10 flex min-h-screen w-full flex-col">
+            <Toolbar lang={currentLang} />
 
-          <main className="w-full flex-grow">{children}</main>
+            <main className="w-full flex-grow">{children}</main>
 
-          <Footer lang={currentLang} />
-        </div>
+            <Footer lang={currentLang} />
+          </div>
+        </SplashLoader>
         <SpeedInsights />
         <Analytics />
         {gaId && <GoogleAnalytics gaId={gaId} />}
