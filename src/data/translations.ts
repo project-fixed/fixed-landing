@@ -6,14 +6,11 @@ export const translations = {
       features: 'Features',
       layers: 'AI Engine',
       about: 'About',
-      plans: 'Plans',
       faq: 'FAQ',
     },
     button: {
       join: 'Join Beta',
       getStarted: 'Get Started',
-      selectPlan: 'Select Plan',
-      currentPlan: 'Current Plan',
     },
     landing: {
       home: {
@@ -148,32 +145,49 @@ export const translations = {
         },
       },
       plans: {
-        title: 'Start Winning With Data',
+        title: 'Choose Your Edge',
         description:
-          'Join the waitlist and get instant access to your personal betting edge.',
+          'Pick the plan that matches your ambition. From casual betting to pro-level analytics.',
         plan: {
-          free: {
-            title: 'Beta Access',
-            price: 'Free / Waitlist',
-            description: 'Get in early and start making smarter bets today.',
+          starter: {
+            title: 'Starter',
+            description: 'Start betting smarter, risk-free.',
+            features: {
+              feature1: 'Top 5 European leagues coverage',
+              feature2: '5 daily high-confidence picks',
+              feature3: 'Automatic stake recommendations',
+              feature4: '7-day pick history',
+              feature5: 'Email support',
+            },
+            cta: 'Get Started Free',
+          },
+          pro: {
+            title: 'Pro',
+            description: 'For the consistent winner.',
             features: {
               feature1:
-                'Full access to daily picks across the top 5 European leagues',
-              feature2: 'Track your win rate and returns in real time',
-              feature3: 'Deep match analysis for every fixture',
+                'International tournaments (UCL, Europa League, Euro, Copa América)',
+              feature2: 'Unlimited daily picks with real-time alerts',
+              feature3: 'Unlimited history & performance analytics',
+              feature4: 'Optimized stake suggestions',
+              feature5: 'Priority chat support',
+              feature6: 'API read access & CSV export',
             },
+            cta: 'Go Pro',
           },
-          premium: {
-            title: 'Pro Suite',
-            price: 'Coming Soon',
-            description:
-              'For serious bettors who want every possible advantage.',
+          elite: {
+            title: 'Elite',
+            description: 'The ultimate betting intelligence.',
             features: {
-              feature1: 'Everything in Beta, plus...',
-              feature2: 'Instant alerts when a new value bet drops',
-              feature3: 'Export historical data & connect via API',
-              feature4: 'Priority support & custom bankroll strategies',
+              feature1: 'Everything in Pro, plus...',
+              feature2: 'Picks delivered 2 hours before the market',
+              feature3: 'Up to 5 bankroll profiles (multi-wallet)',
+              feature4: 'Full API access (read + write)',
+              feature5: 'JSON & CSV data export',
+              feature6: 'Custom bankroll strategies',
+              feature7: 'Private Slack / Telegram channel with the team',
             },
+            cta: 'Go Elite',
           },
         },
       },
@@ -229,7 +243,6 @@ export const translations = {
         description:
           'The page you are looking for does not exist or has been moved.',
         buttonHome: 'Back to Home',
-        buttonPlans: 'Explore Plans',
       },
     },
   },
@@ -240,14 +253,11 @@ export const translations = {
       features: 'Funciones',
       layers: 'Motor IA',
       about: 'Nosotros',
-      plans: 'Planes',
       faq: 'Manual',
     },
     button: {
       join: 'Únete a la Beta',
       getStarted: 'Comenzar',
-      selectPlan: 'Seleccionar Plan',
-      currentPlan: 'Plan Actual',
     },
     landing: {
       home: {
@@ -384,35 +394,50 @@ export const translations = {
         },
       },
       plans: {
-        title: 'Empieza a Ganar con Datos',
+        title: 'Elige tu Ventaja',
         description:
-          'Únete a la lista de espera y obtén acceso instantáneo a tu ventaja personal para apostar.',
+          'Selecciona el plan que se ajuste a tu ambición. De principiante a análisis de nivel profesional.',
         plan: {
-          free: {
-            title: 'Acceso Beta',
-            price: 'Gratis / Espera',
+          starter: {
+            title: 'Starter',
             description:
-              'Entra temprano y empieza a apostar más inteligente desde hoy.',
+              'Empieza a apostar de forma más inteligente, sin riesgos.',
+            features: {
+              feature1: 'Cobertura de las 5 mejores ligas europeas',
+              feature2: '5 picks diarios de alta confianza',
+              feature3: 'Recomendaciones automáticas de stake',
+              feature4: 'Historial de picks de 7 días',
+              feature5: 'Soporte por email',
+            },
+            cta: 'Comenzar Gratis',
+          },
+          pro: {
+            title: 'Pro',
+            description: 'Para el ganador consistente.',
             features: {
               feature1:
-                'Acceso total a picks diarios de las 5 mejores ligas europeas',
-              feature2: 'Sigue tu tasa de acierto y retorno en tiempo real',
-              feature3: 'Análisis profundo de cada partido',
+                'Torneos internacionales (UCL, Europa League, Euro, Copa América)',
+              feature2: 'Picks ilimitados con alertas en tiempo real',
+              feature3: 'Historial ilimitado y analíticas de rendimiento',
+              feature4: 'Sugerencias de stake optimizadas',
+              feature5: 'Soporte prioritario por chat',
+              feature6: 'API de lectura y exportación CSV',
             },
+            cta: 'Ir a Pro',
           },
-          premium: {
-            title: 'Suite Pro',
-            price: 'Próximamente',
-            description:
-              'Para apostadores serios que quieren cada ventaja posible.',
+          elite: {
+            title: 'Elite',
+            description: 'La inteligencia definitiva para apostar.',
             features: {
-              feature1: 'Todo lo del Acceso Beta, más...',
-              feature2:
-                'Alertas al instante cuando aparezca una nueva apuesta de valor',
-              feature3: 'Exporta datos históricos y conecta vía API',
-              feature4:
-                'Soporte prioritario y estrategias de bankroll personalizadas',
+              feature1: 'Todo lo de Pro, más...',
+              feature2: 'Picks entregados 2 horas antes del mercado',
+              feature3: 'Hasta 5 perfiles de bankroll (multi-wallet)',
+              feature4: 'API completa (lectura + escritura)',
+              feature5: 'Exportación de datos en JSON y CSV',
+              feature6: 'Estrategias de bankroll personalizadas',
+              feature7: 'Canal privado Slack / Telegram con el equipo',
             },
+            cta: 'Ir a Elite',
           },
         },
       },
@@ -469,7 +494,6 @@ export const translations = {
         description:
           'La página que buscas no existe o ha sido movida temporalmente.',
         buttonHome: 'Volver al Inicio',
-        buttonPlans: 'Explorar Planes',
       },
     },
   },

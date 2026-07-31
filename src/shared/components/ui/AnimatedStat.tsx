@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, useSpring, useTransform, useInView } from 'framer-motion';
+import { useSplashDone } from '@/shared/components/layout/SplashContext';
 
 interface AnimatedStatProps {
   value: string; // e.g. "75K", "92.5%", "30+", "24/7"
@@ -10,6 +11,7 @@ interface AnimatedStatProps {
 export const AnimatedStat: React.FC<AnimatedStatProps> = ({ value }) => {
   const ref = React.useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
+  const splashDone = useSplashDone();
 
   // Extract number and text parts
   // Matches optional prefix, the number (including decimals), and optional suffix
@@ -18,14 +20,14 @@ export const AnimatedStat: React.FC<AnimatedStatProps> = ({ value }) => {
   const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
-    if (isInView && !hasStarted) {
+    if (isInView && splashDone && !hasStarted) {
       // Delay slightly for effect
       const timeout = setTimeout(() => {
         setHasStarted(true);
       }, 300);
       return () => clearTimeout(timeout);
     }
-  }, [isInView, hasStarted]);
+  }, [isInView, splashDone, hasStarted]);
 
   // If we can't parse a number out of it, just return the string
   if (!match) {

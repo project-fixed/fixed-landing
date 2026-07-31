@@ -45,7 +45,7 @@ export const OddsCard: React.FC<Props> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             {/* EV Text (unboxed) */}
-            <span className="font-mono text-[10px] font-bold text-emerald-400">
+            <span className="text-status-success font-mono text-[10px] font-bold">
               {formattedEv}
             </span>
 
@@ -92,7 +92,9 @@ export const OddsCard: React.FC<Props> = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5 text-[11px] sm:text-xs">
           {/* EV Badge */}
-          <span className="font-semibold text-emerald-400">{formattedEv}</span>
+          <span className="text-status-success font-semibold">
+            {formattedEv}
+          </span>
 
           {/* Time (Clock Icon + Text) */}
           <div className="text-muted flex items-center gap-1">
@@ -119,7 +121,7 @@ export const OddsCard: React.FC<Props> = ({
         <span className="text-muted line-clamp-1 flex-1 text-xs">{type}</span>
         {status &&
           (status === 'won' ? (
-            <Check className="h-4 w-4 shrink-0 text-emerald-400" />
+            <Check className="text-status-success h-4 w-4 shrink-0" />
           ) : status === 'lost' ? (
             <X className="text-destructive h-4 w-4 shrink-0" />
           ) : (

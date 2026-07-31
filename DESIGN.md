@@ -56,7 +56,7 @@ La paleta se centra en tonos oscuros planos y el color steel blue como único ac
 | `text-body`       | `oklch(0.7 0 0)`  | Párrafos y descripciones                   |
 | `text-muted`      | `oklch(0.55 0)`   | Textos secundarios y labels en mono        |
 | `text-faint`      | `oklch(0.4 0 0)`  | Separadores sutiles y labels de categoría  |
-| `status-success`  | `#22c55e`         | Indicador de estado activo (Open Beta)     |
+| `status-success`  | `#34d399`         | Indicador de estado activo (Open Beta)     |
 
 ## Typography
 

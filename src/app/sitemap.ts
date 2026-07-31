@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || 'https://fixed-landing-beta.vercel.app';
   const locales = ['es', 'en'];
-  const paths = ['', '/faq', '/plans', '/cookies', '/privacy', '/terms'];
+  const paths = ['', '/faq', '/cookies', '/privacy', '/terms'];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const isHome = path === '';
     const priorityMap: Record<string, number> = {
       '': 1.0,
-      '/plans': 0.8,
       '/faq': 0.7,
       '/cookies': 0.4,
       '/privacy': 0.4,

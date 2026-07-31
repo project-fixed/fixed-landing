@@ -26,7 +26,7 @@ export const ValueBetCardWidget: React.FC<ValueBetCardWidgetProps> = ({
 }) => {
   const getDotColor = () => {
     if (card.confLevel === 'high') {
-      return 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]';
+      return 'bg-status-success shadow-[0_0_6px_rgba(52,211,153,0.6)]';
     }
     if (card.confLevel === 'medium') {
       return 'bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.6)]';

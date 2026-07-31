@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { useTranslations, type Lang } from '@/data/translations';
 import { ArrowLeftRight, Menu, X, ArrowUpRight } from 'lucide-react';
 import { IconButton } from '@/shared/components/ui/IconButton';
+import { useSplashDone } from '@/shared/components/layout/SplashContext';
 import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
 import imgUS from '@/assets/images/united-states.png';
@@ -29,6 +30,7 @@ const normalizePathname = (pathname: string) =>
 
 export const Toolbar: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
+  const splashDone = useSplashDone();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -41,7 +43,6 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
   const currentNormalizedPath = normalizePathname(pathname);
 
   const homePath = lang === 'en' ? '/' : '/es';
-  const plansPath = lang === 'en' ? '/plans' : '/es/plans';
   const faqPath = lang === 'en' ? '/faq' : '/es/faq';
 
   /** Efficient Motion scroll detection without unthrottled global scroll listeners */
@@ -250,17 +251,16 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         type: 'section',
         targetId: 'about',
       },
-      { label: t.navbar.plans, href: plansPath, type: 'route' },
       { label: t.navbar.faq, href: faqPath, type: 'route' },
     ],
-    [t.navbar, homePath, plansPath, faqPath],
+    [t.navbar, homePath, faqPath],
   );
 
   return (
     <motion.header
       id="main-toolbar"
       initial={{ y: -70, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      animate={splashDone ? { y: 0, opacity: 1 } : { y: -70, opacity: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="fixed top-0 right-0 left-0 z-50 w-full px-0 pt-0 transition-all duration-500 ease-in-out md:pt-2"
     >
@@ -284,7 +284,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
           className="logo flex cursor-pointer items-center select-none"
           onClick={handleLogoClick}
         >
-          <Image src={imgLogo} alt="Logo" className="relative z-10 size-9" />
+          <Image src={imgLogo} alt="Logo" className="relative z-10 size-11" />
           <span
             id="brand"
             className={`text-md overflow-hidden font-mono font-bold whitespace-nowrap text-white uppercase transition-all duration-500 ease-out max-[425px]:hidden ${
