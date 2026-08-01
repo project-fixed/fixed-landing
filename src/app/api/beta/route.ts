@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import fs from 'fs/promises';
 import path from 'path';
+import imgLogo from '@/assets/images/logo.png';
 
 // Rate limiter en memoria simple para mitigar spam/bots
 interface RateLimitData {
@@ -353,8 +354,8 @@ export async function POST(request: Request) {
           console.log('[Beta API] Enviando email de bienvenida con Resend...');
           const siteUrl =
             process.env.NEXT_PUBLIC_SITE_URL ||
-            'https://fixed-landing.vercel.app';
-          const logoUrl = `${siteUrl}/images/fixed_isotype_dark_mode.jpeg`;
+            'https://fixed-landing-beta.vercel.app';
+          const logoUrl = imgLogo.src;
 
           const emailSubject =
             currentLang === 'es'

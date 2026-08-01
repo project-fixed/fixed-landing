@@ -5,7 +5,6 @@ import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import type { Translations } from '@/data/translations';
 import type { Lang } from '@/data/translations';
 import { HeroBadge } from '@/app/[lang]/(home)/components/ui/HeroBadge';
-import { HeroDecorativeGrid } from '@/app/[lang]/(home)/components/ui/HeroDecorativeGrid';
 import { BetaForm } from '@/shared/components/widgets/BetaForm';
 import { AnimatedStat } from '@/shared/components/ui/AnimatedStat';
 import { useSplashDone } from '@/shared/components/layout/SplashContext';
@@ -37,8 +36,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
     mouseY.set(y);
   };
 
-  const gridX = useTransform(mouseXSpring, [-1, 1], [25, -25]);
-  const gridY = useTransform(mouseYSpring, [-1, 1], [25, -25]);
   const formX = useTransform(mouseXSpring, [-1, 1], [-8, 8]);
   const formY = useTransform(mouseYSpring, [-1, 1], [-8, 8]);
   const heroStats = [
@@ -63,13 +60,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
       onMouseMove={handleMouseMove}
       className="page-section relative my-auto flex flex-1 flex-col justify-center overflow-hidden py-4"
     >
-      <motion.div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{ x: gridX, y: gridY }}
-      >
-        <HeroDecorativeGrid />
-      </motion.div>
-
       <div className="relative z-10 flex w-full flex-col justify-between gap-6">
         {/* Columna Izquierda (Texto y Título amplio) */}
         <div className="flex flex-col items-start gap-6 xl:w-[80%]">

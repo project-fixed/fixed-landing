@@ -207,7 +207,7 @@ interface CounterProps {
 function WaitlistCounter({ value, lang }: CounterProps) {
   const animatedValue = useAnimatedCounter(value, 2000);
   return (
-    <div className="relative z-10 my-5 flex w-full flex-col items-center justify-center border-t border-b border-white/5 py-4">
+    <div className="relative z-10 my-3 flex w-full flex-col items-center justify-center border-t border-b border-white/5 py-3">
       <span className="font-mono text-[10px] tracking-widest text-white/40 uppercase">
         {lang === 'es' ? 'Tu lugar en la lista' : 'Your spot on the waitlist'}
       </span>
@@ -416,7 +416,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang, idSuffix = '' }) => {
                 setRegisteredUserNumber(null);
                 setIsDuplicate(false);
               }}
-              className="absolute top-3.5 right-3.5 cursor-pointer text-white/40 transition-colors hover:scale-110 hover:text-white active:scale-95"
+              className="absolute top-3.5 right-3.5 z-10 cursor-pointer text-white/40 transition-colors hover:scale-110 hover:text-white active:scale-95"
               aria-label="Close"
             >
               <X className="h-4 w-4" />

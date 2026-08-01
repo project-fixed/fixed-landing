@@ -28,6 +28,7 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
             src={imgAbout}
             alt="Image - About"
             className="h-auto w-full object-cover"
+            priority
           />
         </ScrollReveal>
 
