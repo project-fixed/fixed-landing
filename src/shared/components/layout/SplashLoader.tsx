@@ -9,25 +9,35 @@ interface SplashLoaderProps {
   duration?: number;
 }
 
-const FADE_MS = 500;
+const FADE_MS = 300;
 
 export const SplashLoader: React.FC<SplashLoaderProps> = ({
   children,
-  duration = 3000,
+  duration = 800,
 }) => {
   const [visible, setVisible] = useState(true);
   const [fading, setFading] = useState(false);
   const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
+    // Check if splash was already shown in this session to bypass it
+    const hasShownSplash = sessionStorage.getItem('fixed_splash_shown');
+    if (hasShownSplash) {
+      setVisible(false);
+      setSplashDone(true);
+      return;
+    }
+
     const hideTimer = setTimeout(() => {
       setFading(true);
       const removeTimer = setTimeout(() => {
         setVisible(false);
         setSplashDone(true);
+        sessionStorage.setItem('fixed_splash_shown', 'true');
       }, FADE_MS);
       return () => clearTimeout(removeTimer);
     }, duration);
+
     return () => clearTimeout(hideTimer);
   }, [duration]);
 

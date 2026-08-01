@@ -74,7 +74,7 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
                   <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.02] mix-blend-overlay" />
 
                   <div className="absolute top-6 left-6 flex flex-col gap-3">
-                    <Icon className="text-primary size-5 opacity-80 transition-opacity group-hover:opacity-100" />
+                    <Icon className="text-primary-light size-5 opacity-80 transition-opacity group-hover:opacity-100" />
                   </div>
 
                   <div className="absolute top-6 right-6">
@@ -84,7 +84,7 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
                   </div>
 
                   <div className="relative z-10 mt-auto">
-                    <h3 className="group-hover:text-primary mb-3 font-mono text-lg font-bold tracking-tight text-white transition-colors md:text-xl lg:text-2xl">
+                    <h3 className="mb-3 font-mono text-lg font-bold tracking-tight text-white transition-colors md:text-xl lg:text-2xl">
                       {title}
                     </h3>
                     <p className="text-muted text-xs leading-relaxed sm:text-sm">

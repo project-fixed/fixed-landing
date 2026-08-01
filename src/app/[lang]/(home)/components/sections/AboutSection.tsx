@@ -18,7 +18,7 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
       id="about"
       className="page-section border-t border-white/5 py-20 md:py-24"
     >
-      <div className="flex w-full flex-wrap items-center justify-center gap-16">
+      <div className="flex w-full flex-col-reverse flex-wrap items-center justify-center gap-16 lg:flex-row">
         <ScrollReveal
           direction="left"
           delay={0.1}
@@ -28,6 +28,7 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
             src={imgAbout}
             alt="Image - About"
             className="h-auto w-full object-cover"
+            priority
           />
         </ScrollReveal>
 

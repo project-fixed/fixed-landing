@@ -1,9 +1,19 @@
 import '@/styles/global.css';
 import React from 'react';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/700.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/700.css';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+import { translations } from '@/data/translations';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 import { Toolbar } from '@/shared/components/layout/Toolbar';
 import { Footer } from '@/shared/components/layout/Footer';
 import { SplashLoader } from '@/shared/components/layout/SplashLoader';
@@ -26,20 +36,16 @@ export async function generateMetadata({
   const isEn = currentLang === 'en';
 
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://fixed-landing-beta.vercel.app';
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://fixed-landing.vercel.app';
   const canonicalUrl = `${baseUrl}/${currentLang}`;
-
-  const title = isEn
-    ? 'Fixed - Stop guessing and start winning more with AI'
-    : 'Fixed - Deja de adivinar y empieza a ganar más con IA';
-
-  const description = isEn
-    ? 'Leave doubts behind. Our AI analyzes every detail to offer you the fixed outcome of the match.'
-    : 'Deja las dudas atrás. Nuestra IA analiza cada detalle para ofrecerte la fija del partido.';
+  const heroTranslations = translations[currentLang].landing.home.hero;
+  const title = `Fixed - ${heroTranslations.title.start} ${heroTranslations.title.center} ${heroTranslations.title.end}`;
+  const description = heroTranslations.description;
 
   return {
     title,
     description,
+    metadataBase: new URL(baseUrl),
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -54,10 +60,10 @@ export async function generateMetadata({
       siteName: 'Fixed',
       images: [
         {
-          url: `${baseUrl}/images/fixed_isotype_dark_mode.png`, // Usamos uno de los widgets del dashboard que ya existen como OG Image preliminar
-          width: 1200,
-          height: 630,
-          alt: 'Fixed Predictive Intelligence Dashboard',
+          url: '/images/fixed_imagotype_dark_mode.png',
+          width: 800,
+          height: 800,
+          alt: 'Fixed Imagotype',
         },
       ],
       locale: isEn ? 'en_US' : 'es_ES',
@@ -67,7 +73,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [`${baseUrl}/images/fixed_isotype_dark_mode.png`],
+      images: ['/images/fixed_imagotipo_dark_mode.png'],
     },
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
@@ -81,7 +87,10 @@ export default async function RootLayout({ children, params }: Props) {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
-    <html lang={currentLang} className="dark">
+    <html
+      lang={currentLang}
+      className={`${inter.variable} ${jetbrainsMono.variable} dark`}
+    >
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
@@ -89,13 +98,24 @@ export default async function RootLayout({ children, params }: Props) {
       <body className="antialiased">
         {/* Precision grid pattern matching the tech aesthetic */}
 
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[60vh] bg-[radial-gradient(ellipse_at_50%_-10%,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_65%)]" />
+        <div
+          style={{
+            pointerEvents: 'none',
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            height: '60vh',
+            background:
+              'radial-gradient(ellipse at 50% -10%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 65%)',
+          }}
+        />
 
         <SplashLoader>
           <div className="relative z-10 flex min-h-screen w-full flex-col">
             <Toolbar lang={currentLang} />
 
-            <main className="w-full flex-grow">{children}</main>
+            <main className="w-full grow">{children}</main>
 
             <Footer lang={currentLang} />
           </div>

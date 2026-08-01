@@ -91,7 +91,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
             <div className="flex flex-wrap gap-16 max-md:gap-8">
               {/* Product */}
               <div className="flex flex-col gap-3 text-left">
-                <span className="text-faint font-mono text-[10px] tracking-widest uppercase">
+                <span className="text-faint font-mono text-xs tracking-widest uppercase">
                   {t.landing.footer.link.dimensions.product}
                 </span>
                 <Link
@@ -122,7 +122,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
 
               {/* More */}
               <div className="flex flex-col gap-3 text-left">
-                <span className="text-faint font-mono text-[10px] tracking-widest uppercase">
+                <span className="text-faint font-mono text-xs tracking-widest uppercase">
                   {t.landing.footer.link.dimensions.more}
                 </span>
                 <Link
@@ -137,27 +137,27 @@ export const Footer: React.FC<Props> = ({ lang }) => {
 
           {/* Legal bar + Back to Top */}
           <div className="border-t border-white/[0.06] pt-6">
-            <div className="text-faint flex flex-wrap items-center justify-between gap-4 text-xs">
-              <p>
+            <div className="text-faint flex flex-wrap items-center justify-between gap-4 text-sm">
+              <p className="text-muted">
                 © {new Date().getFullYear()} Fixed Inc. All rights reserved.
               </p>
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex flex-wrap gap-6">
                   <Link
                     href={termsPath}
-                    className="hover:text-primary transition-colors duration-200"
+                    className="hover:text-body transition-colors duration-200"
                   >
                     {t.landing.footer.link.company.termsOfService}
                   </Link>
                   <Link
                     href={privacyPath}
-                    className="hover:text-primary transition-colors duration-200"
+                    className="hover:text-body transition-colors duration-200"
                   >
                     {t.landing.footer.link.company.privacyPolicy}
                   </Link>
                   <Link
                     href={cookiesPath}
-                    className="hover:text-primary transition-colors duration-200"
+                    className="hover:text-body transition-colors duration-200"
                   >
                     {t.landing.footer.link.company.cookies}
                   </Link>
@@ -166,7 +166,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
                 <button
                   type="button"
                   onClick={scrollToTop}
-                  className="group text-muted inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 font-mono text-[11px] font-semibold transition-all duration-200 hover:border-white/20 hover:bg-white/10 hover:text-white active:scale-95"
+                  className="group text-body inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs font-semibold transition-all duration-200 hover:border-white/20 hover:bg-white/10 hover:text-white active:scale-95"
                   aria-label={lang === 'es' ? 'Volver arriba' : 'Back to top'}
                 >
                   <span>{lang === 'es' ? 'Volver arriba' : 'Back to top'}</span>
