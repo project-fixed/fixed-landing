@@ -9,6 +9,7 @@ import { useTranslations, type Lang } from '@/data/translations';
 import { ArrowLeftRight, Menu, X, ArrowUpRight } from 'lucide-react';
 import { IconButton } from '@/shared/components/ui/IconButton';
 import { useSplashDone } from '@/shared/components/layout/SplashContext';
+import { useWaitlistModal } from '@/shared/components/layout/WaitlistModalContext';
 import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
 import imgUS from '@/assets/images/united-states.png';
@@ -31,6 +32,7 @@ const normalizePathname = (pathname: string) =>
 export const Toolbar: React.FC<Props> = ({ lang }) => {
   const t = useTranslations(lang);
   const splashDone = useSplashDone();
+  const { openModal } = useWaitlistModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -187,16 +189,8 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
 
   const handleJoinBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     closeMenu();
-    if (currentNormalizedPath === '/') {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        const isMobileWidth = window.innerWidth < 1024;
-        const idSuffix = isMobileWidth ? 'mobile' : 'desktop';
-        const input = document.getElementById(`beta-email-input-${idSuffix}`);
-        if (input) input.focus();
-      }, 600);
-    }
+    e.preventDefault();
+    openModal();
   };
 
   const targetPath = useMemo(() => {

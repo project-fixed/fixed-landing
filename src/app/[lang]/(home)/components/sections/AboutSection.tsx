@@ -18,11 +18,11 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
       id="about"
       className="page-section border-t border-white/5 py-20 md:py-24"
     >
-      <div className="flex w-full flex-col-reverse flex-wrap items-center justify-center gap-16 lg:flex-row">
+      <div className="flex w-full flex-col-reverse flex-wrap items-center justify-center gap-8 lg:flex-row lg:gap-16">
         <ScrollReveal
           direction="left"
           delay={0.1}
-          className="w-full overflow-hidden rounded-[40%_20%] border border-white/10 lg:max-w-[480px]"
+          className="w-full overflow-hidden rounded-[40%_20%] border border-white/10 md:max-w-[340px] xl:max-w-[500px]"
         >
           <Image
             src={imgAbout}

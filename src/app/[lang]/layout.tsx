@@ -17,6 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 import { Toolbar } from '@/shared/components/layout/Toolbar';
 import { Footer } from '@/shared/components/layout/Footer';
 import { SplashLoader } from '@/shared/components/layout/SplashLoader';
+import { WaitlistModalProvider } from '@/shared/components/layout/WaitlistModalContext';
+import { WaitlistModal } from '@/shared/components/widgets/WaitlistModal';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -112,13 +114,16 @@ export default async function RootLayout({ children, params }: Props) {
         />
 
         <SplashLoader>
-          <div className="relative z-10 flex min-h-screen w-full flex-col">
-            <Toolbar lang={currentLang} />
+          <WaitlistModalProvider>
+            <div className="relative z-10 flex min-h-screen w-full flex-col">
+              <Toolbar lang={currentLang} />
 
-            <main className="w-full grow">{children}</main>
+              <main className="w-full grow">{children}</main>
 
-            <Footer lang={currentLang} />
-          </div>
+              <Footer lang={currentLang} />
+            </div>
+            <WaitlistModal lang={currentLang} />
+          </WaitlistModalProvider>
         </SplashLoader>
         <SpeedInsights />
         <Analytics />

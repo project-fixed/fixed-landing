@@ -6,11 +6,15 @@ import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 interface ScrollExpandVideoProps {
   children?: React.ReactNode;
   cursorText?: string;
+  showCursor?: boolean;
+  onClick?: () => void;
 }
 
 export function ScrollExpandVideo({
   children,
   cursorText = 'Play intro',
+  showCursor = true,
+  onClick,
 }: ScrollExpandVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -71,9 +75,12 @@ export function ScrollExpandVideo({
       <div className="sticky top-0 flex h-[50vh] w-full items-center justify-center overflow-hidden md:h-[70vh] lg:h-screen">
         <motion.div
           style={{ width, borderRadius, padding }}
-          className="bg-surface-deep relative flex aspect-video items-center justify-center overflow-hidden border border-white/15 shadow-2xl xl:aspect-[16/8]"
+          className={`bg-surface-deep relative flex aspect-video items-center justify-center overflow-hidden border border-white/15 shadow-2xl xl:aspect-[16/8] ${
+            onClick ? 'cursor-pointer' : ''
+          }`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onClick={onClick}
         >
           <motion.div
             style={{ borderRadius: innerRadius }}
@@ -93,8 +100,8 @@ export function ScrollExpandVideo({
         style={{
           x: cursorX,
           y: cursorY,
-          opacity: isHovered ? 1 : 0,
-          scale: isHovered ? 1 : 0.8,
+          opacity: showCursor && isHovered ? 1 : 0,
+          scale: showCursor && isHovered ? 1 : 0.8,
           translateX: '-50%',
           translateY: '-50%',
         }}

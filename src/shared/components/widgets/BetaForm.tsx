@@ -15,6 +15,8 @@ import { motion, AnimatePresence } from 'motion/react';
 interface BetaFormProps {
   lang: 'en' | 'es';
   idSuffix?: string;
+  autoFocus?: boolean;
+  onFocusChange?: (focused: boolean) => void;
 }
 
 // Custom hook to animate a numeric count from 0 to target value
@@ -218,7 +220,12 @@ function WaitlistCounter({ value, lang }: CounterProps) {
   );
 }
 
-export const BetaForm: React.FC<BetaFormProps> = ({ lang, idSuffix = '' }) => {
+export const BetaForm: React.FC<BetaFormProps> = ({
+  lang,
+  idSuffix = '',
+  autoFocus,
+  onFocusChange,
+}) => {
   const t = useTranslations(lang);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<
@@ -360,6 +367,9 @@ export const BetaForm: React.FC<BetaFormProps> = ({ lang, idSuffix = '' }) => {
               setEmail(e.target.value);
               if (status === 'error') setStatus('idle');
             }}
+            onFocus={() => onFocusChange?.(true)}
+            onBlur={() => onFocusChange?.(false)}
+            autoFocus={autoFocus}
             disabled={status === 'loading'}
             placeholder={t.landing.home.hero.betaPlaceholder}
             className="placeholder:text-faint min-w-0 flex-1 truncate bg-transparent py-2 pr-2 font-mono text-xs text-white outline-none disabled:opacity-50"
