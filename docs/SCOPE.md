@@ -50,4 +50,5 @@ Para dar una feature por completa:
 - [🤝 Contratos de Interfaz](CONTRACTS.md)
 - [🗄️ Modelo de Base de Datos](DATABASE.md)
 - [🗺️ Roadmap de Producto](ROADMAP.md)
+- [🎯 Identidad de Producto](PRODUCT.md)
 - [🎨 Sistema de Diseño](../DESIGN.md)

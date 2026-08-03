@@ -70,4 +70,5 @@ gantt
 - [🤝 Contratos de Interfaz](CONTRACTS.md)
 - [🗄️ Modelo de Base de Datos](DATABASE.md)
 - [🎯 Alcance MVP](SCOPE.md)
+- [🎯 Identidad de Producto](PRODUCT.md)
 - [🎨 Sistema de Diseño](../DESIGN.md)
