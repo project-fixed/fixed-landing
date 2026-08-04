@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
-  const showCursorText = true; // Show the custom cursor indicating a demo is available
+  const showCursorText = false; // Show the custom cursor indicating a demo is available
 
   return (
     <section id="features" className="relative">

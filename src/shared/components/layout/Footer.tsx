@@ -61,7 +61,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
               <SectionBadge label="get started" prefix="" />
             </div>
             <p className="text-muted text-end text-sm">{ctaSubtext}</p>
-            <BetaForm lang={lang} />
+            <BetaForm lang={lang} idSuffix="footer" />
           </ScrollReveal>
         </div>
       </div>

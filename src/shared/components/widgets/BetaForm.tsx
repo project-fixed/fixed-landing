@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { useTranslations } from '@/data/translations';
+import { useWaitlistModal } from '@/shared/components/layout/WaitlistModalContext';
 import {
   Loader2,
   CheckCircle2,
@@ -17,6 +17,7 @@ interface BetaFormProps {
   idSuffix?: string;
   autoFocus?: boolean;
   onFocusChange?: (focused: boolean) => void;
+  onEmailChange?: (email: string) => void;
 }
 
 // Custom hook to animate a numeric count from 0 to target value
@@ -60,87 +61,6 @@ interface Particle {
   size: number;
   delay: number;
   angle: number;
-}
-
-interface ScreenParticle {
-  id: number;
-  left: string;
-  size: number;
-  color: string;
-  delay: number;
-  duration: number;
-  sway: number[];
-}
-
-function ScreenConfetti() {
-  const [mounted, setMounted] = useState(false);
-  const colors = [
-    '#3e5d6c',
-    '#60a5fa',
-    '#34d399',
-    '#fbbf24',
-    '#f87171',
-    '#c084fc',
-  ];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const particles = React.useMemo(() => {
-    const arr: ScreenParticle[] = [];
-    for (let i = 0; i < 70; i++) {
-      const left = `${Math.random() * 100}%`;
-      const size = 5 + Math.random() * 8;
-      const delay = Math.random() * 1.5;
-      const duration = 3.0 + Math.random() * 2.0;
-      const swayAmount = 20 + Math.random() * 30;
-      const sway = [0, -swayAmount, swayAmount, -swayAmount / 2, 0];
-
-      arr.push({
-        id: i,
-        left,
-        size,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        delay,
-        duration,
-        sway,
-      });
-    }
-    return arr;
-  }, []);
-
-  if (!mounted) return null;
-
-  return createPortal(
-    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="fixed rounded-xs"
-          style={{
-            left: p.left,
-            width: p.size,
-            height: p.size,
-            backgroundColor: p.color,
-            y: '-5vh',
-          }}
-          animate={{
-            y: '105vh',
-            x: p.sway,
-            rotate: [0, 360, 720],
-            opacity: [0, 1, 1, 0],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            ease: 'linear',
-          }}
-        />
-      ))}
-    </div>,
-    document.body,
-  );
 }
 
 function Confetti() {
@@ -225,18 +145,20 @@ export const BetaForm: React.FC<BetaFormProps> = ({
   idSuffix = '',
   autoFocus,
   onFocusChange,
+  onEmailChange,
 }) => {
   const t = useTranslations(lang);
+  const { successState, setSuccessState, closeModal } = useWaitlistModal();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
   const [message, setMessage] = useState('');
-  const [isLocal, setIsLocal] = useState(false);
-  const [isDuplicate, setIsDuplicate] = useState(false);
-  const [registeredUserNumber, setRegisteredUserNumber] = useState<
-    number | null
-  >(null);
+
+  const isRegistered = successState?.isRegistered ?? false;
+  const isDuplicate = successState?.isDuplicate ?? false;
+  const isLocal = successState?.isLocal ?? false;
+  const registeredUserNumber = successState?.registeredUserNumber ?? null;
   const [utmParams, setUtmParams] = useState({
     utm_source: '',
     utm_medium: '',
@@ -319,18 +241,34 @@ export const BetaForm: React.FC<BetaFormProps> = ({
       const data = await response.json();
 
       if (response.ok) {
-        setStatus('success');
-        setIsLocal(!!data.isLocalFallback);
-        setIsDuplicate(false);
-        setRegisteredUserNumber(data.userNumber || 100);
+        setStatus('idle');
+        setSuccessState({
+          isRegistered: true,
+          isDuplicate: false,
+          isLocal: !!data.isLocalFallback,
+          registeredUserNumber: data.userNumber || 100,
+        });
         setEmail('');
+        onEmailChange?.('');
+        if (idSuffix === 'global-modal') {
+          closeModal();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       } else {
         if (response.status === 409 && data.userNumber) {
-          setStatus('success');
-          setIsLocal(!!data.isLocalFallback);
-          setIsDuplicate(true);
-          setRegisteredUserNumber(data.userNumber);
+          setStatus('idle');
+          setSuccessState({
+            isRegistered: true,
+            isDuplicate: true,
+            isLocal: !!data.isLocalFallback,
+            registeredUserNumber: data.userNumber,
+          });
           setEmail('');
+          onEmailChange?.('');
+          if (idSuffix === 'global-modal') {
+            closeModal();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         } else {
           setStatus('error');
           if (response.status === 409) {
@@ -365,6 +303,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
+              onEmailChange?.(e.target.value);
               if (status === 'error') setStatus('idle');
             }}
             onFocus={() => onFocusChange?.(true)}
@@ -406,7 +345,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({
 
       {/* Floating Success/Duplicate Overlay Card */}
       <AnimatePresence>
-        {status === 'success' && (
+        {isRegistered && (
           <motion.div
             key="success-overlay"
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -416,15 +355,12 @@ export const BetaForm: React.FC<BetaFormProps> = ({
             className="border-primary/30 bg-surface-deep/98 absolute inset-x-0 bottom-full z-30 mb-4 flex w-full flex-col items-center justify-center overflow-visible rounded-2xl border p-5 text-center shadow-[0_15px_50px_rgba(0,0,0,0.8)] backdrop-blur-lg"
           >
             {!isDuplicate && <Confetti />}
-            {!isDuplicate && <ScreenConfetti />}
 
             {/* Close Button in top right */}
             <button
               type="button"
               onClick={() => {
-                setStatus('idle');
-                setRegisteredUserNumber(null);
-                setIsDuplicate(false);
+                setSuccessState(null);
               }}
               className="absolute top-3.5 right-3.5 z-10 cursor-pointer text-white/40 transition-colors hover:scale-110 hover:text-white active:scale-95"
               aria-label="Close"
