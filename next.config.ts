@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   // output: 'export',
   // Disable server-side react errors in console for production
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.api-sports.io',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

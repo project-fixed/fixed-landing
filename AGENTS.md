@@ -57,6 +57,7 @@ La documentación del proyecto vive en `docs/`:
 - `docs/ARCHITECTURE.md` — Arquitectura técnica
 - `docs/CONTRACTS.md` — Contratos de interfaz
 - `docs/DATABASE.md` — Modelo de base de datos
+- `docs/PRODUCT.md` — Identidad y posicionamiento del producto
 - `docs/ROADMAP.md` — Roadmap de producto
 - `docs/SCOPE.md` — Alcance MVP
 

@@ -65,6 +65,10 @@ export const translations = {
           title: 'The End of Intuition. Applied Quantitative Intelligence.',
           description:
             'We strip away the noise and show you only what matters: the bets with real edge. See it in action.',
+          modalBadge: 'Open Beta',
+          modalTitle: 'Join the Beta',
+          modalDescription:
+            'We are rolling out access gradually. Join the waitlist to secure your spot and start trading with a real mathematical edge.',
         },
         features: {
           title: 'Your Edge, Every Matchday',
@@ -314,6 +318,10 @@ export const translations = {
           title: 'El Fin de la Intuición. Inteligencia Cuantitativa Aplicada.',
           description:
             'Eliminamos el ruido y te mostramos solo lo que importa: las apuestas con ventaja real. Vélo en acción.',
+          modalBadge: 'Beta Abierta',
+          modalTitle: 'Únete a la Beta',
+          modalDescription:
+            'Estamos liberando accesos de forma gradual. Únete a la lista de espera para asegurar tu lugar y empezar a operar con ventaja matemática real.',
         },
         features: {
           title: 'Tu Ventaja, Cada Jornada',

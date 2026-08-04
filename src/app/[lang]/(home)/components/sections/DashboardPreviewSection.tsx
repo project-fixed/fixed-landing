@@ -11,6 +11,8 @@ interface Props {
 }
 
 export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
+  const showCursorText = false; // Show the custom cursor indicating a demo is available
+
   return (
     <section id="features" className="relative">
       <div className="bg-pattern-grid absolute inset-0 opacity-[0.04]" />
@@ -29,7 +31,10 @@ export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
         </div>
       </div>
 
-      <ScrollExpandVideo cursorText={lang === 'es' ? 'Ver Demo' : 'Play demo'}>
+      <ScrollExpandVideo
+        cursorText={lang === 'es' ? 'Ver Demo' : 'Play demo'}
+        showCursor={showCursorText}
+      >
         <Image
           src={imgDashboard}
           alt="Dashboard Preview"

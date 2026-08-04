@@ -1,130 +1,36 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import {
   ValueBetCardWidget,
   type ValueBetCardData,
 } from '@/app/[lang]/(home)/components/widgets/ValueBetCardWidget';
 
-// FC Bayern Munich SVG Logo
-const BayernMunichLogoSVG: React.FC<{ className?: string }> = ({
+// FC Bayern Munich Logo
+const BayernMunichLogo: React.FC<{ className?: string }> = ({
   className = 'h-12 w-12',
 }) => (
-  <svg
-    viewBox="0 0 120 120"
-    className={className}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="60" cy="60" r="58" fill="#DC052D" />
-    <circle
-      cx="60"
-      cy="60"
-      r="52"
-      stroke="#FFFFFF"
-      strokeWidth="4"
-      fill="#DC052D"
-    />
-    <circle
-      cx="60"
-      cy="60"
-      r="40"
-      stroke="#FFFFFF"
-      strokeWidth="2"
-      fill="#0066B2"
-    />
-    {/* Bavarian Diamond Pattern */}
-    <g clipPath="url(#bayern-clip)">
-      <path
-        d="M40 40 L60 20 L80 40 L60 60 Z M60 60 L80 40 L100 60 L80 80 Z M20 60 L40 40 L60 60 L40 80 Z M40 80 L60 60 L80 80 L60 100 Z"
-        fill="#FFFFFF"
-        opacity="0.9"
-      />
-    </g>
-    <defs>
-      <clipPath id="bayern-clip">
-        <circle cx="60" cy="60" r="39" />
-      </clipPath>
-    </defs>
-    <path d="M 60 14 A 46 46 0 0 1 106 60" stroke="#FFFFFF" strokeWidth="0" />
-    <text
-      x="60"
-      y="24"
-      textAnchor="middle"
-      fill="#FFFFFF"
-      fontSize="9"
-      fontFamily="sans-serif"
-      fontWeight="900"
-      letterSpacing="0.5"
-    >
-      FC BAYERN
-    </text>
-    <text
-      x="60"
-      y="104"
-      textAnchor="middle"
-      fill="#FFFFFF"
-      fontSize="9"
-      fontFamily="sans-serif"
-      fontWeight="900"
-      letterSpacing="0.5"
-    >
-      MÜNCHEN
-    </text>
-  </svg>
+  <Image
+    src="https://media.api-sports.io/football/teams/157.png"
+    alt="Bayern Munich Logo"
+    width={56}
+    height={56}
+    className={`${className} object-contain`}
+  />
 );
 
-// Borussia Dortmund (BVB 09) SVG Logo
-const DortmundLogoSVG: React.FC<{ className?: string }> = ({
+// Borussia Dortmund (BVB 09) Logo
+const DortmundLogo: React.FC<{ className?: string }> = ({
   className = 'h-12 w-12',
 }) => (
-  <svg
-    viewBox="0 0 120 120"
-    className={className}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="60" cy="60" r="58" fill="#FDE100" />
-    <circle
-      cx="60"
-      cy="60"
-      r="54"
-      stroke="#000000"
-      strokeWidth="5"
-      fill="#FDE100"
-    />
-    <circle
-      cx="60"
-      cy="60"
-      r="46"
-      stroke="#000000"
-      strokeWidth="1.5"
-      fill="none"
-    />
-    <text
-      x="60"
-      y="68"
-      textAnchor="middle"
-      fill="#000000"
-      fontSize="24"
-      fontFamily="sans-serif"
-      fontWeight="900"
-      letterSpacing="-1"
-    >
-      BVB
-    </text>
-    <text
-      x="60"
-      y="85"
-      textAnchor="middle"
-      fill="#000000"
-      fontSize="12"
-      fontFamily="sans-serif"
-      fontWeight="800"
-    >
-      09
-    </text>
-  </svg>
+  <Image
+    src="https://media.api-sports.io/football/teams/165.png"
+    alt="Borussia Dortmund Logo"
+    width={56}
+    height={56}
+    className={`${className} object-contain`}
+  />
 );
 
 interface PredictionRow {
@@ -257,7 +163,7 @@ export const MatchAnalysisPreview: React.FC = () => {
 
           {/* Logos & Match Time Row */}
           <div className="mt-3 flex items-center justify-center gap-6 sm:gap-10">
-            <BayernMunichLogoSVG className="h-11 w-11 drop-shadow-[0_0_10px_rgba(220,5,45,0.4)] sm:h-14 sm:w-14" />
+            <BayernMunichLogo className="h-11 w-11 drop-shadow-[0_0_10px_rgba(220,5,45,0.4)] sm:h-14 sm:w-14" />
 
             <div className="flex flex-col items-center">
               <span className="font-mono text-[8px] font-bold tracking-widest text-white/40 uppercase">
@@ -268,7 +174,7 @@ export const MatchAnalysisPreview: React.FC = () => {
               </span>
             </div>
 
-            <DortmundLogoSVG className="h-11 w-11 drop-shadow-[0_0_10px_rgba(253,225,0,0.4)] sm:h-14 sm:w-14" />
+            <DortmundLogo className="h-11 w-11 drop-shadow-[0_0_10px_rgba(253,225,0,0.4)] sm:h-14 sm:w-14" />
           </div>
         </div>
 
