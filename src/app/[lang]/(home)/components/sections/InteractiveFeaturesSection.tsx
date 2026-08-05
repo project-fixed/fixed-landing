@@ -12,6 +12,7 @@ import {
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 import { SectionBadge } from '@/shared/components/ui/SectionBadge';
 import { LeaguesPreview } from './interactive/LeaguesPreview';
+import { GridBackground } from '@/shared/components/ui/GridBackground';
 import { MatchAnalysisPreview } from './interactive/MatchAnalysisPreview';
 
 interface Props {
@@ -46,9 +47,8 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
       id="interactive-features"
       className="page-section relative flex flex-col gap-12 py-20 md:py-24"
     >
-      {/* Background Grid & Gradient */}
-      <div className="bg-pattern-grid absolute inset-0 opacity-[0.04]" />
-      <div className="absolute inset-0 h-full w-full bg-linear-to-b from-transparent via-transparent to-black" />
+      {/* Background Grid & Glow (Glow on the right) */}
+      <GridBackground glowPosition="end" showGradientOverlay />
 
       {/* Header: Title and Description (Top aligned like Zenity) */}
       <ScrollReveal
