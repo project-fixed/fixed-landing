@@ -97,7 +97,7 @@ export const translations = {
             layer1: {
               title: "Know Who's Really the Better Team",
               description:
-                'Form is temporary, class is real. We track true team strength, head-to-head dominance, and current momentum \u2014 not just league position.',
+                'We track true team strength, head-to-head dominance, and current momentum \u2014 not just league position.',
             },
             layer2: {
               title: 'The Full Picture, Every Time',
@@ -350,7 +350,7 @@ export const translations = {
             layer1: {
               title: 'Sabé Quién Es Realmente el Mejor',
               description:
-                'La forma es pasajera, la clase es real. Medimos la fuerza verdadera de cada equipo, el historial cara a cara y el momento actual — no solo la posición en la tabla.',
+                'Medimos la fuerza verdadera de cada equipo, el historial cara a cara y el momento actual — no solo la posición en la tabla.',
             },
             layer2: {
               title: 'La Foto Completa, Siempre',

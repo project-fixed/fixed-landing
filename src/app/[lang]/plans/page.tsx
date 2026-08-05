@@ -3,6 +3,7 @@ import { plans } from '@/data/plans';
 import { useTranslations } from '@/data/translations';
 import { PlanCard } from '@/app/[lang]/plans/components/PlanCard';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+import { GridBackground } from '@/shared/components/ui/GridBackground';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }];
@@ -19,8 +20,7 @@ export default async function PlansPage({ params }: PageProps) {
 
   return (
     <section className="page-section flex min-h-screen flex-col items-center gap-24 pt-36 lg:flex-row">
-      <div className="bg-pattern-grid absolute inset-0 opacity-[0.05]" />
-      <div className="absolute inset-0 h-full w-full bg-linear-to-b from-transparent via-transparent to-black" />
+      <GridBackground gridOpacity={0.05} showGradientOverlay />
 
       <ScrollReveal
         direction="up"

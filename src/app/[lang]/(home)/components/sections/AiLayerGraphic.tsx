@@ -11,11 +11,45 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
   switch (level) {
     case '1':
       return (
-        <svg
-          className="h-full w-full max-w-[200px]"
-          viewBox="0 0 200 200"
-          fill="none"
-        >
+        <svg className="h-full w-full" viewBox="0 0 200 200" fill="none">
+          {/* Tech Center Crosshair */}
+          <line
+            x1="94"
+            y1="100"
+            x2="106"
+            y2="100"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.3"
+          />
+          <line
+            x1="100"
+            y1="94"
+            x2="100"
+            y2="106"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.3"
+          />
+
+          {/* Concentric Technical Rings */}
+          <circle
+            cx="100"
+            cy="100"
+            r="90"
+            stroke="var(--color-primary)"
+            strokeWidth="0.6"
+            strokeOpacity="0.1"
+          />
+          <circle
+            cx="100"
+            cy="100"
+            r="70"
+            stroke="var(--color-primary)"
+            strokeWidth="0.6"
+            strokeOpacity="0.15"
+          />
+
           {/* Outer rotating dashed circle */}
           <motion.circle
             cx="100"
@@ -51,26 +85,6 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
             strokeOpacity="0.4"
             animate={{ rotate: 360 }}
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          />
-
-          {/* Grid axis lines */}
-          <line
-            x1="20"
-            y1="100"
-            x2="180"
-            y2="100"
-            stroke="var(--color-primary)"
-            strokeWidth="0.8"
-            strokeOpacity="0.15"
-          />
-          <line
-            x1="100"
-            y1="20"
-            x2="100"
-            y2="180"
-            stroke="var(--color-primary)"
-            strokeWidth="0.8"
-            strokeOpacity="0.15"
           />
 
           {/* Core Sphere contour */}
@@ -121,74 +135,71 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
 
     case '2':
       return (
-        <svg
-          className="h-full w-full max-w-[200px]"
-          viewBox="0 0 200 200"
-          fill="none"
-        >
-          {/* Grid backdrop */}
-          <line
-            x1="30"
-            y1="170"
-            x2="170"
-            y2="170"
-            stroke="var(--color-primary)"
-            strokeWidth="0.8"
-            strokeOpacity="0.2"
-          />
-          <line
-            x1="30"
-            y1="30"
-            x2="30"
-            y2="170"
-            stroke="var(--color-primary)"
-            strokeWidth="0.8"
-            strokeOpacity="0.2"
-          />
-
-          {/* Reference/historical trajectory */}
+        <svg className="h-full w-full" viewBox="0 0 200 200" fill="none">
+          {/* Reference/historical trajectory using clean straight lines */}
           <path
-            d="M 50 145 L 80 115 L 110 125 L 160 70"
+            d="M 0 160 L 40 135 L 80 145 L 120 100 L 160 115 L 200 65"
             stroke="var(--color-primary)"
-            strokeWidth="1"
-            strokeDasharray="3 3"
+            strokeWidth="1.2"
+            strokeDasharray="4 4"
             strokeOpacity="0.2"
           />
 
-          {/* Current performance graph with animation */}
+          {/* Active performance graph line (reduced opacity so it is subtle and doesn't overpower) */}
           <motion.path
-            d="M 50 135 L 90 85 L 120 105 L 160 45"
+            d="M 0 150 L 40 120 L 80 130 L 120 85 L 160 100 L 200 45"
             stroke="var(--color-primary-light)"
             strokeWidth="1.5"
+            strokeOpacity="0.45"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{
-              duration: 2.5,
+              duration: 3,
               repeat: Infinity,
               repeatType: 'reverse',
               ease: 'easeInOut',
             }}
           />
 
-          {/* Interactive nodes */}
-          <circle cx="50" cy="135" r="3.5" fill="var(--color-primary)" />
-          <circle cx="90" cy="85" r="3.5" fill="var(--color-primary)" />
-          <circle cx="120" cy="105" r="3.5" fill="var(--color-primary)" />
+          {/* Interactive nodes aligned to active path vertices */}
+          <circle
+            cx="40"
+            cy="120"
+            r="3"
+            fill="var(--color-primary)"
+            opacity="0.5"
+          />
+          <circle
+            cx="80"
+            cy="130"
+            r="3"
+            fill="var(--color-primary)"
+            opacity="0.5"
+          />
+          <circle cx="120" cy="85" r="3.5" fill="var(--color-primary)" />
+          <circle
+            cx="200"
+            cy="45"
+            r="3"
+            fill="var(--color-primary)"
+            opacity="0.5"
+          />
 
+          {/* Dynamic locked node */}
           <motion.circle
             cx="160"
-            cy="45"
-            r="5.5"
+            cy="100"
+            r="4.5"
             fill="var(--color-primary-light)"
-            animate={{ scale: [1, 1.3, 1] }}
+            animate={{ scale: [1, 1.25, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.circle
             cx="160"
-            cy="45"
-            r="11"
+            cy="100"
+            r="9"
             stroke="var(--color-primary-light)"
-            strokeWidth="1"
+            strokeWidth="0.8"
             animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
@@ -197,121 +208,129 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
 
     case '3':
       return (
-        <svg
-          className="h-full w-full max-w-[200px]"
-          viewBox="0 0 200 200"
-          fill="none"
-        >
-          {/* Connections lines */}
+        <svg className="h-full w-full" viewBox="0 0 200 200" fill="none">
+          {/* Infinite Perspective Lines */}
+          <g
+            stroke="var(--color-primary)"
+            strokeWidth="0.5"
+            strokeOpacity="0.12"
+          >
+            <line x1="0" y1="0" x2="100" y2="100" />
+            <line x1="200" y1="0" x2="100" y2="100" />
+            <line x1="0" y1="200" x2="100" y2="100" />
+            <line x1="200" y1="200" x2="100" y2="100" />
+          </g>
+
+          {/* Connections vertical lines - adjusted coordinates for centered translations */}
           <g
             stroke="var(--color-primary)"
             strokeWidth="0.8"
             strokeDasharray="2 2"
-            strokeOpacity="0.35"
+            strokeOpacity="0.4"
           >
-            <path d="M 100 55 L 100 85" />
-            <path d="M 100 85 L 100 115" />
-            <path d="M 75 42.5 L 75 72.5" />
-            <path d="M 75 72.5 L 75 102.5" />
-            <path d="M 125 42.5 L 125 72.5" />
-            <path d="M 125 72.5 L 125 102.5" />
+            <path d="M 100 65 L 100 100" />
+            <path d="M 100 100 L 100 135" />
+            <path d="M 65 47.5 L 65 82.5" />
+            <path d="M 65 82.5 L 65 117.5" />
+            <path d="M 135 47.5 L 135 82.5" />
+            <path d="M 135 82.5 L 135 117.5" />
           </g>
 
-          {/* Layer 1 (Bottom) */}
-          <g transform="translate(0, 40)">
+          {/* Layer 1 (Bottom) - Translated to y=70 for centering */}
+          <g transform="translate(0, 70)">
             <polygon
-              points="100,50 150,75 100,100 50,75"
+              points="100,30 170,65 100,100 30,65"
               stroke="var(--color-primary)"
               strokeWidth="0.8"
               strokeOpacity="0.25"
             />
             <circle
               cx="100"
-              cy="75"
+              cy="65"
               r="2"
               fill="var(--color-primary)"
               opacity="0.4"
             />
             <circle
-              cx="75"
-              cy="62.5"
+              cx="65"
+              cy="47.5"
               r="1.5"
               fill="var(--color-primary)"
               opacity="0.4"
             />
             <circle
-              cx="125"
-              cy="62.5"
+              cx="135"
+              cy="47.5"
               r="1.5"
               fill="var(--color-primary)"
               opacity="0.4"
             />
             <circle
-              cx="75"
-              cy="87.5"
+              cx="65"
+              cy="82.5"
               r="1.5"
               fill="var(--color-primary)"
               opacity="0.4"
             />
             <circle
-              cx="125"
-              cy="87.5"
+              cx="135"
+              cy="82.5"
               r="1.5"
               fill="var(--color-primary)"
               opacity="0.4"
             />
           </g>
 
-          {/* Layer 2 (Middle) */}
-          <g transform="translate(0, 10)">
+          {/* Layer 2 (Middle) - Translated to y=35 for centering */}
+          <g transform="translate(0, 35)">
             <polygon
-              points="100,50 150,75 100,100 50,75"
+              points="100,30 170,65 100,100 30,65"
               stroke="var(--color-primary)"
               strokeWidth="1"
               strokeOpacity="0.5"
             />
-            <circle cx="100" cy="75" r="3" fill="var(--color-primary)" />
+            <circle cx="100" cy="65" r="3" fill="var(--color-primary)" />
             <circle
-              cx="75"
-              cy="62.5"
+              cx="65"
+              cy="47.5"
               r="2"
               fill="var(--color-primary)"
               opacity="0.6"
             />
             <circle
-              cx="125"
-              cy="62.5"
+              cx="135"
+              cy="47.5"
               r="2"
               fill="var(--color-primary)"
               opacity="0.6"
             />
             <circle
-              cx="75"
-              cy="87.5"
+              cx="65"
+              cy="82.5"
               r="2"
               fill="var(--color-primary)"
               opacity="0.6"
             />
             <circle
-              cx="125"
-              cy="87.5"
+              cx="135"
+              cy="82.5"
               r="2"
               fill="var(--color-primary)"
               opacity="0.6"
             />
           </g>
 
-          {/* Layer 3 (Top) */}
-          <g transform="translate(0, -20)">
+          {/* Layer 3 (Top) - Translated to y=0 for centering */}
+          <g transform="translate(0, 0)">
             <polygon
-              points="100,50 150,75 100,100 50,75"
+              points="100,30 170,65 100,100 30,65"
               stroke="var(--color-primary-light)"
               strokeWidth="1.2"
               strokeOpacity="0.8"
             />
             <motion.circle
               cx="100"
-              cy="75"
+              cy="65"
               r="4.5"
               fill="var(--color-primary-light)"
               animate={{
@@ -324,26 +343,26 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
               transition={{ duration: 3, repeat: Infinity }}
             />
             <circle
-              cx="75"
-              cy="62.5"
+              cx="65"
+              cy="47.5"
               r="2.5"
               fill="var(--color-primary-light)"
             />
             <circle
-              cx="125"
-              cy="62.5"
+              cx="135"
+              cy="47.5"
               r="2.5"
               fill="var(--color-primary-light)"
             />
             <circle
-              cx="75"
-              cy="87.5"
+              cx="65"
+              cy="82.5"
               r="2.5"
               fill="var(--color-primary-light)"
             />
             <circle
-              cx="125"
-              cy="87.5"
+              cx="135"
+              cy="82.5"
               r="2.5"
               fill="var(--color-primary-light)"
             />
@@ -353,79 +372,137 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
 
     case '4':
       return (
-        <svg
-          className="h-full w-full max-w-[200px]"
-          viewBox="0 0 200 200"
-          fill="none"
-        >
-          {/* Target grid border */}
-          <rect
-            x="40"
-            y="40"
-            width="120"
-            height="120"
+        <svg className="h-full w-full" viewBox="0 0 200 200" fill="none">
+          {/* Corner tick marks replacing solid bounding box */}
+          <path
+            d="M 20 35 L 20 20 L 35 20"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.25"
+          />
+          <path
+            d="M 180 35 L 180 20 L 165 20"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.25"
+          />
+          <path
+            d="M 20 165 L 20 180 L 35 180"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.25"
+          />
+          <path
+            d="M 180 165 L 180 180 L 165 180"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.25"
+          />
+
+          {/* Tech Center Crosshair */}
+          <line
+            x1="94"
+            y1="100"
+            x2="106"
+            y2="100"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.3"
+          />
+          <line
+            x1="100"
+            y1="94"
+            x2="100"
+            y2="106"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.3"
+          />
+
+          {/* Radar Outer Axis Ticks */}
+          <line
+            x1="100"
+            y1="20"
+            x2="100"
+            y2="35"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.15"
+          />
+          <line
+            x1="100"
+            y1="165"
+            x2="100"
+            y2="180"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.15"
+          />
+          <line
+            x1="20"
+            y1="100"
+            x2="35"
+            y2="100"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.15"
+          />
+          <line
+            x1="165"
+            y1="100"
+            x2="180"
+            y2="100"
             stroke="var(--color-primary)"
             strokeWidth="0.8"
             strokeOpacity="0.15"
           />
 
-          {/* Reticle lines */}
-          <line
-            x1="100"
-            y1="25"
-            x2="100"
-            y2="175"
-            stroke="var(--color-primary)"
-            strokeWidth="0.8"
-            strokeOpacity="0.25"
-            strokeDasharray="3 3"
-          />
-          <line
-            x1="25"
-            y1="100"
-            x2="175"
-            y2="100"
-            stroke="var(--color-primary)"
-            strokeWidth="0.8"
-            strokeOpacity="0.25"
-            strokeDasharray="3 3"
-          />
-
-          {/* Animated concentric circles */}
+          {/* Animated concentric circles - larger radar radius */}
           <motion.circle
             cx="100"
             cy="100"
-            r="42"
+            r="85"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            strokeOpacity="0.12"
+            strokeDasharray="4 4"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          />
+          <motion.circle
+            cx="100"
+            cy="100"
+            r="55"
             stroke="var(--color-primary)"
             strokeWidth="1"
-            strokeOpacity="0.3"
+            strokeOpacity="0.25"
             animate={{ scale: [0.96, 1.04, 0.96] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.circle
             cx="100"
             cy="100"
-            r="22"
+            r="30"
             stroke="var(--color-primary-light)"
             strokeWidth="1"
-            strokeOpacity="0.6"
+            strokeOpacity="0.5"
             animate={{ scale: [1.04, 0.96, 1.04] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           />
 
           {/* Success target locking on the edge */}
           <motion.circle
-            cx="124"
-            cy="76"
-            r="5"
+            cx="140"
+            cy="60"
+            r="5.5"
             fill="var(--color-status-success)"
             animate={{ opacity: [0.4, 1, 0.4], scale: [1, 1.25, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           />
           <motion.circle
-            cx="124"
-            cy="76"
-            r="11"
+            cx="140"
+            cy="60"
+            r="12"
             stroke="var(--color-status-success)"
             strokeWidth="0.8"
             strokeOpacity="0.5"
@@ -435,19 +512,19 @@ export const AiLayerGraphic: React.FC<AiLayerGraphicProps> = ({ level }) => {
 
           {/* Grid lines centering on success target */}
           <line
-            x1="124"
-            y1="55"
-            x2="124"
-            y2="97"
+            x1="140"
+            y1="35"
+            x2="140"
+            y2="85"
             stroke="var(--color-status-success)"
             strokeWidth="0.8"
             strokeOpacity="0.4"
           />
           <line
-            x1="103"
-            y1="76"
-            x2="145"
-            y2="76"
+            x1="115"
+            y1="60"
+            x2="165"
+            y2="60"
             stroke="var(--color-status-success)"
             strokeWidth="0.8"
             strokeOpacity="0.4"

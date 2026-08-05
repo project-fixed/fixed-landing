@@ -3,6 +3,7 @@ import type { Translations, Lang } from '@/data/translations';
 import { ScrollExpandVideo } from '@/app/[lang]/(home)/components/widgets/ScrollExpandVideo';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 import Image from 'next/image';
+import { GridBackground } from '@/shared/components/ui/GridBackground';
 import imgDashboard from '@/assets/images/dashboard.png';
 
 interface Props {
@@ -15,7 +16,7 @@ export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
 
   return (
     <section id="features" className="relative">
-      <div className="bg-pattern-grid absolute inset-0 opacity-[0.04]" />
+      <GridBackground glowPosition="center" />
       <div className="page-section pt-20 md:pt-24">
         <div className="flex flex-col items-end justify-between gap-6 lg:flex-row">
           <ScrollReveal direction="up" delay={0.1}>
