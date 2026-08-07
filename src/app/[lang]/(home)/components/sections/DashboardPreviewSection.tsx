@@ -1,10 +1,9 @@
 import React from 'react';
 import type { Translations, Lang } from '@/data/translations';
-import { ScrollExpandVideo } from '@/app/[lang]/(home)/components/widgets/ScrollExpandVideo';
+import { ScrollExpand } from '@/app/[lang]/(home)/components/widgets/ScrollExpand';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
-import Image from 'next/image';
 import { GridBackground } from '@/shared/components/ui/GridBackground';
-import imgDashboard from '@/assets/images/dashboard.png';
+import { FeaturesBentoSection } from './FeaturesBentoSection';
 
 interface Props {
   t: Translations;
@@ -12,12 +11,10 @@ interface Props {
 }
 
 export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
-  const showCursorText = false; // Show the custom cursor indicating a demo is available
-
   return (
-    <section id="features" className="relative">
+    <section id="features" className="page-section relative">
       <GridBackground glowPosition="center" />
-      <div className="page-section pt-20 md:pt-24">
+      <div className="pt-20 pb-6 md:pt-24 md:pb-12 lg:pb-16">
         <div className="flex flex-col items-end justify-between gap-6 lg:flex-row">
           <ScrollReveal direction="up" delay={0.1}>
             <h2 className="title-section lg:max-w-[760px]">
@@ -32,17 +29,9 @@ export const DashboardPreviewSection: React.FC<Props> = ({ t, lang }) => {
         </div>
       </div>
 
-      <ScrollExpandVideo
-        cursorText={lang === 'es' ? 'Ver Demo' : 'Play demo'}
-        showCursor={showCursorText}
-      >
-        <Image
-          src={imgDashboard}
-          alt="Dashboard Preview"
-          className="h-full w-full object-cover object-top"
-          priority
-        />
-      </ScrollExpandVideo>
+      <ScrollExpand>
+        <FeaturesBentoSection t={t} lang={lang} />
+      </ScrollExpand>
     </section>
   );
 };

@@ -3,6 +3,7 @@ import { useTranslations } from '@/data/translations';
 import { OddsMarquee } from '@/app/[lang]/(home)/components/widgets/OddsMarquee';
 import { HeroSection } from './components/sections/HeroSection';
 import { DashboardPreviewSection } from './components/sections/DashboardPreviewSection';
+// FeaturesBentoSection removed
 import { InteractiveFeaturesSection } from './components/sections/InteractiveFeaturesSection';
 import { DataStreamSection } from '@/app/[lang]/(home)/components/widgets/DataStreamSection';
 import { AiLayersSection } from './components/sections/AiLayersSection';

@@ -65,7 +65,7 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
               delay={0.1 + index * 0.12}
               className="flex w-full"
             >
-              <div className="group relative flex min-h-[380px] w-full flex-col overflow-hidden rounded-[24px] border border-white/[0.04] bg-white/[0.02] backdrop-blur-md transition-all duration-500 hover:border-white/[0.12] hover:bg-white/[0.04]">
+              <div className="group relative flex max-h-[500px] w-full flex-col overflow-hidden rounded-[24px] border border-white/[0.04] bg-white/[0.02] backdrop-blur-md transition-all duration-500 hover:border-white/[0.12] hover:bg-white/[0.04]">
                 {/* Optional technical index numbering */}
                 <div className="absolute top-5 right-6 z-20 select-none">
                   <span className="font-mono text-sm font-medium text-white/10 transition-colors duration-300 group-hover:text-white/30">

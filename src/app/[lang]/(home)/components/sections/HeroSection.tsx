@@ -60,6 +60,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
       onMouseMove={handleMouseMove}
       className="page-section relative my-auto flex flex-1 flex-col justify-center overflow-hidden py-4"
     >
+      {/* Logos de ligas flotantes en posición absoluta (Lado derecho) */}
+
       <div className="relative z-10 flex w-full flex-col justify-between gap-6">
         {/* Columna Izquierda (Texto y Título amplio) */}
         <div className="flex flex-col items-start gap-6 xl:w-[80%]">

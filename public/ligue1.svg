@@ -1,0 +1,11 @@
+<svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="cutout">
+      <rect width="120" height="160" fill="white"/>
+      <line x1="20" y1="95" x2="100" y2="35" stroke="black" stroke-width="20"/>
+    </mask>
+  </defs>
+  <polygon points="60,20 100,43 100,89 60,112 20,89 20,43" fill="none" stroke="#DAFF0D" stroke-width="22" stroke-linejoin="miter" mask="url(#cutout)"/>
+  <circle cx="60" cy="66" r="15" fill="white"/>
+  <text x="60" y="145" font-family="sans-serif" font-weight="900" font-size="22" fill="white" text-anchor="middle" letter-spacing="1">LIGUE 1</text>
+</svg>
