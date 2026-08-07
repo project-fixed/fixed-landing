@@ -89,6 +89,76 @@ export const translations = {
             },
           },
         },
+        bento: {
+          card1: {
+            title: 'The Lock',
+            description:
+              'Find the highest mathematical value (+EV) opportunity in every match.',
+          },
+          card2: {
+            title: 'Risk Management',
+            description:
+              'Bet to not lose. Precise stake suggestions to protect and grow your capital.',
+          },
+          card3: {
+            title: 'Absolute Transparency',
+            description:
+              'Publicly validated performance. Total transparency on our simulated bankroll.',
+            yieldLabel: 'Historical Yield',
+            hitRateLabel: 'Hit Rate',
+          },
+          card4: {
+            title: 'Top 5 Leagues',
+            description:
+              'Premier League, LaLiga, Serie A, Bundesliga, Ligue 1.',
+          },
+          card5: {
+            title: 'International Tournaments',
+            description: 'Champions League, Europa League, World Cups.',
+          },
+          card6: {
+            title: 'Tactical Scenario',
+            description:
+              'Read the tactical scenario before the ball starts rolling.',
+          },
+          card7: {
+            title: 'Stats, not Averages',
+            description:
+              "We calculate real probabilities, we don't just rely on historical averages.",
+          },
+          card1Cards: [
+            {
+              league: 'LALIGA',
+              ev: 'EV +12.1%',
+              probLabel: 'Prob: 58%',
+              time: 'Today, 21:00',
+              match: 'Real Madrid vs Barcelona',
+              prediction: 'Over 2.5 Goals',
+              oddsLabel: 'ODDS',
+              odds: '@1.85',
+            },
+            {
+              league: 'PREMIER LEAGUE',
+              ev: 'EV +8.4%',
+              probLabel: 'Prob: 62%',
+              time: 'Today, 18:30',
+              match: 'Man City vs Arsenal',
+              prediction: 'Over 6.5 Shots on Target',
+              oddsLabel: 'ODDS',
+              odds: '@1.95',
+            },
+            {
+              league: 'SERIE A',
+              ev: 'EV +10.5%',
+              probLabel: 'Prob: 55%',
+              time: 'Tomorrow, 20:45',
+              match: 'Inter vs Milan',
+              prediction: 'Over 8.5 Corners',
+              oddsLabel: 'ODDS',
+              odds: '@3.20',
+            },
+          ],
+        },
         ai: {
           layers: {
             title: 'The Brain That Finds Your Edge',
@@ -341,6 +411,76 @@ export const translations = {
                 'Un solo toque y tienes la foto completa. Goles, tiros, córners, tarjetas — todo proyectado junto a las apuestas que realmente tienen ventaja. Sin ruido, sin rodeos. Solo los datos que importan, justo cuando los necesitas.',
             },
           },
+        },
+        bento: {
+          card1: {
+            title: 'La Fija',
+            description:
+              'Encuentra la oportunidad con mayor valor matemático (+EV) en cada partido.',
+          },
+          card2: {
+            title: 'Gestión de Riesgo',
+            description:
+              'Apostar para no perder. Sugerencias de stake precisas para proteger tu capital.',
+          },
+          card3: {
+            title: 'Transparencia Absoluta',
+            description:
+              'Rendimiento validado públicamente. Transparencia total en nuestro bankroll simulado.',
+            yieldLabel: 'Yield Histórico',
+            hitRateLabel: 'Hit Rate',
+          },
+          card4: {
+            title: 'Top 5 Ligas',
+            description:
+              'Premier League, LaLiga, Serie A, Bundesliga, Ligue 1.',
+          },
+          card5: {
+            title: 'Torneos Internacionales',
+            description: 'Champions League, Europa League, Mundiales.',
+          },
+          card6: {
+            title: 'Escenario',
+            description:
+              'Lee el escenario táctico antes de que empiece a rodar el balón.',
+          },
+          card7: {
+            title: 'Estadísticas, no Promedios',
+            description:
+              'Calculamos probabilidades reales, no nos quedamos en el promedio histórico.',
+          },
+          card1Cards: [
+            {
+              league: 'LALIGA',
+              ev: 'EV +12.1%',
+              probLabel: 'Prob: 58%',
+              time: 'Hoy, 21:00',
+              match: 'Real Madrid vs Barcelona',
+              prediction: 'Más de 2.5 Goles',
+              oddsLabel: 'CUOTA',
+              odds: '@1.85',
+            },
+            {
+              league: 'PREMIER LEAGUE',
+              ev: 'EV +8.4%',
+              probLabel: 'Prob: 62%',
+              time: 'Hoy, 18:30',
+              match: 'Man City vs Arsenal',
+              prediction: 'Más de 6.5 Remates al Arco',
+              oddsLabel: 'CUOTA',
+              odds: '@1.95',
+            },
+            {
+              league: 'SERIE A',
+              ev: 'EV +10.5%',
+              probLabel: 'Prob: 55%',
+              time: 'Mañana, 20:45',
+              match: 'Inter vs Milan',
+              prediction: 'Más de 8.5 Córners',
+              oddsLabel: 'CUOTA',
+              odds: '@3.20',
+            },
+          ],
         },
         ai: {
           layers: {

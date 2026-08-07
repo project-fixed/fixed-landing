@@ -72,7 +72,7 @@
 
   @keyframes marqueeScroll {
     to {
-      transform: translate(calc(-50% - 1rem));
+      transform: translateX(-50%);
     }
   }
   @keyframes scrollLeft {
@@ -169,11 +169,7 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-family: var(--font-mono);
 }
 

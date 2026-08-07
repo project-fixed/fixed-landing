@@ -23,7 +23,7 @@ export function ScrollExpandVideo({
     target: containerRef,
     // 'start end' means animation starts when the top of the container hits the bottom of the viewport
     // 'end end' means it finishes when the bottom of the container hits the bottom of the viewport
-    offset: ['start end', 'center center'],
+    offset: ['start end', 'center start'],
   });
 
   // Smooth the scroll progress to avoid jitter
@@ -38,7 +38,7 @@ export function ScrollExpandVideo({
   const width = useTransform(
     smoothProgress,
     [0, 1],
-    ['min(50vw, 600px)', '100vw'],
+    ['min(50vw, 600px)', '100%'],
   );
 
   const borderRadius = useTransform(smoothProgress, [0, 1], ['24px', '0px']);
@@ -70,12 +70,12 @@ export function ScrollExpandVideo({
   return (
     <section
       ref={containerRef}
-      className="relative h-[40vh] w-full md:h-[60vh] lg:h-[180vh]"
+      className="relative h-[120vh] w-full md:h-[150vh] lg:h-[200vh]"
     >
-      <div className="sticky top-0 flex h-[50vh] w-full items-center justify-center overflow-hidden md:h-[70vh] lg:h-screen">
+      <div className="sticky top-0 flex h-fit min-h-screen w-full items-center justify-center overflow-hidden py-10 md:py-16 lg:py-20">
         <motion.div
           style={{ width, borderRadius, padding }}
-          className={`bg-surface-deep relative flex aspect-video items-center justify-center overflow-hidden border border-white/15 shadow-2xl xl:aspect-[16/8] ${
+          className={`bg-surface-deep relative flex h-fit items-center justify-center overflow-hidden border border-white/15 shadow-2xl ${
             onClick ? 'cursor-pointer' : ''
           }`}
           onMouseEnter={() => setIsHovered(true)}
@@ -84,7 +84,7 @@ export function ScrollExpandVideo({
         >
           <motion.div
             style={{ borderRadius: innerRadius }}
-            className="relative h-full w-full overflow-hidden bg-black"
+            className="relative h-fit w-full overflow-hidden bg-black"
           >
             {children}
           </motion.div>
