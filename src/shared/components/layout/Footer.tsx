@@ -40,7 +40,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
       : 'Join the waitlist and start deciding with intelligence.';
 
   return (
-    <footer className="footer relative z-20 flex flex-col overflow-hidden border-t border-white/[0.06] text-white">
+    <footer className="footer relative z-20 flex flex-col overflow-hidden border-t border-white/10 text-white">
       <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay" />
       {/* ─── CTA Section ─────────────────────────────────────── */}
       <div className="page-section flex flex-col py-20 md:py-24">
@@ -139,7 +139,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
           <div className="border-t border-white/[0.06] pt-6">
             <div className="text-faint flex flex-wrap items-center justify-between gap-4 text-sm">
               <p className="text-muted">
-                © {new Date().getFullYear()} Fixed Inc. All rights reserved.
+                © {new Date().getFullYear()} Fixed. All rights reserved.
               </p>
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex flex-wrap gap-6">

@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import type { Translations } from '@/data/translations';
 import type { Lang } from '@/data/translations';
-import { SectionBadge } from '@/shared/components/ui/SectionBadge';
 import imgAbout from '@/assets/images/about.png';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+import { GridBackground } from '@/shared/components/ui/GridBackground';
 
 interface Props {
   currentLang: Lang;
@@ -17,7 +17,13 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
     <section
       id="about"
       className="page-section border-t border-white/5 py-20 md:py-24"
+      style={{
+        background:
+          'radial-gradient(circle at -10% 70%, rgba(62, 93, 108, 0.3), transparent 35%), radial-gradient(circle at 100% 30%, var(--color-primary-darkest) -30%, transparent 35%)',
+      }}
     >
+      <GridBackground />
+
       <div className="flex w-full flex-col-reverse flex-wrap items-center justify-center gap-8 lg:flex-row lg:gap-16">
         <ScrollReveal
           direction="left"
@@ -26,15 +32,14 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
         >
           <Image
             src={imgAbout}
-            alt="Image - About"
+            alt="Fixed predictive analysis dashboard data structure"
             className="h-auto w-full object-cover"
-            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 340px, 500px"
           />
         </ScrollReveal>
 
         <div className="w-full text-left lg:max-w-[500px]">
           <ScrollReveal direction="up" delay={0.2}>
-            <SectionBadge label="ABOUT" className="mb-4 block" />
             <h2 className="title-hero">{t.landing.home.about.title}</h2>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.3}>

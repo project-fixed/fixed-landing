@@ -221,7 +221,7 @@ interface Props {
 
 export const OddsMarquee: React.FC<Props> = ({ lang }) => {
   return (
-    <div className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black/20 py-6 md:py-10">
+    <div className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black py-6 md:py-10">
       <ScrollReveal
         direction="up"
         delay={0.2}

@@ -19,9 +19,11 @@ import { Footer } from '@/shared/components/layout/Footer';
 import { SplashLoader } from '@/shared/components/layout/SplashLoader';
 import { WaitlistModalProvider } from '@/shared/components/layout/WaitlistModalContext';
 import { WaitlistModal } from '@/shared/components/widgets/WaitlistModal';
+import { WaitlistSuccessToast } from '@/shared/components/widgets/WaitlistSuccessToast';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalyticsWrapper } from '@/shared/components/layout/GoogleAnalyticsWrapper';
+import { CookieBanner } from '@/shared/components/layout/CookieBanner';
 
 interface Props {
   children: React.ReactNode;
@@ -100,19 +102,6 @@ export default async function RootLayout({ children, params }: Props) {
       <body className="antialiased">
         {/* Precision grid pattern matching the tech aesthetic */}
 
-        <div
-          style={{
-            pointerEvents: 'none',
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            height: '60vh',
-            background:
-              'radial-gradient(ellipse at 50% -10%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 65%)',
-          }}
-        />
-
         <SplashLoader>
           <WaitlistModalProvider>
             <div className="relative z-10 flex min-h-screen w-full flex-col">
@@ -123,11 +112,13 @@ export default async function RootLayout({ children, params }: Props) {
               <Footer lang={currentLang} />
             </div>
             <WaitlistModal lang={currentLang} />
+            <WaitlistSuccessToast lang={currentLang} />
           </WaitlistModalProvider>
         </SplashLoader>
         <SpeedInsights />
         <Analytics />
-        {gaId && <GoogleAnalytics gaId={gaId} />}
+        {gaId && <GoogleAnalyticsWrapper gaId={gaId} />}
+        <CookieBanner lang={currentLang} />
       </body>
     </html>
   );

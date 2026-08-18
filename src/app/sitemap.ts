@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://fixed-landing-beta.vercel.app';
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://fixed-landing.vercel.app';
   const locales = ['es', 'en'];
   const paths = ['', '/faq', '/cookies', '/privacy', '/terms'];
 

@@ -93,8 +93,76 @@ export async function POST(request: Request) {
 
     // 2. Extraer y validar el cuerpo
     const body = await request.json();
-    const { email, lang, utm_source, utm_medium, utm_campaign } = body;
+    const {
+      email,
+      lang,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      turnstileToken,
+    } = body;
     const currentLang = lang === 'es' ? 'es' : 'en';
+
+    // 3. Verificación de seguridad con Cloudflare Turnstile
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+    if (turnstileSecret) {
+      if (!turnstileToken) {
+        return NextResponse.json(
+          {
+            message:
+              currentLang === 'es'
+                ? 'Falta el token de seguridad.'
+                : 'Security token is missing.',
+          },
+          { status: 400 },
+        );
+      }
+
+      try {
+        const verifyResult = await fetch(
+          'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              secret: turnstileSecret,
+              response: turnstileToken,
+              remoteip: ip,
+            }),
+          },
+        );
+
+        const verifyData = await verifyResult.json();
+        if (!verifyData.success) {
+          console.error(
+            '[Beta API] Turnstile verification failed:',
+            verifyData['error-codes'],
+          );
+          return NextResponse.json(
+            {
+              message:
+                currentLang === 'es'
+                  ? 'Fallo en la comprobación de seguridad. Reintente.'
+                  : 'Security check failed. Please try again.',
+            },
+            { status: 400 },
+          );
+        }
+      } catch (err) {
+        console.error('[Beta API] Error during Turnstile verification:', err);
+        return NextResponse.json(
+          {
+            message:
+              currentLang === 'es'
+                ? 'Servicio de seguridad no disponible.'
+                : 'Security service unavailable.',
+          },
+          { status: 500 },
+        );
+      }
+    }
 
     if (!email || typeof email !== 'string' || !validateEmail(email)) {
       return NextResponse.json(

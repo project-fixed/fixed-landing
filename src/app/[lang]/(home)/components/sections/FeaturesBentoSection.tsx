@@ -1,7 +1,11 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import type { Translations, Lang } from '@/data/translations';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
+import { GridBackground } from '@/shared/components/ui/GridBackground';
 import { LaFijaCard } from '../widgets/LaFijaCard';
 import {
   ShieldCheck,
@@ -20,9 +24,41 @@ interface Props {
 
 export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
   return (
-    <section className="relative h-fit w-full overflow-hidden">
-      <div className="mx-auto flex h-fit w-full flex-col justify-center">
-        <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-3 md:grid-rows-2 xl:grid-cols-4">
+    <section
+      id="features"
+      className="page-section relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -30%, var(--background) 45%)',
+      }}
+    >
+      <GridBackground glowPosition="center" />
+
+      {/* Header / Title */}
+      <div className="pt-20 pb-6 md:pt-24 md:pb-12 lg:pb-16">
+        <div className="flex flex-col items-end justify-between gap-6 lg:flex-row">
+          <ScrollReveal direction="up" delay={0.1}>
+            <h2 className="title-section lg:max-w-[760px]">
+              {t.landing.home.dashboardPreview.title}
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.3}>
+            <p className="text-body max-w-[400px] text-right text-base leading-relaxed">
+              {t.landing.home.dashboardPreview.description}
+            </p>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* Bento Grid with Simple Entrance Animation */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0, y: 30 }}
+        whileInView={{ scale: 1, opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto flex h-fit w-full flex-col justify-center"
+      >
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 xl:grid-cols-4">
           {/* Card 1: La Fija (Span 2x2) */}
           <ScrollReveal
             direction="up"
@@ -212,7 +248,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card4.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card4.description}
                 </p>
               </div>
@@ -292,7 +328,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
             className="md:col-span-1 md:row-span-1"
           >
             <div className="group bg-glass-card relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-white/5 transition-colors hover:bg-white/[0.04]">
-              {/* Right side: Wireframe Globe (Supabase Style, moved to top-level to prevent cut-off) */}
+              {/* Right side: Wireframe Globe */}
               <div className="pointer-events-none absolute -right-12 -bottom-16 z-0 h-72 w-72 transform opacity-30 transition-all duration-1000 group-hover:scale-105 group-hover:rotate-[5deg] group-hover:opacity-70">
                 <svg
                   viewBox="0 0 200 200"
@@ -367,12 +403,12 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card5.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card5.description}
                 </p>
               </div>
 
-              {/* Graphic: Tournaments Logos (no overflow-hidden, so it blends nicely) */}
+              {/* Graphic: Tournaments Logos */}
               <div className="pointer-events-none relative z-10 mt-4 flex min-h-[140px] w-full flex-1 items-center [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]">
                 <div className="bg-primary/5 absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
 
@@ -413,7 +449,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card6.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card6.description}
                 </p>
               </div>
@@ -457,7 +493,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card7.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card7.description}
                 </p>
               </div>
@@ -518,7 +554,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
             </div>
           </ScrollReveal>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

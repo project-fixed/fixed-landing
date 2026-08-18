@@ -12,6 +12,12 @@ export const translations = {
       join: 'Join Beta',
       getStarted: 'Get Started',
     },
+    cookieBanner: {
+      text: 'This website uses cookies to measure performance and analyze traffic to improve your experience. You can manage your preferences below or read our',
+      accept: 'Accept',
+      reject: 'Reject',
+      privacyPolicy: 'Cookie Policy',
+    },
     landing: {
       home: {
         hero: {
@@ -21,8 +27,8 @@ export const translations = {
             end: 'clear decisions',
           },
           description:
-            'Every match has a best bet. We find it \u2014 with the right risk for every play. Clear decisions. Real edge.',
-          betaPlaceholder: 'Enter your email for early access...',
+            'Every match has a best bet. We find it \u2014 with the right risk for every play.',
+          betaPlaceholder: 'Enter your email...',
           betaButton: 'Join Beta',
           betaLoadingButton: 'Joining...',
           betaSuccess: 'Thank you! You have successfully joined the waitlist.',
@@ -55,7 +61,7 @@ export const translations = {
           'Scanning top 5 European leagues for fresh data...',
           "Rating each team's true strength and current form...",
           'Running daily simulations to sharpen predictions...',
-          'Filtering only the bets with a real mathematical edge...',
+          'Filtering only the bets with a real  edge...',
           'Calculating the perfect stake size to protect your bankroll...',
           'Tagging picks by confidence level (High, Medium, Low)...',
           'Pushing winning picks to your dashboard...',
@@ -64,11 +70,11 @@ export const translations = {
         dashboardPreview: {
           title: 'The End of Intuition. Applied Quantitative Intelligence.',
           description:
-            'We strip away the noise and show you only what matters: the bets with real edge. See it in action.',
+            'We strip away the noise and show you only what matters: the bets with real edge.',
           modalBadge: 'Open Beta',
           modalTitle: 'Join the Beta',
           modalDescription:
-            'We are rolling out access gradually. Join the waitlist to secure your spot and start trading with a real mathematical edge.',
+            'We are rolling out access gradually. Join the waitlist to secure your spot and start trading with a real  edge.',
         },
         features: {
           title: 'Your Edge, Every Matchday',
@@ -93,7 +99,7 @@ export const translations = {
           card1: {
             title: 'The Lock',
             description:
-              'Find the highest mathematical value (+EV) opportunity in every match.',
+              'Find the highest expected value (+EV) opportunity in every match.',
           },
           card2: {
             title: 'Risk Management',
@@ -182,7 +188,7 @@ export const translations = {
             layer4: {
               title: 'Only the Bets That Beat the Bookie',
               description:
-                'We filter out every pick that doesn\u2019t have a clear mathematical edge. And when we find one, we tell you exactly how much to stake \u2014 no guesswork.',
+                'We filter out every pick that doesn\u2019t have a clear edge. And when we find one, we tell you exactly how much to stake \u2014 no guesswork.',
             },
           },
           process: {
@@ -213,9 +219,9 @@ export const translations = {
         },
         about: {
           title: 'Who We Are',
-          subtitle: 'The Math Behind Your Wins',
+          subtitle: 'The Algorithm Behind Your Wins',
           description:
-            'We\u2019re a team of data nerds who love football and hate losing money. We built Fixed to give regular bettors the same kind of quantitative analysis that hedge funds use. Our system crunches millions of data points, filters out the noise, and only surfaces the bets that have a real mathematical edge. No hype, no gut feelings \u2014 just cold, hard probability working for you.',
+            "We are an independent group of software engineers building the future of sports betting. More than a traditional platform, Fixed is a community-driven project designed so you don't have to compete blindly against bookmakers, giving you the same level of quantitative analysis used by hedge funds. We are fine-tuning an algorithm that computes millions of metrics per second to deliver only bets with the highest chance of success. By joining our Beta, you don't just get access to the tool, but you become a pioneer of the project. Stop guessing, join the community, and start deciding with the power of automated algorithms.",
         },
       },
       plans: {
@@ -299,7 +305,7 @@ export const translations = {
       },
       footer: {
         title: 'Fixed',
-        description: 'Smarter bets, better returns. Let the math work for you.',
+        description: 'Join the community. Let the algorithm work for you.',
         link: {
           dimensions: {
             product: 'Product',
@@ -333,6 +339,12 @@ export const translations = {
       join: 'Únete a la Beta',
       getStarted: 'Comenzar',
     },
+    cookieBanner: {
+      text: 'Este sitio web utiliza cookies para medir el rendimiento y analizar el tráfico con el fin de mejorar tu experiencia. Puedes gestionar tus preferencias a continuación o leer nuestra',
+      accept: 'Aceptar',
+      reject: 'Rechazar',
+      privacyPolicy: 'Política de Cookies',
+    },
     landing: {
       home: {
         hero: {
@@ -342,8 +354,8 @@ export const translations = {
             end: 'decisiones claras',
           },
           description:
-            'Cada partido tiene su mejor jugada. Nosotros la encontramos — con el riesgo justo para cada una. Decisiones claras. Ventaja real.',
-          betaPlaceholder: 'Ingresa tu email para acceso anticipado...',
+            'Cada partido tiene su mejor jugada. Nosotros la encontramos — con el riesgo justo para cada una.',
+          betaPlaceholder: 'Ingresa tu email...',
           betaButton: 'Unirse a la Beta',
           betaLoadingButton: 'Uniéndose...',
           betaSuccess: '¡Gracias! Te has unido a la lista de espera con éxito.',
@@ -387,11 +399,11 @@ export const translations = {
         dashboardPreview: {
           title: 'El Fin de la Intuición. Inteligencia Cuantitativa Aplicada.',
           description:
-            'Eliminamos el ruido y te mostramos solo lo que importa: las apuestas con ventaja real. Vélo en acción.',
+            'Eliminamos el ruido y te mostramos solo lo que importa: las apuestas con ventaja real.',
           modalBadge: 'Beta Abierta',
           modalTitle: 'Únete a la Beta',
           modalDescription:
-            'Estamos liberando accesos de forma gradual. Únete a la lista de espera para asegurar tu lugar y empezar a operar con ventaja matemática real.',
+            'Estamos liberando accesos de forma gradual. Únete a la lista de espera para asegurar tu lugar y empezar a operar con ventaja real.',
         },
         features: {
           title: 'Tu Ventaja, Cada Jornada',
@@ -416,7 +428,7 @@ export const translations = {
           card1: {
             title: 'La Fija',
             description:
-              'Encuentra la oportunidad con mayor valor matemático (+EV) en cada partido.',
+              'Encuentra la oportunidad con mayor valor esperado (+EV) en cada partido.',
           },
           card2: {
             title: 'Gestión de Riesgo',
@@ -505,7 +517,7 @@ export const translations = {
             layer4: {
               title: 'Solo las Apuestas Que Vencen a la Casa',
               description:
-                'Filtramos cada selección que no tenga una ventaja matemática clara. Y cuando encontramos una, te decimos exactamente cuánto arriesgar — sin adivinanzas.',
+                'Filtramos cada selección que no tenga una ventaja clara. Y cuando encontramos una, te decimos exactamente cuánto arriesgar — sin adivinanzas.',
             },
           },
           process: {
@@ -536,9 +548,9 @@ export const translations = {
         },
         about: {
           title: 'Quiénes Somos',
-          subtitle: 'La Mates Detrás de Tus Ganancias',
+          subtitle: 'El Algoritmo Detrás de Tus Ganancias',
           description:
-            'Somos un equipo de nerds de los datos que amamos el fútbol y odiamos perder dinero. Creamos Fixed para darle a cualquier apostador el mismo tipo de análisis cuantitativo que usan los hedge funds. Nuestro sistema procesa millones de datos, filtra el ruido y solo muestra las apuestas que tienen una ventaja matemática real. Sin hype, sin corazonadas \u2014 solo probabilidad fría y dura trabajando para ti.',
+            'Somos un grupo independiente de ingenieros de software construyendo el futuro de las apuestas deportivas. Más que una plataforma tradicional, Fixed es un proyecto impulsado por su comunidad, diseñado para que no tengas que competir a ciegas contra las casas de apuestas, dándote el mismo nivel de análisis cuantitativo que usan los fondos de cobertura. Estamos afinando un algoritmo que computa millones de métricas por segundo para entregarte únicamente apuestas con mayor oportunidad de éxito. Al unirte a nuestra Beta, no solo accedes a la herramienta, sino que te conviertes en pionero del proyecto. Deja de adivinar, únete a la comunidad y empieza a decidir con el poder de los algoritmos automatizados.',
         },
       },
       plans: {
@@ -624,7 +636,7 @@ export const translations = {
       footer: {
         title: 'Fixed',
         description:
-          'Apuestas más inteligentes, mejores retornos. Deja que la mates trabaje para ti.',
+          'Únete a la comunidad. Deja que el algoritmo trabaje para ti.',
         link: {
           dimensions: {
             product: 'Producto',

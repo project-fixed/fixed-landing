@@ -1,16 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslations } from '@/data/translations';
 import { useWaitlistModal } from '@/shared/components/layout/WaitlistModalContext';
-import {
-  Loader2,
-  CheckCircle2,
-  AlertCircle,
-  ArrowRight,
-  X,
-} from 'lucide-react';
+import { Loader2, AlertCircle, ArrowRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Turnstile } from './Turnstile';
+import { trackEvent } from '@/lib/analytics';
 
 interface BetaFormProps {
   lang: 'en' | 'es';
@@ -21,7 +18,10 @@ interface BetaFormProps {
 }
 
 // Custom hook to animate a numeric count from 0 to target value
-function useAnimatedCounter(targetValue: number, duration: number = 1500) {
+export function useAnimatedCounter(
+  targetValue: number,
+  duration: number = 1500,
+) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -63,7 +63,8 @@ interface Particle {
   angle: number;
 }
 
-function Confetti() {
+export function Confetti() {
+  const [mounted, setMounted] = useState(false);
   const colors = [
     '#3e5d6c',
     '#60a5fa',
@@ -72,26 +73,33 @@ function Confetti() {
     '#f87171',
     '#c084fc',
   ];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const particles = React.useMemo(() => {
     const arr: Particle[] = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 130; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const distance = 60 + Math.random() * 160;
+      const distance = 120 + Math.random() * 330;
       arr.push({
         id: i,
         x: Math.cos(angle) * distance,
         y: Math.sin(angle) * distance + 30 + Math.random() * 40,
         color: colors[Math.floor(Math.random() * colors.length)],
-        size: 4 + Math.random() * 6,
-        delay: Math.random() * 0.1,
+        size: 5 + Math.random() * 7,
+        delay: Math.random() * 0.15,
         angle: Math.random() * 360,
       });
     }
     return arr;
   }, []);
 
-  return (
-    <div className="pointer-events-none absolute inset-0 z-50 overflow-visible">
+  if (!mounted) return null;
+
+  return createPortal(
+    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
       {particles.map((p) => (
         <motion.div
           key={p.id}
@@ -105,19 +113,20 @@ function Confetti() {
           }}
           animate={{
             x: p.x,
-            y: p.y,
+            y: [0, p.y * 0.7, p.y + 150], // gravity parabolic movement
             opacity: [0, 1, 1, 0],
             rotate: p.angle + 720,
             scale: [0, 1.2, 1, 0.2],
           }}
           transition={{
-            duration: 1.2 + Math.random() * 0.8,
+            duration: 1.5 + Math.random() * 0.8,
             delay: p.delay,
             ease: 'easeOut',
           }}
         />
       ))}
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -126,7 +135,7 @@ interface CounterProps {
   lang: 'en' | 'es';
 }
 
-function WaitlistCounter({ value, lang }: CounterProps) {
+export function WaitlistCounter({ value, lang }: CounterProps) {
   const animatedValue = useAnimatedCounter(value, 2000);
   return (
     <div className="relative z-10 my-3 flex w-full flex-col items-center justify-center border-t border-b border-white/5 py-3">
@@ -148,17 +157,31 @@ export const BetaForm: React.FC<BetaFormProps> = ({
   onEmailChange,
 }) => {
   const t = useTranslations(lang);
-  const { successState, setSuccessState, closeModal } = useWaitlistModal();
+  const { setSuccessState, closeModal } = useWaitlistModal();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
   const [message, setMessage] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  const isRegistered = successState?.isRegistered ?? false;
-  const isDuplicate = successState?.isDuplicate ?? false;
-  const isLocal = successState?.isLocal ?? false;
-  const registeredUserNumber = successState?.registeredUserNumber ?? null;
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Auto-dismiss local error state after 5 seconds
+  useEffect(() => {
+    if (status === 'error') {
+      const timer = setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   const [utmParams, setUtmParams] = useState({
     utm_source: '',
     utm_medium: '',
@@ -234,14 +257,21 @@ export const BetaForm: React.FC<BetaFormProps> = ({
         body: JSON.stringify({
           email: trimmedEmail,
           lang,
+          turnstileToken,
           ...utmParams,
         }),
       });
 
       const data = await response.json();
+      const domain = trimmedEmail.split('@')[1] || '';
 
       if (response.ok) {
         setStatus('idle');
+        trackEvent('generate_lead', {
+          email_domain: domain,
+          status: 'success',
+          source: idSuffix || 'unknown',
+        });
         setSuccessState({
           isRegistered: true,
           isDuplicate: false,
@@ -249,14 +279,18 @@ export const BetaForm: React.FC<BetaFormProps> = ({
           registeredUserNumber: data.userNumber || 100,
         });
         setEmail('');
+        setTurnstileToken('');
         onEmailChange?.('');
         if (idSuffix === 'global-modal') {
           closeModal();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else {
         if (response.status === 409 && data.userNumber) {
           setStatus('idle');
+          trackEvent('generate_lead_duplicate', {
+            status: 'duplicate',
+            source: idSuffix || 'unknown',
+          });
           setSuccessState({
             isRegistered: true,
             isDuplicate: true,
@@ -264,13 +298,18 @@ export const BetaForm: React.FC<BetaFormProps> = ({
             registeredUserNumber: data.userNumber,
           });
           setEmail('');
+          setTurnstileToken('');
           onEmailChange?.('');
           if (idSuffix === 'global-modal') {
             closeModal();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         } else {
           setStatus('error');
+          trackEvent('generate_lead_error', {
+            status: 'error',
+            error_message: data.message || 'unknown',
+            source: idSuffix || 'unknown',
+          });
           if (response.status === 409) {
             setMessage(t.landing.home.hero.betaErrorDuplicate);
           } else if (response.status === 400) {
@@ -282,6 +321,11 @@ export const BetaForm: React.FC<BetaFormProps> = ({
       }
     } catch {
       setStatus('error');
+      trackEvent('generate_lead_error', {
+        status: 'error',
+        error_message: 'network_error',
+        source: idSuffix || 'unknown',
+      });
       setMessage(t.landing.home.hero.betaErrorGeneric);
     }
   };
@@ -291,7 +335,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({
       {/* The form container is always rendered and interactive */}
       <div
         id={idSuffix ? `beta-form-container-${idSuffix}` : undefined}
-        className="flex w-full flex-col gap-3"
+        className="flex w-full flex-col"
       >
         <form
           onSubmit={handleSubmit}
@@ -316,8 +360,12 @@ export const BetaForm: React.FC<BetaFormProps> = ({
           />
           <button
             type="submit"
-            disabled={status === 'loading'}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:bg-white/20 active:scale-95 disabled:opacity-40"
+            disabled={
+              status === 'loading' ||
+              !validateEmail(email) ||
+              (!!siteKey && !turnstileToken)
+            }
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:bg-white/20 active:scale-95 disabled:pointer-events-none disabled:opacity-40"
             aria-label="Submit"
           >
             {status === 'loading' ? (
@@ -328,82 +376,50 @@ export const BetaForm: React.FC<BetaFormProps> = ({
           </button>
         </form>
 
-        <AnimatePresence>
-          {status === 'error' && (
-            <motion.div
-              initial={{ opacity: 0, y: -8, height: 0 }}
-              animate={{ opacity: 1, y: 0, height: 'auto' }}
-              exit={{ opacity: 0, y: -8, height: 0 }}
-              className="text-destructive flex items-start gap-2 px-4 text-left text-xs"
-            >
-              <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-              <span>{message}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {mounted && siteKey && (
+          <div className="mt-1 flex justify-center">
+            <Turnstile
+              siteKey={siteKey}
+              onSuccess={setTurnstileToken}
+              onError={() => setTurnstileToken('')}
+              onExpire={() => setTurnstileToken('')}
+            />
+          </div>
+        )}
+
+        <AnimatePresence />
       </div>
 
-      {/* Floating Success/Duplicate Overlay Card */}
-      <AnimatePresence>
-        {isRegistered && (
-          <motion.div
-            key="success-overlay"
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="border-primary/30 bg-surface-deep/98 absolute inset-x-0 bottom-full z-30 mb-4 flex w-full flex-col items-center justify-center overflow-visible rounded-2xl border p-5 text-center shadow-[0_15px_50px_rgba(0,0,0,0.8)] backdrop-blur-lg"
-          >
-            {!isDuplicate && <Confetti />}
-
-            {/* Close Button in top right */}
-            <button
-              type="button"
-              onClick={() => {
-                setSuccessState(null);
-              }}
-              className="absolute top-3.5 right-3.5 z-10 cursor-pointer text-white/40 transition-colors hover:scale-110 hover:text-white active:scale-95"
-              aria-label="Close"
-            >
-              <X className="h-4 w-4" />
-            </button>
-
-            <div className="bg-primary/10 text-primary relative mb-3 flex h-10 w-10 items-center justify-center rounded-full">
-              <CheckCircle2 className="text-primary h-5 w-5 drop-shadow-[0_0_8px_rgba(62,93,108,0.5)]" />
-            </div>
-
-            <h3 className="relative z-10 mb-1 font-mono text-base font-bold tracking-wide text-white uppercase">
-              {isDuplicate
-                ? lang === 'es'
-                  ? '¡Ya estás registrado!'
-                  : 'Already Registered!'
-                : lang === 'es'
-                  ? '¡Registro Completado!'
-                  : 'Registration Complete!'}
-            </h3>
-
-            <p className="text-body relative z-10 mb-2 max-w-[280px] text-xs leading-relaxed">
-              {isDuplicate
-                ? lang === 'es'
-                  ? 'Este correo ya se encuentra registrado en nuestra lista de espera.'
-                  : 'This email is already registered on our waitlist.'
-                : t.landing.home.hero.betaSuccess}
-            </p>
-
-            {registeredUserNumber !== null && (
-              <WaitlistCounter value={registeredUserNumber} lang={lang} />
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {status === 'error' && (
+              <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 50, opacity: 0 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="bg-glass-card fixed right-6 bottom-6 left-6 z-[120] flex items-center justify-between gap-3 rounded-xl border border-red-500/20 p-4 backdrop-blur-xl md:left-auto md:max-w-md"
+              >
+                <div className="flex items-center gap-2.5 text-red-400">
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                  <p className="text-body font-sans text-xs leading-relaxed">
+                    {message}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="cursor-pointer text-white/40 transition-colors hover:text-white"
+                  aria-label="Close"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </motion.div>
             )}
-
-            {isLocal && (
-              <span className="relative z-10 mt-1 rounded-full border border-yellow-500/20 bg-yellow-500/10 px-3 py-1 font-mono text-[9px] text-yellow-400">
-                {lang === 'es'
-                  ? '🛠️ Modo Local: Guardado en scratch/beta_subscribers.json'
-                  : '🛠️ Local Mode: Saved to scratch/beta_subscribers.json'}
-              </span>
-            )}
-          </motion.div>
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </div>
   );
 };
