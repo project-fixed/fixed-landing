@@ -26,7 +26,7 @@ const brands = [
   { src: imgTinbet, alt: 'Tinbet' },
 ];
 
-export const BrandsSection: React.FC = () => {
+export const BrandsMarquee: React.FC = () => {
   return (
     <section
       id="brands"

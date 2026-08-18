@@ -21,7 +21,7 @@ export const translations = {
             end: 'clear decisions',
           },
           description:
-            'Every match has a best bet. We find it \u2014 with the right risk for every play. Clear decisions. Real edge.',
+            'Every match has a best bet. We find it \u2014 with the right risk for every play.',
           betaPlaceholder: 'Enter your email for early access...',
           betaButton: 'Join Beta',
           betaLoadingButton: 'Joining...',
@@ -342,7 +342,7 @@ export const translations = {
             end: 'decisiones claras',
           },
           description:
-            'Cada partido tiene su mejor jugada. Nosotros la encontramos — con el riesgo justo para cada una. Decisiones claras. Ventaja real.',
+            'Cada partido tiene su mejor jugada. Nosotros la encontramos — con el riesgo justo para cada una.',
           betaPlaceholder: 'Ingresa tu email para acceso anticipado...',
           betaButton: 'Unirse a la Beta',
           betaLoadingButton: 'Uniéndose...',

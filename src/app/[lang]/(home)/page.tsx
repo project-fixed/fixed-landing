@@ -2,12 +2,11 @@ import React from 'react';
 import { useTranslations } from '@/data/translations';
 import { OddsMarquee } from '@/app/[lang]/(home)/components/widgets/OddsMarquee';
 import { HeroSection } from './components/sections/HeroSection';
-import { DashboardPreviewSection } from './components/sections/DashboardPreviewSection';
-// FeaturesBentoSection removed
+import { FeaturesBentoSection } from './components/sections/FeaturesBentoSection';
 import { InteractiveFeaturesSection } from './components/sections/InteractiveFeaturesSection';
 import { DataStreamSection } from '@/app/[lang]/(home)/components/widgets/DataStreamSection';
 import { AiLayersSection } from './components/sections/AiLayersSection';
-import { BrandsSection } from './components/sections/BrandsSection';
+import { BrandsMarquee } from '@/app/[lang]/(home)/components/widgets/BrandsMarquee';
 import { AboutSection } from './components/sections/AboutSection';
 
 export async function generateStaticParams() {
@@ -29,24 +28,18 @@ export default async function HomePage({ params }: PageProps) {
       {/* Hero Section Fija (Sticky Background Layer alineada y centrada entre Toolbar y Cortina) */}
       <div className="sticky top-0 z-0 flex min-h-[76dvh] w-full flex-col justify-between pt-(--header-height) md:pt-20">
         <HeroSection currentLang={currentLang} t={t} />
-        <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay" />
+        <div className="bg-pattern-stripes pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-plus-lighter" />
       </div>
 
       {/* Capa Cortina (Subes por encima de Hero al hacer scroll) */}
-      <div
-        className="relative z-10 w-full border-t border-white/10 shadow-[0_-25px_60px_rgba(0,0,0,0.95)]"
-        style={{
-          background:
-            'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -30%, var(--background) 45%)',
-        }}
-      >
+      <div className="bg-background relative z-10 w-full border-t border-white/10 shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
         <OddsMarquee lang={currentLang} />
 
-        <DashboardPreviewSection t={t} lang={currentLang} />
+        <FeaturesBentoSection t={t} lang={currentLang} />
         <InteractiveFeaturesSection lang={currentLang} />
         <DataStreamSection lang={currentLang} />
         <AiLayersSection lang={currentLang} />
-        <BrandsSection />
+        <BrandsMarquee />
         <AboutSection currentLang={currentLang} t={t} appAuthUrl={appAuthUrl} />
       </div>
     </div>

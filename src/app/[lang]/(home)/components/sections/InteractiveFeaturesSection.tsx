@@ -46,6 +46,10 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
     <section
       id="interactive-features"
       className="page-section relative flex flex-col gap-12 py-20 md:py-24"
+      style={{
+        background:
+          'radial-gradient(circle at 80% 50%, var(--color-primary-darkest) -30%, var(--background) 45%)',
+      }}
     >
       {/* Background Grid & Glow (Glow on the right) */}
       <GridBackground glowPosition="end" showGradientOverlay />
