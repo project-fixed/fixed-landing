@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { Translations } from '@/data/translations';
 import type { Lang } from '@/data/translations';
 import { HeroBadge } from '@/app/[lang]/(home)/components/ui/HeroBadge';
@@ -17,27 +17,6 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
   const containerRef = useRef<HTMLElement>(null);
   const splashDone = useSplashDone();
-
-  // Mouse Tracking Parallax
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 30, stiffness: 100 };
-  const mouseXSpring = useSpring(mouseX, springConfig);
-  const mouseYSpring = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (typeof window === 'undefined') return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 2;
-    const y = (clientY / innerHeight - 0.5) * 2;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const formX = useTransform(mouseXSpring, [-1, 1], [-8, 8]);
-  const formY = useTransform(mouseYSpring, [-1, 1], [-8, 8]);
   const heroStats = [
     {
       value: t.landing.home.hero.key.point1.title,
@@ -57,7 +36,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
     <section
       id="hero"
       ref={containerRef}
-      onMouseMove={handleMouseMove}
       className="page-section relative my-auto flex flex-1 flex-col justify-center overflow-hidden py-4"
     >
       {/* Logos de ligas flotantes en posición absoluta (Lado derecho) */}
@@ -100,10 +78,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
           </motion.div>
         </div>
 
-        {/* Bloque Flotante Derecha (Tarjeta Early Access + Stats en Parallax) */}
+        {/* Bloque Flotante Derecha (Tarjeta Early Access + Stats) */}
         <motion.div
           className="relative flex flex-col gap-6 lg:absolute lg:right-0 lg:bottom-0 lg:z-20"
-          style={{ x: formX, y: formY }}
           initial={{ opacity: 0, x: 30 }}
           animate={splashDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}

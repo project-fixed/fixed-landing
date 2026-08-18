@@ -19,6 +19,7 @@ import { Footer } from '@/shared/components/layout/Footer';
 import { SplashLoader } from '@/shared/components/layout/SplashLoader';
 import { WaitlistModalProvider } from '@/shared/components/layout/WaitlistModalContext';
 import { WaitlistModal } from '@/shared/components/widgets/WaitlistModal';
+import { WaitlistSuccessToast } from '@/shared/components/widgets/WaitlistSuccessToast';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleAnalyticsWrapper } from '@/shared/components/layout/GoogleAnalyticsWrapper';
@@ -124,6 +125,7 @@ export default async function RootLayout({ children, params }: Props) {
               <Footer lang={currentLang} />
             </div>
             <WaitlistModal lang={currentLang} />
+            <WaitlistSuccessToast lang={currentLang} />
           </WaitlistModalProvider>
         </SplashLoader>
         <SpeedInsights />

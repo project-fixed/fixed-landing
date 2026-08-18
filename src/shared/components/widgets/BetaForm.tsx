@@ -1,15 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslations } from '@/data/translations';
 import { useWaitlistModal } from '@/shared/components/layout/WaitlistModalContext';
-import {
-  Loader2,
-  CheckCircle2,
-  AlertCircle,
-  ArrowRight,
-  X,
-} from 'lucide-react';
+import { Loader2, AlertCircle, ArrowRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface BetaFormProps {
@@ -21,7 +16,10 @@ interface BetaFormProps {
 }
 
 // Custom hook to animate a numeric count from 0 to target value
-function useAnimatedCounter(targetValue: number, duration: number = 1500) {
+export function useAnimatedCounter(
+  targetValue: number,
+  duration: number = 1500,
+) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -63,7 +61,7 @@ interface Particle {
   angle: number;
 }
 
-function Confetti() {
+export function Confetti() {
   const colors = [
     '#3e5d6c',
     '#60a5fa',
@@ -126,7 +124,7 @@ interface CounterProps {
   lang: 'en' | 'es';
 }
 
-function WaitlistCounter({ value, lang }: CounterProps) {
+export function WaitlistCounter({ value, lang }: CounterProps) {
   const animatedValue = useAnimatedCounter(value, 2000);
   return (
     <div className="relative z-10 my-3 flex w-full flex-col items-center justify-center border-t border-b border-white/5 py-3">
@@ -148,17 +146,28 @@ export const BetaForm: React.FC<BetaFormProps> = ({
   onEmailChange,
 }) => {
   const t = useTranslations(lang);
-  const { successState, setSuccessState, closeModal } = useWaitlistModal();
+  const { setSuccessState, closeModal } = useWaitlistModal();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
   const [message, setMessage] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  const isRegistered = successState?.isRegistered ?? false;
-  const isDuplicate = successState?.isDuplicate ?? false;
-  const isLocal = successState?.isLocal ?? false;
-  const registeredUserNumber = successState?.registeredUserNumber ?? null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Auto-dismiss local error state after 5 seconds
+  useEffect(() => {
+    if (status === 'error') {
+      const timer = setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   const [utmParams, setUtmParams] = useState({
     utm_source: '',
     utm_medium: '',
@@ -328,82 +337,39 @@ export const BetaForm: React.FC<BetaFormProps> = ({
           </button>
         </form>
 
-        <AnimatePresence>
-          {status === 'error' && (
-            <motion.div
-              initial={{ opacity: 0, y: -8, height: 0 }}
-              animate={{ opacity: 1, y: 0, height: 'auto' }}
-              exit={{ opacity: 0, y: -8, height: 0 }}
-              className="text-destructive flex items-start gap-2 px-4 text-left text-xs"
-            >
-              <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-              <span>{message}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <AnimatePresence />
       </div>
 
-      {/* Floating Success/Duplicate Overlay Card */}
-      <AnimatePresence>
-        {isRegistered && (
-          <motion.div
-            key="success-overlay"
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="border-primary/30 bg-surface-deep/98 absolute inset-x-0 bottom-full z-30 mb-4 flex w-full flex-col items-center justify-center overflow-visible rounded-2xl border p-5 text-center shadow-[0_15px_50px_rgba(0,0,0,0.8)] backdrop-blur-lg"
-          >
-            {!isDuplicate && <Confetti />}
-
-            {/* Close Button in top right */}
-            <button
-              type="button"
-              onClick={() => {
-                setSuccessState(null);
-              }}
-              className="absolute top-3.5 right-3.5 z-10 cursor-pointer text-white/40 transition-colors hover:scale-110 hover:text-white active:scale-95"
-              aria-label="Close"
-            >
-              <X className="h-4 w-4" />
-            </button>
-
-            <div className="bg-primary/10 text-primary relative mb-3 flex h-10 w-10 items-center justify-center rounded-full">
-              <CheckCircle2 className="text-primary h-5 w-5 drop-shadow-[0_0_8px_rgba(62,93,108,0.5)]" />
-            </div>
-
-            <h3 className="relative z-10 mb-1 font-mono text-base font-bold tracking-wide text-white uppercase">
-              {isDuplicate
-                ? lang === 'es'
-                  ? '¡Ya estás registrado!'
-                  : 'Already Registered!'
-                : lang === 'es'
-                  ? '¡Registro Completado!'
-                  : 'Registration Complete!'}
-            </h3>
-
-            <p className="text-body relative z-10 mb-2 max-w-[280px] text-xs leading-relaxed">
-              {isDuplicate
-                ? lang === 'es'
-                  ? 'Este correo ya se encuentra registrado en nuestra lista de espera.'
-                  : 'This email is already registered on our waitlist.'
-                : t.landing.home.hero.betaSuccess}
-            </p>
-
-            {registeredUserNumber !== null && (
-              <WaitlistCounter value={registeredUserNumber} lang={lang} />
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {status === 'error' && (
+              <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 50, opacity: 0 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="bg-glass-card fixed right-6 bottom-6 left-6 z-[120] flex items-center justify-between gap-3 rounded-xl border border-red-500/20 p-4 backdrop-blur-xl md:left-auto md:max-w-md"
+              >
+                <div className="flex items-center gap-2.5 text-red-400">
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                  <p className="text-body font-sans text-xs leading-relaxed">
+                    {message}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="cursor-pointer text-white/40 transition-colors hover:text-white"
+                  aria-label="Close"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </motion.div>
             )}
-
-            {isLocal && (
-              <span className="relative z-10 mt-1 rounded-full border border-yellow-500/20 bg-yellow-500/10 px-3 py-1 font-mono text-[9px] text-yellow-400">
-                {lang === 'es'
-                  ? '🛠️ Modo Local: Guardado en scratch/beta_subscribers.json'
-                  : '🛠️ Local Mode: Saved to scratch/beta_subscribers.json'}
-              </span>
-            )}
-          </motion.div>
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </div>
   );
 };
