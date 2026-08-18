@@ -13,6 +13,7 @@ import { useWaitlistModal } from '@/shared/components/layout/WaitlistModalContex
 import imgLogo from '@/assets/images/logo.png';
 import imgSpain from '@/assets/images/spain.png';
 import imgUS from '@/assets/images/united-states.png';
+import { trackEvent } from '@/lib/analytics';
 
 interface Props {
   lang: Lang;
@@ -190,6 +191,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
   const handleJoinBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     closeMenu();
     e.preventDefault();
+    trackEvent('click_join_waitlist', { location: 'toolbar' });
     openModal();
   };
 
@@ -206,6 +208,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
 
   const handleLangToggle = () => {
     const nextLang = lang === 'en' ? 'es' : 'en';
+    trackEvent('switch_language', { from: lang, to: nextLang });
     const domain = window.location.hostname.endsWith('fixed.com')
       ? ';domain=.fixed.com'
       : '';
@@ -424,6 +427,11 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
         <Link
           href={targetPath}
           onClick={handleLangToggle}
+          aria-label={
+            lang === 'en'
+              ? 'Switch language to Spanish'
+              : 'Cambiar idioma a inglés'
+          }
           className="group relative flex items-center justify-between overflow-hidden px-5 py-3.5 font-mono text-sm font-bold tracking-[0.12em] transition-colors duration-150"
         >
           <span className="absolute inset-0 rounded-none bg-white/[0.04] opacity-0 transition-opacity duration-150 group-hover:opacity-100" />

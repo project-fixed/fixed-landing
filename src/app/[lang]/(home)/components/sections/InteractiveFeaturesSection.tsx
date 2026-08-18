@@ -10,10 +10,10 @@ import {
   AccordionContent,
 } from '@/shared/components/ui/accordion';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
-import { SectionBadge } from '@/shared/components/ui/SectionBadge';
 import { LeaguesPreview } from './interactive/LeaguesPreview';
 import { GridBackground } from '@/shared/components/ui/GridBackground';
 import { MatchAnalysisPreview } from './interactive/MatchAnalysisPreview';
+import { trackEvent } from '@/lib/analytics';
 
 interface Props {
   lang: Lang;
@@ -48,38 +48,156 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
       className="page-section relative flex flex-col gap-12 py-20 md:py-24"
       style={{
         background:
-          'radial-gradient(circle at 80% 50%, var(--color-primary-darkest) -30%, var(--background) 45%)',
+          'radial-gradient(circle at 0% 70%, rgba(62, 93, 108, 0.3), transparent 30%), radial-gradient(circle at 80% 50%, var(--color-primary-darkest) -30%, var(--background) 45%)',
       }}
     >
-      {/* Background Grid & Glow (Glow on the right) */}
-      <GridBackground glowPosition="end" showGradientOverlay />
+      <GridBackground glowPosition="end" />
 
-      {/* Header: Title and Description (Top aligned like Zenity) */}
       <ScrollReveal
         direction="up"
         delay={0.1}
         className="relative z-10 w-full max-w-3xl"
       >
-        <SectionBadge label="features" className="mb-4 block w-fit" />
         <h2 className="title-hero mt-2 text-balance">{data.title}</h2>
         <p className="text-muted mt-4 max-w-xl text-base leading-relaxed">
           {data.description}
         </p>
       </ScrollReveal>
 
-      {/* Two Column Grid: Accordion Left + Preview Right */}
-      <div className="relative z-10 mt-4 flex flex-col gap-8 xl:flex-row xl:items-stretch xl:gap-12">
-        {/* Left Column: Clean Accordion Controller */}
+      <div className="relative z-10 mt-4 flex flex-col gap-8 lg:flex-row lg:items-stretch lg:gap-12">
+        <div className="flex w-full flex-col gap-6 lg:hidden">
+          <div
+            role="tablist"
+            aria-label="Features tabs"
+            className="relative mx-auto flex w-full max-w-sm rounded-full border border-white/5 bg-white/[0.03] p-1"
+          >
+            {accordionItems.map((item) => {
+              const isActive = activeItemId === item.id;
+              return (
+                <button
+                  key={item.id}
+                  id={`feature-tab-${item.id}`}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`feature-panel-${item.id}`}
+                  onClick={() => {
+                    setActiveItem([item.id]);
+                    trackEvent('click_features_tab', {
+                      tab_id: item.id,
+                      tab_name: item.title,
+                      device: 'mobile',
+                    });
+                  }}
+                  className={`font-display relative z-10 flex-1 rounded-full py-2.5 text-center text-sm font-semibold transition-colors duration-200 ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-white/40 hover:text-white/60'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabIndicator"
+                      className="absolute inset-0 -z-10 rounded-full border border-white/10 bg-white/[0.08] shadow-inner"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                  {item.title}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex min-h-[50px] items-center justify-center px-4 text-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeItemId}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.15 }}
+                className="text-body text-sm leading-relaxed text-white/70"
+              >
+                {accordionItems.find((i) => i.id === activeItemId)?.description}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+
+          <div className="relative flex min-h-[340px] w-full flex-col justify-start overflow-hidden rounded-xl border border-white/10 bg-black/60 p-4 backdrop-blur-md">
+            <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+              <div className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-white/20" />
+                <span className="h-2 w-2 rounded-full bg-white/20" />
+                <span className="h-2 w-2 rounded-full bg-white/20" />
+              </div>
+              <span className="font-mono text-[9px] tracking-wider text-white/30">
+                fixed.app
+              </span>
+            </div>
+
+            <div className="relative flex w-full flex-1 flex-col justify-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                {activeItemId === 'item-1' && (
+                  <motion.div
+                    key="item-1"
+                    id="feature-panel-item-1"
+                    role="tabpanel"
+                    aria-labelledby="feature-tab-item-1"
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="flex w-full flex-1 flex-col justify-center"
+                  >
+                    <LeaguesPreview />
+                  </motion.div>
+                )}
+
+                {activeItemId === 'item-2' && (
+                  <motion.div
+                    key="item-2"
+                    id="feature-panel-item-2"
+                    role="tabpanel"
+                    aria-labelledby="feature-tab-item-2"
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="flex w-full flex-1 flex-col justify-center"
+                  >
+                    <MatchAnalysisPreview />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
         <ScrollReveal
           direction="up"
           delay={0.2}
-          className="flex w-full flex-col justify-center xl:w-[36%]"
+          className="hidden w-full flex-col justify-center lg:flex lg:w-[36%]"
         >
           <Accordion
             type="single"
             value={activeItem}
             onValueChange={(val: string[]) => {
-              if (val && val.length > 0) setActiveItem(val);
+              if (val && val.length > 0) {
+                setActiveItem(val);
+                const selectedItem = accordionItems.find(
+                  (i) => i.id === val[0],
+                );
+                if (selectedItem) {
+                  trackEvent('click_features_tab', {
+                    tab_id: selectedItem.id,
+                    tab_name: selectedItem.title,
+                    device: 'desktop',
+                  });
+                }
+              }
             }}
           >
             {accordionItems.map((item) => (
@@ -95,44 +213,21 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
                   <p className="text-body text-sm leading-relaxed text-white/70">
                     {item.description}
                   </p>
-
-                  {/* Inline Visual Preview for mobile/tablet (below xl) */}
-                  <div className="mt-5 w-full overflow-hidden rounded-xl border border-white/10 bg-black/60 p-4 backdrop-blur-md xl:hidden">
-                    {/* Top Bar Mockup Header */}
-                    <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-2 w-2 rounded-full bg-white/20" />
-                        <span className="h-2 w-2 rounded-full bg-white/20" />
-                        <span className="h-2 w-2 rounded-full bg-white/20" />
-                      </div>
-                      <span className="font-mono text-[9px] tracking-wider text-white/30">
-                        fixed.app
-                      </span>
-                    </div>
-
-                    <div className="relative w-full overflow-hidden">
-                      {item.id === 'item-1' && <LeaguesPreview />}
-                      {item.id === 'item-2' && <MatchAnalysisPreview />}
-                    </div>
-                  </div>
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </ScrollReveal>
 
-        {/* Right Column: Visual Preview Renderer (Unified) */}
         <ScrollReveal
           direction="up"
           delay={0.3}
-          className="hidden h-full w-full min-w-0 shrink-0 flex-col xl:sticky xl:top-28 xl:flex xl:w-[64%]"
+          className="hidden h-full w-full min-w-0 shrink-0 flex-col lg:sticky lg:top-28 lg:flex lg:w-[64%]"
         >
-          <div className="relative flex h-full min-h-[560px] w-full min-w-0 shrink-0 flex-col justify-between overflow-hidden rounded-xl border border-white/10 bg-black/70 p-5 backdrop-blur-xl sm:p-6 xl:min-h-[600px]">
-            {/* Dynamic Background Glow */}
+          <div className="relative flex h-full min-h-[560px] w-full min-w-0 shrink-0 flex-col justify-between overflow-hidden rounded-xl border border-white/10 bg-black/70 p-5 backdrop-blur-xl sm:p-6 lg:min-h-[600px]">
             <div className="bg-primary/15 pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full blur-[100px]" />
             <div className="bg-primary/5 pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full blur-[100px]" />
 
-            {/* Top Bar Mockup Header */}
             <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -144,7 +239,6 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
               </span>
             </div>
 
-            {/* Content Area with Framer Motion AnimatePresence */}
             <div className="relative z-10 my-4 flex w-full min-w-0 flex-1 items-stretch justify-center">
               <AnimatePresence mode="wait">
                 {activeItemId === 'item-1' && (

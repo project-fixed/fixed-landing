@@ -139,7 +139,7 @@ export const Footer: React.FC<Props> = ({ lang }) => {
           <div className="border-t border-white/[0.06] pt-6">
             <div className="text-faint flex flex-wrap items-center justify-between gap-4 text-sm">
               <p className="text-muted">
-                © {new Date().getFullYear()} Fixed Inc. All rights reserved.
+                © {new Date().getFullYear()} Fixed. All rights reserved.
               </p>
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex flex-wrap gap-6">

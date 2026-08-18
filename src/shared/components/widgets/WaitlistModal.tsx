@@ -14,37 +14,33 @@ interface WaitlistModalProps {
   lang: Lang;
 }
 
-const getBlurAmount = (val: string): number => {
+const getBackdropBlur = (val: string): number => {
   if (!val) return 20;
 
-  // 1. Check for complete valid email
-  const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-  if (isValid) return 0;
-
-  // 2. Calculate dynamic score for incomplete state
-  let score = 0;
-
-  // Character count contribution (up to 10 points)
-  score += Math.min(val.length * 1.0, 10);
-
-  // Bonus of +2 points for every completed group of 3 characters
-  score += Math.floor(val.length / 3) * 1.5;
-
-  // Domain structure milestones
   const hasAt = val.includes('@');
   if (hasAt) {
-    score += 4;
-    const hasDotAfterAt = val.slice(val.indexOf('@')).includes('.');
-    if (hasDotAfterAt) {
-      score += 3;
+    const domainPart = val.slice(val.indexOf('@') + 1);
+    const dotIndex = domainPart.indexOf('.');
+
+    if (dotIndex !== -1) {
+      const subDomain = domainPart.slice(0, dotIndex);
+      const tld = domainPart.slice(dotIndex + 1);
+
+      if (subDomain.length >= 2) {
+        if (tld.length >= 2) {
+          return 0; // blur = 0px (e.g. @gmail.com, @gm.co)
+        }
+        return 2; // blur = 2px (e.g. @gmail., @gmail.c)
+      }
     }
+    return 4; // blur = 4px (e.g. @, @g, @gmail)
   }
 
-  // Cap incomplete score at 17 to ensure a small blur remains until fully valid
-  const finalScore = Math.min(score, 17);
-
-  // Map score to 0-20 blur range
-  return Math.max(0, 20 - finalScore);
+  // Progressive clarity every 6 characters
+  const steps = Math.floor(val.length / 6);
+  if (steps === 0) return 20;
+  if (steps === 1) return 12;
+  return 6;
 };
 
 const WaitlistModalContent: React.FC<{ lang: Lang }> = ({ lang }) => {
@@ -81,7 +77,7 @@ const WaitlistModalContent: React.FC<{ lang: Lang }> = ({ lang }) => {
           initial={{ opacity: 0 }}
           animate={{
             opacity: email.length > 0 ? 1 : 0,
-            filter: `blur(${getBlurAmount(email)}px)`,
+            filter: `blur(${getBackdropBlur(email)}px)`,
           }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
           className="absolute inset-0 scale-105"
@@ -93,8 +89,8 @@ const WaitlistModalContent: React.FC<{ lang: Lang }> = ({ lang }) => {
             className="object-cover"
             priority
           />
-          {/* Overlay dark tint over the mockup image */}
-          <div className="absolute inset-0 bg-black/25" />
+          {/* Overlay dark tint over the mockup image to preserve text contrast */}
+          <div className="absolute inset-0 bg-black/40" />
         </motion.div>
       </div>
 

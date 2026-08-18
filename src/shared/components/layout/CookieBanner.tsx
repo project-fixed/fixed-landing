@@ -16,8 +16,9 @@ export const CookieBanner: React.FC<Props> = ({ lang }) => {
 
   useEffect(() => {
     setMounted(true);
-    const consent = localStorage.getItem('google-analytics-consent');
-    if (!consent) {
+    const localConsent = localStorage.getItem('google-analytics-consent');
+    const sessionConsent = sessionStorage.getItem('google-analytics-consent');
+    if (!localConsent && !sessionConsent) {
       setVisible(true);
     }
   }, []);
@@ -31,7 +32,7 @@ export const CookieBanner: React.FC<Props> = ({ lang }) => {
   };
 
   const handleReject = () => {
-    localStorage.setItem('google-analytics-consent', 'rejected');
+    sessionStorage.setItem('google-analytics-consent', 'rejected');
     window.dispatchEvent(
       new CustomEvent('ga-consent-change', { detail: 'rejected' }),
     );

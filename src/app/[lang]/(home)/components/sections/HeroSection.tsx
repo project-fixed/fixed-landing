@@ -42,7 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
 
       <div className="relative z-10 flex w-full flex-col justify-between gap-6">
         {/* Columna Izquierda (Texto y Título amplio) */}
-        <div className="flex flex-col items-start gap-6 xl:w-[80%]">
+        <div className="flex flex-col items-start gap-6 lg:w-[70%]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={splashDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -52,8 +52,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
             <HeroBadge
               label={
                 currentLang === 'es'
-                  ? 'Beta abierta · v0.8.5'
-                  : 'Open Beta · v0.8.5'
+                  ? 'Beta abierta · v0.6.0'
+                  : 'Open Beta · v0.6.0'
               }
             />
 
@@ -65,14 +65,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
                 {' '}
                 {t.landing.home.hero.title.center}
               </span>
-              <span className="text-primary block">
+              <span className="text-primary">
+                {' '}
                 {t.landing.home.hero.title.end}
               </span>
             </h1>
 
-            <span className="bg-primary hidden h-2 w-14 lg:block" />
-
-            <p className="text-muted max-w-[440px] text-sm leading-relaxed lg:text-base">
+            <p className="text-muted max-w-[440px] text-[13px] leading-relaxed sm:text-sm lg:text-base">
               {t.landing.home.hero.description}
             </p>
           </motion.div>
@@ -86,7 +85,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           {/* Tarjeta de Early Access */}
-          <div className="ml-auto hidden w-[320px] rounded-2xl border border-white/15 bg-white/10 p-6 text-right backdrop-blur-md lg:block xl:w-[400px]">
+          <div className="ml-auto hidden w-[320px] rounded-2xl border border-white/15 bg-white/10 p-6 text-right backdrop-blur-md lg:block lg:w-[400px]">
             <p className="mb-1 font-mono text-xs tracking-widest text-white capitalize">
               {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
             </p>

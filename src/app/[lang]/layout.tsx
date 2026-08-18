@@ -102,19 +102,6 @@ export default async function RootLayout({ children, params }: Props) {
       <body className="antialiased">
         {/* Precision grid pattern matching the tech aesthetic */}
 
-        <div
-          style={{
-            pointerEvents: 'none',
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            height: '60vh',
-            background:
-              'radial-gradient(ellipse at 50% -10%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 65%)',
-          }}
-        />
-
         <SplashLoader>
           <WaitlistModalProvider>
             <div className="relative z-10 flex min-h-screen w-full flex-col">

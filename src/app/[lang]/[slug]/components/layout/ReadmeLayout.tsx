@@ -63,11 +63,17 @@ export function ReadmeLayout({
   };
 
   return (
-    <section className="container mx-auto flex w-full flex-col items-center justify-center px-4 pt-28 pb-16 sm:px-6 lg:px-8">
+    <section
+      className="page-section flex w-full flex-col items-center justify-center px-4 pt-28 pb-16 sm:px-6 lg:px-8"
+      style={{
+        background:
+          'radial-gradient(circle at 0% 50%, rgba(62, 93, 108, 0.3), transparent 35%), radial-gradient(circle at 100% 50%, var(--color-primary-darkest) -30%, var(--background) 45%)',
+      }}
+    >
       <ScrollReveal
         direction="up"
         delay={0.1}
-        className="bg-surface-deep/90 w-full max-w-[900px] rounded-xl border border-white/10 shadow-2xl backdrop-blur-2xl"
+        className="bg-surface-deep/90 w-full max-w-[900px] overflow-hidden rounded-xl border border-white/10 shadow-2xl backdrop-blur-2xl"
       >
         {/* ── Title Bar ── */}
         <div className="flex items-center gap-3 border-b border-white/5 bg-white/5 px-5 py-3.5 select-none">
@@ -90,19 +96,23 @@ export function ReadmeLayout({
           {tocOpen && (
             <div
               onClick={() => setTocOpen(false)}
-              className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="absolute inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
             />
           )}
 
           {/* Content */}
-          <div className="min-w-0 flex-1 px-4 py-8 sm:px-8 md:px-12">
+          <div
+            className={`min-w-0 flex-1 px-4 py-8 transition-all duration-300 sm:px-8 md:px-12 ${
+              tocOpen ? 'lg:pr-[304px]' : 'lg:pr-12'
+            }`}
+          >
             {title && (
               <div className="mb-12 max-w-[700px]">
                 <h1 className="mb-6 text-3xl leading-tight font-extrabold text-white sm:text-4xl md:text-5xl">
                   {title}
                 </h1>
                 {description && (
-                  <p className="text-muted mx-auto max-w-[600px] text-base leading-relaxed">
+                  <p className="text-muted max-w-[600px] text-base leading-relaxed">
                     {description}
                   </p>
                 )}
@@ -113,13 +123,13 @@ export function ReadmeLayout({
 
           {/* Sidepanel */}
           <div
-            className={`bg-surface-card/95 fixed top-24 right-6 z-45 max-h-[70vh] overflow-y-auto rounded-xl border border-white/5 shadow-2xl backdrop-blur-xl transition-all duration-300 ease-in-out lg:sticky lg:top-0 lg:right-auto lg:z-0 lg:h-screen lg:max-h-screen lg:shrink-0 lg:self-start lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:bg-transparent lg:shadow-none lg:backdrop-blur-none ${
+            className={`bg-surface-deep/95 absolute top-0 right-0 bottom-0 z-40 w-64 border-l border-white/5 transition-all duration-300 ease-in-out lg:bg-transparent ${
               tocOpen
-                ? 'pointer-events-auto w-64 translate-x-0 opacity-100'
-                : 'pointer-events-none w-64 translate-x-4 opacity-0 lg:w-0 lg:translate-x-0'
-            } `}
+                ? 'pointer-events-auto translate-x-0 opacity-100'
+                : 'pointer-events-none translate-x-4 opacity-0 lg:w-0 lg:translate-x-0 lg:border-l-0'
+            }`}
           >
-            <nav className="w-64 p-6">
+            <nav className="sticky top-24 w-64 p-6">
               <div className="mb-5 font-sans text-[11px] font-semibold tracking-wider text-white/30 uppercase">
                 On this page
               </div>

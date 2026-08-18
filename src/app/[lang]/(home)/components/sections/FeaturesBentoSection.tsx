@@ -248,7 +248,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card4.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card4.description}
                 </p>
               </div>
@@ -403,7 +403,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card5.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card5.description}
                 </p>
               </div>
@@ -449,7 +449,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card6.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card6.description}
                 </p>
               </div>
@@ -493,7 +493,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     {t.landing.home.bento.card7.title}
                   </h3>
                 </div>
-                <p className="line-clamp-2 text-xs leading-relaxed text-white/60">
+                <p className="line-clamp-2 text-sm leading-relaxed text-white/60">
                   {t.landing.home.bento.card7.description}
                 </p>
               </div>

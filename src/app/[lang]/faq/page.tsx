@@ -52,8 +52,14 @@ export default async function FaqPage({ params }: PageProps) {
   ];
 
   return (
-    <section className="page-section flex min-h-screen flex-col items-center gap-24 pt-36 lg:flex-row">
-      <GridBackground gridOpacity={0.05} showGradientOverlay />
+    <section
+      className="page-section flex min-h-screen flex-col items-center gap-24 pt-36 lg:flex-row"
+      style={{
+        background:
+          'radial-gradient(circle at 20% 80%, var(--color-primary-darkest) -10%, transparent 35%), radial-gradient(circle at 80% 30%, var(--color-primary-darkest) -10%, var(--background) 35%)',
+      }}
+    >
+      <GridBackground gridOpacity={0.05} />
 
       <ScrollReveal
         direction="up"
@@ -61,7 +67,7 @@ export default async function FaqPage({ params }: PageProps) {
         className="w-full lg:w-1/3 lg:self-start"
       >
         <h1 className="title-hero">{t.landing.faq.title}</h1>
-        <span className="bg-primary/50 mt-4 block h-[10px] w-14" />
+        <span className="bg-primary-light mt-4 block h-[10px] w-14" />
         <p className="text-muted mt-6 max-w-[400px] leading-relaxed">
           {t.landing.faq.description}
         </p>

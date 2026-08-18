@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import type { Plan } from '@/data/plans';
 import { useTranslations, type Lang } from '@/data/translations';
 import { ButtonArrow } from '@/shared/components/ui/ButtonArrow';
+import { trackEvent } from '@/lib/analytics';
 
 interface Props {
   plan: Plan;
@@ -143,6 +146,12 @@ export const PlanCard: React.FC<Props> = ({ plan, lang }) => {
 
       <ButtonArrow
         href={`${appAuthUrl}?lang=${lang}&plan=${plan.id}`}
+        onClick={() => {
+          trackEvent('select_plan', {
+            plan_id: plan.id,
+            price: plan.monthlyPrice,
+          });
+        }}
         className="w-full"
       >
         {planT.cta}
