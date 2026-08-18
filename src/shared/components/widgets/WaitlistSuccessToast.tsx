@@ -12,14 +12,14 @@ export const WaitlistSuccessToast: React.FC<{ lang: 'en' | 'es' }> = ({
   lang,
 }) => {
   const t = useTranslations(lang);
-  const { successState, setSuccessState } = useWaitlistModal();
+  const { successState, setSuccessState, isOpen } = useWaitlistModal();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted || !successState) return null;
+  if (!mounted || !successState || isOpen) return null;
 
   const { isRegistered, isDuplicate, isLocal, registeredUserNumber } =
     successState;

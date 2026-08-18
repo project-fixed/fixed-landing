@@ -30,7 +30,10 @@ export const WaitlistModalProvider: React.FC<{ children: React.ReactNode }> = ({
     null,
   );
 
-  const openModal = () => setIsOpen(true);
+  const openModal = () => {
+    setSuccessState(null);
+    setIsOpen(true);
+  };
   const closeModal = () => setIsOpen(false);
 
   return (
