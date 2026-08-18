@@ -21,7 +21,8 @@ import { WaitlistModalProvider } from '@/shared/components/layout/WaitlistModalC
 import { WaitlistModal } from '@/shared/components/widgets/WaitlistModal';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalyticsWrapper } from '@/shared/components/layout/GoogleAnalyticsWrapper';
+import { CookieBanner } from '@/shared/components/layout/CookieBanner';
 
 interface Props {
   children: React.ReactNode;
@@ -127,7 +128,8 @@ export default async function RootLayout({ children, params }: Props) {
         </SplashLoader>
         <SpeedInsights />
         <Analytics />
-        {gaId && <GoogleAnalytics gaId={gaId} />}
+        {gaId && <GoogleAnalyticsWrapper gaId={gaId} />}
+        <CookieBanner lang={currentLang} />
       </body>
     </html>
   );

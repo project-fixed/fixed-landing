@@ -167,7 +167,6 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
-
 h1,
 h2 {
   font-family: var(--font-mono);

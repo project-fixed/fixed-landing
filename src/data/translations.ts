@@ -12,6 +12,12 @@ export const translations = {
       join: 'Join Beta',
       getStarted: 'Get Started',
     },
+    cookieBanner: {
+      text: 'We use Google Analytics cookies to analyze traffic and optimize your experience. Rejecting will prevent Google Analytics from tracking your activity.',
+      accept: 'Accept',
+      reject: 'Reject',
+      privacyPolicy: 'Privacy Policy',
+    },
     landing: {
       home: {
         hero: {
@@ -332,6 +338,12 @@ export const translations = {
     button: {
       join: 'Únete a la Beta',
       getStarted: 'Comenzar',
+    },
+    cookieBanner: {
+      text: 'Utilizamos cookies de Google Analytics para analizar el tráfico y optimizar tu experiencia. Rechazar evitará que se realice el seguimiento de tu actividad.',
+      accept: 'Aceptar',
+      reject: 'Rechazar',
+      privacyPolicy: 'Política de Privacidad',
     },
     landing: {
       home: {
