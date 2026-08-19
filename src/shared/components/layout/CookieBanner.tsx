@@ -23,6 +23,31 @@ export const CookieBanner: React.FC<Props> = ({ lang }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const target = document.querySelector('.cookie-banner-blur-target');
+    if (visible) {
+      document.body.classList.add('cookie-banner-active');
+      target?.setAttribute('inert', '');
+    } else {
+      document.body.classList.remove('cookie-banner-active');
+      target?.removeAttribute('inert');
+    }
+
+    return () => {
+      document.body.classList.remove('cookie-banner-active');
+      target?.removeAttribute('inert');
+    };
+  }, [visible]);
+
+  useEffect(() => {
+    const handleOpen = () => setVisible(true);
+    window.addEventListener('open-cookie-banner', handleOpen);
+
+    return () => {
+      window.removeEventListener('open-cookie-banner', handleOpen);
+    };
+  }, []);
+
   const handleAccept = () => {
     localStorage.setItem('google-analytics-consent', 'accepted');
     window.dispatchEvent(

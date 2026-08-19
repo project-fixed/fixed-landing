@@ -1,6 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import { OddsCard } from '@/app/[lang]/(home)/components/widgets/OddsCard';
 import { type Lang } from '@/data/translations';
+import { useInView } from 'framer-motion';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 const oddsData1 = [
   {
@@ -220,8 +223,14 @@ interface Props {
 }
 
 export const OddsMarquee: React.FC<Props> = ({ lang }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: '200px 0px' });
+
   return (
-    <div className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black py-6 md:py-10">
+    <div
+      ref={containerRef}
+      className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black py-6 md:py-10"
+    >
       <ScrollReveal
         direction="up"
         delay={0.2}
@@ -229,7 +238,11 @@ export const OddsMarquee: React.FC<Props> = ({ lang }) => {
       >
         {/* Row 1: Scroll Left */}
         <div className="scroller w-full">
-          <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
+          <div
+            className={`scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4 ${
+              isInView ? '' : '[animation-play-state:paused]'
+            }`}
+          >
             {[...oddsData1, ...oddsData1].map((item, idx) => (
               <OddsCard
                 key={`r1-${idx}`}
@@ -247,7 +260,11 @@ export const OddsMarquee: React.FC<Props> = ({ lang }) => {
         </div>
         {/* Row 2: Scroll Right */}
         <div className="scroller w-full">
-          <div className="scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4">
+          <div
+            className={`scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4 ${
+              isInView ? '' : '[animation-play-state:paused]'
+            }`}
+          >
             {[...oddsData2, ...oddsData2].map((item, idx) => (
               <OddsCard
                 key={`r2-${idx}`}
@@ -265,7 +282,11 @@ export const OddsMarquee: React.FC<Props> = ({ lang }) => {
         </div>
         {/* Row 3: Scroll Left */}
         <div className="scroller w-full">
-          <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
+          <div
+            className={`scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4 ${
+              isInView ? '' : '[animation-play-state:paused]'
+            }`}
+          >
             {[...oddsData3, ...oddsData3].map((item, idx) => (
               <OddsCard
                 key={`r3-${idx}`}

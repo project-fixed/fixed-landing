@@ -161,6 +161,18 @@ export const Footer: React.FC<Props> = ({ lang }) => {
                   >
                     {t.landing.footer.link.company.cookies}
                   </Link>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.dispatchEvent(
+                        new CustomEvent('open-cookie-banner'),
+                      );
+                    }}
+                    className="hover:text-body cursor-pointer border-0 bg-transparent p-0 text-left font-sans text-sm transition-colors duration-200"
+                  >
+                    {t.landing.footer.link.company.cookiePreferences}
+                  </button>
                 </div>
 
                 <button
