@@ -1,5 +1,8 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import Image from 'next/image';
+import { useInView } from 'framer-motion';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 
 import img1Xbet from '@/assets/images/brands/1xbet.webp';
@@ -27,8 +30,12 @@ const brands = [
 ];
 
 export const BrandsMarquee: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: '200px 0px' });
+
   return (
     <section
+      ref={containerRef}
       id="brands"
       className="page-section flex-col justify-center border-y border-white/10 bg-black/20 py-10"
     >
@@ -38,7 +45,11 @@ export const BrandsMarquee: React.FC = () => {
           data-direction="right"
           data-speed="slow"
         >
-          <div className="scroller-inner animate-marquee flex w-max flex-nowrap gap-8 py-4">
+          <div
+            className={`scroller-inner animate-marquee flex w-max flex-nowrap gap-8 py-4 ${
+              isInView ? '' : '[animation-play-state:paused]'
+            }`}
+          >
             {/* Original Items */}
             {brands.map((brand, idx) => (
               <Image

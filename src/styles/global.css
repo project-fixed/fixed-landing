@@ -260,3 +260,22 @@ button {
     transparent
   );
 }
+
+/* Cookie Banner Blur Target & Active State */
+.cookie-banner-blur-target {
+  transition: filter 0.3s ease-out;
+}
+
+.cookie-banner-active .cookie-banner-blur-target {
+  filter: blur(6px);
+  pointer-events: none;
+  /* Optimización de hardware para el renderizado del blur */
+  will-change: filter;
+}
+
+/* Pausar animaciones con alta carga de repaint en GPU cuando el banner está activo */
+.cookie-banner-active .animate-marquee,
+.cookie-banner-active .animate-scroll-left,
+.cookie-banner-active .animate-scroll-right {
+  animation-play-state: paused !important;
+}

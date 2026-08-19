@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { useInView } from 'framer-motion';
 import {
   LeagueColumnWidget,
   type LeagueColumnData,
@@ -265,9 +266,19 @@ const LEAGUES_DATA: LeagueColumnData[] = [
 ];
 
 export const LeaguesPreview: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: '200px 0px' });
+
   return (
-    <div className="mask-marquee w-full overflow-hidden py-1">
-      <div className="scroller-inner animate-marquee flex w-max flex-nowrap gap-4 py-2 hover:[animation-play-state:paused]">
+    <div
+      ref={containerRef}
+      className="mask-marquee w-full overflow-hidden py-1"
+    >
+      <div
+        className={`scroller-inner animate-marquee flex w-max flex-nowrap gap-4 py-2 hover:[animation-play-state:paused] ${
+          isInView ? '' : '[animation-play-state:paused]'
+        }`}
+      >
         {/* Original Items */}
         {LEAGUES_DATA.map((col) => (
           <LeagueColumnWidget key={`orig-${col.id}`} column={col} />
