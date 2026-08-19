@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTranslations, type Lang } from '@/data/translations';
-import { ArrowLeftRight, Menu, X, ArrowUpRight } from 'lucide-react';
+import { ArrowLeftRight, Menu, X } from 'lucide-react';
 import { IconButton } from '@/shared/components/ui/IconButton';
 import { useSplashDone } from '@/shared/components/layout/SplashContext';
 import { useWaitlistModal } from '@/shared/components/layout/WaitlistModalContext';
@@ -388,32 +388,26 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
                   </span>
                 </div>
 
-                {/* Right side: Route Page icon vs Section active/hover indicator */}
+                {/* Right side: Section/Page active/hover indicator */}
                 <div className="relative z-10 flex items-center justify-end">
-                  {isRoute ? (
-                    <span className="text-white/40 transition-all duration-200 group-hover:scale-110 group-hover:text-white">
-                      <ArrowUpRight className="size-4" />
+                  <div className="flex h-4 w-4 items-center justify-end">
+                    <span
+                      className={`bg-primary-light absolute size-1.5 rounded-full transition-all duration-200 ${
+                        active && hoveredIndex !== index
+                          ? 'scale-100 opacity-100'
+                          : 'scale-50 opacity-0'
+                      }`}
+                    />
+                    <span
+                      className={`absolute translate-x-1 text-white/70 transition-all duration-200 ${
+                        hoveredIndex === index
+                          ? 'translate-x-0 opacity-100'
+                          : 'opacity-0'
+                      }`}
+                    >
+                      →
                     </span>
-                  ) : (
-                    <div className="flex h-4 w-4 items-center justify-end">
-                      <span
-                        className={`bg-primary-light absolute size-1.5 rounded-full transition-all duration-200 ${
-                          active && hoveredIndex !== index
-                            ? 'scale-100 opacity-100'
-                            : 'scale-50 opacity-0'
-                        }`}
-                      />
-                      <span
-                        className={`absolute translate-x-1 text-white/70 transition-all duration-200 ${
-                          hoveredIndex === index
-                            ? 'translate-x-0 opacity-100'
-                            : 'opacity-0'
-                        }`}
-                      >
-                        →
-                      </span>
-                    </div>
-                  )}
+                  </div>
                 </div>
               </Link>
             );
