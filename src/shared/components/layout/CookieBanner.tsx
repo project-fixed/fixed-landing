@@ -39,6 +39,15 @@ export const CookieBanner: React.FC<Props> = ({ lang }) => {
     };
   }, [visible]);
 
+  useEffect(() => {
+    const handleOpen = () => setVisible(true);
+    window.addEventListener('open-cookie-banner', handleOpen);
+
+    return () => {
+      window.removeEventListener('open-cookie-banner', handleOpen);
+    };
+  }, []);
+
   const handleAccept = () => {
     localStorage.setItem('google-analytics-consent', 'accepted');
     window.dispatchEvent(

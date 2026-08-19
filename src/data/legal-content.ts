@@ -28,13 +28,13 @@ const cookiesContent: Record<Lang, LegalDoc> = {
       {
         title: '1. What are Cookies?',
         paragraphs: [
-          'Cookies are small text files stored on your browser or device when you visit websites. They help the website work more efficiently and remember useful information about your preferences.',
+          'Cookies are small text files stored on your browser or device when you visit websites. They help the website work more efficiently and remember useful information about your choices to enhance your experience.',
         ],
       },
       {
         title: '2. How We Use Cookies',
         paragraphs: [
-          'At Fixed, we use a single first-party cookie to remember your language preference (English or Spanish) across your visits. We also use analytics tools to collect statistics on site performance and user navigation.',
+          'At Fixed, we use first-party and third-party cookies to remember language choices, measure website interaction patterns anonymously, and optimize platform speed. Essential cookies are strictly necessary to let you browse the site.',
         ],
       },
       {
@@ -42,19 +42,39 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         isList: true,
         items: [
           {
-            bold: 'Preference Cookies (First-party):',
-            text: 'We store a "language" cookie to remember your choice of locale (en/es) so the site loads in your preferred language next time you visit.',
+            bold: 'Site Language (First-party / Essential):',
+            text: 'Cookie Name: "language". Used to save your locale selection (en/es). Provider: Fixed. Duration: 1 year. Purpose: Keeps the landing page displayed in your selected language.',
           },
           {
-            bold: 'Analytical Trackers (Third-party & Privacy-first):',
-            text: 'We use Vercel Analytics for privacy-first, server-side traffic measurement. We also use Google Analytics to track user interaction, page views, and traffic sources using cookies (_ga, _gid). Google Analytics compiles aggregate reports that help us optimize platform usability.',
+            bold: 'Vercel Analytics (First-party / Analytics):',
+            text: 'Tracker Name: Vercel Analytics. Provider: Vercel Inc. Duration: Session. Purpose: Measures page traffic patterns on the server side anonymously without tracking individual personal IDs.',
+          },
+          {
+            bold: 'Google Analytics (Third-party / Analytics):',
+            text: 'Cookie Names: "_ga", "_gid". Provider: Google LLC. Duration: up to 2 years. Purpose: Analyzes user navigation, page views, and traffic sources. Addresses platform performance optimization.',
           },
         ],
       },
       {
-        title: '4. Managing Cookies',
-        paragraphs: [
-          'You can block, disable, or delete cookies at any time through your internet browser settings. Note that disabling cookies may reset your language preference or impact the tracking of performance metrics.',
+        title: '4. Managing Cookies via Browser Settings',
+        isList: true,
+        items: [
+          {
+            bold: 'Google Chrome:',
+            text: 'Go to Settings > Privacy and security > Third-party cookies. Select your preferred blocking option.',
+          },
+          {
+            bold: 'Apple Safari:',
+            text: 'Go to Preferences > Privacy > Cookies and website data. Select "Block all cookies" or customize preferences.',
+          },
+          {
+            bold: 'Mozilla Firefox:',
+            text: 'Go to Settings > Privacy & Security > Enhanced Tracking Protection. Choose "Standard", "Strict" or customize your blocking.',
+          },
+          {
+            bold: 'Microsoft Edge:',
+            text: 'Go to Settings > Cookies and site permissions > Manage and delete cookies and site data.',
+          },
         ],
       },
     ],
@@ -66,13 +86,13 @@ const cookiesContent: Record<Lang, LegalDoc> = {
       {
         title: '1. ¿Qué son las Cookies?',
         paragraphs: [
-          'Las cookies son pequeños archivos de texto que los sitios web almacenan en su navegador o dispositivo cuando los visita. Ayudan a que el sitio web funcione de manera más eficiente y recuerde información útil sobre sus preferencias.',
+          'Las cookies son pequeños archivos de texto que los sitios web almacenan en su navegador o dispositivo cuando los visita. Ayudan a que el sitio web funcione de manera más eficiente y recuerde información útil sobre sus elecciones para mejorar su navegación.',
         ],
       },
       {
         title: '2. ¿Cómo Usamos las Cookies?',
         paragraphs: [
-          'En Fixed utilizamos una única cookie propia para recordar su idioma de preferencia (inglés o español) en sus futuras visitas. También empleamos herramientas analíticas para recopilar estadísticas sobre el rendimiento del sitio y la navegación del usuario.',
+          'En Fixed utilizamos cookies propias y de terceros para recordar su idioma de preferencia, evaluar de forma agregada el tráfico de la web y optimizar la velocidad del sistema. Las cookies esenciales son estrictamente necesarias para el correcto funcionamiento de la plataforma.',
         ],
       },
       {
@@ -80,19 +100,39 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         isList: true,
         items: [
           {
-            bold: 'Cookies de Preferencia (Propias):',
-            text: 'Almacenamos la cookie de idioma "language" para recordar su elección de traducción (es/en) y cargar la web automáticamente en su idioma la próxima vez.',
+            bold: 'Idioma del Sitio (Propia / Esencial):',
+            text: 'Nombre de la cookie: "language". Proveedor: Fixed. Duración: 1 año. Finalidad: Recuerda la traducción seleccionada (es/en) para cargar automáticamente la web en su idioma predeterminado.',
           },
           {
-            bold: 'Rastreadores Analíticos (Terceros y Privacidad):',
-            text: 'Utilizamos Vercel Analytics para medir el tráfico del lado del servidor de forma anónima. Adicionalmente, utilizamos Google Analytics para medir la interacción del usuario, páginas vistas y origen del tráfico mediante el uso de cookies (_ga, _gid), lo cual nos genera reportes estadísticos agregados para optimizar el sitio.',
+            bold: 'Vercel Analytics (Propia / Analítica):',
+            text: 'Rastreador: Vercel Analytics. Proveedor: Vercel Inc. Duración: Sesión. Finalidad: Mide el volumen de tráfico de forma anónima desde el servidor sin procesar datos personales identificables.',
+          },
+          {
+            bold: 'Google Analytics (Terceros / Analítica):',
+            text: 'Nombres de cookies: "_ga", "_gid". Proveedor: Google LLC. Duración: hasta 2 años. Finalidad: Analiza el comportamiento del usuario y la interacción en la web con fines estadísticos para optimizar el servicio.',
           },
         ],
       },
       {
-        title: '4. Controlar las Cookies',
-        paragraphs: [
-          'Usted puede bloquear, desactivar o eliminar las cookies en cualquier momento a través de la configuración de su navegador de Internet. Tenga en cuenta que desactivar las cookies de analítica o idioma podría restablecer su preferencia de idioma predeterminada o limitar nuestra capacidad de optimizar el rendimiento del sitio.',
+        title: '4. Controlar las Cookies desde su Navegador',
+        isList: true,
+        items: [
+          {
+            bold: 'Google Chrome:',
+            text: 'Vaya a Configuración > Privacidad y seguridad > Cookies de terceros. Elija la opción de bloqueo deseada.',
+          },
+          {
+            bold: 'Apple Safari:',
+            text: 'Vaya a Preferencias > Privacidad > Cookies y datos del sitio web. Seleccione "Bloquear todas las cookies" o personalice.',
+          },
+          {
+            bold: 'Mozilla Firefox:',
+            text: 'Vaya a Ajustes > Privacidad & Seguridad > Protección contra el rastreo mejorada. Seleccione "Estándar", "Estricta" o personalice.',
+          },
+          {
+            bold: 'Microsoft Edge:',
+            text: 'Vaya a Configuración > Cookies y permisos del sitio > Administrar y eliminar cookies y datos del sitio.',
+          },
         ],
       },
     ],
