@@ -1,5 +1,8 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import { useTranslations, type Lang } from '@/data/translations';
+import { useInView } from 'framer-motion';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 
 interface Props {
@@ -13,15 +16,25 @@ export const DataStreamSection: React.FC<Props> = ({ lang }) => {
   const row1 = data.slice(0, 4);
   const row2 = data.slice(4, 8);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: '200px 0px' });
+
   return (
-    <div className="mask-marquee flex w-full flex-col gap-3.5 overflow-hidden border-y border-white/10 bg-black/10 py-8">
+    <div
+      ref={containerRef}
+      className="mask-marquee flex w-full flex-col gap-3.5 overflow-hidden border-y border-white/10 bg-black/10 py-8"
+    >
       <ScrollReveal
         direction="up"
         delay={0.2}
         className="flex w-full flex-col gap-3.5"
       >
         <div className="scroller w-full">
-          <div className="scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4">
+          <div
+            className={`scroller-inner animate-scroll-left flex w-max flex-nowrap gap-4 ${
+              isInView ? '' : '[animation-play-state:paused]'
+            }`}
+          >
             {[...row1, ...row1, ...row1].map((item, idx) => (
               <div
                 key={`ds1-${idx}`}
@@ -37,7 +50,11 @@ export const DataStreamSection: React.FC<Props> = ({ lang }) => {
         </div>
 
         <div className="scroller w-full">
-          <div className="scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4">
+          <div
+            className={`scroller-inner animate-scroll-right flex w-max flex-nowrap gap-4 ${
+              isInView ? '' : '[animation-play-state:paused]'
+            }`}
+          >
             {[...row2, ...row2, ...row2].map((item, idx) => (
               <div
                 key={`ds2-${idx}`}

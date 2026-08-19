@@ -104,7 +104,7 @@ export default async function RootLayout({ children, params }: Props) {
 
         <SplashLoader>
           <WaitlistModalProvider>
-            <div className="relative z-10 flex min-h-screen w-full flex-col">
+            <div className="cookie-banner-blur-target relative z-10 flex min-h-screen w-full flex-col">
               <Toolbar lang={currentLang} />
 
               <main className="w-full grow">{children}</main>
