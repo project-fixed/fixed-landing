@@ -46,9 +46,49 @@ export async function generateMetadata({
   const title = `Fixed - ${heroTranslations.title.start} ${heroTranslations.title.center} ${heroTranslations.title.end}`;
   const description = heroTranslations.description;
 
+  const keywordsEn = [
+    'sports betting',
+    'soccer',
+    'football',
+    'artificial intelligence',
+    'machine learning',
+    'predictive algorithms',
+    'project fixed',
+    'fixed software',
+    'fixed community',
+    'betting software',
+    'sports predictions',
+    'match statistics',
+    'picks',
+    'tipsters',
+    'value bets',
+    'bankroll management',
+    'sports analytics',
+  ];
+
+  const keywordsEs = [
+    'apuestas deportivas',
+    'fútbol',
+    'inteligencia artificial',
+    'machine learning',
+    'predicciones algorítmicas',
+    'project fixed',
+    'fixed software',
+    'comunidad fixed',
+    'software predictivo',
+    'pronósticos',
+    'estadísticas deportivas',
+    'picks',
+    'tipsters',
+    'value bets',
+    'gestión de bankroll',
+    'herramientas de análisis',
+  ];
+
   return {
     title,
     description,
+    keywords: isEn ? keywordsEn : keywordsEs,
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: canonicalUrl,
