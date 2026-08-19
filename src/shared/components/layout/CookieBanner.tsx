@@ -76,7 +76,7 @@ export const CookieBanner: React.FC<Props> = ({ lang }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 50, opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="bg-glass-card fixed right-6 bottom-6 left-6 z-[100] flex flex-col gap-4 rounded-xl border border-white/10 p-5 backdrop-blur-xl md:left-auto md:max-w-md"
+          className="bg-glass-card fixed bottom-0 left-0 z-[100] flex flex-col gap-4 rounded-t-2xl border border-white/10 p-5 backdrop-blur-xl sm:inset-x-6 sm:bottom-6 sm:left-auto sm:max-w-md sm:rounded-xl"
         >
           <div className="flex flex-col gap-1">
             <p className="text-body font-sans text-xs leading-relaxed">
