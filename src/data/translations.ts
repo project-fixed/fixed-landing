@@ -112,6 +112,8 @@ export const translations = {
               'Publicly validated performance. Total transparency on our simulated bankroll.',
             yieldLabel: 'Historical Yield',
             hitRateLabel: 'Hit Rate',
+            disclaimer:
+              'Simulated performance based on defined staking criteria. Historical results do not guarantee future returns.',
           },
           card4: {
             title: 'Top 5 Leagues',
@@ -186,7 +188,7 @@ export const translations = {
                 'Our algorithm retrains daily \u2014 comparing its own predictions against reality to stay sharp and adapt to how teams evolve.',
             },
             layer4: {
-              title: 'Only the Bets That Beat the Bookie',
+              title: 'Value Strategy & Stake Optimization',
               description:
                 'We filter out every pick that doesn\u2019t have a clear edge. And when we find one, we tell you exactly how much to stake \u2014 no guesswork.',
             },
@@ -306,6 +308,8 @@ export const translations = {
       footer: {
         title: 'Fixed',
         description: 'Join the community. Let the algorithm work for you.',
+        responsibleGambling:
+          'Please gamble responsibly. Fixed is a tool for statistical analysis and risk management, not a guarantee of profit. Betting involves risk of financial loss. Do not bet more than you can afford to lose.',
         link: {
           dimensions: {
             product: 'Product',
@@ -442,6 +446,8 @@ export const translations = {
               'Rendimiento validado públicamente. Transparencia total en nuestro bankroll simulado.',
             yieldLabel: 'Yield Histórico',
             hitRateLabel: 'Hit Rate',
+            disclaimer:
+              'Rendimiento simulado con base en criterios de staking definidos. Resultados históricos no garantizan resultados futuros.',
           },
           card4: {
             title: 'Top 5 Ligas',
@@ -516,7 +522,7 @@ export const translations = {
                 'Nuestro algoritmo se re-entrena a diario — comparando sus predicciones contra la realidad para mantenerse afilado y adaptarse a la evolución de los equipos.',
             },
             layer4: {
-              title: 'Solo las Apuestas Que Vencen a la Casa',
+              title: 'Estrategia de Valor y Gestión de Riesgo',
               description:
                 'Filtramos cada selección que no tenga una ventaja clara. Y cuando encontramos una, te decimos exactamente cuánto arriesgar — sin adivinanzas.',
             },
@@ -638,6 +644,8 @@ export const translations = {
         title: 'Fixed',
         description:
           'Únete a la comunidad. Deja que el algoritmo trabaje para ti.',
+        responsibleGambling:
+          'Por favor, juega de manera responsable. Fixed es una herramienta de análisis estadístico y gestión de riesgo, no una garantía de ganancias. Las apuestas implican riesgo de pérdida financiera. No apuestes más de lo que puedas permitirte perder.',
         link: {
           dimensions: {
             product: 'Producto',

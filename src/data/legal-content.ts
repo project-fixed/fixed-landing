@@ -142,66 +142,62 @@ const cookiesContent: Record<Lang, LegalDoc> = {
 const privacyContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Privacy Policy',
-    lastUpdated: 'Last Updated July 24, 2026',
+    lastUpdated: 'Last Updated August 23, 2026',
     sections: [
       {
-        title: '1. Information Collection',
+        title: '1. Information Collection & Purpose',
         paragraphs: [
-          'We collect basic personal information, such as your email address, when you register for our private beta waitlist. Additionally, we gather non-identifiable technical browsing data (such as browser language preference) and website interaction metrics to optimize user experience. No phone numbers, passwords, or financial details are requested or stored in this phase.',
+          'We collect basic personal information (such as your name and email address) and your IP address when you register for our private beta waitlist. Additionally, we gather non-identifiable technical browsing data (such as browser language preference) and website interaction metrics to optimize user experience.',
+          'Purpose: Your personal data is used solely to manage your place in the private beta waitlist, prevent duplicate or fraudulent registrations, and send you product updates or invitations to join the platform. Retention Period: We will retain your data for the duration of the Beta phase and until you decide to unsubscribe.',
         ],
       },
       {
-        title: '2. How We Use Data',
+        title: '2. International Data Transfers',
         paragraphs: [
-          'Your email is used solely to manage your place in the private beta waitlist, prevent duplicate registrations, and send you product updates, notifications, or invitations to join the platform once it is active. We do not sell, rent, or share your personal data with third-party advertisers.',
+          'To operate this beta phase, we share limited data with trusted third-party service providers. By using our site, you explicitly consent to the international transfer of your data to these providers, which operate in the United States:',
+          '- Supabase (USA): Used as our primary secure cloud database to host registration records.',
+          '- Resend (USA): Used to deliver transactional email confirmations and product updates. Each email sent contains an automatic opt-out (unsubscribe) option.',
+          '- Google Analytics (USA): Processes anonymized navigation metrics and device information to help us measure site performance. No directly identifying personal details are sent to Google LLC.',
         ],
       },
       {
-        title: '3. Data Processors (Third Parties)',
+        title: '3. Your ARCO Rights & Portability',
         paragraphs: [
-          'To run this beta phase, we share limited data with the following trusted third-party providers:',
-          '- Supabase: Used as our primary secure cloud database to host registration records.',
-          '- Resend: Used to deliver transactional email confirmations and product updates. Each email sent contains an automatic opt-out (unsubscribe) option.',
-          '- Google Analytics: Processes anonymized navigation metrics and device information to help us measure site performance. No directly identifying personal details are sent to Google LLC.',
-        ],
-      },
-      {
-        title: '4. Your Rights',
-        paragraphs: [
-          'You have the right to request the deletion of your email address from our waitlist at any time by contacting our support channel at support@fixed.com.',
+          'You have the right to Exercise your rights of Access, Rectification, Cancellation, Opposition, and Portability regarding your personal data. The timeframes for addressing your requests are:',
+          '- Access: 20 business days.',
+          '- Rectification, Cancellation, Opposition, Portability, and Revocation of consent: 10 business days.',
+          'To exercise these rights, please contact our support channel at support@fixed.software.',
         ],
       },
     ],
   },
   es: {
     title: 'Política de Privacidad',
-    lastUpdated: 'Última actualización: 24 de Julio de 2026',
+    lastUpdated: 'Última actualización: 23 de Agosto de 2026',
     sections: [
       {
-        title: '1. Recopilación de Información',
+        title: '1. Recopilación de Información y Finalidad (Banco de Datos)',
         paragraphs: [
-          'Recopilamos información personal básica como su correo electrónico al registrarse en la lista de espera de nuestra beta privada. Además, recopilamos datos técnicos de navegación no identificables (como el idioma de preferencia de su navegador) y métricas de interacción con el sitio para optimizar la experiencia de usuario. No solicitamos ni almacenamos contraseñas, números telefónicos ni información financiera en esta fase.',
+          'Recopilamos información personal básica (como su nombre y correo electrónico) y su dirección IP al registrarse en la lista de espera de nuestra beta privada. Además, recopilamos datos técnicos de navegación no identificables (como el idioma de su navegador) y métricas de interacción con el sitio para optimizar la experiencia.',
+          'Finalidad: Sus datos se utilizan exclusivamente para gestionar su lugar en la lista de espera de la Beta privada, evitar registros fraudulentos o duplicados, y enviarle actualizaciones o invitaciones a la plataforma. Plazo de conservación: Mantendremos sus datos durante el tiempo que dure la fase Beta o hasta que usted decida revocar su consentimiento (darse de baja).',
         ],
       },
       {
-        title: '2. Uso de los Datos',
+        title: '2. Transferencia Internacional de Datos',
         paragraphs: [
-          'Su dirección de correo electrónico se utiliza exclusivamente para gestionar su lugar en la lista de espera de la Beta privada, evitar registros duplicados y enviarle actualizaciones, notificaciones o invitaciones para ingresar a la plataforma. No vendemos, alquilamos ni compartimos sus datos personales con anunciantes externos.',
+          'Para el funcionamiento de esta fase Beta, compartimos información con proveedores externos. Al registrarse, usted otorga su consentimiento explícito para la transferencia internacional de sus datos a los siguientes proveedores, ubicados en Estados Unidos:',
+          '- Supabase (EE.UU.): Utilizado como base de datos segura en la nube para registrar usuarios.',
+          '- Resend (EE.UU.): Plataforma de distribución para enviarle confirmaciones y novedades.',
+          '- Google Analytics (EE.UU.): Proveedor analítico para evaluar patrones de tráfico y rendimiento de forma agregada.',
         ],
       },
       {
-        title: '3. Proveedores de Servicios (Terceros)',
+        title: '3. Derechos ARCO, Portabilidad y Plazos',
         paragraphs: [
-          'Para el correcto funcionamiento de esta fase Beta, compartimos información limitada con los siguientes proveedores de servicios externos de confianza:',
-          '- Supabase: Utilizado como nuestra base de datos segura en la nube para registrar los correos electrónicos.',
-          '- Resend: Utilizado como nuestra plataforma de distribución para enviarle confirmaciones de registro y novedades. Cada correo incluye un enlace de baja automática.',
-          '- Google Analytics: Proveedor analítico de Google LLC utilizado para evaluar patrones de tráfico y rendimiento de forma agregada. Las direcciones IP se anonimizan antes de su procesamiento.',
-        ],
-      },
-      {
-        title: '4. Sus Derechos',
-        paragraphs: [
-          'Usted tiene derecho a solicitar la eliminación de su correo electrónico de nuestra lista de espera en cualquier momento enviando una solicitud directa a nuestro soporte en support@fixed.com.',
+          'Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación, Oposición y Portabilidad sobre sus datos personales. Los plazos de respuesta vigentes son los siguientes:',
+          '- Acceso: 20 días hábiles.',
+          '- Rectificación, Cancelación, Oposición, Portabilidad y Revocación de consentimiento: 10 días hábiles.',
+          'Para ejercer cualquiera de estos derechos, envíe una solicitud directa a nuestro canal oficial: support@fixed.software.',
         ],
       },
     ],

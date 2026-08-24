@@ -38,13 +38,9 @@ export const AiLayersSection: React.FC<Props> = ({ lang }) => {
   return (
     <section
       id="layers"
-      className="page-section relative overflow-hidden py-24 md:py-32"
-      style={{
-        background:
-          'radial-gradient(circle at 20% 50%, rgba(62, 93, 108, 0.3), transparent 35%), radial-gradient(circle at 80% 30%, var(--color-primary-darkest) -30%, var(--background) 45%)',
-      }}
+      className="page-section bg-gradient-ai-layers relative overflow-hidden py-24 md:py-32"
     >
-      <GridBackground glowPosition="end" />
+      <GridBackground />
       <div className="relative z-10 flex w-full flex-col gap-12 md:gap-16">
         <div className="relative z-10 w-full">
           <div className="flex flex-col items-end justify-between gap-6 lg:flex-row">

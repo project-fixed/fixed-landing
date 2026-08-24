@@ -32,8 +32,8 @@ export const Footer: React.FC<Props> = ({ lang }) => {
   /** CTA copy — different from hero to avoid repetition */
   const ctaHeadline =
     lang === 'es'
-      ? 'Decisiones respaldadas por datos, no por instinto.'
-      : 'Decisions backed by data, not instinct.';
+      ? 'Deja de apostar por instinto, empieza a operar con criterio.'
+      : 'Stop betting on instinct, start operating with discipline.';
   const ctaSubtext =
     lang === 'es'
       ? 'Únete a la lista de espera y empieza a decidir con inteligencia.'
@@ -137,6 +137,11 @@ export const Footer: React.FC<Props> = ({ lang }) => {
 
           {/* Legal bar + Back to Top */}
           <div className="border-t border-white/[0.06] pt-6">
+            <div className="mb-4 max-w-4xl">
+              <p className="text-[10px] leading-relaxed text-white/30">
+                {t.landing.footer.responsibleGambling}
+              </p>
+            </div>
             <div className="text-faint flex flex-wrap items-center justify-between gap-4 text-sm">
               <p className="text-muted">
                 © {new Date().getFullYear()} Fixed. All rights reserved.
