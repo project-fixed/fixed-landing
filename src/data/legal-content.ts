@@ -23,7 +23,7 @@ type LegalDoc = {
 const cookiesContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Cookies Policy',
-    lastUpdated: 'Last Updated July 24, 2026',
+    lastUpdated: 'Last Updated August 23, 2026',
     sections: [
       {
         title: '1. What are Cookies?',
@@ -42,7 +42,7 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         isList: true,
         items: [
           {
-            bold: 'Site Language (First-party / Essential):',
+            bold: 'Site Language (First-party / Preference):',
             text: 'Cookie Name: "language". Used to save your locale selection (en/es). Provider: Fixed. Duration: 1 year. Purpose: Keeps the landing page displayed in your selected language.',
           },
           {
@@ -56,7 +56,13 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         ],
       },
       {
-        title: '4. Managing Cookies via Browser Settings',
+        title: '4. Other Technologies: Cloudflare Turnstile',
+        paragraphs: [
+          'In addition to the cookies described above, we use Cloudflare Turnstile as a security technology to distinguish human visitors from automated traffic (bots) and protect the site against abuse. Unlike traditional cookies, Turnstile does not store a persistent cookie or build a visitor profile: it processes transient technical browser signals (such as IP address, TLS fingerprint, and User-Agent) exclusively for security purposes, and these signals are discarded once verification is complete. Provider: Cloudflare Inc.',
+        ],
+      },
+      {
+        title: '5. Managing Cookies via Browser Settings',
         isList: true,
         items: [
           {
@@ -81,7 +87,7 @@ const cookiesContent: Record<Lang, LegalDoc> = {
   },
   es: {
     title: 'Política de Cookies',
-    lastUpdated: 'Última actualización: 24 de Julio de 2026',
+    lastUpdated: 'Última actualización: 23 de Agosto de 2026',
     sections: [
       {
         title: '1. ¿Qué son las Cookies?',
@@ -100,7 +106,7 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         isList: true,
         items: [
           {
-            bold: 'Idioma del Sitio (Propia / Esencial):',
+            bold: 'Idioma del Sitio (Propia / Preferencia):',
             text: 'Nombre de la cookie: "language". Proveedor: Fixed. Duración: 1 año. Finalidad: Recuerda la traducción seleccionada (es/en) para cargar automáticamente la web en su idioma predeterminado.',
           },
           {
@@ -114,7 +120,13 @@ const cookiesContent: Record<Lang, LegalDoc> = {
         ],
       },
       {
-        title: '4. Controlar las Cookies desde su Navegador',
+        title: '4. Otras Tecnologías: Cloudflare Turnstile',
+        paragraphs: [
+          'Además de las cookies descritas arriba, utilizamos Cloudflare Turnstile como tecnología de seguridad para distinguir visitantes humanos de tráfico automatizado (bots) y proteger el sitio contra abuso. A diferencia de las cookies tradicionales, Turnstile no almacena una cookie persistente ni construye un perfil del visitante: procesa señales técnicas transitorias del navegador (como dirección IP, huella TLS y User-Agent) exclusivamente con fines de seguridad, y dichas señales son descartadas una vez completada la verificación. Proveedor: Cloudflare Inc.',
+        ],
+      },
+      {
+        title: '5. Controlar las Cookies desde su Navegador',
         isList: true,
         items: [
           {
@@ -148,20 +160,30 @@ const privacyContent: Record<Lang, LegalDoc> = {
         title: '1. Information Collection & Purpose',
         paragraphs: [
           'We collect basic personal information (such as your name and email address) and your IP address when you register for our private beta waitlist. Additionally, we gather non-identifiable technical browsing data (such as browser language preference) and website interaction metrics to optimize user experience.',
-          'Purpose: Your personal data is used solely to manage your place in the private beta waitlist, prevent duplicate or fraudulent registrations, and send you product updates or invitations to join the platform. Retention Period: We will retain your data for the duration of the Beta phase and until you decide to unsubscribe.',
+          'Purpose: Your personal data is used solely to manage your place in the private beta waitlist, prevent duplicate or fraudulent registrations, and send you product updates or invitations to join the platform.',
+          'Legal basis: The processing of your data is based on your explicit consent, granted when registering for the waitlist.',
+          'Retention period: We will retain your data for the duration of the Beta phase and until you decide to unsubscribe.',
         ],
       },
       {
-        title: '2. International Data Transfers',
+        title: '2. Security Measures',
+        paragraphs: [
+          'Fixed implements reasonable technical, organizational, and legal measures to protect your personal data against unauthorized access, loss, alteration, or improper disclosure, including access controls to our databases and encryption of information in transit. In the event of any security incident affecting your personal data, Fixed will notify the National Authority for Personal Data Protection within the timeframes established by current regulations.',
+        ],
+      },
+      {
+        title: '3. International Data Transfers',
         paragraphs: [
           'To operate this beta phase, we share limited data with trusted third-party service providers. By using our site, you explicitly consent to the international transfer of your data to these providers, which operate in the United States:',
           '- Supabase (USA): Used as our primary secure cloud database to host registration records.',
           '- Resend (USA): Used to deliver transactional email confirmations and product updates. Each email sent contains an automatic opt-out (unsubscribe) option.',
           '- Google Analytics (USA): Processes anonymized navigation metrics and device information to help us measure site performance. No directly identifying personal details are sent to Google LLC.',
+          '- Vercel Inc. (USA): Used for website hosting and aggregate, anonymous traffic measurement (Vercel Web Analytics).',
+          '- Cloudflare Inc. (USA): Used via its Turnstile service to distinguish human traffic from automated traffic (bots) and protect the site against abuse. Turnstile processes technical browser signals (such as IP address and browser characteristics) solely for security purposes; Cloudflare declares that it does not use this information to identify or profile individuals.',
         ],
       },
       {
-        title: '3. Your ARCO Rights & Portability',
+        title: '4. Your ARCO Rights, Portability & Timeframes',
         paragraphs: [
           'You have the right to Exercise your rights of Access, Rectification, Cancellation, Opposition, and Portability regarding your personal data. The timeframes for addressing your requests are:',
           '- Access: 20 business days.',
@@ -179,20 +201,30 @@ const privacyContent: Record<Lang, LegalDoc> = {
         title: '1. Recopilación de Información y Finalidad (Banco de Datos)',
         paragraphs: [
           'Recopilamos información personal básica (como su nombre y correo electrónico) y su dirección IP al registrarse en la lista de espera de nuestra beta privada. Además, recopilamos datos técnicos de navegación no identificables (como el idioma de su navegador) y métricas de interacción con el sitio para optimizar la experiencia.',
-          'Finalidad: Sus datos se utilizan exclusivamente para gestionar su lugar en la lista de espera de la Beta privada, evitar registros fraudulentos o duplicados, y enviarle actualizaciones o invitaciones a la plataforma. Plazo de conservación: Mantendremos sus datos durante el tiempo que dure la fase Beta o hasta que usted decida revocar su consentimiento (darse de baja).',
+          'Finalidad: Sus datos se utilizan exclusivamente para gestionar su lugar en la lista de espera de la Beta privada, evitar registros fraudulentos o duplicados, y enviarle actualizaciones o invitaciones a la plataforma.',
+          'Base legal: El tratamiento de sus datos se realiza con base en su consentimiento explícito, otorgado al registrarse en la lista de espera.',
+          'Plazo de conservación: Mantendremos sus datos durante el tiempo que dure la fase Beta o hasta que usted decida revocar su consentimiento (darse de baja).',
         ],
       },
       {
-        title: '2. Transferencia Internacional de Datos',
+        title: '2. Medidas de Seguridad',
+        paragraphs: [
+          'Fixed implementa medidas técnicas, organizativas y legales razonables para proteger sus datos personales contra acceso no autorizado, pérdida, alteración o divulgación indebida, incluyendo controles de acceso a nuestras bases de datos y cifrado de información en tránsito. Ante cualquier incidente de seguridad que afecte sus datos personales, Fixed notificará a la Autoridad Nacional de Protección de Datos Personales dentro de los plazos establecidos por la normativa vigente.',
+        ],
+      },
+      {
+        title: '3. Transferencia Internacional de Datos',
         paragraphs: [
           'Para el funcionamiento de esta fase Beta, compartimos información con proveedores externos. Al registrarse, usted otorga su consentimiento explícito para la transferencia internacional de sus datos a los siguientes proveedores, ubicados en Estados Unidos:',
           '- Supabase (EE.UU.): Utilizado como base de datos segura en la nube para registrar usuarios.',
           '- Resend (EE.UU.): Plataforma de distribución para enviarle confirmaciones y novedades.',
           '- Google Analytics (EE.UU.): Proveedor analítico para evaluar patrones de tráfico y rendimiento de forma agregada.',
+          '- Vercel Inc. (EE.UU.): Utilizado para el alojamiento del sitio web y la medición agregada y anónima de tráfico (Vercel Web Analytics).',
+          '- Cloudflare Inc. (EE.UU.): Utilizado a través de su servicio Turnstile para distinguir tráfico humano de tráfico automatizado (bots) y proteger el sitio contra abuso. Turnstile procesa señales técnicas del navegador (como dirección IP y características del navegador) con el único fin de seguridad; Cloudflare declara que no utiliza esta información para identificar ni perfilar personas.',
         ],
       },
       {
-        title: '3. Derechos ARCO, Portabilidad y Plazos',
+        title: '4. Derechos ARCO, Portabilidad y Plazos',
         paragraphs: [
           'Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación, Oposición y Portabilidad sobre sus datos personales. Los plazos de respuesta vigentes son los siguientes:',
           '- Acceso: 20 días hábiles.',
@@ -207,7 +239,7 @@ const privacyContent: Record<Lang, LegalDoc> = {
 const termsContent: Record<Lang, LegalDoc> = {
   en: {
     title: 'Terms of Service',
-    lastUpdated: 'Last Updated July 24, 2026',
+    lastUpdated: 'Last Updated August 23, 2026',
     sections: [
       {
         title: '1. Acceptance of Terms',
@@ -235,16 +267,22 @@ const termsContent: Record<Lang, LegalDoc> = {
         ],
       },
       {
-        title: '5. Governing Law',
+        title: '5. Modifications to the Terms',
         paragraphs: [
-          'These terms of use are governed by the laws of the Republic of Peru. Any legal inquiries or disputes shall be submitted to the competent courts of Lima, Peru.',
+          'Fixed may update these Terms of Service at any time to reflect changes in the product, applicable regulations, or our practices. Any modifications will be posted on this page along with the last updated date. Material changes will also be communicated via email to users registered on the waitlist at least 15 days prior to their effective date. Continued use of the site after the publication of changes constitutes acceptance of the new terms.',
+        ],
+      },
+      {
+        title: '6. Governing Law',
+        paragraphs: [
+          'These terms are governed by the laws of the Republic of Peru. Any legal inquiries or disputes shall be submitted to the competent courts of Lima, Peru.',
         ],
       },
     ],
   },
   es: {
     title: 'Términos de Servicio',
-    lastUpdated: 'Última actualización: 24 de Julio de 2026',
+    lastUpdated: 'Última actualización: 23 de Agosto de 2026',
     sections: [
       {
         title: '1. Aceptación de los Términos',
@@ -272,9 +310,15 @@ const termsContent: Record<Lang, LegalDoc> = {
         ],
       },
       {
-        title: '5. Legislación Aplicable',
+        title: '5. Modificaciones a los Términos',
         paragraphs: [
-          'Estos términos se rigen preliminarmente por las leyes de la República del Perú. Cualquier consulta legal o disputa se someterá a los tribunales competentes de Lima, Perú.',
+          'Fixed podrá actualizar estos Términos de Servicio en cualquier momento para reflejar cambios en el producto, la normativa aplicable o nuestras prácticas. Toda modificación será publicada en esta misma página junto con la fecha de última actualización. Los cambios materiales serán además comunicados por correo electrónico a los usuarios registrados en la lista de espera con al menos 15 días de anticipación a su entrada en vigencia. El uso continuado del sitio después de la publicación de cambios constituye la aceptación de los nuevos términos.',
+        ],
+      },
+      {
+        title: '6. Legislación Aplicable',
+        paragraphs: [
+          'Estos términos se rigen por las leyes de la República del Perú. Cualquier consulta legal o disputa se someterá a los tribunales competentes de Lima, Perú.',
         ],
       },
     ],
