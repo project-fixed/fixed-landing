@@ -282,77 +282,45 @@ button {
 
 /* Responsive Gradient Backgrounds for Landing Sections */
 @utility bg-gradient-bento {
-  background:
-    radial-gradient(
-      circle 350px at 50% 20%,
-      color-mix(in srgb, var(--color-primary) 25%, transparent),
-      transparent
-    ),
-    radial-gradient(
-      ellipse at 50% 50%,
-      color-mix(in srgb, var(--color-primary) 12%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
-      circle 350px at 50% 15%,
-      var(--color-primary-darkest) -30%,
-      var(--background)
-    );
+  background: radial-gradient(
+    circle 350px at 80% 5%,
+    color-mix(in srgb, var(--color-primary) 30%, transparent),
+    transparent
+  );
 
   @media (width >= 1024px) {
-    background:
-      radial-gradient(
-        circle 800px at 50% 25%,
-        color-mix(in srgb, var(--color-primary) 25%, transparent),
-        transparent
-      ),
-      radial-gradient(
-        ellipse at 50% 50%,
-        color-mix(in srgb, var(--color-primary) 12%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        circle 800px at 50% 20%,
-        var(--color-primary-darkest) -30%,
-        var(--background) 45%
-      );
+    background: radial-gradient(
+      circle 35vw at 60% 25%,
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
+      transparent
+    );
   }
 }
 
 @utility bg-gradient-interactive {
   background:
     radial-gradient(
-      circle 350px at 50% 25%,
-      color-mix(in srgb, var(--color-primary) 25%, transparent),
+      circle 350px at 80% 25%,
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      ellipse at 50% 50%,
-      color-mix(in srgb, var(--color-primary) 12%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
-      circle 350px at 80% 80%,
-      var(--color-primary-darkest) -30%,
+      circle 350px at 25% 80%,
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
       var(--background)
     );
 
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 650px at 0% 70%,
+        circle 35vw at 0% 70%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        ellipse at 75% 50%,
-        color-mix(in srgb, var(--color-primary) 12%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        circle 650px at 80% 50%,
-        var(--color-primary-darkest) -30%,
-        var(--background) 45%
+        circle 35vw at 80% 50%,
+        color-mix(in srgb, var(--color-primary) 30%, transparent),
+        transparent
       );
   }
 }
@@ -360,37 +328,27 @@ button {
 @utility bg-gradient-ai-layers {
   background:
     radial-gradient(
-      circle 350px at 50% 30%,
-      color-mix(in srgb, var(--color-primary) 25%, transparent),
+      circle 350px at 80% 10%,
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      ellipse at 50% 50%,
-      color-mix(in srgb, var(--color-primary) 12%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
       circle 350px at 80% 80%,
-      var(--color-primary-darkest) -30%,
-      var(--background)
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
+      transparent
     );
 
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 600px at 20% 50%,
+        circle 30vw at 20% 50%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        ellipse at 75% 50%,
-        color-mix(in srgb, var(--color-primary) 12%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        circle 800px at 80% 30%,
-        var(--color-primary-darkest) -30%,
-        var(--background) 45%
+        circle 30vw at 80% 30%,
+        color-mix(in srgb, var(--color-primary) 30%, transparent),
+        transparent
       );
   }
 }
@@ -399,35 +357,25 @@ button {
   background:
     radial-gradient(
       circle 320px at 50% 25%,
-      color-mix(in srgb, var(--color-primary) 25%, transparent),
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      ellipse at 50% 50%,
-      color-mix(in srgb, var(--color-primary) 12%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
-      circle 350px at 100% 70%,
-      var(--color-primary-darkest) -30%,
+      circle 350px at 50% 50%,
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     );
 
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 600px at -10% 70%,
+        circle 25vw at -10% 70%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        ellipse at 25% 50%,
-        color-mix(in srgb, var(--color-primary) 12%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        circle 600px at 100% 30%,
-        var(--color-primary-darkest) -30%,
+        circle 25vw at 100% 30%,
+        color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );
   }
