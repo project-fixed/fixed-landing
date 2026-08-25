@@ -40,7 +40,7 @@ export const translations = {
             'Illustrative data \u2014 simulated performance based on predefined staking criteria',
           key: {
             point1: {
-              title: '15M+',
+              title: '+10K',
               description: 'daily processed data points',
             },
           },
@@ -362,7 +362,7 @@ export const translations = {
             'Datos ilustrativos — rendimiento simulado con criterios de staking definidos',
           key: {
             point1: {
-              title: '15M+',
+              title: '+10K',
               description: 'datos procesados diarios',
             },
           },

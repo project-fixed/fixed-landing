@@ -24,7 +24,7 @@ export default async function HomePage({ params }: PageProps) {
   const appAuthUrl = 'https://app.fixed.com/auth';
 
   return (
-    <div className="relative w-full overflow-x-hidden">
+    <div className="relative w-full">
       {/* Hero Section Fija (Sticky Background Layer alineada y centrada entre Toolbar y Cortina) */}
       <div className="sticky top-0 z-0 flex min-h-[76dvh] w-full flex-col justify-between pt-(--header-height) md:pt-20">
         <HeroSection currentLang={currentLang} t={t} />

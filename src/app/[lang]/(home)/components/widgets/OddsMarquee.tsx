@@ -232,7 +232,7 @@ export const OddsMarquee: React.FC<Props> = ({ lang }) => {
       ref={containerRef}
       className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/10 bg-black py-6 md:py-10"
     >
-      <p className="text-center font-mono text-[10px] tracking-[0.2em] text-white/35 uppercase">
+      <p className="text-center font-mono text-[8px] tracking-[0.2em] text-white/35 uppercase sm:text-[10px]">
         {oddsDisclaimer}
       </p>
       <ScrollReveal

@@ -63,7 +63,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
               </span>
             </h1>
 
-            <p className="max-w-[440px] text-[13px] leading-relaxed text-white/70 sm:text-sm lg:text-base">
+            <p className="text-muted max-w-[440px] text-[13px] leading-relaxed sm:text-sm lg:text-base">
               {t.landing.home.hero.description}
             </p>
           </motion.div>

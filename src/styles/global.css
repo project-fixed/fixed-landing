@@ -109,7 +109,7 @@
 :root {
   color-scheme: dark;
   --header-height: 4.5rem;
-  --background: #0b1013;
+  --background: oklch(0.09 0 0);
   --foreground: #f8fafc;
   --card: #152027;
   --card-foreground: #f8fafc;
@@ -146,7 +146,7 @@ body {
   background: radial-gradient(
     circle at 50% 20%,
     var(--color-surface-card) -50%,
-    var(--color-canvas) 45%
+    var(--color-background) 45%
   );
   color: #e4e4e7;
   margin: 0;
@@ -287,12 +287,12 @@ button {
 @utility bg-gradient-interactive {
   background:
     radial-gradient(
-      circle 250px at 80% 25%,
+      circle 350px at 80% 25%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      circle 250px at 25% 80%,
+      circle 350px at 25% 80%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     );
@@ -300,12 +300,12 @@ button {
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 25vw at 0% 70%,
+        circle 35vw at 0% 70%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        circle 25vw at 80% 50%,
+        circle 35vw at 80% 50%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );
@@ -315,12 +315,12 @@ button {
 @utility bg-gradient-ai-layers {
   background:
     radial-gradient(
-      circle 250px at 80% 10%,
+      circle 350px at 80% 10%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      circle 250px at 80% 80%,
+      circle 350px at 80% 80%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     );
@@ -328,12 +328,12 @@ button {
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 20vw at 20% 50%,
+        circle 35vw at 20% 50%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        circle 20vw at 80% 30%,
+        circle 35vw at 80% 30%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );
@@ -343,12 +343,12 @@ button {
 @utility bg-gradient-about {
   background:
     radial-gradient(
-      circle 250px at 50% 25%,
+      circle 350px at 50% 25%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      circle 250px at 50% 50%,
+      circle 350px at 50% 50%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     );
@@ -356,12 +356,12 @@ button {
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 20vw at -10% 70%,
+        circle 35vw at -10% 70%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        circle 20vw at 100% 30%,
+        circle 35vw at 100% 30%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );
