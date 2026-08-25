@@ -23,7 +23,7 @@ export const BrandsMarquee: React.FC = () => {
     <section
       ref={containerRef}
       id="brands"
-      className="page-section flex-col justify-center border-y border-white/10 bg-black/20 py-10"
+      className="page-section flex-col justify-center border-y border-white/10 bg-black/20 py-4"
     >
       <ScrollReveal direction="up" delay={0.1}>
         <div
@@ -42,7 +42,7 @@ export const BrandsMarquee: React.FC = () => {
                 {leagues.map((league, idx) => (
                   <span
                     key={`league-${setIdx}-${idx}`}
-                    className="font-mono text-2xl font-bold tracking-wider text-white/30 uppercase transition-colors duration-300 hover:text-white/80"
+                    className="text-md font-mono font-bold tracking-wider text-white/30 uppercase transition-colors duration-300 hover:text-white/80 lg:text-xl"
                     aria-hidden={setIdx !== 0}
                   >
                     {league}

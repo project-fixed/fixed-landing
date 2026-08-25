@@ -9,40 +9,28 @@
   --color-primary-light: #9ec1d4;
   --color-primary: #3e5d6c;
   --color-primary-dark: #2c4350;
-  --color-primary-darker: #1e2f38;
-  --color-primary-darkest: #152027;
 
-  /* Sparkle Colors */
-  --color-sparkle-1: #e2f6ff;
-  --color-sparkle-2: #bfe8ff;
-  --color-sparkle-3: #9bd9ff;
-  --color-sparkle-4: #78caff;
-  --color-sparkle-5: #00e6f6;
+  /* Secondary Accent (Indigo) */
+  --color-secondary: #6366f1;
 
-  /* Surface Tokens */
-  --color-canvas: oklch(0.09 0 0);
-  --color-surface-card: oklch(0.18 0 0);
-  --color-surface-deep: oklch(0.14 0 0);
+  /* Surface & Canvas (Tinted Dark) */
+  --color-canvas: #0b1013;
+  --color-surface-deep: #10171c;
+  --color-surface-card: #152027;
+
+  /* Typography Tokens */
+  --color-heading: #f8fafc;
+  --color-body: #cbd5e1;
+  --color-muted: #94a3b8;
+  --color-faint: #64748b;
 
   /* Border Tokens */
-  --color-border-subtle: oklch(1 0 0 / 8%);
-  --color-border-medium: oklch(1 0 0 / 15%);
-
-  /* Typography Tokens (generates text-heading, text-body, text-muted, text-faint) */
-  --color-heading: oklch(0.985 0 0);
-  --color-body: oklch(0.82 0 0);
-  --color-muted: oklch(0.72 0 0);
-  --color-faint: oklch(0.58 0 0);
+  --color-border-subtle: rgba(248, 250, 252, 0.08);
+  --color-border-medium: rgba(248, 250, 252, 0.15);
 
   /* Status Tokens */
   --color-status-success: #34d399;
   --color-status-success-ping: #6ee7b7;
-
-  /* Footer Gradient Colors */
-  --color-footer-blob-1: #00e6f6;
-  --color-footer-blob-2: #3e5d6c;
-  --color-footer-blob-3: #6366f1;
-  --color-footer-blob-4: #3b82f6;
 
   /* shadcn mappings for Tailwind v4 */
   --color-background: var(--background);
@@ -52,7 +40,6 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -118,27 +105,27 @@
   @apply font-mono text-[clamp(2rem,5vw,3.5rem)] leading-tight font-extrabold tracking-tight text-white uppercase;
 }
 
-/* Default Dark Theme Settings for Shadcn and Tailwind v4 */
+/* Default Dark Theme Settings for Shadcn and Tailwind v4 0b1013 oklch(0.09 0 0) */
 :root {
   color-scheme: dark;
   --header-height: 4.5rem;
-  --background: oklch(0.09 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --background: #0b1013;
+  --foreground: #f8fafc;
+  --card: #152027;
+  --card-foreground: #f8fafc;
+  --popover: #152027;
+  --popover-foreground: #f8fafc;
   --primary: #3e5d6c;
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.15 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.15 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.15 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
+  --primary-foreground: #f8fafc;
+  --secondary: #10171c;
+  --secondary-foreground: #f8fafc;
+  --muted: #10171c;
+  --muted-foreground: #cbd5e1;
+  --accent: #10171c;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --border: rgba(248, 250, 252, 0.08);
+  --input: rgba(248, 250, 252, 0.1);
   --ring: rgba(62, 93, 108, 0.2);
   --radius: 0.75rem;
 }
@@ -158,8 +145,8 @@ body {
   font-family: var(--font-sans);
   background: radial-gradient(
     circle at 50% 20%,
-    var(--color-primary-darkest) -50%,
-    var(--background) 45%
+    var(--color-surface-card) -50%,
+    var(--color-canvas) 45%
   );
   color: #e4e4e7;
   margin: 0;
@@ -224,7 +211,7 @@ button {
 /* Typography Utilities */
 @utility section-badge {
   font-family: var(--font-mono);
-  color: var(--color-text-faint);
+  color: var(--color-faint);
   text-transform: uppercase;
   letter-spacing: 0.15em;
 }
@@ -300,25 +287,25 @@ button {
 @utility bg-gradient-interactive {
   background:
     radial-gradient(
-      circle 350px at 80% 25%,
+      circle 250px at 80% 25%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      circle 350px at 25% 80%,
+      circle 250px at 25% 80%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
-      var(--background)
+      transparent
     );
 
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 35vw at 0% 70%,
+        circle 25vw at 0% 70%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        circle 35vw at 80% 50%,
+        circle 25vw at 80% 50%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );
@@ -328,12 +315,12 @@ button {
 @utility bg-gradient-ai-layers {
   background:
     radial-gradient(
-      circle 350px at 80% 10%,
+      circle 250px at 80% 10%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      circle 350px at 80% 80%,
+      circle 250px at 80% 80%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     );
@@ -341,12 +328,12 @@ button {
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 30vw at 20% 50%,
+        circle 20vw at 20% 50%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        circle 30vw at 80% 30%,
+        circle 20vw at 80% 30%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );
@@ -356,12 +343,12 @@ button {
 @utility bg-gradient-about {
   background:
     radial-gradient(
-      circle 320px at 50% 25%,
+      circle 250px at 50% 25%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     ),
     radial-gradient(
-      circle 350px at 50% 50%,
+      circle 250px at 50% 50%,
       color-mix(in srgb, var(--color-primary) 30%, transparent),
       transparent
     );
@@ -369,12 +356,12 @@ button {
   @media (width >= 1024px) {
     background:
       radial-gradient(
-        circle 25vw at -10% 70%,
+        circle 20vw at -10% 70%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       ),
       radial-gradient(
-        circle 25vw at 100% 30%,
+        circle 20vw at 100% 30%,
         color-mix(in srgb, var(--color-primary) 30%, transparent),
         transparent
       );

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { OddsCard } from '@/app/[lang]/(home)/components/widgets/OddsCard';
-import { type Lang } from '@/data/translations';
+import { translations, type Lang } from '@/data/translations';
 import { useInView } from 'framer-motion';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 const oddsData1 = [
@@ -225,12 +225,16 @@ interface Props {
 export const OddsMarquee: React.FC<Props> = ({ lang }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { margin: '200px 0px' });
+  const { oddsDisclaimer } = translations[lang].landing.home.hero;
 
   return (
     <div
       ref={containerRef}
-      className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/5 bg-black py-6 md:py-10"
+      className="mask-marquee flex w-full flex-col gap-4 overflow-hidden border-y border-white/10 bg-black py-6 md:py-10"
     >
+      <p className="text-center font-mono text-[10px] tracking-[0.2em] text-white/35 uppercase">
+        {oddsDisclaimer}
+      </p>
       <ScrollReveal
         direction="up"
         delay={0.2}

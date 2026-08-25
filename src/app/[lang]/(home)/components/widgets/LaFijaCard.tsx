@@ -60,7 +60,7 @@ export const LaFijaCard: React.FC<LaFijaCardProps> = ({
         <span className="text-[10px] font-semibold tracking-wider text-white/40 uppercase">
           {oddsLabel}
         </span>
-        <span className="font-mono text-base font-bold text-white">{odds}</span>
+        <span className="font-mono text-sm font-bold text-white">{odds}</span>
       </div>
     </div>
   );

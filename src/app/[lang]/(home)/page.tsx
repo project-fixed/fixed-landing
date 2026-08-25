@@ -34,7 +34,6 @@ export default async function HomePage({ params }: PageProps) {
       {/* Capa Cortina (Subes por encima de Hero al hacer scroll) */}
       <div className="bg-background relative z-10 w-full border-t border-white/10 shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
         <OddsMarquee lang={currentLang} />
-
         <FeaturesBentoSection t={t} lang={currentLang} />
         <InteractiveFeaturesSection lang={currentLang} />
         <DataStreamSection lang={currentLang} />

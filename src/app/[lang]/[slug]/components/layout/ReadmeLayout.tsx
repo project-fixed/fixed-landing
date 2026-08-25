@@ -67,7 +67,7 @@ export function ReadmeLayout({
       className="page-section flex w-full flex-col items-center justify-center px-4 pt-28 pb-16 sm:px-6 lg:px-8"
       style={{
         background:
-          'radial-gradient(circle at 0% 50%, rgba(62, 93, 108, 0.3), transparent 35%), radial-gradient(circle at 100% 50%, var(--color-primary-darkest) -30%, var(--background) 45%)',
+          'radial-gradient(circle at 0% 50%, rgba(62, 93, 108, 0.3), transparent 35%), radial-gradient(circle at 100% 50%, var(--color-surface-card) -30%, var(--background) 45%)',
       }}
     >
       <ScrollReveal

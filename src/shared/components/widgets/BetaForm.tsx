@@ -339,7 +339,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({
       >
         <form
           onSubmit={handleSubmit}
-          className="focus-within:border-primary/50 focus-within:shadow-primary/20 bg-surface-deep/80 relative flex w-full items-center gap-2 rounded-full border border-white/10 p-2 pl-4 shadow-2xl backdrop-blur-md transition-all duration-300 focus-within:scale-[1.02] hover:scale-[1.02] hover:border-white/20 active:scale-[0.99]"
+          className="focus-within:border-primary/50 focus-within:shadow-primary/20 bg-surface-deep/80 hover:border-primary-dark/60 relative flex w-full items-center gap-2 rounded-full border border-white/10 p-2 pl-4 shadow-2xl backdrop-blur-md transition-all duration-300 focus-within:scale-[1.02] hover:scale-[1.02] active:scale-[0.99]"
         >
           <input
             id={idSuffix ? `beta-email-input-${idSuffix}` : undefined}
@@ -355,7 +355,7 @@ export const BetaForm: React.FC<BetaFormProps> = ({
             autoFocus={autoFocus}
             disabled={status === 'loading'}
             placeholder={t.landing.home.hero.betaPlaceholder}
-            className="placeholder:text-faint min-w-0 flex-1 truncate bg-transparent py-2 pr-2 font-mono text-xs text-white outline-none disabled:opacity-50"
+            className="min-w-0 flex-1 truncate bg-transparent py-2 pr-2 font-mono text-xs text-white outline-none placeholder:text-white/30 disabled:opacity-50"
             required
           />
           <button

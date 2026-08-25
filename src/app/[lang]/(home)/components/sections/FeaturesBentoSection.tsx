@@ -144,7 +144,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
 
               {/* Graphic: Stake Wireframe */}
               <div className="pointer-events-none relative mt-6 flex h-40 w-full translate-y-4 flex-col justify-between overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)] p-4 transition-transform duration-500 group-hover:translate-y-2">
-                <div className="from-primary-light/30 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="from-primary-light/20 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="z-10 flex flex-col gap-2">
                   <div className="h-2 w-12 rounded-full bg-white/10" />
                   <div className="flex h-6 w-full items-center rounded-md border border-white/10 bg-white/5 px-2">
@@ -257,7 +257,8 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
               </div>
 
               {/* Graphic: Diagonal Slices (Logos) */}
-              <div className="pointer-events-none relative flex min-h-[160px] w-full flex-1 items-center justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
+              <div className="pointer-events-none relative flex min-h-[160px] w-full flex-1 items-center justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_40%,transparent_100%)]">
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
                 <div className="absolute -inset-x-8 -inset-y-4 flex skew-x-[-15deg] transition-transform duration-700 group-hover:scale-105">
                   {/* Serie A */}
                   <div className="flex flex-1 items-center justify-center border-r border-white/5 bg-white/[0.02] pl-4">
@@ -320,7 +321,11 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                 >
                   <defs>
                     <radialGradient id="globe-glow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="white" stopOpacity="0.05" />
+                      <stop
+                        offset="0%"
+                        stopColor="var(--color-primary)"
+                        stopOpacity="0.6"
+                      />
                       <stop
                         offset="100%"
                         stopColor="transparent"
@@ -367,7 +372,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     cx="130"
                     cy="70"
                     r="2.5"
-                    className="fill-status-success stroke-none drop-shadow-[0_0_8px_var(--color-status-success)]"
+                    className="fill-primary-light stroke-none drop-shadow-[0_0_8px_var(--color-primary-light)]"
                   />
                   <path
                     d="M 70 120 L 100 100 L 130 70"
@@ -393,7 +398,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
 
               {/* Graphic: Tournaments Logos */}
               <div className="pointer-events-none relative z-10 mt-4 flex min-h-[140px] w-full flex-1 items-center [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]">
-                <div className="bg-primary/5 absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
 
                 {/* Left side: Stacked Logos */}
                 <div className="pointer-events-none relative z-10 flex w-1/2 flex-col items-start gap-4 pl-8 opacity-40 transition-all duration-700 group-hover:opacity-90">
@@ -438,9 +443,9 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
               </div>
 
               {/* Graphic: Large Pitch */}
-              <div className="relative mt-2 flex min-h-[140px] w-full flex-1 items-end justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
-                <div className="bg-primary/10 absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
-                <div className="pointer-events-none absolute inset-x-0 top-6 bottom-0 mx-8 translate-y-4 rounded-t-3xl border-x border-t border-white/10 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.03))] opacity-40 transition-all duration-700 ease-out group-hover:translate-y-2 group-hover:opacity-80">
+              <div className="relative mt-2 flex min-h-[140px] w-full flex-1 items-end justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_40%,transparent_100%)]">
+                <div className="absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="pointer-events-none absolute inset-x-0 top-6 bottom-0 mx-8 translate-y-4 rounded-t-3xl border-x border-t border-white/20 bg-[linear-gradient(to_bottom,bg-primary-light_30%,transparent_100%)] opacity-60 transition-all duration-700 ease-out group-hover:translate-y-2 group-hover:opacity-100">
                   {/* Pitch lines */}
                   <div className="mx-auto h-8 w-1/2 rounded-b-md border-x border-b border-white/20" />
                   <div className="absolute top-1/2 left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20" />
@@ -448,7 +453,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                   {/* Tactics nodes */}
                   <div className="bg-primary absolute top-[30%] left-[30%] h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-primary)]" />
                   <div
-                    className="bg-status-success absolute top-[60%] right-[30%] h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-status-success)]"
+                    className="bg-primary-light absolute top-[60%] right-[30%] h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-primary-light)]"
                     style={{ animationDelay: '150ms' }}
                   />
                   <div
@@ -501,7 +506,13 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                         stopOpacity="0"
                       />
                     </linearGradient>
-                    <filter id="glow">
+                    <filter
+                      id="glow"
+                      x="-50%"
+                      y="-50%"
+                      width="200%"
+                      height="200%"
+                    >
                       <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                       <feMerge>
                         <feMergeNode in="coloredBlur" />

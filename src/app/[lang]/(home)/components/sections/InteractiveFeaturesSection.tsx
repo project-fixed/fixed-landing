@@ -231,7 +231,7 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
                 <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
               </div>
               <span className="font-mono text-[10px] tracking-wider text-white/40">
-                fixed.app
+                app.fixed.software
               </span>
             </div>
 
