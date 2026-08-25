@@ -27,7 +27,7 @@ export const translations = {
             end: 'clear decisions',
           },
           description:
-            'Every match has a best bet. We find it \u2014 with the right risk for every play.',
+            'Every match has a most likely scenario. We identify it \u2014 with the right risk for every play.',
           betaPlaceholder: 'Enter your email...',
           betaButton: 'Join Beta',
           betaLoadingButton: 'Joining...',
@@ -36,24 +36,12 @@ export const translations = {
           betaErrorDuplicate:
             'This email is already registered on the waitlist.',
           betaErrorGeneric: 'An error occurred. Please try again later.',
-          online: '10k people online',
-          oddsTitle: 'Live Picks With Real Edge',
+          oddsDisclaimer:
+            'Illustrative data \u2014 simulated performance based on predefined staking criteria',
           key: {
             point1: {
-              title: '12%',
-              description: 'Historical return on our picks',
-            },
-            point2: {
-              title: '65%',
-              description: 'Win rate on recommended bets',
-            },
-            point3: {
-              title: '>5%',
-              description: 'Minimum edge to qualify',
-            },
-            point4: {
-              title: '5%',
-              description: 'Max stake per bet (bankroll safety)',
+              title: '+10K',
+              description: 'daily processed data points',
             },
           },
         },
@@ -64,7 +52,7 @@ export const translations = {
           'Filtering only the bets with a real  edge...',
           'Calculating the perfect stake size to protect your bankroll...',
           'Tagging picks by confidence level (High, Medium, Low)...',
-          'Pushing winning picks to your dashboard...',
+          'Pushing validated picks to your dashboard...',
           'Tracking results and updating your performance stats...',
         ],
         dashboardPreview: {
@@ -83,7 +71,7 @@ export const translations = {
           accordion: {
             item1: {
               title: 'Discover',
-              subtitle: 'Your daily winning picks, served fresh',
+              subtitle: 'Your daily top-value picks, served fresh',
               description:
                 'No more scrolling through endless stats. Every day we serve you the best opportunities across the top leagues \u2014 with the confidence level, match time, and potential value already figured out. Just open the app and see what\u2019s waiting for you.',
             },
@@ -112,6 +100,8 @@ export const translations = {
               'Publicly validated performance. Total transparency on our simulated bankroll.',
             yieldLabel: 'Historical Yield',
             hitRateLabel: 'Hit Rate',
+            disclaimer:
+              'Simulated performance based on defined staking criteria. Historical results do not guarantee future returns.',
           },
           card4: {
             title: 'Top 5 Leagues',
@@ -167,9 +157,9 @@ export const translations = {
         },
         ai: {
           layers: {
-            title: 'The Brain That Finds Your Edge',
+            title: 'The Engineering Behind Your Edge',
             description:
-              'Four layers of intelligence working around the clock to separate winning bets from traps.',
+              'Four layers of intelligence working around the clock to separate value bets from traps.',
             layer1: {
               title: "Know Who's Really the Better Team",
               description:
@@ -186,7 +176,7 @@ export const translations = {
                 'Our algorithm retrains daily \u2014 comparing its own predictions against reality to stay sharp and adapt to how teams evolve.',
             },
             layer4: {
-              title: 'Only the Bets That Beat the Bookie',
+              title: 'Value Strategy & Stake Optimization',
               description:
                 'We filter out every pick that doesn\u2019t have a clear edge. And when we find one, we tell you exactly how much to stake \u2014 no guesswork.',
             },
@@ -213,15 +203,15 @@ export const translations = {
             step4: {
               title: 'Place Your Bet',
               description:
-                'Take the recommended stake and play it at your sportsbook. That\u2019s it. No guesswork, no stress.',
+                'Execute with discipline using the recommended stake.',
             },
           },
         },
         about: {
           title: 'Who We Are',
-          subtitle: 'The Algorithm Behind Your Wins',
+          subtitle: 'The Algorithm Behind Your Edge',
           description:
-            "We are an independent group of software engineers building the future of sports betting. More than a traditional platform, Fixed is a community-driven project designed so you don't have to compete blindly against bookmakers, giving you the same level of quantitative analysis used by hedge funds. We are fine-tuning an algorithm that computes millions of metrics per second to deliver only bets with the highest chance of success. By joining our Beta, you don't just get access to the tool, but you become a pioneer of the project. Stop guessing, join the community, and start deciding with the power of automated algorithms.",
+            "We are an independent group of software engineers building the future of sports betting. More than a traditional platform, Fixed is a community-driven project designed to transform complex market data into well-managed risk decisions, giving you the same level of quantitative analysis used by hedge funds. We are fine-tuning an algorithm that computes millions of metrics per second to deliver only bets with the highest chance of success. By joining our Beta, you don't just get access to the tool, but you become a pioneer of the project. Stop guessing, join the community, and start deciding with the power of automated algorithms.",
         },
       },
       plans: {
@@ -231,7 +221,7 @@ export const translations = {
         plan: {
           starter: {
             title: 'Starter',
-            description: 'Start betting smarter, risk-free.',
+            description: 'Experience our technology with a free account.',
             features: {
               feature1: 'Top 5 European leagues coverage',
               feature2: '5 daily high-confidence picks',
@@ -243,7 +233,7 @@ export const translations = {
           },
           pro: {
             title: 'Pro',
-            description: 'For the consistent winner.',
+            description: 'For consistent, data-driven bettors.',
             features: {
               feature1:
                 'International tournaments (UCL, Europa League, Euro, Copa América)',
@@ -277,9 +267,9 @@ export const translations = {
           'Everything you need to know about how Fixed helps you bet smarter.',
         questions: {
           question1: {
-            title: 'How does Fixed find winning bets?',
+            title: 'How does Fixed find value bets?',
             answer:
-              'We use a smart system that rates every team\u2019s real strength, studies years of match data, and runs thousands of simulations daily. When the numbers show a clear advantage over what the bookies are offering, we flag it as a pick. Simple as that.',
+              'We use a smart system that rates every team\u2019s real strength, studies years of match data, and runs thousands of simulations daily. When the numbers show a clear advantage in the market odds, we flag it as a pick. Simple as that.',
           },
           question2: {
             title: 'Which leagues and markets do you cover?',
@@ -289,12 +279,12 @@ export const translations = {
           question3: {
             title: 'What kind of results can I expect?',
             answer:
-              'Our model has a verified win rate of ~65% with a return on investment of ~12%. We don\u2019t promise impossible win streaks \u2014 we focus on consistent, long-term gains through smart value betting.',
+              'We publish a simulated track record based on predefined staking criteria, calculated over market-reference odds \u2014 not our own model\u2019s prices. Historical results do not guarantee future returns.',
           },
           question4: {
             title: 'How do you manage risk and bankroll?',
             answer:
-              'Every pick comes with a recommended stake size, calculated to grow your bankroll steadily while keeping your money safe. We cap each bet at a maximum of 5% of your total bankroll so you never overexpose yourself.',
+              'Every pick comes with a recommended stake size, calculated to grow your bankroll steadily while keeping your capital exposure controlled. We cap each bet at a maximum of 5% of your total bankroll so you never overexpose yourself.',
           },
           question5: {
             title: 'How do I get started?',
@@ -305,7 +295,9 @@ export const translations = {
       },
       footer: {
         title: 'Fixed',
-        description: 'Join the community. Let the algorithm work for you.',
+        description: 'Discipline turns luck into an edge.',
+        responsibleGambling:
+          'Please gamble responsibly. Fixed is a tool for statistical analysis and risk management, not a guarantee of profit. Betting involves risk of financial loss. Do not bet more than you can afford to lose.',
         link: {
           dimensions: {
             product: 'Product',
@@ -355,7 +347,7 @@ export const translations = {
             end: 'decisiones claras',
           },
           description:
-            'Cada partido tiene su mejor jugada. Nosotros la encontramos — con el riesgo justo para cada una.',
+            'Cada partido tiene un escenario más probable. Nosotros lo identificamos — con el riesgo justo para cada decisión.',
           betaPlaceholder: 'Ingresa tu email...',
           betaButton: 'Unirse a la Beta',
           betaLoadingButton: 'Uniéndose...',
@@ -366,24 +358,12 @@ export const translations = {
             'Este correo ya está registrado en la lista de espera.',
           betaErrorGeneric:
             'Hubo un error. Por favor, inténtalo de nuevo más tarde.',
-          online: '10k personas en línea',
-          oddsTitle: 'Picks en Vivo con Ventaja Real',
+          oddsDisclaimer:
+            'Datos ilustrativos — rendimiento simulado con criterios de staking definidos',
           key: {
             point1: {
-              title: '12%',
-              description: 'Retorno histórico de nuestras selecciones',
-            },
-            point2: {
-              title: '65%',
-              description: 'Acierto en apuestas recomendadas',
-            },
-            point3: {
-              title: '>5%',
-              description: 'Ventaja mínima para recomendar',
-            },
-            point4: {
-              title: '5%',
-              description: 'Stake máximo por jugada (bankroll seguro)',
+              title: '+10K',
+              description: 'datos procesados diarios',
             },
           },
         },
@@ -394,7 +374,7 @@ export const translations = {
           'Filtrando solo las apuestas con ventaja matemática real...',
           'Calculando el stake perfecto para proteger tu bankroll...',
           'Etiquetando picks por nivel de confianza (Alta, Media, Baja)...',
-          'Subiendo los picks ganadores a tu dashboard...',
+          'Subiendo los picks validados a tu dashboard...',
           'Rastreando resultados y actualizando tu rendimiento...',
         ],
         dashboardPreview: {
@@ -409,11 +389,11 @@ export const translations = {
         features: {
           title: 'Tu Ventaja, Cada Jornada',
           description:
-            'Hacemos el trabajo pesado para que tú solo tengas que ganar. Cada selección está calculada, verificada y lista para la acción.',
+            'Hacemos el trabajo pesado para que tú solo tengas que decidir. Cada selección está calculada, verificada y lista para la acción.',
           accordion: {
             item1: {
               title: 'Descubre',
-              subtitle: 'Tus picks ganadores del día, servidos en bandeja',
+              subtitle: 'Tus picks con más valor del día, servidos en bandeja',
               description:
                 'Olvídate de pasar horas entre estadísticas. Cada día te mostramos las mejores oportunidades de las ligas top — con el nivel de confianza, el horario y el valor potencial ya calculados. Solo abre la app y mira lo que tenemos para ti.',
             },
@@ -442,6 +422,8 @@ export const translations = {
               'Rendimiento validado públicamente. Transparencia total en nuestro bankroll simulado.',
             yieldLabel: 'Yield Histórico',
             hitRateLabel: 'Hit Rate',
+            disclaimer:
+              'Rendimiento simulado con base en criterios de staking definidos. Resultados históricos no garantizan resultados futuros.',
           },
           card4: {
             title: 'Top 5 Ligas',
@@ -497,9 +479,9 @@ export const translations = {
         },
         ai: {
           layers: {
-            title: 'El Cerebro Que Encuentra Tu Ventaja',
+            title: 'La Ingeniería Detrás De Tu Ventaja',
             description:
-              'Cuatro capas de inteligencia trabajando 24/7 para separar las apuestas ganadoras de las trampas.',
+              'Cuatro capas de inteligencia trabajando 24/7 para separar las apuestas con valor de las trampas.',
             layer1: {
               title: 'Sabé Quién Es Realmente el Mejor',
               description:
@@ -516,7 +498,7 @@ export const translations = {
                 'Nuestro algoritmo se re-entrena a diario — comparando sus predicciones contra la realidad para mantenerse afilado y adaptarse a la evolución de los equipos.',
             },
             layer4: {
-              title: 'Solo las Apuestas Que Vencen a la Casa',
+              title: 'Estrategia de Valor y Gestión de Riesgo',
               description:
                 'Filtramos cada selección que no tenga una ventaja clara. Y cuando encontramos una, te decimos exactamente cuánto arriesgar — sin adivinanzas.',
             },
@@ -543,15 +525,15 @@ export const translations = {
             step4: {
               title: 'Coloca tu Apuesta',
               description:
-                'Toma el stake recomendado y juéguelo en tu casa de apuestas. Eso es todo. Sin dudas, sin estrés.',
+                'Ejecuta con disciplina aplicando el stake sugerido.',
             },
           },
         },
         about: {
           title: 'Quiénes Somos',
-          subtitle: 'El Algoritmo Detrás de Tus Ganancias',
+          subtitle: 'El Algoritmo Detrás de Tu Ventaja',
           description:
-            'Somos un grupo independiente de ingenieros de software construyendo el futuro de las apuestas deportivas. Más que una plataforma tradicional, Fixed es un proyecto impulsado por su comunidad, diseñado para que no tengas que competir a ciegas contra las casas de apuestas, dándote el mismo nivel de análisis cuantitativo que usan los fondos de cobertura. Estamos afinando un algoritmo que computa millones de métricas por segundo para entregarte únicamente apuestas con mayor oportunidad de éxito. Al unirte a nuestra Beta, no solo accedes a la herramienta, sino que te conviertes en pionero del proyecto. Deja de adivinar, únete a la comunidad y empieza a decidir con el poder de los algoritmos automatizados.',
+            'Somos un grupo independiente de ingenieros de software construyendo el futuro de las apuestas deportivas. Más que una plataforma tradicional, Fixed es un proyecto impulsado por su comunidad, diseñado para transformar datos de mercado complejos en decisiones de riesgo bien gestionadas, dándote el mismo nivel de análisis cuantitativo que usan los fondos de cobertura. Estamos afinando un algoritmo que computa millones de métricas por segundo para entregarte únicamente apuestas con mayor oportunidad de éxito. Al unirte a nuestra Beta, no solo accedes a la herramienta, sino que te conviertes en pionero del proyecto. Deja de adivinar, únete a la comunidad y empieza a decidir con el poder de los algoritmos automatizados.',
         },
       },
       plans: {
@@ -561,8 +543,7 @@ export const translations = {
         plan: {
           starter: {
             title: 'Starter',
-            description:
-              'Empieza a apostar de forma más inteligente, sin riesgos.',
+            description: 'Prueba nuestra tecnología con una cuenta gratuita.',
             features: {
               feature1: 'Cobertura de las 5 mejores ligas europeas',
               feature2: '5 picks diarios de alta confianza',
@@ -574,7 +555,7 @@ export const translations = {
           },
           pro: {
             title: 'Pro',
-            description: 'Para el ganador consistente.',
+            description: 'Para apostadores consistentes que deciden con datos.',
             features: {
               feature1:
                 'Torneos internacionales (UCL, Europa League, Euro, Copa América)',
@@ -608,9 +589,9 @@ export const translations = {
           'Todo lo que necesitas saber sobre cómo Fixed te ayuda a apostar más inteligente.',
         questions: {
           question1: {
-            title: '¿Cómo encuentra Fixed apuestas ganadoras?',
+            title: '¿Cómo encuentra Fixed apuestas con valor?',
             answer:
-              'Usamos un sistema inteligente que evalúa la fuerza real de cada equipo, estudia años de datos de partidos y ejecuta miles de simulaciones al día. Cuando los números muestran una ventaja clara frente a lo que ofrece la casa de apuestas, lo marcamos como pick. Así de simple.',
+              'Usamos un sistema inteligente que evalúa la fuerza real de cada equipo, estudia años de datos de partidos y ejecuta miles de simulaciones al día. Cuando los números muestran una ventaja clara frente a lo que ofrece la cuota de mercado, lo marcamos como pick. Así de simple.',
           },
           question2: {
             title: '¿Qué ligas y mercados cubren?',
@@ -620,12 +601,12 @@ export const translations = {
           question3: {
             title: '¿Qué resultados puedo esperar?',
             answer:
-              'Nuestro modelo tiene una tasa de acierto verificada de ~65% con un retorno de inversión de ~12%. No prometemos rachas imposibles — nos enfocamos en ganancias consistentes a largo plazo mediante apuestas de valor inteligentes.',
+              'Publicamos un track record simulado con criterios de staking definidos, calculado sobre cuotas de referencia de mercado — no sobre precios de nuestro propio modelo. Los resultados históricos no garantizan resultados futuros.',
           },
           question4: {
             title: '¿Cómo gestionan el riesgo y el bankroll?',
             answer:
-              'Cada pick incluye un stake recomendado, calculado para hacer crecer tu bankroll de forma constante mientras mantienes tu dinero seguro. Limitamos cada apuesta al 5% de tu bankroll total para que nunca te sobreexpongas.',
+              'Cada pick incluye un stake recomendado, calculado para hacer crecer tu bankroll de forma constante mientras mantienes tu exposición de capital bajo control. Limitamos cada apuesta al 5% de tu bankroll total para que nunca te sobreexpongas.',
           },
           question5: {
             title: '¿Cómo empiezo?',
@@ -636,8 +617,9 @@ export const translations = {
       },
       footer: {
         title: 'Fixed',
-        description:
-          'Únete a la comunidad. Deja que el algoritmo trabaje para ti.',
+        description: 'La disciplina convierte la suerte en ventaja.',
+        responsibleGambling:
+          'Por favor, juega de manera responsable. Fixed es una herramienta de análisis estadístico y gestión de riesgo, no una garantía de ganancias. Las apuestas implican riesgo de pérdida financiera. No apuestes más de lo que puedas permitirte perder.',
         link: {
           dimensions: {
             product: 'Producto',

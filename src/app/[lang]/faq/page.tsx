@@ -56,7 +56,7 @@ export default async function FaqPage({ params }: PageProps) {
       className="page-section flex min-h-screen flex-col items-center gap-24 pt-36 lg:flex-row"
       style={{
         background:
-          'radial-gradient(circle at 20% 80%, var(--color-primary-darkest) -10%, transparent 35%), radial-gradient(circle at 80% 30%, var(--color-primary-darkest) -10%, var(--background) 35%)',
+          'radial-gradient(circle at 20% 80%, var(--color-surface-card) -10%, transparent 35%), radial-gradient(circle at 80% 30%, var(--color-surface-card) -10%, var(--background) 35%)',
       }}
     >
       <GridBackground gridOpacity={0.05} />

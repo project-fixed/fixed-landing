@@ -26,13 +26,9 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
   return (
     <section
       id="features"
-      className="page-section relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(circle at 50% 20%, var(--color-primary-darkest) -30%, var(--background) 45%)',
-      }}
+      className="page-section bg-gradient-bento relative overflow-hidden"
     >
-      <GridBackground glowPosition="center" />
+      <GridBackground />
 
       {/* Header / Title */}
       <div className="pt-20 pb-6 md:pt-24 md:pb-12 lg:pb-16">
@@ -58,7 +54,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="mx-auto flex h-fit w-full flex-col justify-center"
       >
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 xl:grid-cols-4">
           {/* Card 1: La Fija (Span 2x2) */}
           <ScrollReveal
             direction="up"
@@ -148,7 +144,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
 
               {/* Graphic: Stake Wireframe */}
               <div className="pointer-events-none relative mt-6 flex h-40 w-full translate-y-4 flex-col justify-between overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)] p-4 transition-transform duration-500 group-hover:translate-y-2">
-                <div className="from-primary-light/30 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="from-primary-light/20 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="z-10 flex flex-col gap-2">
                   <div className="h-2 w-12 rounded-full bg-white/10" />
                   <div className="flex h-6 w-full items-center rounded-md border border-white/10 bg-white/5 px-2">
@@ -195,28 +191,35 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
 
               {/* Graphic: Data Table Wireframe */}
               <div className="relative z-10 mt-8 flex flex-1 flex-col items-start justify-end gap-4">
-                <div>
-                  <span className="text-status-success text-4xl font-black tracking-tighter drop-shadow-[0_0_15px_rgba(var(--color-status-success-rgb),0.3)]">
-                    +12.4%
-                  </span>
-                  <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
-                    {t.landing.home.bento.card3.yieldLabel}
-                  </span>
+                <div className="flex flex-col gap-6">
+                  <div>
+                    <span className="text-status-success text-4xl font-black tracking-tighter drop-shadow-[0_0_15px_rgba(var(--color-status-success-rgb),0.3)]">
+                      +12.4%
+                    </span>
+                    <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
+                      {t.landing.home.bento.card3.yieldLabel}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-3xl font-bold tracking-tighter text-white/90">
+                      65.2%
+                    </span>
+                    <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
+                      {t.landing.home.bento.card3.hitRateLabel}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-3xl font-bold tracking-tighter text-white/90">
-                    65.2%
-                  </span>
-                  <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
-                    {t.landing.home.bento.card3.hitRateLabel}
-                  </span>
+                <div className="mt-2">
+                  <p className="max-w-[90%] text-[10px] leading-tight text-white/40">
+                    {t.landing.home.bento.card3.disclaimer}
+                  </p>
                 </div>
               </div>
 
               {/* Vertical Ledger Graphic */}
               <div className="pointer-events-none absolute top-0 right-0 bottom-0 w-64 bg-gradient-to-l from-white/[0.02] to-transparent" />
-              <div className="absolute right-6 -bottom-2 flex flex-col gap-6 [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%,transparent_100%)] opacity-30 transition-opacity group-hover:opacity-60">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+              <div className="absolute right-6 bottom-12 flex flex-col gap-6 [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%,transparent_100%)] opacity-30 transition-opacity group-hover:opacity-60">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
                   <div key={i} className="flex flex-col items-end gap-2">
                     <div className="flex gap-2">
                       <div className="h-2 w-12 rounded-full bg-white/20" />
@@ -254,66 +257,47 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
               </div>
 
               {/* Graphic: Diagonal Slices (Logos) */}
-              <div className="pointer-events-none relative flex min-h-[160px] w-full flex-1 items-center justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
+              <div className="pointer-events-none relative flex min-h-[160px] w-full flex-1 items-center justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_40%,transparent_100%)]">
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
                 <div className="absolute -inset-x-8 -inset-y-4 flex skew-x-[-15deg] transition-transform duration-700 group-hover:scale-105">
                   {/* Serie A */}
-                  <div className="flex flex-1 items-center justify-center border-r border-white/5 bg-white/[0.02]">
-                    <div className="skew-x-[15deg]">
-                      <Image
-                        src="/serie-a.svg"
-                        alt="Serie A"
-                        width={35}
-                        height={35}
-                        className="opacity-40 drop-shadow-lg grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
-                      />
+                  <div className="flex flex-1 items-center justify-center border-r border-white/5 bg-white/[0.02] pl-4">
+                    <div className="skew-x-[15deg] transition-all duration-500 group-hover:scale-100">
+                      <span className="font-mono text-xl font-bold tracking-wider text-white/40 uppercase transition-all duration-500 group-hover:text-white/60">
+                        ITA
+                      </span>
                     </div>
                   </div>
                   {/* Bundesliga */}
                   <div className="flex flex-1 items-center justify-center border-r border-white/5 bg-white/[0.03]">
-                    <div className="skew-x-[15deg]">
-                      <Image
-                        src="/bundesliga.svg"
-                        alt="Bundesliga"
-                        width={40}
-                        height={40}
-                        className="opacity-40 drop-shadow-lg grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
-                      />
+                    <div className="skew-x-[15deg] transition-all duration-500 group-hover:scale-100">
+                      <span className="font-mono text-xl font-bold tracking-wider text-white/40 uppercase transition-all duration-500 group-hover:text-white/60">
+                        GER
+                      </span>
                     </div>
                   </div>
                   {/* Premier League */}
                   <div className="flex flex-1 items-center justify-center border-r border-white/5 bg-white/[0.02]">
-                    <div className="skew-x-[15deg]">
-                      <Image
-                        src="/premier.svg"
-                        alt="Premier"
-                        width={55}
-                        height={55}
-                        className="opacity-40 drop-shadow-lg grayscale transition-all duration-500 group-hover:opacity-100 group-hover:brightness-100 group-hover:drop-shadow-[0_0_15px_rgba(139,92,246,0.5)] group-hover:grayscale-0"
-                      />
+                    <div className="skew-x-[15deg] transition-all duration-500 group-hover:scale-100 group-hover:drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+                      <span className="font-mono text-xl font-bold tracking-wider text-white/40 uppercase transition-all duration-500 group-hover:text-white/60">
+                        ENG
+                      </span>
                     </div>
                   </div>
                   {/* LaLiga */}
                   <div className="flex flex-1 items-center justify-center border-r border-white/5 bg-white/[0.03]">
-                    <div className="skew-x-[15deg]">
-                      <Image
-                        src="/laliga-modern.svg"
-                        alt="LaLiga"
-                        width={35}
-                        height={35}
-                        className="opacity-40 drop-shadow-lg grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
-                      />
+                    <div className="skew-x-[15deg] transition-all duration-500 group-hover:scale-100">
+                      <span className="font-mono text-xl font-bold tracking-wider text-white/40 uppercase transition-all duration-500 group-hover:text-white/60">
+                        ESP
+                      </span>
                     </div>
                   </div>
                   {/* Ligue 1 */}
-                  <div className="flex flex-1 items-center justify-center bg-white/[0.02]">
-                    <div className="skew-x-[15deg]">
-                      <Image
-                        src="/ligue1.svg"
-                        alt="Ligue 1"
-                        width={35}
-                        height={45}
-                        className="object-contain opacity-40 drop-shadow-lg grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
-                      />
+                  <div className="flex flex-1 items-center justify-center bg-white/[0.02] pr-4">
+                    <div className="skew-x-[15deg] transition-all duration-500 group-hover:scale-100">
+                      <span className="font-mono text-xl font-bold tracking-wider text-white/40 uppercase transition-all duration-500 group-hover:text-white/60">
+                        FRA
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -337,7 +321,11 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                 >
                   <defs>
                     <radialGradient id="globe-glow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="white" stopOpacity="0.05" />
+                      <stop
+                        offset="0%"
+                        stopColor="var(--color-primary)"
+                        stopOpacity="0.6"
+                      />
                       <stop
                         offset="100%"
                         stopColor="transparent"
@@ -384,7 +372,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                     cx="130"
                     cy="70"
                     r="2.5"
-                    className="fill-status-success stroke-none drop-shadow-[0_0_8px_var(--color-status-success)]"
+                    className="fill-primary-light stroke-none drop-shadow-[0_0_8px_var(--color-primary-light)]"
                   />
                   <path
                     d="M 70 120 L 100 100 L 130 70"
@@ -410,23 +398,23 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
 
               {/* Graphic: Tournaments Logos */}
               <div className="pointer-events-none relative z-10 mt-4 flex min-h-[140px] w-full flex-1 items-center [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]">
-                <div className="bg-primary/5 absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
 
                 {/* Left side: Stacked Logos */}
-                <div className="pointer-events-none relative z-10 flex w-1/2 translate-y-4 flex-col items-start gap-6 pl-8 opacity-40 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-90">
+                <div className="pointer-events-none relative z-10 flex w-1/2 flex-col items-start gap-4 pl-8 opacity-40 transition-all duration-700 group-hover:opacity-90">
                   <Image
                     src="/champions.svg"
                     alt="Champions League"
-                    width={45}
-                    height={45}
-                    className="object-contain brightness-200 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] grayscale transition-all duration-500 group-hover:opacity-100 group-hover:brightness-100 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] group-hover:grayscale-0"
+                    width={70}
+                    height={70}
+                    className="object-contain opacity-50 brightness-200 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] grayscale transition-all duration-500 group-hover:opacity-55 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]"
                   />
                   <Image
                     src="/europa.svg"
                     alt="Europa League"
-                    width={55}
-                    height={55}
-                    className="object-contain brightness-200 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] grayscale transition-all duration-500 group-hover:opacity-100 group-hover:brightness-100 group-hover:drop-shadow-[0_0_15px_rgba(244,115,33,0.5)] group-hover:grayscale-0"
+                    width={80}
+                    height={80}
+                    className="object-contain opacity-50 brightness-200 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] grayscale transition-all duration-500 group-hover:opacity-55 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]"
                   />
                 </div>
               </div>
@@ -455,9 +443,9 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
               </div>
 
               {/* Graphic: Large Pitch */}
-              <div className="relative mt-2 flex min-h-[140px] w-full flex-1 items-end justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
-                <div className="bg-primary/10 absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
-                <div className="pointer-events-none absolute inset-x-0 top-6 bottom-0 mx-8 translate-y-4 rounded-t-3xl border-x border-t border-white/10 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.03))] opacity-40 transition-all duration-700 ease-out group-hover:translate-y-2 group-hover:opacity-80">
+              <div className="relative mt-2 flex min-h-[140px] w-full flex-1 items-end justify-center overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_40%,transparent_100%)]">
+                <div className="absolute inset-0 rounded-full opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="pointer-events-none absolute inset-x-0 top-6 bottom-0 mx-8 translate-y-4 rounded-t-3xl border-x border-t border-white/20 bg-[linear-gradient(to_bottom,bg-primary-light_30%,transparent_100%)] opacity-60 transition-all duration-700 ease-out group-hover:translate-y-2 group-hover:opacity-100">
                   {/* Pitch lines */}
                   <div className="mx-auto h-8 w-1/2 rounded-b-md border-x border-b border-white/20" />
                   <div className="absolute top-1/2 left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20" />
@@ -465,7 +453,7 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                   {/* Tactics nodes */}
                   <div className="bg-primary absolute top-[30%] left-[30%] h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-primary)]" />
                   <div
-                    className="bg-status-success absolute top-[60%] right-[30%] h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-status-success)]"
+                    className="bg-primary-light absolute top-[60%] right-[30%] h-2 w-2 animate-pulse rounded-full shadow-[0_0_10px_var(--color-primary-light)]"
                     style={{ animationDelay: '150ms' }}
                   />
                   <div
@@ -518,7 +506,13 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
                         stopOpacity="0"
                       />
                     </linearGradient>
-                    <filter id="glow">
+                    <filter
+                      id="glow"
+                      x="-50%"
+                      y="-50%"
+                      width="200%"
+                      height="200%"
+                    >
                       <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                       <feMerge>
                         <feMergeNode in="coloredBlur" />

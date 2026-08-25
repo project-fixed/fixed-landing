@@ -51,7 +51,7 @@ export const Toolbar: React.FC<Props> = ({ lang }) => {
   /** Efficient Motion scroll detection without unthrottled global scroll listeners */
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    const shouldBeScrolled = latest > 60;
+    const shouldBeScrolled = latest > 600;
     if (shouldBeScrolled !== isScrolled) {
       setIsScrolled(shouldBeScrolled);
     }

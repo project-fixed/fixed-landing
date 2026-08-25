@@ -1,32 +1,18 @@
 'use client';
 
 import React, { useRef } from 'react';
-import Image from 'next/image';
 import { useInView } from 'framer-motion';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 
-import img1Xbet from '@/assets/images/brands/1xbet.webp';
-import imgBet365 from '@/assets/images/brands/bet365.webp';
-import imgRetabet from '@/assets/images/brands/retabet.webp';
-import imgTinbet from '@/assets/images/brands/tinbet.webp';
-import imgBetano from '@/assets/images/brands/betano.webp';
-import imgBetsafe from '@/assets/images/brands/betsafe.webp';
-import imgBetsson from '@/assets/images/brands/betsson.webp';
-import imgDafabet from '@/assets/images/brands/dafabet.webp';
-import imgInkabet from '@/assets/images/brands/inkabet.webp';
-import imgJugabet from '@/assets/images/brands/jugabet.webp';
-
-const brands = [
-  { src: img1Xbet, alt: '1Xbet' },
-  { src: imgBet365, alt: 'Bet365' },
-  { src: imgBetano, alt: 'Betano' },
-  { src: imgBetsafe, alt: 'Betsafe' },
-  { src: imgBetsson, alt: 'Betsson' },
-  { src: imgDafabet, alt: 'Dafabet' },
-  { src: imgInkabet, alt: 'Inkabet' },
-  { src: imgJugabet, alt: 'Jugabet' },
-  { src: imgRetabet, alt: 'Retabet' },
-  { src: imgTinbet, alt: 'Tinbet' },
+const leagues = [
+  'Premier League',
+  'LaLiga',
+  'Serie A',
+  'Bundesliga',
+  'Ligue 1',
+  'Champions League',
+  'Europa League',
+  'Mundial',
 ];
 
 export const BrandsMarquee: React.FC = () => {
@@ -37,7 +23,7 @@ export const BrandsMarquee: React.FC = () => {
     <section
       ref={containerRef}
       id="brands"
-      className="page-section flex-col justify-center border-y border-white/10 bg-black/20 py-10"
+      className="page-section flex-col justify-center border-y border-white/10 bg-black/20 py-4"
     >
       <ScrollReveal direction="up" delay={0.1}>
         <div
@@ -46,28 +32,23 @@ export const BrandsMarquee: React.FC = () => {
           data-speed="slow"
         >
           <div
-            className={`scroller-inner animate-marquee flex w-max flex-nowrap gap-8 py-4 ${
+            className={`scroller-inner animate-marquee flex w-max flex-nowrap items-center gap-24 py-4 ${
               isInView ? '' : '[animation-play-state:paused]'
             }`}
           >
-            {/* Original Items */}
-            {brands.map((brand, idx) => (
-              <Image
-                key={`orig-${idx}`}
-                className="h-12 w-auto flex-shrink-0 object-contain opacity-50 grayscale transition-opacity duration-300 hover:opacity-90"
-                src={brand.src}
-                alt={brand.alt}
-              />
-            ))}
-            {/* Duplicated Items for seamless loop */}
-            {brands.map((brand, idx) => (
-              <Image
-                key={`dup-${idx}`}
-                className="h-12 w-auto flex-shrink-0 object-contain opacity-50 grayscale transition-opacity duration-300 hover:opacity-90"
-                src={brand.src}
-                alt={brand.alt}
-                aria-hidden="true"
-              />
+            {/* Render 4 sets of items to ensure seamless loop on ultrawide screens */}
+            {[...Array(4)].map((_, setIdx) => (
+              <React.Fragment key={`set-${setIdx}`}>
+                {leagues.map((league, idx) => (
+                  <span
+                    key={`league-${setIdx}-${idx}`}
+                    className="text-md font-mono font-bold tracking-wider text-white/30 uppercase transition-colors duration-300 hover:text-white/80 lg:text-xl"
+                    aria-hidden={setIdx !== 0}
+                  >
+                    {league}
+                  </span>
+                ))}
+              </React.Fragment>
             ))}
           </div>
         </div>

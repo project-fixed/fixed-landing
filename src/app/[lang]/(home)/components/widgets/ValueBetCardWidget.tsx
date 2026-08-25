@@ -38,7 +38,7 @@ export const ValueBetCardWidget: React.FC<ValueBetCardWidgetProps> = ({
     <div
       className={`relative flex flex-col justify-between rounded-lg p-2.5 transition-all duration-200 ${
         card.isHighlighted
-          ? 'border-primary-light/10 ring-primary-light/20 from-primary/20 to-secondary border bg-linear-to-b shadow-[0_0_15px_rgba(62,93,108,0.3)] ring-1'
+          ? 'border-primary-light/10 ring-primary-light/20 from-primary-dark/30 to-secondary/10 border bg-linear-to-b shadow-[0_0_15px_rgba(62,93,108,0.3)] ring-1'
           : 'border border-white/10 bg-white/2 hover:border-white/20 hover:bg-white/5'
       } ${className}`}
     >

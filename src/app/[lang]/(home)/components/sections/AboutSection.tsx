@@ -16,11 +16,7 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
   return (
     <section
       id="about"
-      className="page-section border-t border-white/5 py-20 md:py-24"
-      style={{
-        background:
-          'radial-gradient(circle at -10% 70%, rgba(62, 93, 108, 0.3), transparent 35%), radial-gradient(circle at 100% 30%, var(--color-primary-darkest) -30%, transparent 35%)',
-      }}
+      className="page-section bg-gradient-about border-t border-white/5 py-20 md:py-24"
     >
       <GridBackground />
 

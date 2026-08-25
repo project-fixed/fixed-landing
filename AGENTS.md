@@ -16,8 +16,8 @@
 
 - TypeScript strict mode, no `any` — usar `unknown` cuando sea necesario
 - Convención de nombres: `PascalCase` para componentes, `camelCase` para funciones/vars
-- Archivos de componentes en `src/components/` (sin subcarpetas por feature)
-- Componentes UI primitivos en `src/components/ui/`
+- Componentes compartidos ubicados en `src/shared/components/` (con subcarpetas `ui/`, `layout/` y `widgets/`)
+- Componentes específicos de página ubicados en subcarpetas locales (ej. `src/app/[lang]/(home)/components/`)
 - Datos mock y constantes en `src/data/`
 - Traducciones centralizadas en `src/data/translations.ts`
 - Path alias: `@/` mapea a `src/`
@@ -27,10 +27,10 @@
 
 - **Framework de estilos**: Tailwind CSS v4 con `@theme` en `global.css`
 - **Tema**: Solo dark mode (clase `dark` en `<html>`)
-- **Paleta**: Acentos steel blue (`#3e5d6c`), fondos oscuros profundos (`oklch(0.09 0 0)`)
-- **Tipografía**: Prosto One (display), Space Grotesk (sans), Space Mono (mono)
-- **Glassmorphism**: Clases utilitarias `bg-main-glass`, `bg-white-glass`, `bg-white-card`
-- **Animaciones clave**: `marquee`, `point-card-float`, `blob`, `sparkle`
+- **Paleta**: Acentos steel blue (`#3e5d6c`), fondos oscuros profundos (`oklch(0.09 0 0)` / `--color-canvas`)
+- **Tipografía**: Inter (sans) y JetBrains Mono (mono)
+- **Glassmorphism**: Clases utilitarias `bg-main-glass`, `bg-glass-card`, `bg-glass-panel`
+- **Animaciones clave**: `--animate-marquee`, `--animate-scroll-left`, `--animate-scroll-right`, `ScrollExpandVideo`
 - **Referencia visual**: `DESIGN.md` en la raíz del proyecto
 
 ## 4. Git y Workflow

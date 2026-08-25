@@ -20,15 +20,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
   const heroStats = [
     {
       value: t.landing.home.hero.key.point1.title,
-      label: currentLang === 'es' ? 'yield histórico' : 'historical yield',
-    },
-    {
-      value: t.landing.home.hero.key.point2.title,
-      label: 'hit rate',
-    },
-    {
-      value: t.landing.home.hero.key.point3.title,
-      label: 'EV min.',
+      label: t.landing.home.hero.key.point1.description,
     },
   ];
 
@@ -89,7 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
             <p className="mb-1 font-mono text-xs tracking-widest text-white capitalize">
               {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
             </p>
-            <p className="text-muted mb-5 text-xs font-medium">
+            <p className="mb-5 text-xs font-medium text-white/70">
               {currentLang === 'es'
                 ? 'Únete a la lista de espera y sé el primero en probar Fixed.'
                 : 'Join the waitlist and be the first to try Fixed.'}
@@ -108,14 +100,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
             className="flex flex-wrap items-center justify-end gap-y-4"
           >
             {heroStats.map((stat, i) => (
-              <div key={i} className="flex items-baseline">
-                <span className="mr-2 font-mono text-base font-semibold text-white md:text-xl">
+              <div key={i} className="flex items-baseline gap-2">
+                <span className="font-mono text-2xl font-bold tracking-tight text-white md:text-5xl">
                   <AnimatedStat value={stat.value} />
                 </span>
-                <span className="text-muted text-xs">{stat.label}</span>
-                {i < heroStats.length - 1 && (
-                  <span className="mx-2 text-white/15 md:mx-4">·</span>
-                )}
+                <span className="text-muted text-xs font-medium lowercase md:text-sm">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </motion.div>

@@ -36,7 +36,7 @@ gantt
 | ScrollExpandVideo (dashboard reveal)                | MVP        | Alta      |
 | AITimeline + AILayers (proceso IA)                  | MVP        | Alta      |
 | DataStreamMarquee (terminal)                        | MVP        | Media     |
-| BrandsCarousel (partners)                           | MVP        | Media     |
+| BrandsCarousel (logos de ligas/datos)               | MVP        | Media     |
 | Sistema de traducción EN/ES                         | MVP        | Alta      |
 | Páginas: Planes, FAQ, Términos, Privacidad, Cookies | MVP        | Alta      |
 | Toolbar + Footer (con BetaForm interactivo)         | Completado | Alta      |
@@ -54,15 +54,15 @@ gantt
 | ------------------- | ------------------------------------------------------------------ |
 | Dashboard v2        | Alertas personalizadas, filtros avanzados, estadísticas de usuario |
 | Notificaciones Push | Alertas en tiempo real de oportunidades detectadas                 |
-| Comunidad           | Foros de discusión, rankings, tipsters verificados                 |
+| Comunidad           | Foros de discusión, rankings, analistas de datos verificados       |
 
 ### Fase 4: Escalado y Monetización
 
-| Iniciativa    | Descripción                                              |
-| ------------- | -------------------------------------------------------- |
-| APIs Públicas | APIs de predicciones para integración de terceros        |
-| Planes B2B    | Suscripciones enterprise para casas de apuestas y medios |
-| Apps Móviles  | iOS y Android con notificaciones push nativas            |
+| Iniciativa    | Descripción                                                                                 |
+| ------------- | ------------------------------------------------------------------------------------------- |
+| APIs Públicas | APIs de predicciones para integración de terceros                                           |
+| Planes B2B    | Suscripciones enterprise de datos y APIs para medios deportivos (excluye casas de apuestas) |
+| Apps Móviles  | iOS y Android con notificaciones push nativas                                               |
 
 ## 🔗 Referencias
 

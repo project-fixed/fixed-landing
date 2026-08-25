@@ -45,13 +45,9 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
   return (
     <section
       id="interactive-features"
-      className="page-section relative flex flex-col gap-12 py-20 md:py-24"
-      style={{
-        background:
-          'radial-gradient(circle at 0% 70%, rgba(62, 93, 108, 0.3), transparent 30%), radial-gradient(circle at 80% 50%, var(--color-primary-darkest) -30%, var(--background) 45%)',
-      }}
+      className="page-section bg-gradient-interactive relative flex flex-col gap-12 py-20 md:py-24"
     >
-      <GridBackground glowPosition="end" />
+      <GridBackground />
 
       <ScrollReveal
         direction="up"
@@ -235,7 +231,7 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
                 <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
               </div>
               <span className="font-mono text-[10px] tracking-wider text-white/40">
-                fixed.app
+                app.fixed.software
               </span>
             </div>
 
