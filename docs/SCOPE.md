@@ -2,20 +2,20 @@
 
 ## Matriz de Control de Features
 
-| Feature                        | ¿MVP? | Fase | Componente(s)                                                                                           | Notas                                     |
-| ------------------------------ | ----- | ---- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| Hero Section                   | Sí    | MVP  | `PitchGeometryBackground`, `FloatingKeyPoints`, `KeyPointsCarousel`, `HeroImagesCascade`, `AvatarGroup` | Formulario beta interactivo con Supabase  |
-| Predicciones en Vivo (Marquee) | Sí    | MVP  | `OddsMarquee`, `OddsCard`, `OddsCarousel`                                                               | 18 predicciones hardcodeadas de ejemplo   |
-| Métricas y Prueba Social       | Sí    | MVP  | `KeyPointsGrid`, `KeyPointCard`                                                                         | 75K+ usuarios, 92.5% precisión, 30+ ligas |
-| Dashboard Reveal (Scroll)      | Sí    | MVP  | `ScrollExpandVideo`                                                                                     | Animación scroll-driven con screenshot    |
-| Proceso de IA (Timeline)       | Sí    | MVP  | `AITimeline`, `AILayers`, `DataStreamMarquee`                                                           | 4 pasos, 4 capas de análisis              |
-| Partners y Marcas              | Sí    | MVP  | `BrandsCarousel`                                                                                        | 10 logos de casas de apuestas             |
-| Planes y Precios               | Sí    | MVP  | `PlanCard`, `[lang]/plans/page.tsx`                                                                     | Free + Standard ($9.99)                   |
-| FAQ                            | Sí    | MVP  | `FaqAccordion`, `[lang]/faq/page.tsx`                                                                   | 5 preguntas frecuentes                    |
-| Páginas Legales                | Sí    | MVP  | `[lang]/terms/`, `privacy/`, `cookies/`                                                                 | Términos, Privacidad, Cookies             |
-| Toolbar + Footer               | Sí    | MVP  | `Toolbar`, `Footer`, `TranslateButton`, `BetaForm`                                                      | Nav, selector idioma, BetaForm en Footer  |
-| Traducción EN/ES               | Sí    | MVP  | `src/data/translations.ts`                                                                              | Sistema casero sin dependencias           |
-| Tema Dark                      | Sí    | MVP  | `global.css`                                                                                            | Solo dark mode                            |
+| Feature                        | ¿MVP? | Fase | Componente(s)                                                                                           | Notas                                                                                             |
+| ------------------------------ | ----- | ---- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Hero Section                   | Sí    | MVP  | `PitchGeometryBackground`, `FloatingKeyPoints`, `KeyPointsCarousel`, `HeroImagesCascade`, `AvatarGroup` | Formulario beta interactivo con Supabase                                                          |
+| Predicciones en Vivo (Marquee) | Sí    | MVP  | `OddsMarquee`, `OddsCard`, `OddsCarousel`                                                               | 18 predicciones hardcodeadas de ejemplo                                                           |
+| Métricas y Prueba Social       | Sí    | MVP  | `KeyPointsGrid`, `KeyPointCard`                                                                         | 75K+ usuarios, 15M+ datos procesados, 30+ ligas (sin yield/hit-rate público hasta volumen mínimo) |
+| Dashboard Reveal (Scroll)      | Sí    | MVP  | `ScrollExpandVideo`                                                                                     | Animación scroll-driven con screenshot                                                            |
+| Proceso de IA (Timeline)       | Sí    | MVP  | `AITimeline`, `AILayers`, `DataStreamMarquee`                                                           | 4 pasos, 4 capas de análisis                                                                      |
+| Partners y Marcas              | Sí    | MVP  | `BrandsCarousel`                                                                                        | 10 logos de ligas de fútbol y fuentes de datos (neutras)                                          |
+| Planes y Precios               | Sí    | MVP  | `PlanCard`, `[lang]/plans/page.tsx`                                                                     | Free + Standard ($9.99)                                                                           |
+| FAQ                            | Sí    | MVP  | `FaqAccordion`, `[lang]/faq/page.tsx`                                                                   | 5 preguntas frecuentes                                                                            |
+| Páginas Legales                | Sí    | MVP  | `[lang]/terms/`, `privacy/`, `cookies/`                                                                 | Términos, Privacidad, Cookies                                                                     |
+| Toolbar + Footer               | Sí    | MVP  | `Toolbar`, `Footer`, `TranslateButton`, `BetaForm`                                                      | Nav, selector idioma, BetaForm en Footer                                                          |
+| Traducción EN/ES               | Sí    | MVP  | `src/data/translations.ts`                                                                              | Sistema casero sin dependencias                                                                   |
+| Tema Dark                      | Sí    | MVP  | `global.css`                                                                                            | Solo dark mode                                                                                    |
 
 ## Exclusiones Explícitas
 
