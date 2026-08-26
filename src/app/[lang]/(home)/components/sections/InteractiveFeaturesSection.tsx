@@ -169,6 +169,13 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Disclaimer at the bottom of the mobile simulated browser */}
+            <div className="mt-4 border-t border-white/5 pt-2 text-right">
+              <span className="font-mono text-[8px] tracking-wider text-white/25">
+                {data.demoDisclaimer}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -263,6 +270,13 @@ export const InteractiveFeaturesSection: React.FC<Props> = ({ lang }) => {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </div>
+
+            {/* Disclaimer at the bottom of the desktop simulated browser */}
+            <div className="relative z-10 border-t border-white/5 pt-3 text-right">
+              <span className="font-mono text-[9px] tracking-wider text-white/30">
+                {data.demoDisclaimer}
+              </span>
             </div>
           </div>
         </ScrollReveal>

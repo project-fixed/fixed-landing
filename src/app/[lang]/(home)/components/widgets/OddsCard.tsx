@@ -2,7 +2,7 @@ import React from 'react';
 import { Clock, Target, Check, X } from 'lucide-react';
 
 export interface Props {
-  time: string;
+  time?: string;
   percent: string | number;
   odds: string | number;
   type: string;
@@ -52,13 +52,15 @@ export const OddsCard: React.FC<Props> = ({
             {/* Time & Prob inline */}
             <div className="flex items-center gap-1.5 font-mono text-[8px] text-white/40">
               <div className="flex items-center gap-0.5">
-                <Clock className="h-2.5 w-2.5 text-white/50" />
-                <span>{time}</span>
-              </div>
-              <div className="flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5 text-white/50" />
                 <span>{formattedPercent}</span>
               </div>
+              {time && (
+                <div className="flex items-center gap-0.5">
+                  <Clock className="h-2.5 w-2.5 text-white/50" />
+                  <span>{time}</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -85,7 +87,7 @@ export const OddsCard: React.FC<Props> = ({
 
   return (
     <div
-      className={`bg-glass-card hover:bg-surface-card/80 flex cursor-pointer flex-col gap-2.5 rounded-2xl p-4 transition-colors ${className}`}
+      className={`bg-glass-card hover:bg-surface-card/80 flex flex-col gap-2.5 rounded-2xl p-4 transition-colors ${className}`}
       style={style}
     >
       {/* Row 1: EV, Time, Probability, Odds */}
@@ -97,10 +99,12 @@ export const OddsCard: React.FC<Props> = ({
           </span>
 
           {/* Time (Clock Icon + Text) */}
-          <div className="text-muted flex items-center gap-1">
-            <Clock className="text-faint h-3.5 w-3.5" />
-            <span className="text-body font-medium">{time}</span>
-          </div>
+          {time && (
+            <div className="text-muted flex items-center gap-1">
+              <Clock className="text-faint h-3.5 w-3.5" />
+              <span className="text-body font-medium">{time}</span>
+            </div>
+          )}
 
           {/* Probability (Target Icon + Text) */}
           <div className="text-muted flex items-center gap-1">

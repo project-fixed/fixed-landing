@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import type { Translations, Lang } from '@/data/translations';
+import type { ModelPerformanceStats } from '@/lib/model-record';
 import { ScrollReveal } from '@/shared/components/ui/ScrollReveal';
 import { GridBackground } from '@/shared/components/ui/GridBackground';
 import { LaFijaCard } from '../widgets/LaFijaCard';
@@ -20,9 +21,13 @@ import {
 interface Props {
   t: Translations;
   lang: Lang;
+  performance?: ModelPerformanceStats;
 }
 
-export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
+const formatSignedPercent = (value: number) =>
+  `${value >= 0 ? '+' : ''}${(value * 100).toFixed(1)}%`;
+
+export const FeaturesBentoSection: React.FC<Props> = ({ t, performance }) => {
   return (
     <section
       id="features"
@@ -191,24 +196,30 @@ export const FeaturesBentoSection: React.FC<Props> = ({ t }) => {
 
               {/* Graphic: Data Table Wireframe */}
               <div className="relative z-10 mt-8 flex flex-1 flex-col items-start justify-end gap-4">
-                <div className="flex flex-col gap-6">
-                  <div>
-                    <span className="text-status-success text-4xl font-black tracking-tighter drop-shadow-[0_0_15px_rgba(var(--color-status-success-rgb),0.3)]">
-                      +12.4%
-                    </span>
-                    <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
-                      {t.landing.home.bento.card3.yieldLabel}
+                {performance && (
+                  <div className="flex flex-col gap-6">
+                    <div>
+                      <span className="text-status-success text-4xl font-black tracking-tighter drop-shadow-[0_0_15px_rgba(var(--color-status-success-rgb),0.3)]">
+                        {formatSignedPercent(performance.yield)}
+                      </span>
+                      <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
+                        {t.landing.home.bento.card3.yieldLabel}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-3xl font-bold tracking-tighter text-white/90">
+                        {(performance.hitRate * 100).toFixed(1)}%
+                      </span>
+                      <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
+                        {t.landing.home.bento.card3.hitRateLabel}
+                      </span>
+                    </div>
+                    <span className="font-mono text-[10px] tracking-wider text-white/40 uppercase">
+                      {performance.totalBets}{' '}
+                      {t.landing.home.bento.card3.betsLabel}
                     </span>
                   </div>
-                  <div>
-                    <span className="text-3xl font-bold tracking-tighter text-white/90">
-                      65.2%
-                    </span>
-                    <span className="mt-1 block font-mono text-[10px] tracking-wider text-white/40 uppercase">
-                      {t.landing.home.bento.card3.hitRateLabel}
-                    </span>
-                  </div>
-                </div>
+                )}
                 <div className="mt-2">
                   <p className="max-w-[90%] text-[10px] leading-tight text-white/40">
                     {t.landing.home.bento.card3.disclaimer}

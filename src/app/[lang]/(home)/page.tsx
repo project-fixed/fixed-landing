@@ -9,6 +9,10 @@ import { AiLayersSection } from './components/sections/AiLayersSection';
 import { BrandsMarquee } from '@/app/[lang]/(home)/components/widgets/BrandsMarquee';
 import { AboutSection } from './components/sections/AboutSection';
 
+import { getModelRecord } from '@/lib/model-record';
+
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }];
 }
@@ -22,6 +26,7 @@ export default async function HomePage({ params }: PageProps) {
   const currentLang = lang === 'es' ? 'es' : 'en';
   const t = useTranslations(currentLang);
   const appAuthUrl = 'https://app.fixed.com/auth';
+  const record = await getModelRecord();
 
   return (
     <div className="relative w-full">
@@ -33,8 +38,19 @@ export default async function HomePage({ params }: PageProps) {
 
       {/* Capa Cortina (Subes por encima de Hero al hacer scroll) */}
       <div className="bg-background relative z-10 w-full border-t border-white/10 shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
-        <OddsMarquee lang={currentLang} />
-        <FeaturesBentoSection t={t} lang={currentLang} />
+        {record && (
+          <OddsMarquee
+            lang={currentLang}
+            picks={record.picks}
+            stats={record.stats}
+          />
+        )}
+
+        <FeaturesBentoSection
+          t={t}
+          lang={currentLang}
+          performance={record?.stats}
+        />
         <InteractiveFeaturesSection lang={currentLang} />
         <DataStreamSection lang={currentLang} />
         <AiLayersSection lang={currentLang} />

@@ -77,11 +77,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang, t }) => {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           {/* Tarjeta de Early Access */}
-          <div className="ml-auto hidden w-[320px] rounded-2xl border border-white/15 bg-white/10 p-6 text-right backdrop-blur-md lg:block lg:w-[400px]">
-            <p className="mb-1 font-mono text-xs tracking-widest text-white capitalize">
+          <div className="bg-primary-light/60 ml-auto hidden w-[320px] rounded-2xl border border-white/15 p-6 text-right backdrop-blur-md lg:block lg:w-[400px]">
+            <p className="mb-1 font-mono text-sm font-medium tracking-widest text-white capitalize">
               {currentLang === 'es' ? 'acceso anticipado' : 'early access'}
             </p>
-            <p className="mb-5 text-xs font-medium text-white/70">
+            <p className="mb-5 text-xs font-medium text-white/80">
               {currentLang === 'es'
                 ? 'Únete a la lista de espera y sé el primero en probar Fixed.'
                 : 'Join the waitlist and be the first to try Fixed.'}

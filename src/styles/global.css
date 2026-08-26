@@ -105,11 +105,11 @@
   @apply font-mono text-[clamp(2rem,5vw,3.5rem)] leading-tight font-extrabold tracking-tight text-white uppercase;
 }
 
-/* Default Dark Theme Settings for Shadcn and Tailwind v4 0b1013 oklch(0.09 0 0) */
+/* Default Dark Theme Settings for Shadcn and Tailwind v4 0b1013 #020202 */
 :root {
   color-scheme: dark;
   --header-height: 4.5rem;
-  --background: oklch(0.09 0 0);
+  --background: #020202;
   --foreground: #f8fafc;
   --card: #152027;
   --card-foreground: #f8fafc;

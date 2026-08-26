@@ -36,8 +36,9 @@ export const translations = {
           betaErrorDuplicate:
             'This email is already registered on the waitlist.',
           betaErrorGeneric: 'An error occurred. Please try again later.',
-          oddsDisclaimer:
-            'Illustrative data \u2014 simulated performance based on predefined staking criteria',
+          oddsCaption: 'Real picks from our model',
+          oddsResultsNote: 'Historical results do not guarantee future returns',
+          betsCountLabel: 'recorded bets',
           key: {
             point1: {
               title: '+10K',
@@ -68,6 +69,8 @@ export const translations = {
           title: 'Your Edge, Every Matchday',
           description:
             'We do the hard work so you don\u2019t have to. Every pick is calculated, verified, and ready to act on.',
+          demoDisclaimer:
+            '*Illustrative data for interface demonstration purposes only.',
           accordion: {
             item1: {
               title: 'Discover',
@@ -97,11 +100,12 @@ export const translations = {
           card3: {
             title: 'Absolute Transparency',
             description:
-              'Publicly validated performance. Total transparency on our simulated bankroll.',
+              'A verifiable record built from every settled pick, calculated over market-reference odds.',
             yieldLabel: 'Historical Yield',
             hitRateLabel: 'Hit Rate',
+            betsLabel: 'recorded bets',
             disclaimer:
-              'Simulated performance based on defined staking criteria. Historical results do not guarantee future returns.',
+              'Calculated over market-reference odds with flat 1-unit staking. Historical results do not guarantee future returns.',
           },
           card4: {
             title: 'Top 5 Leagues',
@@ -358,8 +362,10 @@ export const translations = {
             'Este correo ya está registrado en la lista de espera.',
           betaErrorGeneric:
             'Hubo un error. Por favor, inténtalo de nuevo más tarde.',
-          oddsDisclaimer:
-            'Datos ilustrativos — rendimiento simulado con criterios de staking definidos',
+          oddsCaption: 'Picks reales del modelo',
+          oddsResultsNote:
+            'Los resultados históricos no garantizan resultados futuros',
+          betsCountLabel: 'apuestas registradas',
           key: {
             point1: {
               title: '+10K',
@@ -390,6 +396,8 @@ export const translations = {
           title: 'Tu Ventaja, Cada Jornada',
           description:
             'Hacemos el trabajo pesado para que tú solo tengas que decidir. Cada selección está calculada, verificada y lista para la acción.',
+          demoDisclaimer:
+            '*Datos ilustrativos con fines de demostración de la interfaz.',
           accordion: {
             item1: {
               title: 'Descubre',
@@ -419,11 +427,12 @@ export const translations = {
           card3: {
             title: 'Transparencia Absoluta',
             description:
-              'Rendimiento validado públicamente. Transparencia total en nuestro bankroll simulado.',
+              'Un historial verificable construido con cada pick resuelto, calculado sobre cuotas de referencia de mercado.',
             yieldLabel: 'Yield Histórico',
             hitRateLabel: 'Hit Rate',
+            betsLabel: 'apuestas registradas',
             disclaimer:
-              'Rendimiento simulado con base en criterios de staking definidos. Resultados históricos no garantizan resultados futuros.',
+              'Calculado sobre cuotas de referencia de mercado con staking plano de 1 unidad. Los resultados históricos no garantizan resultados futuros.',
           },
           card4: {
             title: 'Top 5 Ligas',

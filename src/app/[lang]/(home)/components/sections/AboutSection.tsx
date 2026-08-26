@@ -39,7 +39,7 @@ export const AboutSection: React.FC<Props> = ({ t }) => {
             <h2 className="title-hero">{t.landing.home.about.title}</h2>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.3}>
-            <span className="text-primary mt-2 block font-mono text-xl font-bold">
+            <span className="text-primary-light mt-2 block font-mono text-xl font-bold">
               {t.landing.home.about.subtitle}
             </span>
             <p className="text-body my-6 text-base leading-relaxed">
