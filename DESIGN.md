@@ -51,7 +51,8 @@ La paleta adopta una nomenclatura profesional escalable, usando Hexadecimal para
 
 Los fondos no usan negros puros, sino que están "entintados" para mantener armonía visual con la paleta fría.
 
-- `canvas` (`#0b1013`): Fondo base casi negro.
+- `background` (`#020202`): Fondo base de la aplicación (antes `oklch(0.09 0 0)`).
+- `canvas` (`#0b1013`): Fondo base entintado casi negro.
 - `surface-deep` (`#10171c`): Elevación sutil para paneles secundarios.
 - `surface-card` (`#152027`): Elementos de mayor elevación interactiva (reemplaza al antiguo primary-darkest).
 
@@ -129,6 +130,8 @@ Las fuentes se cargan mediante `next/font/google` y se configuran como variables
 - **Accordion** ([`accordion.tsx`](file:///c:/Projects/Fixed/fixed-landing/src/shared/components/ui/accordion.tsx)): Acordeón construido sobre `@base-ui/react`. Cada ítem tiene tipografía mono, color atenuado que se ilumina en hover, dividido por líneas finas horizontales.
 - **LaFijaCard** ([`LaFijaCard.tsx`](<file:///c:/Projects/Fixed/fixed-landing/src/app/[lang]/(home)/components/widgets/LaFijaCard.tsx>)): Carta de predicción diaria ("La Fija") con diseño limpio y tipografía mono.
 - **ValueBetCardWidget** ([`ValueBetCardWidget.tsx`](<file:///c:/Projects/Fixed/fixed-landing/src/app/[lang]/(home)/components/widgets/ValueBetCardWidget.tsx>)): Tarjeta de apuestas de valor con iluminación interactiva y estados dinámicos (Alta / Media / Baja).
+- **OddsCard** ([`OddsCard.tsx`](<file:///c:/Projects/Fixed/fixed-landing/src/app/[lang]/(home)/components/widgets/OddsCard.tsx>)): Tarjeta de cuotas con EV, probabilidad formateada, cuota y la predicción en lenguaje natural dinámico (ej: "Gana Fulham").
+- **OddsMarquee** ([`OddsMarquee.tsx`](<file:///c:/Projects/Fixed/fixed-landing/src/app/[lang]/(home)/components/widgets/OddsMarquee.tsx>)): Marquee de desplazamiento infinito que renderiza filas de `OddsCard` para mostrar el historial reciente del modelo.
 
 ---
 
